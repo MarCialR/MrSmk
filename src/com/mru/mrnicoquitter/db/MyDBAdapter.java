@@ -10,15 +10,17 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 public class MyDBAdapter {
 
-	private static final String DATABASE_NAME 	= "myDatabase.db";
-	private static final String DATABASE_TABLE 	= "mainTable";
+	private static final String DATABASE_NAME 	= "mrQuitter.db";
+	private static final String DATABASE_TABLE 	= "cigars";
 	private static final int DATABASE_VERSION 	= 1;
 	public static final String KEY_ID			= "_id";	// The index (key) column name for use in where clauses.
-	public static final String KEY_NAME			= "name";	// The name and column index of each column in your database.
-	public static final int NAME_COLUMN 		= 1;
+	public static final String KEY_DATE			= "date";	// The name and column index of each column in your database.
+	public static final int DATE_COLUMN 		= 1;
+	public static final String KEY_TYPE			= "type";	// The name and column index of each column in your database.
+	public static final int TYPE_COLUMN 		= 2;
 	// TODO: Create public field for each column in your table.
 	// SQL Statement to create a new database.
-	private static final String DATABASE_CREATE = "create table " +	DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_NAME + " text not null);";
+	private static final String DATABASE_CREATE = "create table " +	DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_DATE + " date not null, "+ KEY_TYPE + " integer not null);";
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
 	private myDbHelper dbHelper;				// Database open/upgrade helper
@@ -45,7 +47,7 @@ public class MyDBAdapter {
 				"=" + _rowIndex, null) > 0;
 	}
 	public Cursor getAllEntries () {
-		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_NAME},
+		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_TYPE},
 				null, null, null, null, null);
 	}
 	public MyObject getEntry(long _rowIndex) {
