@@ -1,6 +1,12 @@
 package com.mru.mrnicoquitter.db;
 
+
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 import com.mru.mrnicoquitter.basura.MyObject;
+
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -38,9 +44,20 @@ public class MyDBAdapter {
 		db.close();
 	}
 	public long insertEntry(MyObject _myObject) {
-		ContentValues contentValues = new ContentValues();
-		//TODO fill in ContentValues to represent the new row
-		return db.insert(DATABASE_TABLE, null, contentValues);
+		// Create a new row of values to insert.
+		ContentValues newValues = new ContentValues();
+		// Assign values for each row.
+		
+
+		
+		newValues.put(KEY_DATE, _myObject.getDate());
+		newValues.put(KEY_TYPE, _myObject.getId());
+		// Insert the row into your table
+		return db.insert(DATABASE_TABLE, null, newValues);		
+	}
+	private Context getResources() {
+		// TODO Auto-generated method stub
+		return null;
 	}
 	public boolean removeEntry(long _rowIndex) {
 		return db.delete(DATABASE_TABLE, KEY_ID +

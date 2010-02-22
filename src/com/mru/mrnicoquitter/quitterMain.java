@@ -1,62 +1,82 @@
 package com.mru.mrnicoquitter;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Vector;
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
+import com.mru.mrnicoquitter.basura.MyObject;
+import com.mru.mrnicoquitter.db.MyDBAdapter;
 
 import android.app.Activity;
-import android.app.AlertDialog;
-import android.content.DialogInterface;
-import android.content.DialogInterface.OnClickListener;
+import android.database.Cursor;
 import android.os.Bundle;
-import android.widget.ArrayAdapter;
-import android.widget.SimpleAdapter;
+import android.view.View;
+import android.view.ViewParent;
+import android.view.View.OnClickListener;
+import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.Spinner;
-import android.widget.SpinnerAdapter;
+import android.widget.AdapterView.OnItemSelectedListener;
 
 public class quitterMain extends Activity {
+    private OnClickListener mCorkyListener;
+    private OnItemSelectedListener itsel;
+    Button saveButton;
+    Spinner tipo;
+
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.main);     
+        tipo = (Spinner)this.findViewById(R.id.TypeSpinner);
+        String []s= {"text","rrrr"};
 
-        Spinner tipo = (Spinner)this.findViewById(R.id.TypeSpinner);
-        Map a1 = new HashMap();
-        a1.put("text", "Yolovalgo");
-        Map a2 = new HashMap();
-        a1.put("text", "Amigos");
-        List l = new Vector();
-        l.add(a1);
-        l.add(a2);
-        String []s= {"text"};
-        int []i= {1};
-        
-        ArrayAdapter<CharSequence> adapter = ArrayAdapter.createFromResource(
-                this, R.array.colors, android.R.layout.simple_spinner_item);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        
-        SpinnerAdapter sa = new SimpleAdapter(getApplicationContext(), l, 1,s,i);
-        tipo.setAdapter(adapter);
-        setContentView(R.layout.main);        
-        OnClickListener okButtonListener = new OnClickListener(){ 
-            // @Override 
-            public void onClick(DialogInterface arg0, int arg1) { 
+        MyListAdapter myAdapter = new MyListAdapter(getApplicationContext(), s);
+        tipo.setAdapter(myAdapter);
 
-            } 
-       }; 
-       OnClickListener cancelButtonListener = new OnClickListener(){ 
-            // @Override 
-            public void onClick(DialogInterface arg0, int arg1) { 
-                 // Do nothing 
-            } 
-       };         
-        new AlertDialog.Builder(this) 
-        .setTitle("Question") 
-        .setMessage("Is this the one you whant to add?") 
-        .setPositiveButton("OK", okButtonListener) 
-        .setNegativeButton("Cancel", cancelButtonListener) 
-        .show();
+    	MyDBAdapter dba = new MyDBAdapter(getApplicationContext());
+    	Cursor c = dba.getAllEntries();
+        if (c.moveToFirst()){
+        	do {
+        		String d = c.getString(1);
+        		System.out.println(s);
+        	}while (c.moveToNext());
+        }
+        saveButton = (Button)findViewById(R.id.SaveButton);
+        itsel = new OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> arg0, View arg1,
+					int arg2, long arg3) {
+				// TODO Auto-generated method stub
+				
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+		};
+        mCorkyListener = new OnClickListener() {
+            public void onClick(View v) {
+            	MyObject obj = new MyObject();
+        		Calendar c = Calendar.getInstance();
+        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+            	obj.setDate(sdf.format(c.getTime()));
+            	ViewParent vp = v.getParent();
+            	 Object i =quitterMain.this.tipo;
+            	
+
+            	obj.setId((int)tipo.getSelectedItemId());
+            	MyDBAdapter dba = new MyDBAdapter(getApplicationContext());
+            	dba.insertEntry(obj);
+              }
+          };
+        saveButton.setOnClickListener(mCorkyListener);
+        
+        // Create an anonymous implementation of OnClickListener
     }
     
 }

@@ -27,4 +27,6 @@
     </TableRow>
 
 
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"></Button>
+<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="View List" android:id="@+id/ViewListButton"></Button>
 </TableLayout>
