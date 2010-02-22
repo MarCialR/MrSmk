@@ -16,6 +16,16 @@
 
 <resources>
     <!-- Used in View/Spinner1.java -->
+    <string-array name="cigars">
+        <item>mañanero</item>
+        <item>cafe</item>
+        <item>descanso</item>
+        <item>social</item>
+        <item>innecesario</item>
+        <item>rabia</item>
+    </string-array>
+
+    <!-- Used in View/Spinner1.java -->
     <string-array name="colors">
         <item>red</item>
         <item>orange</item>

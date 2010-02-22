@@ -1,7 +1,6 @@
 package com.mru.mrnicoquitter;
 
 import android.content.Context;
-import android.text.Layout.Alignment;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;

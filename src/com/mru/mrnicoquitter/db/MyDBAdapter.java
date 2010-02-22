@@ -1,12 +1,6 @@
 package com.mru.mrnicoquitter.db;
 
-
-import java.text.SimpleDateFormat;
-import java.util.Calendar;
-import java.util.Date;
-
-import com.mru.mrnicoquitter.basura.MyObject;
-
+import com.mru.mrnicoquitter.basura.Cigar;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -21,11 +15,9 @@ public class MyDBAdapter {
 	private static final int DATABASE_VERSION 	= 1;
 	public static final String KEY_ID			= "_id";	// The index (key) column name for use in where clauses.
 	public static final String KEY_DATE			= "date";	// The name and column index of each column in your database.
-	public static final int DATE_COLUMN 		= 1;
+	public static final int COLUMN_DATE 		= 1;
 	public static final String KEY_TYPE			= "type";	// The name and column index of each column in your database.
-	public static final int TYPE_COLUMN 		= 2;
-	// TODO: Create public field for each column in your table.
-	// SQL Statement to create a new database.
+	public static final int COLUMN_TYPE 		= 2;
 	private static final String DATABASE_CREATE = "create table " +	DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_DATE + " date not null, "+ KEY_TYPE + " integer not null);";
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
@@ -33,23 +25,29 @@ public class MyDBAdapter {
 
 	public MyDBAdapter(Context _context) {
 		context = _context;
-		dbHelper = new myDbHelper(context, DATABASE_NAME, null,
-				DATABASE_VERSION);
+		dbHelper = new myDbHelper(context, DATABASE_NAME, null,DATABASE_VERSION);
+		try {
+			db = dbHelper.getWritableDatabase();
+		}
+		catch (SQLiteException ex){
+			db = dbHelper.getReadableDatabase();	
+		}
 	}
+
 	public MyDBAdapter open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
 		return this;
 	}
+	
 	public void close() {
 		db.close();
 	}
-	public long insertEntry(MyObject _myObject) {
+	
+	public long insertEntry(Cigar _myObject) {
 		// Create a new row of values to insert.
 		ContentValues newValues = new ContentValues();
+		//newValues.
 		// Assign values for each row.
-		
-
-		
 		newValues.put(KEY_DATE, _myObject.getDate());
 		newValues.put(KEY_TYPE, _myObject.getId());
 		// Insert the row into your table
@@ -67,13 +65,13 @@ public class MyDBAdapter {
 		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_TYPE},
 				null, null, null, null, null);
 	}
-	public MyObject getEntry(long _rowIndex) {
-		MyObject objectInstance = new MyObject();
+	public Cigar getEntry(long _rowIndex) {
+		Cigar objectInstance = new Cigar();
 		//TODO Return a cursor to a row from the database and
 		//use the values to populate an instance of MyObject
 		return objectInstance;
 	}
-	public int updateEntry(long _rowIndex, MyObject _myObject) {
+	public int updateEntry(long _rowIndex, Cigar _myObject) {
 		String where = KEY_ID + "=" + _rowIndex;
 		ContentValues contentValues = new ContentValues();
 		//TODO fill in the ContentValue based on the new object

@@ -1,10 +1,9 @@
 package com.mru.mrnicoquitter.basura;
 
-import java.util.Date;
-
-public class MyObject {
+public class Cigar {
 	private int id;
 	private String date;
+	private int tipo;
 	
 	
 	public int getId() {
@@ -19,4 +18,11 @@ public class MyObject {
 	public void setDate(String date) {
 		this.date = date;
 	}
+	public int getTipo() {
+		return tipo;
+	}
+	public void setTipo(int tipo) {
+		this.tipo = tipo;
+	}
+	
 }

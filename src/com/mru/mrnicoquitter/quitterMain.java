@@ -4,10 +4,11 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
 
-import com.mru.mrnicoquitter.basura.MyObject;
+import com.mru.mrnicoquitter.basura.Cigar;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
 
 import android.app.Activity;
+import android.content.Intent;
 import android.database.Cursor;
 import android.os.Bundle;
 import android.view.View;
@@ -19,9 +20,10 @@ import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
 public class quitterMain extends Activity {
-    private OnClickListener mCorkyListener;
-    private OnItemSelectedListener itsel;
+    private OnClickListener saveListener, listListener;
+    //private OnItemSelectedListener itsel;
     Button saveButton;
+    Button listButton;
     Spinner tipo;
 
     /** Called when the activity is first created. */
@@ -30,53 +32,41 @@ public class quitterMain extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);     
         tipo = (Spinner)this.findViewById(R.id.TypeSpinner);
-        String []s= {"text","rrrr"};
+        String []s= getResources().getStringArray(R.array.cigars);
 
         MyListAdapter myAdapter = new MyListAdapter(getApplicationContext(), s);
         tipo.setAdapter(myAdapter);
 
-    	MyDBAdapter dba = new MyDBAdapter(getApplicationContext());
-    	Cursor c = dba.getAllEntries();
-        if (c.moveToFirst()){
-        	do {
-        		String d = c.getString(1);
-        		System.out.println(s);
-        	}while (c.moveToNext());
-        }
+
         saveButton = (Button)findViewById(R.id.SaveButton);
-        itsel = new OnItemSelectedListener() {
-
-			@Override
-			public void onItemSelected(AdapterView<?> arg0, View arg1,
-					int arg2, long arg3) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
-			public void onNothingSelected(AdapterView<?> arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-		};
-        mCorkyListener = new OnClickListener() {
+        saveListener = new OnClickListener() {
             public void onClick(View v) {
-            	MyObject obj = new MyObject();
+            	Cigar cigar = new Cigar();
         		Calendar c = Calendar.getInstance();
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
-            	obj.setDate(sdf.format(c.getTime()));
-            	ViewParent vp = v.getParent();
-            	 Object i =quitterMain.this.tipo;
-            	
+            	cigar.setDate(sdf.format(c.getTime()));
+            	Spinner i =quitterMain.this.tipo;
+            	long id =i.getSelectedItemId();
+            	int pos =i.getSelectedItemPosition();
+            	Object obj =i.getSelectedItem();
 
-            	obj.setId((int)tipo.getSelectedItemId());
+            	cigar.setId((int)tipo.getSelectedItemId());
             	MyDBAdapter dba = new MyDBAdapter(getApplicationContext());
-            	dba.insertEntry(obj);
+            	dba.insertEntry(cigar);
               }
           };
-        saveButton.setOnClickListener(mCorkyListener);
+        saveButton.setOnClickListener(saveListener);
         
-        // Create an anonymous implementation of OnClickListener
+
+        listButton = (Button)findViewById(R.id.ViewListButton);
+        listListener = new OnClickListener() {
+            public void onClick(View v) {
+            	Intent myIntent = new Intent(v.getContext(), CigarListActivity.class);
+                startActivityForResult(myIntent, 0);
+              }
+          };
+        listButton.setOnClickListener(listListener);        
+        
     }
     
 }
