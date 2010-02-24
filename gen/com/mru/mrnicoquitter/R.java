@@ -40,6 +40,7 @@ public final class R {
     }
     public static final class id {
         public static final int SaveButton=0x7f060002;
+        public static final int SendButton=0x7f060004;
         public static final int TimePicker=0x7f060001;
         public static final int TypeSpinner=0x7f060000;
         public static final int ViewListButton=0x7f060003;

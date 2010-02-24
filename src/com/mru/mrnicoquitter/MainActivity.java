@@ -19,11 +19,11 @@ import android.widget.Button;
 import android.widget.Spinner;
 import android.widget.AdapterView.OnItemSelectedListener;
 
-public class quitterMain extends Activity {
-    private OnClickListener saveListener, listListener;
+public class MainActivity extends Activity {
+    private OnClickListener saveListener, listListener, sendListener;
     //private OnItemSelectedListener itsel;
-    Button saveButton;
-    Button listButton;
+    Button saveButton,listButton, sendButton;
+
     Spinner tipo;
 
     /** Called when the activity is first created. */
@@ -45,7 +45,7 @@ public class quitterMain extends Activity {
         		Calendar c = Calendar.getInstance();
         		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
             	cigar.setDate(sdf.format(c.getTime()));
-            	Spinner i =quitterMain.this.tipo;
+            	Spinner i =MainActivity.this.tipo;
             	long id =i.getSelectedItemId();
             	int pos =i.getSelectedItemPosition();
             	Object obj =i.getSelectedItem();
@@ -66,6 +66,19 @@ public class quitterMain extends Activity {
               }
           };
         listButton.setOnClickListener(listListener);        
+        
+        sendButton = (Button)findViewById(R.id.SendButton);
+        sendListener = new OnClickListener() {
+            public void onClick(View v) {
+                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
+                emailIntent.setType("plain/text"); 
+                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"marcialemilio@gmail.com"}); 
+                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myCigarsList"); 
+                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, "aqui iria"); 
+                startActivity(Intent.createChooser(emailIntent, "Send mail..."));            	
+              }
+          };
+        sendButton.setOnClickListener(sendListener);          
         
     }
     

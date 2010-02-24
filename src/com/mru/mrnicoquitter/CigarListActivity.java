@@ -3,7 +3,6 @@ package com.mru.mrnicoquitter;
 import java.util.ArrayList;
 import java.util.List;
 
-import android.app.Activity;
 import android.app.ListActivity;
 import android.database.Cursor;
 import android.os.Bundle;

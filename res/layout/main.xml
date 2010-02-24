@@ -15,4 +15,5 @@
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"></Button>
 		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/ViewListButton" android:text="View List"></Button>
 	</TableRow>
+			<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SendButton" android:text="Send"></Button>
 </TableLayout>
