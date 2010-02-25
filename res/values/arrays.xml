@@ -23,6 +23,8 @@
         <item>social</item>
         <item>innecesario</item>
         <item>rabia</item>
+        <item>ordenador</item>
+		<item>moto/coche</item>
     </string-array>
 
     <!-- Used in View/Spinner1.java -->

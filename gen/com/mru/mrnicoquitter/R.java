@@ -49,6 +49,7 @@ public final class R {
         public static final int TypeSpinner=0x7f060001;
         public static final int ViewListButton=0x7f060003;
         public static final int olvidado=0x7f060005;
+        public static final int run=0x7f060008;
         public static final int spinnerTarget=0x7f060000;
     }
     public static final class layout {

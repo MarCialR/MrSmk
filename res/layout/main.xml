@@ -25,6 +25,10 @@
     
 	<TableRow>
 		<TimePicker android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TimePicker"></TimePicker>        
-    <ToggleButton android:text="@+id/ToggleButton01" android:id="@+id/ToggleButton01" android:layout_width="wrap_content" android:layout_height="wrap_content"></ToggleButton>
-</TableRow>
+	</TableRow>
+	
+	<TableRow>
+	    <ToggleButton android:text="@+id/ToggleButton01" android:id="@+id/run" android:layout_width="wrap_content" android:layout_height="wrap_content"></ToggleButton>        
+	</TableRow>	
+
 </TableLayout>

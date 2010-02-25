@@ -7,12 +7,15 @@ import android.app.Activity;
 import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.RadioButton;
 import android.widget.Spinner;
 import android.widget.TimePicker;
+import android.widget.Toast;
+import android.widget.ToggleButton;
 
 import com.mru.mrnicoquitter.basura.Cigar;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
@@ -20,9 +23,10 @@ import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 
 public class MainActivity extends Activity {
-    private OnClickListener saveListener, listListener, sendListener, olvidoListener;
+    private OnClickListener saveListener, listListener, sendListener, olvidoListener,runListener;
     //private OnItemSelectedListener itsel;
     Button saveButton,listButton, sendButton;
+    ToggleButton runButton;
     RadioButton olvidoRadioButton;
 
     Spinner tipo;
@@ -68,6 +72,12 @@ public class MainActivity extends Activity {
             	cigar.setId((int)tipo.getSelectedItemId());
             	MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
             	dba.insertEntry(cigar);
+            	
+        		CharSequence text = "Cigarro guardado!";
+        		int duration = Toast.LENGTH_SHORT;
+        		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
+        		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
+        		toast.show();
             	//showDialog(DIALOG_PAUSED_ID);
               }
           };
@@ -96,6 +106,32 @@ public class MainActivity extends Activity {
               }
           };
         sendButton.setOnClickListener(sendListener);          
+     /*
+        runButton = (ToggleButton)findViewById(R.id.run);
+        runListener = new OnClickListener() {
+			
+            public void onClick(View v) {
+            	Thread t = 
+          	  new Thread(new Runnable() {
+          	    public void run() {
+          	    	
+          	    }
+          	    public void doo(){
+          	    	
+          	    }
+          	  });
+            	t.start();
+            	try {
+					t.sleep(500);
+					
+					
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+            }
+        };
+        runButton.setOnClickListener(runListener);*/
         
     }
     
