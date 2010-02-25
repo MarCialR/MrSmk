@@ -24,5 +24,8 @@ public class Cigar {
 	public void setTipo(int tipo) {
 		this.tipo = tipo;
 	}
+	public String toSave(){
+		return id + "|" + date.toString() + "|" + tipo; 
+	}
 	
 }

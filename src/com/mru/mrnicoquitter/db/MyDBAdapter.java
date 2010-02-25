@@ -9,7 +9,18 @@ import android.database.sqlite.*;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 public class MyDBAdapter {
+	
+	   private static MyDBAdapter INSTANCE;
 
+	   public static MyDBAdapter getInstance(Context c) {
+		   if (INSTANCE == null){
+			   INSTANCE = new MyDBAdapter(c);
+			   return INSTANCE;
+		   } else
+			   return INSTANCE;
+	   }
+	
+	
 	private static final String DATABASE_NAME 	= "mrQuitter.db";
 	private static final String DATABASE_TABLE 	= "cigars";
 	private static final int DATABASE_VERSION 	= 1;
@@ -23,7 +34,7 @@ public class MyDBAdapter {
 	private final Context context;				// Context of the application using the database.
 	private myDbHelper dbHelper;				// Database open/upgrade helper
 
-	public MyDBAdapter(Context _context) {
+	private MyDBAdapter(Context _context) {
 		context = _context;
 		dbHelper = new myDbHelper(context, DATABASE_NAME, null,DATABASE_VERSION);
 		try {
@@ -65,6 +76,21 @@ public class MyDBAdapter {
 		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_TYPE},
 				null, null, null, null, null);
 	}
+	
+	public String getAllEntriesToSend(){
+    	Cursor c = getAllEntries();
+    	StringBuffer sb = new StringBuffer(); 
+        if (c.moveToFirst()){
+        	do {
+        		Cigar cigar = new Cigar();
+        		cigar.setDate(c.getString(MyDBAdapter.COLUMN_DATE));
+        		cigar.setTipo(c.getInt(MyDBAdapter.COLUMN_TYPE));
+        		sb.append(cigar.toSave()).append("\n");
+        	}while (c.moveToNext());
+        }
+        return sb.toString();
+	}
+	
 	public Cigar getEntry(long _rowIndex) {
 		Cigar objectInstance = new Cigar();
 		//TODO Return a cursor to a row from the database and

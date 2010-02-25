@@ -1,18 +1,22 @@
-package com.mru.mrnicoquitter;
+package com.mru.mrnicoquitter.db;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-class MyListAdapter extends BaseAdapter { 
+public class CausesAdapter extends BaseAdapter { 
+
+	
+	
 	
     private String[] content;
     private Context mContext;
     
-    public MyListAdapter(Context context, String[] content) { 
+    public CausesAdapter(Context context, String[] content) { 
          this.mContext = context; 
          this.content = content;
     } 
@@ -44,6 +48,9 @@ class MyListAdapter extends BaseAdapter {
              text = new TextView(context); 
              text.setHeight(20); 
              text.setText(str); 
+             text.setTextColor(Color.BLACK);
+             text.setTextSize(14);
+             text.setGravity(HORIZONTAL);
              addView(text, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT)); 
         } 
         public void setText(String title) { 

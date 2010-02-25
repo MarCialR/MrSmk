@@ -34,7 +34,7 @@ public class CigarListActivity extends ListActivity {
     }
 
     private void loadCigars() {
-    	MyDBAdapter dba = new MyDBAdapter(getApplicationContext());
+    	MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
     	Cursor c = dba.getAllEntries();
     	
         if (c.moveToFirst()){

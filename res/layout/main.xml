@@ -4,16 +4,27 @@
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
     android:stretchColumns="1">
+    
     <TableRow>
-		<Spinner android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TypeSpinner"></Spinner>        
-    </TableRow>
+		<Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/TypeSpinner" style="@layout/cigar_row"></Spinner>        
+	</TableRow>
 
     <TableRow>
-		<TimePicker android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TimePicker"></TimePicker>        
-    </TableRow>
-    <TableRow>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"></Button>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/ViewListButton" android:text="View List"></Button>
+    
+		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"></Button>
+		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/ViewListButton" android:text="View List"></Button>
 	</TableRow>
-			<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SendButton" android:text="Send"></Button>
+
+    <TableRow>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SendButton" android:text="Send"></Button>
+	</TableRow>
+
+    <TableRow>
+	    <RadioButton android:text="Se me olvido" android:id="@+id/olvidado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"></RadioButton>
+    </TableRow>
+    
+	<TableRow>
+		<TimePicker android:visibility="invisible" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/TimePicker"></TimePicker>        
+    <ToggleButton android:text="@+id/ToggleButton01" android:id="@+id/ToggleButton01" android:layout_width="wrap_content" android:layout_height="wrap_content"></ToggleButton>
+</TableRow>
 </TableLayout>
