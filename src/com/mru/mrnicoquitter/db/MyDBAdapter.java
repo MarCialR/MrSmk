@@ -59,7 +59,7 @@ public class MyDBAdapter {
 		ContentValues newValues = new ContentValues();
 		//newValues.
 		// Assign values for each row.
-		newValues.put(KEY_DATE, _myObject.getDate());
+		newValues.put(KEY_DATE, _myObject.getDateStr());
 		newValues.put(KEY_TYPE, _myObject.getId());
 		// Insert the row into your table
 		return db.insert(DATABASE_TABLE, null, newValues);		
@@ -83,7 +83,7 @@ public class MyDBAdapter {
         if (c.moveToFirst()){
         	do {
         		Cigar cigar = new Cigar();
-        		cigar.setDate(c.getString(MyDBAdapter.COLUMN_DATE));
+        		cigar.setDateStr(c.getString(MyDBAdapter.COLUMN_DATE));
         		cigar.setTipo(c.getInt(MyDBAdapter.COLUMN_TYPE));
         		sb.append(cigar.toSave()).append("\n");
         	}while (c.moveToNext());

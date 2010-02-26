@@ -1,22 +1,19 @@
 package com.mru.mrnicoquitter.basura;
 
+import java.util.Date;
+
 public class Cigar {
 	private int id;
-	private String date;
+	private String dateStr;
 	private int tipo;
+	private Date date;
 	
 	
 	public int getId() {
 		return id;
 	}
-	public String getDate() {
-		return date;
-	}
 	public void setId(int id) {
 		this.id = id;
-	}
-	public void setDate(String date) {
-		this.date = date;
 	}
 	public int getTipo() {
 		return tipo;
@@ -25,7 +22,17 @@ public class Cigar {
 		this.tipo = tipo;
 	}
 	public String toSave(){
-		return id + "|" + date.toString() + "|" + tipo; 
+		return id + "|" + dateStr + "|" + tipo; 
 	}
+	public String getDateStr() {
+		return dateStr;
+	}
+	public void setDateStr(String dateStr) {
+		this.dateStr = dateStr;
+	}
+	public void setDate(Date date) {
+		this.date = date;
+	}
+	
 	
 }

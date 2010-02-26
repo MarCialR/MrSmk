@@ -28,7 +28,7 @@ public class CigarListActivity extends ListActivity {
     private List<String> getStringList(){
     	List<String> cigarStrings = new ArrayList<String>();
     	for (Cigar cig: cigarEntries){
-    		cigarStrings.add(cig.getDate()+ " - " + cig.getTipo());
+    		cigarStrings.add(cig.getDateStr()+ " - " + cig.getTipo());
     	}
     	return cigarStrings;
     }
@@ -40,7 +40,7 @@ public class CigarListActivity extends ListActivity {
         if (c.moveToFirst()){
         	do {
         		Cigar cigar = new Cigar();
-        		cigar.setDate(c.getString(MyDBAdapter.COLUMN_DATE));
+        		cigar.setDateStr(c.getString(MyDBAdapter.COLUMN_DATE));
         		cigar.setTipo(c.getInt(MyDBAdapter.COLUMN_TYPE));
         		cigarEntries.add(cigar);
         	}while (c.moveToNext());

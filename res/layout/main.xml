@@ -20,7 +20,7 @@
 	</TableRow>
 
     <TableRow>
-	    <RadioButton android:text="Se me olvido" android:id="@+id/olvidado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"></RadioButton>
+	    <CheckBox android:text="Se me olvido" android:id="@+id/olvidado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"></CheckBox>
     </TableRow>
     
 	<TableRow>

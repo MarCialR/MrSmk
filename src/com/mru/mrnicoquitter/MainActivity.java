@@ -2,154 +2,155 @@ package com.mru.mrnicoquitter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Timer;
+import java.util.TimerTask;
 
 import android.app.Activity;
 import android.app.Dialog;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.Gravity;
+import android.os.Handler;
+import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
-import android.widget.RadioButton;
+import android.widget.CheckBox;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.mru.mrnicoquitter.basura.Cigar;
-import com.mru.mrnicoquitter.db.MyDBAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
+import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.timer.NotificationService;
+import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class MainActivity extends Activity {
-    private OnClickListener saveListener, listListener, sendListener, olvidoListener,runListener;
-    //private OnItemSelectedListener itsel;
-    Button saveButton,listButton, sendButton;
-    ToggleButton runButton;
-    RadioButton olvidoRadioButton;
+	private OnClickListener saveListener, listListener, sendListener,
+			olvidoListener, runListener;
 
-    Spinner tipo;
+	Button saveButton, listButton, sendButton;
+	ToggleButton runButton;
+	CheckBox olvidoCheckBox;
 
-    /** Called when the activity is first created. */
-    @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.main);     
-        tipo = (Spinner)this.findViewById(R.id.TypeSpinner);
-        String []s= getResources().getStringArray(R.array.cigars);
+	Spinner tipo;
 
-        CausesAdapter myAdapter = CausesAdapterSGTon.getInstance(getApplicationContext(), s).getList();
-        tipo.setAdapter(myAdapter);
+	/** Called when the activity is first created. */
+	@Override
+	public void onCreate(Bundle savedInstanceState) {
+		super.onCreate(savedInstanceState);
+		setContentView(R.layout.main);
+		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
+		String[] s = getResources().getStringArray(R.array.cigars);
 
+		CausesAdapter myAdapter = CausesAdapterSGTon.getInstance(
+				getApplicationContext(), s).getList();
+		tipo.setAdapter(myAdapter);
 
-        olvidoRadioButton = (RadioButton)findViewById(R.id.olvidado);
-        olvidoListener = new OnClickListener() {
-			
+		olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
+		olvidoListener = new OnClickListener() {
 			public void onClick(View v) {
-				TimePicker picker = (TimePicker)findViewById(R.id.TimePicker);
-				if (picker.getVisibility() == 0)
-					picker.setVisibility(1);//invisible
+				TimePicker picker = (TimePicker) findViewById(R.id.TimePicker);
+				if (picker.getVisibility() == View.VISIBLE)
+					picker.setVisibility(View.INVISIBLE);// invisible
 				else
-					picker.setVisibility(0);//visible
+					picker.setVisibility(View.VISIBLE);// visible
 			}
 		};
-		olvidoRadioButton.setOnClickListener(olvidoListener);
-        
-        saveButton = (Button)findViewById(R.id.SaveButton);
-        saveListener = new OnClickListener() {
-            public void onClick(View v) {
-            	Cigar cigar = new Cigar();
-                olvidoRadioButton = (RadioButton)findViewById(R.id.olvidado);
-        		Calendar c = Calendar.getInstance();
-        		SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");                
-                if (olvidoRadioButton.isChecked()){
-    				TimePicker picker = (TimePicker)findViewById(R.id.TimePicker);                	
-                	c.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
-                	c.set(Calendar.MINUTE, picker.getCurrentMinute());
-                }
-            	cigar.setDate(sdf.format(c.getTime()));
-            	cigar.setId((int)tipo.getSelectedItemId());
-            	MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
-            	dba.insertEntry(cigar);
-            	
-        		CharSequence text = "Cigarro guardado!";
-        		int duration = Toast.LENGTH_SHORT;
-        		Toast toast = Toast.makeText(getApplicationContext(), text, duration);
-        		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
-        		toast.show();
-            	//showDialog(DIALOG_PAUSED_ID);
-              }
-          };
-        saveButton.setOnClickListener(saveListener);
-        
+		olvidoCheckBox.setOnClickListener(olvidoListener);
 
-        listButton = (Button)findViewById(R.id.ViewListButton);
-        listListener = new OnClickListener() {
-            public void onClick(View v) {
-            	Intent myIntent = new Intent(v.getContext(), CigarListActivity.class);
-                startActivityForResult(myIntent, 0);
-              }
-          };
-        listButton.setOnClickListener(listListener);        
-        
-        sendButton = (Button)findViewById(R.id.SendButton);
-        sendListener = new OnClickListener() {
-            public void onClick(View v) {
-                final Intent emailIntent = new Intent(android.content.Intent.ACTION_SEND); 
-                emailIntent.setType("plain/text"); 
-                emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[]{"marcialemilio@gmail.com"}); 
-                emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT, "myCigarsList");
-                String dbToSave = MyDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
-                emailIntent.putExtra(android.content.Intent.EXTRA_TEXT, dbToSave); 
-                startActivity(Intent.createChooser(emailIntent, "Send mail..."));            	
-              }
-          };
-        sendButton.setOnClickListener(sendListener);          
-     /*
-        runButton = (ToggleButton)findViewById(R.id.run);
-        runListener = new OnClickListener() {
-			
-            public void onClick(View v) {
-            	Thread t = 
-          	  new Thread(new Runnable() {
-          	    public void run() {
-          	    	
-          	    }
-          	    public void doo(){
-          	    	
-          	    }
-          	  });
-            	t.start();
-            	try {
-					t.sleep(500);
-					
-					
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
+		saveButton = (Button) findViewById(R.id.SaveButton);
+		saveListener = new OnClickListener() {
+			public void onClick(View v) {
+				Cigar cigar = new Cigar();
+				olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
+				Calendar c = Calendar.getInstance();
+				SimpleDateFormat sdf = new SimpleDateFormat(
+						"yyyy-MM-dd'T'HH:mm:ss.SSS");
+				if (olvidoCheckBox.isChecked()) {
+					TimePicker picker = (TimePicker) findViewById(R.id.TimePicker);
+					c.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
+					c.set(Calendar.MINUTE, picker.getCurrentMinute());
 				}
-            }
-        };
-        runButton.setOnClickListener(runListener);*/
-        
-    }
-    
-    static final int DIALOG_PAUSED_ID = 0;
-    static final int DIALOG_GAMEOVER_ID = 1;
-    
-    protected Dialog onCreateDialog(int id) {
-        Dialog dialog = new Dialog(getApplicationContext());
-        switch(id) {
-        case DIALOG_PAUSED_ID:
-            dialog.setTitle(R.string.success);// do the work to define the pause Dialog
-            break;
-        case DIALOG_GAMEOVER_ID:
-            // do the work to define the game over Dialog
-            break;
-        default:
-            dialog = null;
-        }
-        return dialog;
-    }
+				cigar.setDateStr(sdf.format(c.getTime()));
+				cigar.setId((int) tipo.getSelectedItemId());
+				MyDBAdapter dba = MyDBAdapter
+						.getInstance(getApplicationContext());
+				dba.insertEntry(cigar);
+				AppUtils.showToastShort(getApplicationContext(), "Cigarro guardado!");
+			}
+		};
+		saveButton.setOnClickListener(saveListener);
+
+		listButton = (Button) findViewById(R.id.ViewListButton);
+		listListener = new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),
+						CigarListActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		listButton.setOnClickListener(listListener);
+
+		sendButton = (Button) findViewById(R.id.SendButton);
+		sendListener = new OnClickListener() {
+			public void onClick(View v) {
+				final Intent emailIntent = new Intent(
+						android.content.Intent.ACTION_SEND);
+				emailIntent.setType("plain/text");
+				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
+						new String[] { "marcialemilio@gmail.com" });
+				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
+						"myCigarsList");
+				String dbToSave = MyDBAdapter.getInstance(
+						getApplicationContext()).getAllEntriesToSend();
+				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
+						dbToSave);
+				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+			}
+		};
+		sendButton.setOnClickListener(sendListener);
+
+		runButton = (ToggleButton)findViewById(R.id.run); 
+		runListener = new OnClickListener() { 
+			public void onClick(View v) {
+//				try {
+//
+//					// setup and start MyService
+//					{
+//						NotificationService.setMainActivity(MainActivity.this);
+//						Intent svc = new Intent(MainActivity.this, NotificationService.class);
+//						startService(svc);
+//					}
+//
+//				}
+//				catch (Exception e) {
+//					Log.e("TAG", "ui creation problem", e);
+//				}
+				Timer t = new Timer(true);
+				t.schedule(new TimerTask() {
+					public void run() {
+//						AppUtils.showToastShort(MainActivity.this, "300 waited!");
+						runButton.setChecked(false);
+					}
+				}, 3000);
+			} };
+			runButton.setOnClickListener(runListener);
+			
+// La unica puta forma qu eencontreeeeeee!!!!!			
+			final Context ctx = this;
+			Handler mHandler = new Handler();
+			Runnable makeToast = new Runnable() {
+			public void run() {
+				AppUtils.showToastShort(MainActivity.this, "300 waited!");
+				runButton.setChecked(true);
+			}
+			};
+			mHandler.postDelayed(makeToast, 2000);
+
+	}
+
 }
