@@ -37,8 +37,8 @@ public class NotificationService extends Service {
 		// init the service here
 		_startService();
 
-/*		if (MAIN_ACTIVITY != null)
-			AppUtils.showToastShort(MAIN_ACTIVITY, "MyService started");*/
+		if (MAIN_ACTIVITY != null)
+			AppUtils.showToastShort(MAIN_ACTIVITY, "MyService started");
 	}
 
 	@Override

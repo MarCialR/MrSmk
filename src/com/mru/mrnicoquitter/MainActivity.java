@@ -117,40 +117,65 @@ public class MainActivity extends Activity {
 		runButton = (ToggleButton)findViewById(R.id.run); 
 		runListener = new OnClickListener() { 
 			public void onClick(View v) {
-//				try {
-//
-//					// setup and start MyService
-//					{
-//						NotificationService.setMainActivity(MainActivity.this);
-//						Intent svc = new Intent(MainActivity.this, NotificationService.class);
-//						startService(svc);
-//					}
-//
-//				}
-//				catch (Exception e) {
-//					Log.e("TAG", "ui creation problem", e);
-//				}
-				Timer t = new Timer(true);
-				t.schedule(new TimerTask() {
-					public void run() {
-//						AppUtils.showToastShort(MainActivity.this, "300 waited!");
-						runButton.setChecked(false);
+				try {
+
+					// setup and start MyService
+					{
+						NotificationService nS = new NotificationService();
+						nS.setMainActivity(MainActivity.this);
+						Intent svc = new Intent(MainActivity.this.getApplicationContext(), NotificationService.class);
+						startService(svc);
 					}
-				}, 3000);
+
+				}
+				catch (Exception e) {
+					Log.e("TAG", "ui creation problem", e);
+				}
+//				Timer t = new Timer(true);
+//				t.schedule(new TimerTask() {
+//					public void run() {
+////						AppUtils.showToastShort(MainActivity.this, "300 waited!");
+//						runButton.setChecked(false);
+//					}
+//				}, 3000);
 			} };
 			runButton.setOnClickListener(runListener);
 			
 // La unica puta forma qu eencontreeeeeee!!!!!			
-			final Context ctx = this;
-			Handler mHandler = new Handler();
-			Runnable makeToast = new Runnable() {
-			public void run() {
-				AppUtils.showToastShort(MainActivity.this, "300 waited!");
-				runButton.setChecked(true);
-			}
-			};
-			mHandler.postDelayed(makeToast, 2000);
+//			final Context ctx = this;
+//			Handler mHandler = new Handler();
+//			Runnable makeToast = new Runnable() {
+//			public void run() {
+//				AppUtils.showToastShort(MainActivity.this, "300 waited!");
+//				runButton.setChecked(true);
+//			}
+//			};
+//			mHandler.postDelayed(makeToast, 2000);
 
+	}
+
+	@Override
+	protected void onDestroy() {
+		// TODO Auto-generated method stub
+		super.onDestroy();
+		Intent svc = new Intent(this, NotificationService.class);
+	    stopService(svc);
+	}
+
+	@Override
+	protected void onPause() {
+		// TODO Auto-generated method stub
+		super.onPause();
+		Intent svc = new Intent(this, NotificationService.class);
+	    stopService(svc);
+	}
+
+	@Override
+	protected void onRestart() {
+		// TODO Auto-generated method stub
+		super.onRestart();
+		Intent svc = new Intent(this, NotificationService.class);
+	    stopService(svc);
 	}
 
 }
