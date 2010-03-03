@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent"
+  android:layout_height="wrap_content">
+  
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:stretchColumns="1" android:scrollbarAlwaysDrawVerticalTrack="true" android:isScrollContainer="true">
+
+    <TableRow>
+<Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/TypeSpinner" style="@layout/cigar_row"></Spinner>		        
+	</TableRow>
+
+    <TableRow>
+    
+		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"></Button>
+	</TableRow>    <TableRow>		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/ViewListButton" android:text="View List"></Button>
+	</TableRow>
+
+    <TableRow>
+		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SendButton" android:text="Send"></Button>
+	</TableRow>
+
+    <TableRow>
+	    <CheckBox android:text="Se me olvido" android:id="@+id/olvidado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"></CheckBox>
+    </TableRow>
+    
+	<TableRow>
+		<TimePicker android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/CuandoFumadoPicker"></TimePicker>        
+	</TableRow>
+    <TableRow>
+	    <CheckBox android:text="Me muero" android:id="@+id/notificarCheck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"></CheckBox>
+	</TableRow>    <TableRow>		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/NotifButton" android:text="Notificar"></Button>
+    </TableRow>
+    
+	<TableRow>
+		<TimePicker android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EsperarPicker"></TimePicker>        
+	</TableRow>
+	
+	<TableRow>
+	    <ToggleButton android:text="@+id/ToggleButton01" android:id="@+id/run" android:layout_width="wrap_content" android:layout_height="wrap_content"></ToggleButton>        
+	</TableRow>	
+
+	<TableRow>
+		<SeekBar android:id="@+id/SeekBar01" android:layout_width="wrap_content" android:layout_height="wrap_content"></SeekBar>
+	</TableRow>    <TableRow>		<TextView android:text="@+id/TextView01" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"></TextView>
+	</TableRow>
+
+</TableLayout>
+</ScrollView>
