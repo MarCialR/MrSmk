@@ -2,21 +2,13 @@ package com.mru.mrnicoquitter.beans;
 
 import java.util.Date;
 
-import android.content.Context;
-
-public class Cigar {
+public class CigarGroup {
 	private int id;
 	private String dateStr;
 	private int tipo;
 	private Date date;
 	
-	public Cigar() {
-		// TODO Auto-generated constructor stub
-	}
 	
-	public Cigar(Context context) {
-		// TODO Auto-generated constructor stub
-	}
 	public int getId() {
 		return id;
 	}
