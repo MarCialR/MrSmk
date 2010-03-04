@@ -2,7 +2,8 @@
 <ScrollView
   xmlns:android="http://schemas.android.com/apk/res/android"
   android:layout_width="fill_parent"
-  android:layout_height="wrap_content">
+  android:layout_height="wrap_content"
+  android:background="@drawable/smoke40">
   
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
@@ -10,52 +11,55 @@
     android:stretchColumns="1" android:scrollbarAlwaysDrawVerticalTrack="true" android:isScrollContainer="true">
 
     <TableRow>
-		<Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/TypeSpinner" style="@layout/cigar_row"/>		        
+		<Spinner android:id="@+id/TypeSpinner" android:layout_width="fill_parent" android:layout_height="wrap_content" style="@layout/cigar_row"/>		        
 	</TableRow>
 
     <TableRow>
-		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/SaveButton" android:text="Save"/>
+		<Button android:id="@+id/SaveButton" android:text="Save" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 	</TableRow>    
 	
 	<TableRow>
-		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/ViewListButton" android:text="View List"/>
+		<Button android:id="@+id/ViewListButton" android:text="View List" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 	</TableRow>
 
 	<TableRow>
-		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/PrefsListButton" android:text="View PrefsList"/>
+		<Button android:id="@+id/PrefsListButton" android:text="View PrefsList" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 	</TableRow>
 
 	<TableRow>
-		<Button android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/CanvasButton" android:text="Canvas"/>
+		<Button android:id="@+id/CanvasButton" android:text="Canvas" android:layout_width="fill_parent" android:layout_height="wrap_content"  />
 	</TableRow>
 
-
-    <TableRow>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/SendButton" android:text="Send"/>
+	<TableRow>
+		<Button android:id="@+id/TimelineButton" android:text="Timeline" android:layout_width="fill_parent" android:layout_height="wrap_content"  />
 	</TableRow>
 
     <TableRow>
-	    <CheckBox android:text="Se me olvido" android:id="@+id/olvidado" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
+		<Button android:id="@+id/SendButton" android:text="Send" android:layout_width="wrap_content" android:layout_height="wrap_content" />
+	</TableRow>
+
+    <TableRow>
+	    <CheckBox android:id="@+id/olvidado" android:text="Se me olvido" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
     </TableRow>
     
 	<TableRow>
-		<TimePicker android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/CuandoFumadoPicker"/>        
+		<TimePicker android:id="@+id/CuandoFumadoPicker" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />        
 	</TableRow>
 	
     <TableRow>
-	    <CheckBox android:text="Me muero" android:id="@+id/notificarCheck" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
+	    <CheckBox android:id="@+id/notificarCheck" android:text="Me muero" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
 	</TableRow>    
 	
 	<TableRow>
-		<Button android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/NotifButton" android:text="Notificar"/>
+		<Button android:id="@+id/NotifButton" android:text="Notificar" android:layout_width="wrap_content" android:layout_height="wrap_content" />
     </TableRow>
     
 	<TableRow>
-		<TimePicker android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" android:id="@+id/EsperarPicker"/>        
+		<TimePicker android:id="@+id/EsperarPicker" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />        
 	</TableRow>
 	
 	<TableRow>
-	    <ToggleButton android:text="@+id/ToggleButton01" android:id="@+id/run" android:layout_width="wrap_content" android:layout_height="wrap_content"/>        
+	    <ToggleButton android:id="@+id/run" android:text="@+id/ToggleButton01"  android:layout_width="wrap_content" android:layout_height="wrap_content"/>        
 	</TableRow>	
 
 	<TableRow>
@@ -63,8 +67,12 @@
 	</TableRow>
 	
 	<TableRow>
-		<TextView android:text="@+id/TextView01" android:id="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+		<TextView android:id="@+id/TextView01" android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
 	</TableRow>
+	
+	<TableRow>
+		<Button android:id="@+id/EncuestaButton" android:text="Encuesta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/green_dark" android:shadowColor="@color/white_translucent"/>
+	</TableRow>	
 
 </TableLayout>
 </ScrollView>

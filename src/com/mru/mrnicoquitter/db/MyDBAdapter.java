@@ -64,10 +64,7 @@ public class MyDBAdapter {
 		// Insert the row into your table
 		return db.insert(DATABASE_TABLE, null, newValues);		
 	}
-	private Context getResources() {
-		// TODO Auto-generated method stub
-		return null;
-	}
+
 	public boolean removeEntry(long _rowIndex) {
 		return db.delete(DATABASE_TABLE, KEY_ID +
 				"=" + _rowIndex, null) > 0;

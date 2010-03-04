@@ -2,7 +2,6 @@ package com.mru.mrnicoquitter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
-import java.util.Map;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -29,10 +28,10 @@ import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class MainActivity extends Activity {
-	private OnClickListener saveListener, listListener, prefsListListener, canvasButtonListener, sendListener,
-			olvidoListener, notificarOnOffListener, notificarListener, runListener;
+	private OnClickListener saveListener, listListener, prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
+			olvidoListener, notificarOnOffListener, notificarListener, runListener, encuestaButtonListener;
 
-	Button saveButton, listButton, prefsListButton, canvasButton, sendButton, notifButton;
+	Button saveButton, listButton, prefsListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
 	ToggleButton runButton;
 	CheckBox olvidoCheckBox,notificarCheckBox;
 
@@ -65,7 +64,7 @@ private boolean prueba;
 		
        // Restore preferences
        SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-       Map<String,?> uu= settings.getAll();
+       //Map<String,?> uu= settings.getAll();
        boolean silent = settings.getBoolean("silentMode", false);
        TextView messg = (TextView)findViewById(R.id.TextView01);
        messg.setText(Boolean.valueOf(silent).toString());
@@ -162,6 +161,8 @@ private boolean prueba;
 			}
 		};
 		prefsListButton.setOnClickListener(prefsListListener);
+
+		
 		
 		canvasButton = (Button) findViewById(R.id.CanvasButton);
 		canvasButtonListener= new OnClickListener() {
@@ -171,6 +172,20 @@ private boolean prueba;
 			}
 		};
 		canvasButton.setOnClickListener(canvasButtonListener);		
+		
+		
+
+		timelineButton = (Button) findViewById(R.id.TimelineButton);
+		timelineButtonListener= new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),TimelineActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		timelineButton.setOnClickListener(timelineButtonListener);		
+		
+		
+		
 		
 		sendButton = (Button) findViewById(R.id.SendButton);
 		sendListener = new OnClickListener() {
@@ -214,6 +229,15 @@ private boolean prueba;
 			runButton.setOnClickListener(runListener);
 			
 
+			encuestaButton= (Button) findViewById(R.id.EncuestaButton);
+			encuestaButtonListener= new OnClickListener() {
+				public void onClick(View v) {
+					Intent myIntent = new Intent(v.getContext(),EncuestaActivity.class);
+					startActivityForResult(myIntent, 0);
+				}
+			};
+			encuestaButton.setOnClickListener(encuestaButtonListener);				
+			
 
 	}
 

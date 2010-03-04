@@ -11,65 +11,86 @@ public final class R {
     public static final class array {
         /**  Used in View/Spinner1.java 
          */
-        public static final int cigars=0x7f040000;
+        public static final int cigars=0x7f050000;
         /**  Used in View/Spinner1.java 
          */
-        public static final int colors=0x7f040001;
+        public static final int colors=0x7f050001;
         /**  Used in app/menu examples 
          */
-        public static final int entries_list_preference=0x7f040007;
+        public static final int entries_list_preference=0x7f050007;
         /**  Used in app/menu examples 
          */
-        public static final int entryvalues_list_preference=0x7f040008;
+        public static final int entryvalues_list_preference=0x7f050008;
         /**  Used in View/Spinner1.java 
          */
-        public static final int lapse=0x7f040002;
+        public static final int lapse=0x7f050002;
         /**  Used in App/SearchInvoke.java 
          */
-        public static final int search_menuModes=0x7f040003;
+        public static final int search_menuModes=0x7f050003;
         /**  Used in app/dialog examples 
          */
-        public static final int select_dialog_items=0x7f040004;
-        public static final int select_dialog_items2=0x7f040005;
-        public static final int select_dialog_items3=0x7f040006;
+        public static final int select_dialog_items=0x7f050004;
+        public static final int select_dialog_items2=0x7f050005;
+        public static final int select_dialog_items3=0x7f050006;
     }
     public static final class attr {
     }
+    public static final class color {
+        public static final int dark=0x7f060004;
+        public static final int green=0x7f060002;
+        public static final int green_dark=0x7f060003;
+        public static final int green_light=0x7f060001;
+        public static final int light=0x7f060000;
+        public static final int red=0x7f060005;
+        public static final int white_translucent=0x7f060006;
+    }
     public static final class drawable {
-        public static final int icon=0x7f020000;
-        public static final int no_smoking_icon=0x7f020001;
-        public static final int smoking_icon=0x7f020002;
-        public static final int smoking_icon_transp=0x7f020003;
-        public static final int splash=0x7f020004;
-        public static final int splash_launcher=0x7f020005;
-        public static final int splash_tr=0x7f020006;
+        public static final int big_1024x768=0x7f020000;
+        public static final int icon=0x7f020001;
+        public static final int no_smoking_icon=0x7f020002;
+        public static final int smoke40=0x7f020003;
+        public static final int smoking_icon=0x7f020004;
+        public static final int smoking_icon_transp=0x7f020005;
+        public static final int splash=0x7f020006;
+        public static final int splash_launcher=0x7f020007;
+        public static final int splash_tr=0x7f020008;
     }
     public static final class id {
-        public static final int CanvasButton=0x7f060005;
-        public static final int CuandoFumadoPicker=0x7f060008;
-        public static final int EsperarPicker=0x7f06000b;
-        public static final int NotifButton=0x7f06000a;
-        public static final int PrefsListButton=0x7f060004;
-        public static final int SaveButton=0x7f060002;
-        public static final int SeekBar01=0x7f06000e;
-        public static final int SendButton=0x7f060006;
-        public static final int TextView01=0x7f06000f;
-        public static final int ToggleButton01=0x7f06000c;
-        public static final int TypeSpinner=0x7f060001;
-        public static final int ViewListButton=0x7f060003;
-        public static final int notificarCheck=0x7f060009;
-        public static final int olvidado=0x7f060007;
-        public static final int run=0x7f06000d;
-        public static final int spinnerTarget=0x7f060000;
+        public static final int CanvasButton=0x7f080008;
+        public static final int CuandoFumadoPicker=0x7f08000c;
+        public static final int EncuestaButton=0x7f080014;
+        public static final int EsperarPicker=0x7f08000f;
+        public static final int NotifButton=0x7f08000e;
+        public static final int PrefsListButton=0x7f080007;
+        public static final int RadioGroup01=0x7f080002;
+        public static final int RadioGroup02=0x7f080003;
+        public static final int SaveButton=0x7f080005;
+        public static final int SeekBar01=0x7f080012;
+        public static final int SendButton=0x7f08000a;
+        public static final int TextView01=0x7f080013;
+        public static final int TimelineButton=0x7f080009;
+        public static final int ToggleButton01=0x7f080011;
+        public static final int TypeSpinner=0x7f080004;
+        public static final int ViewListButton=0x7f080006;
+        public static final int linlay=0x7f080000;
+        public static final int notificarCheck=0x7f08000d;
+        public static final int olvidado=0x7f08000b;
+        public static final int run=0x7f080010;
+        public static final int spinnerTarget=0x7f080001;
     }
     public static final class layout {
-        public static final int cigar_row=0x7f030000;
-        public static final int main_scrollview_tablelayout=0x7f030001;
-        public static final int main_tablelayout=0x7f030002;
-        public static final int splash_screen=0x7f030003;
+        public static final int canvas=0x7f030000;
+        public static final int cigar_row=0x7f030001;
+        public static final int encuesta=0x7f030002;
+        public static final int main_scrollview_tablelayout=0x7f030003;
+        public static final int main_tablelayout=0x7f030004;
+        public static final int splash_screen=0x7f030005;
+    }
+    public static final class raw {
+        public static final int cds=0x7f040000;
     }
     public static final class string {
-        public static final int app_name=0x7f050000;
-        public static final int success=0x7f050001;
+        public static final int app_name=0x7f070000;
+        public static final int success=0x7f070001;
     }
 }

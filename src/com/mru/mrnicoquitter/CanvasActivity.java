@@ -14,7 +14,7 @@ public class CanvasActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    mCustomDrawableView = new CustomDrawableView(this);
-	    
+	  //setContentView(R.layout.canvas);	
 	    setContentView(mCustomDrawableView);
 	}
 }
