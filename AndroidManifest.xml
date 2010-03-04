@@ -15,15 +15,16 @@
 	
 		<activity android:name=".MainActivity"
 		          android:label="@string/app_name">
-		   
-		<intent-filter>
-	    	<action android:name="com.droidnova.android.splashscreen.MyApp" />
-	    	<category android:name="android.intent.category.DEFAULT" />
-		</intent-filter>
+			<intent-filter>
+		    	<action android:name="com.droidnova.android.splashscreen.MyApp" />
+		    	<category android:name="android.intent.category.DEFAULT" />
+			</intent-filter>
 		</activity>
 	
-	    <activity android:name=".CigarListActivity">
-	    </activity>
+	    <activity android:name=".CigarListActivity"/>
+	    <activity android:name=".PrefsListActivity"/>
+	    <activity android:name=".CanvasActivity"/>
+
 		
 		<service android:name="com.mru.mrnicoquitter.timer.NotificationService"/>
     </application>

@@ -1,6 +1,6 @@
 package com.mru.mrnicoquitter.db;
 
-import com.mru.mrnicoquitter.basura.Cigar;
+import com.mru.mrnicoquitter.beans.Cigar;
 
 import android.content.ContentValues;
 import android.content.Context;

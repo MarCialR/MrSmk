@@ -8,7 +8,8 @@ import android.database.Cursor;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
-import com.mru.mrnicoquitter.basura.Cigar;
+import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
 
 public class CigarListActivity extends ListActivity {

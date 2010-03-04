@@ -2,6 +2,7 @@ package com.mru.mrnicoquitter;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+import java.util.Map;
 
 import android.app.Activity;
 import android.content.ComponentName;
@@ -20,7 +21,7 @@ import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
-import com.mru.mrnicoquitter.basura.Cigar;
+import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
@@ -28,10 +29,10 @@ import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class MainActivity extends Activity {
-	private OnClickListener saveListener, listListener, sendListener,
+	private OnClickListener saveListener, listListener, prefsListListener, canvasButtonListener, sendListener,
 			olvidoListener, notificarOnOffListener, notificarListener, runListener;
 
-	Button saveButton, listButton, sendButton, notifButton;
+	Button saveButton, listButton, prefsListButton, canvasButton, sendButton, notifButton;
 	ToggleButton runButton;
 	CheckBox olvidoCheckBox,notificarCheckBox;
 
@@ -58,20 +59,20 @@ private boolean prueba;
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		
-	       // Restore preferences
-	       SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-	       boolean silent = settings.getBoolean("patata", false);
-//	       TextView messg = (TextView)findViewById(R.id.TextView01);
-//	       messg.setText(""+silent);
-	       prueba = !silent;
-	       
-		bindService(new Intent(this, NotificationService.class),
-				onService, BIND_AUTO_CREATE);
+		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		setContentView(R.layout.main_scrollview_tablelayout);
+		
+		
+       // Restore preferences
+       SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
+       Map<String,?> uu= settings.getAll();
+       boolean silent = settings.getBoolean("silentMode", false);
+       TextView messg = (TextView)findViewById(R.id.TextView01);
+       messg.setText(Boolean.valueOf(silent).toString());
+       prueba = !silent;		
+		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
 		String[] s = getResources().getStringArray(R.array.cigars);
-
 		CausesAdapter myAdapter = CausesAdapterSGTon.getInstance(getApplicationContext(), s).getList();
 		tipo.setAdapter(myAdapter);
 
@@ -147,27 +148,40 @@ private boolean prueba;
 		listButton = (Button) findViewById(R.id.ViewListButton);
 		listListener = new OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),
-						CigarListActivity.class);
+				Intent myIntent = new Intent(v.getContext(),CigarListActivity.class);
 				startActivityForResult(myIntent, 0);
 			}
 		};
 		listButton.setOnClickListener(listListener);
 
+		prefsListButton = (Button) findViewById(R.id.PrefsListButton);
+		prefsListListener = new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		prefsListButton.setOnClickListener(prefsListListener);
+		
+		canvasButton = (Button) findViewById(R.id.CanvasButton);
+		canvasButtonListener= new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),CanvasActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		canvasButton.setOnClickListener(canvasButtonListener);		
+		
 		sendButton = (Button) findViewById(R.id.SendButton);
 		sendListener = new OnClickListener() {
 			public void onClick(View v) {
 				final Intent emailIntent = new Intent(
 						android.content.Intent.ACTION_SEND);
 				emailIntent.setType("plain/text");
-				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL,
-						new String[] { "marcialemilio@gmail.com" });
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,
-						"myCigarsList");
-				String dbToSave = MyDBAdapter.getInstance(
-						getApplicationContext()).getAllEntriesToSend();
-				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,
-						dbToSave);
+				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcialemilio@gmail.com" });
+				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
+				String dbToSave = MyDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
+				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
 				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 			}
 		};

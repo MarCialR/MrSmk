@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.basura;
+package com.mru.mrnicoquitter.beans;
 
 import java.util.Date;
 
