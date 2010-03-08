@@ -4,7 +4,7 @@ import java.util.Date;
 
 import android.content.Context;
 
-public class Cigar {
+public class Cigar implements Comparable<Cigar>{
 	private int id;
 	private String dateStr;
 	private int tipo;
@@ -41,6 +41,14 @@ public class Cigar {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
-	
+
+	public Date getDate() {
+		return date;
+	}
+
+	@Override
+	public int compareTo(Cigar that) {
+		return this.getDate().compareTo(that.getDate());
+	}
+
 }

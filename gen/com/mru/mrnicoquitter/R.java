@@ -54,6 +54,15 @@ public final class R {
         public static final int splash=0x7f020006;
         public static final int splash_launcher=0x7f020007;
         public static final int splash_tr=0x7f020008;
+        public static final int ty0=0x7f020009;
+        public static final int ty1=0x7f02000a;
+        public static final int ty2=0x7f02000b;
+        public static final int ty3=0x7f02000c;
+        public static final int ty4=0x7f02000d;
+        public static final int ty5=0x7f02000e;
+        public static final int ty6=0x7f02000f;
+        public static final int ty7=0x7f020010;
+        public static final int ty8=0x7f020011;
     }
     public static final class id {
         public static final int CanvasButton=0x7f080008;

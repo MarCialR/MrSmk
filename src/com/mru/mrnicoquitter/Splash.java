@@ -13,7 +13,7 @@ public class Splash extends Activity {
      // Fields 
      // =========================================================== 
       
-     private final int SPLASH_DISPLAY_LENGHT = 1300; 
+     private final int SPLASH_DISPLAY_LENGHT = 200;//1300; 
 
      // =========================================================== 
      // "Constructors" 
