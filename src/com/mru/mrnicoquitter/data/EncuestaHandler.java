@@ -7,6 +7,9 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
+import com.mru.mrnicoquitter.beans.Encuesta;
+import com.mru.mrnicoquitter.beans.EncuestaItem;
+
 public class EncuestaHandler extends DefaultHandler {
 	
     // =========================================================== 
@@ -17,7 +20,7 @@ public class EncuestaHandler extends DefaultHandler {
     private boolean in_ques; 
     private boolean in_option;
     private Encuesta encuesta;
-    private Item item;
+    private EncuestaItem item;
     
     @Override 
     public void startDocument() throws SAXException { 
@@ -26,11 +29,6 @@ public class EncuestaHandler extends DefaultHandler {
 		in_option	= false;
 		encuesta 	= new Encuesta();
     } 
-
-    @Override 
-    public void endDocument() throws SAXException { 
-         // Do some finishing work if needed 
-    }    
 /*
 	<ITEM>
 		<QUES code ="QA4562" type="multichoice">Empire Burlesque</QUES>
@@ -46,7 +44,7 @@ public class EncuestaHandler extends DefaultHandler {
 	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
 		if (localName.equals("ITEM")) { 
 //            this.in_item 	= true; 
-    		item			= new Item();
+    		item			= new EncuestaItem();
        }else if (localName.equals("QUES")) { 
             this.in_ques = true; 
             item.setCode(Integer.valueOf(atts.getValue("code")));
@@ -88,61 +86,8 @@ public class EncuestaHandler extends DefaultHandler {
         return this.encuesta; 
    }    
     
-    public class Encuesta{
-    	private ArrayList<Item> WIIIIII = new ArrayList<Item>();
-    	public void add ( Item it){
-    		WIIIIII.add(it);
-    	}
-    	public Iterator<Item> iterator(){
-    		return WIIIIII.iterator();
-    	}
-    	public ArrayList<Item> getItems(){
-    		return WIIIIII;
-    	}
-    }
 
-	public class Item{
-		
-		private final int MULTICHOICE 	= 1;
-		private final int TEXT 			= 2; 
-		private Integer code;
-		private Integer type;
-		private String ques;
-		private ArrayList<String> answs= new ArrayList<String>();
-		
-		public Integer getCode() {
-			return code;
-		}
-		public void setCode(Integer code) {
-			this.code = code;
-		}
-		public int getType() {
-			return type;
-		}
-		public void setType(String type) {
-			
-			if (type.equals("multichoice")){
-				this.type = MULTICHOICE;
-			} else if (type.equals("text")){
-				this.type = TEXT;
-			} else{
-				this.type = MULTICHOICE;
-			}
-		}
-		public String getQues() {
-			return ques;
-		}
-		public void setQues(String ques) {
-			this.ques = ques;
-		}
-		public ArrayList<String> getAnsws() {
-			return answs;
-		}
-		public void addAnswer(String answer) {
-			this.answs.add(answer);
-		}
-		
-	}
+
 		
 	
     

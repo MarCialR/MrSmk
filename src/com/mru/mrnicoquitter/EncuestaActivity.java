@@ -16,18 +16,18 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import com.mru.mrnicoquitter.beans.Encuesta;
+import com.mru.mrnicoquitter.beans.EncuestaItem;
 import com.mru.mrnicoquitter.data.EncuestaHandler;
 import com.mru.mrnicoquitter.data.XMLParser;
-import com.mru.mrnicoquitter.data.EncuestaHandler.Encuesta;
-import com.mru.mrnicoquitter.data.EncuestaHandler.Item;
 
 public class EncuestaActivity extends Activity {
 
 	private XMLParser mParser;
-	private int counter;
+	private int encuestaItemCounter;
 	
-	ArrayList<Item> items;	
-	Item it;
+	ArrayList<EncuestaItem> items;	
+	EncuestaItem it;
     TableLayout table;
     TableRow questionRow;
     TextView questionText;
@@ -49,37 +49,23 @@ public class EncuestaActivity extends Activity {
 		EncuestaHandler myHandler = new EncuestaHandler();
 		mParser.parse(is, myHandler);
 		Encuesta e = myHandler.getEncuesta();
-		counter = 0;
+		encuestaItemCounter = 0;
 
 		items = e.getItems();
 
         table 		= new TableLayout(this);
 
-
 		goButton = new Button(this);
 		goButton.setText("Siguiente");
 		OnClickListener notificarListener = new OnClickListener() {
 			public void onClick(View v) {
-				counter++;
+				encuestaItemCounter++;
 				nextQuestion();
 			}
 		};
 		goButton.setOnClickListener(notificarListener);
 		
         nextQuestion();
-
-//        
-//        rg = new RadioGroup(this);
-//        RadioButton rb1 =new RadioButton(this);
-//        RadioButton rb2 =new RadioButton(this);
-//        rb1.setText("lala3");
-//        rb2.setText("lala2");
-//        rg.addView(rb1, 0);
-//        rg.addView(rb2,1);
-//        table.addView(rg);
-
-
-
 		
         setContentView(table);		
 	}
@@ -87,8 +73,8 @@ public class EncuestaActivity extends Activity {
 	private void nextQuestion(){
 		table.removeAllViews();
 
-        if (counter != items.size()){
-        	it 			= items.get(counter);
+        if (encuestaItemCounter != items.size()){
+        	it 			= items.get(encuestaItemCounter);
         	RadioButton rb;
         	
             questionRow 	= new TableRow(this);

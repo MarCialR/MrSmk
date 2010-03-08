@@ -16,23 +16,21 @@ public class XMLParser {
 	private SAXParser mParser;
 	private XMLReader mReader;
 
-	private String mError;
-
 	public XMLParser() {
-		mError = "";
+
 		SAXParserFactory f = SAXParserFactory.newInstance();
 		try {
 			mParser = f.newSAXParser();
 			mReader = mParser.getXMLReader();
 		} catch (ParserConfigurationException pcEx) {
-			mError = pcEx.getMessage();
+
 		} catch (SAXException saxEx) {
-			mError = saxEx.getMessage();
+
 		}
 	}
 
 	public XMLParser(ContentHandler handler) {
-		mError = "";
+
 		SAXParserFactory f = SAXParserFactory.newInstance();
 		try {
 			mParser = f.newSAXParser();
@@ -40,28 +38,25 @@ public class XMLParser {
 			mReader.setContentHandler(handler);
 			// mReader.setErrorHandler(handler);
 		} catch (ParserConfigurationException pcEx) {
-			mError = pcEx.getMessage();
+
 		} catch (SAXException saxEx) {
-			mError = saxEx.getMessage();
+
 		}
 	}
 
+	public final void parse(InputStream is, ContentHandler handler) {
+		setHandler(handler);
+		parse(is);
+	}
+	
 	public final void setHandler(ContentHandler handler) {
 		mReader.setContentHandler(handler);
 		// mReader.setErrorHandler(handler);
 	}
 
-	public final String getError() {
-		return mError;
-	}
-
-	public final void resetError() {
-		mError = "";
-	}
-
 	public final void parse(InputStream is) {
 		if (mReader.getContentHandler() == null) {
-			mError = "There is no handler in the XMLReader";
+
 		}
 
 		try {
@@ -69,14 +64,9 @@ public class XMLParser {
 			inputSource.setEncoding("UTF-8");
 			mReader.parse(inputSource);
 		} catch (IOException ioEx) {
-			mError = ioEx.getMessage();
-		} catch (SAXException saxEx) {
-			mError = saxEx.getMessage();
-		}
-	}
 
-	public final void parse(InputStream is, ContentHandler handler) {
-		setHandler(handler);
-		parse(is);
+		} catch (SAXException saxEx) {
+
+		}
 	}
 }

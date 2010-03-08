@@ -9,9 +9,6 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 public class CausesAdapter extends BaseAdapter { 
-
-	
-	
 	
     private String[] content;
     private Context mContext;
