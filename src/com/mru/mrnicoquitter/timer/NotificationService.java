@@ -3,13 +3,6 @@ package com.mru.mrnicoquitter.timer;
 import java.util.Timer;
 import java.util.TimerTask;
 
-
-import com.mru.mrnicoquitter.MainActivity;
-import com.mru.mrnicoquitter.R;
-
-import com.mru.mrnicoquitter.ui.AppUtils;
-import com.mru.mrnicoquitter.ui.NotifListener;
-
 import android.app.Notification;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -20,6 +13,10 @@ import android.os.Binder;
 import android.os.Handler;
 import android.os.IBinder;
 import android.util.Log;
+
+import com.mru.mrnicoquitter.MainActivity;
+import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class NotificationService extends Service {
 	private NotificationManager notificationManager;	
