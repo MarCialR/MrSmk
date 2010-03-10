@@ -22,21 +22,8 @@
 		<Button android:id="@+id/ViewListButton" android:text="View List" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 	</TableRow>
 
-	<TableRow>
-		<Button android:id="@+id/PrefsListButton" android:text="View PrefsList" android:layout_width="fill_parent" android:layout_height="wrap_content" />
-	</TableRow>
 
-	<TableRow>
-		<Button android:id="@+id/CanvasButton" android:text="Canvas" android:layout_width="fill_parent" android:layout_height="wrap_content"  />
-	</TableRow>
 
-	<TableRow>
-		<Button android:id="@+id/TimelineButton" android:text="Timeline" android:layout_width="fill_parent" android:layout_height="wrap_content"  />
-	</TableRow>
-
-    <TableRow>
-		<Button android:id="@+id/SendButton" android:text="Send" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-	</TableRow>
 
     <TableRow>
 	    <CheckBox android:id="@+id/olvidado" android:text="Se me olvido" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
@@ -46,33 +33,12 @@
 		<TimePicker android:id="@+id/CuandoFumadoPicker" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />        
 	</TableRow>
 	
-    <TableRow>
-	    <CheckBox android:id="@+id/notificarCheck" android:text="Me muero" android:layout_width="wrap_content" android:layout_height="wrap_content" android:clickable="true"/>
-	</TableRow>    
-	
 	<TableRow>
-		<Button android:id="@+id/NotifButton" android:text="Notificar" android:layout_width="wrap_content" android:layout_height="wrap_content" />
-    </TableRow>
-    
-	<TableRow>
-		<TimePicker android:id="@+id/EsperarPicker" android:visibility="gone" android:layout_width="wrap_content" android:layout_height="wrap_content" />        
+		
 	</TableRow>
-	
 	<TableRow>
-	    <ToggleButton android:id="@+id/run" android:text="@+id/ToggleButton01"  android:layout_width="wrap_content" android:layout_height="wrap_content"/>        
-	</TableRow>	
-
-	<TableRow>
-		<SeekBar android:id="@+id/SeekBar01" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
+		<Button android:id="@+id/DevelopingButton" android:text="Developing" android:layout_width="fill_parent" android:layout_height="wrap_content" />
 	</TableRow>
-	
-	<TableRow>
-		<TextView android:id="@+id/TextView01" android:text="@+id/TextView01" android:layout_width="wrap_content" android:layout_height="wrap_content"/>
-	</TableRow>
-	
-	<TableRow>
-		<Button android:id="@+id/EncuestaButton" android:text="Encuesta" android:layout_width="fill_parent" android:layout_height="wrap_content" android:textColor="@color/green_dark" android:shadowColor="@color/white_translucent"/>
-	</TableRow>	
 
 </TableLayout>
 </ScrollView>

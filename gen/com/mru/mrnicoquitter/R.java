@@ -65,35 +65,37 @@ public final class R {
         public static final int ty8=0x7f020011;
     }
     public static final class id {
-        public static final int CanvasButton=0x7f080008;
-        public static final int CuandoFumadoPicker=0x7f08000c;
-        public static final int EncuestaButton=0x7f080014;
-        public static final int EsperarPicker=0x7f08000f;
-        public static final int NotifButton=0x7f08000e;
-        public static final int PrefsListButton=0x7f080007;
-        public static final int RadioGroup01=0x7f080002;
-        public static final int RadioGroup02=0x7f080003;
-        public static final int SaveButton=0x7f080005;
-        public static final int SeekBar01=0x7f080012;
-        public static final int SendButton=0x7f08000a;
-        public static final int TextView01=0x7f080013;
-        public static final int TimelineButton=0x7f080009;
-        public static final int ToggleButton01=0x7f080011;
-        public static final int TypeSpinner=0x7f080004;
-        public static final int ViewListButton=0x7f080006;
+        public static final int CanvasButton=0x7f080003;
+        public static final int CuandoFumadoPicker=0x7f080013;
+        public static final int DevelopingButton=0x7f080014;
+        public static final int EncuestaButton=0x7f08000c;
+        public static final int EsperarPicker=0x7f080008;
+        public static final int NotifButton=0x7f080007;
+        public static final int PrefsListButton=0x7f080002;
+        public static final int RadioGroup01=0x7f08000d;
+        public static final int RadioGroup02=0x7f08000e;
+        public static final int SaveButton=0x7f080010;
+        public static final int SeekBar01=0x7f08000b;
+        public static final int SendButton=0x7f080005;
+        public static final int TextView01=0x7f080015;
+        public static final int TimelineButton=0x7f080004;
+        public static final int ToggleButton01=0x7f08000a;
+        public static final int TypeSpinner=0x7f08000f;
+        public static final int ViewListButton=0x7f080011;
         public static final int linlay=0x7f080000;
-        public static final int notificarCheck=0x7f08000d;
-        public static final int olvidado=0x7f08000b;
-        public static final int run=0x7f080010;
+        public static final int notificarCheck=0x7f080006;
+        public static final int olvidado=0x7f080012;
+        public static final int run=0x7f080009;
         public static final int spinnerTarget=0x7f080001;
     }
     public static final class layout {
         public static final int canvas=0x7f030000;
         public static final int cigar_row=0x7f030001;
-        public static final int encuesta=0x7f030002;
-        public static final int main_scrollview_tablelayout=0x7f030003;
-        public static final int main_tablelayout=0x7f030004;
-        public static final int splash_screen=0x7f030005;
+        public static final int developing=0x7f030002;
+        public static final int encuesta=0x7f030003;
+        public static final int main_scrollview_tablelayout=0x7f030004;
+        public static final int main_tablelayout=0x7f030005;
+        public static final int splash_screen=0x7f030006;
     }
     public static final class raw {
         public static final int cds=0x7f040000;

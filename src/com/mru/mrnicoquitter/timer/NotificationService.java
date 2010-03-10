@@ -157,11 +157,6 @@ public class NotificationService extends Service {
 
 	private void _startService() {
 		
-		
-
-		
-		
-		
 		timer.schedule(new TimerTask() {
 			public void run() {
 				AppUtils.showToastShort(MAIN_ACTIVITY.getApplicationContext(), "MyService running");

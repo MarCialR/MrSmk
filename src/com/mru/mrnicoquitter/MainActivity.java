@@ -24,16 +24,17 @@ import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.state.State;
+import com.mru.mrnicoquitter.state.StateManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class MainActivity extends Activity {
-	private OnClickListener saveListener, listListener, prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
-			olvidoListener, notificarOnOffListener, notificarListener, runListener, encuestaButtonListener;
+	private State state;
+	private OnClickListener saveListener, listListener, olvidoListener, developingListener;
 
-	Button saveButton, listButton, prefsListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
-	ToggleButton runButton;
-	CheckBox olvidoCheckBox,notificarCheckBox;
+	Button saveButton, listButton, developingButton;
+	CheckBox olvidoCheckBox;
 
 	Spinner tipo;
 
@@ -57,18 +58,12 @@ private boolean prueba;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		
-		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
+		//state = StateManagerSGTon.getState(getApplicationContext());
+		//bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		setContentView(R.layout.main_scrollview_tablelayout);
 		
 		
-       // Restore preferences
-       SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-       //Map<String,?> uu= settings.getAll();
-       boolean silent = settings.getBoolean("silentMode", false);
-       TextView messg = (TextView)findViewById(R.id.TextView01);
-       messg.setText(Boolean.valueOf(silent).toString());
-       prueba = !silent;		
+	
 		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
 		String[] s = getResources().getStringArray(R.array.cigars);
@@ -87,41 +82,9 @@ private boolean prueba;
 		};
 		olvidoCheckBox.setOnClickListener(olvidoListener);
 
-		TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
-		picker.setCurrentHour(0);
-		picker.setCurrentMinute(0);
-		
-		notificarCheckBox = (CheckBox) findViewById(R.id.notificarCheck);
-		notificarOnOffListener = new OnClickListener() {
-			public void onClick(View v) {
-				TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
-				if (picker.getVisibility() == View.VISIBLE)
-					picker.setVisibility(View.GONE);// invisible
-				else
-					picker.setVisibility(View.VISIBLE);// visible
-			}
-		};
-		notificarCheckBox.setOnClickListener(notificarOnOffListener);		
 
 		
-		notifButton = (Button) findViewById(R.id.NotifButton);
-		notificarListener = new OnClickListener() {
-			public void onClick(View v) {
-
-				TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
-				try {
-					Integer segundosAEsperar = (picker.getCurrentHour()-1)*60 + picker.getCurrentMinute();
-					appService.setNotification("ALE! Ya puedes DAL-LE!",segundosAEsperar);
-				}
-				catch (final Throwable t) {
-					AppUtils.showToastShort(getApplicationContext(), "Exception en setNotif!");
-				}
-			}
-		};
-		notifButton.setOnClickListener(notificarListener);		
-		
-		
-		
+	
 		saveButton = (Button) findViewById(R.id.SaveButton);
 		saveListener = new OnClickListener() {
 			public void onClick(View v) {
@@ -137,12 +100,15 @@ private boolean prueba;
 				}
 				cigar.setDateStr(sdf.format(c.getTime()));
 				cigar.setId((int) tipo.getSelectedItemId());
-				MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
+				MyDBAdapter dba = MyDBAdapter
+						.getInstance(getApplicationContext());
 				dba.insertEntry(cigar);
-				AppUtils.showToastShort(getApplicationContext(), "Cigarro guardado!");
+				AppUtils.showToastShort(getApplicationContext(),
+						"Cigarro guardado!");
 			}
 		};
-		saveButton.setOnClickListener(saveListener);
+
+		saveButton.setOnClickListener(saveListener);		
 
 		listButton = (Button) findViewById(R.id.ViewListButton);
 		listListener = new OnClickListener() {
@@ -153,91 +119,17 @@ private boolean prueba;
 		};
 		listButton.setOnClickListener(listListener);
 
-		prefsListButton = (Button) findViewById(R.id.PrefsListButton);
-		prefsListListener = new OnClickListener() {
+		
+		
+		developingButton = (Button) findViewById(R.id.DevelopingButton);
+		developingListener = new OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
+				Intent myIntent = new Intent(v.getContext(),DevelopingActivity.class);
 				startActivityForResult(myIntent, 0);
 			}
 		};
-		prefsListButton.setOnClickListener(prefsListListener);
 
-		
-		
-		canvasButton = (Button) findViewById(R.id.CanvasButton);
-		canvasButtonListener= new OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),CanvasActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		};
-		canvasButton.setOnClickListener(canvasButtonListener);		
-		
-		
-
-		timelineButton = (Button) findViewById(R.id.TimelineButton);
-		timelineButtonListener= new OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),TimelineActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		};
-		timelineButton.setOnClickListener(timelineButtonListener);		
-		
-		
-		
-		
-		sendButton = (Button) findViewById(R.id.SendButton);
-		sendListener = new OnClickListener() {
-			public void onClick(View v) {
-				final Intent emailIntent = new Intent(
-						android.content.Intent.ACTION_SEND);
-				emailIntent.setType("plain/text");
-				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcialemilio@gmail.com" });
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
-				String dbToSave = MyDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
-				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
-				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
-			}
-		};
-		sendButton.setOnClickListener(sendListener);
-
-		runButton = (ToggleButton)findViewById(R.id.run); 
-		runListener = new OnClickListener() { 
-			public void onClick(View v) {
-				try {
-
-//					{
-//						NotificationService nS = new NotificationService();
-//						nS.setMainActivity(MainActivity.this);
-//						Intent svc = new Intent(MainActivity.this.getApplicationContext(), NotificationService.class);
-//						startService(svc);
-//					}
-
-				}
-				catch (Exception e) {
-					Log.e("TAG", "ui creation problem", e);
-				}
-//				Timer t = new Timer(true);
-//				t.schedule(new TimerTask() {
-//					public void run() {
-////						AppUtils.showToastShort(MainActivity.this, "300 waited!");
-//						runButton.setChecked(false);
-//					}
-//				}, 3000);
-			} };
-			runButton.setOnClickListener(runListener);
-			
-
-			encuestaButton= (Button) findViewById(R.id.EncuestaButton);
-			encuestaButtonListener= new OnClickListener() {
-				public void onClick(View v) {
-					Intent myIntent = new Intent(v.getContext(),EncuestaActivity.class);
-					startActivityForResult(myIntent, 0);
-				}
-			};
-			encuestaButton.setOnClickListener(encuestaButtonListener);				
-			
+		developingButton.setOnClickListener(developingListener);	
 
 	}
 
@@ -247,7 +139,6 @@ private boolean prueba;
 		super.onDestroy();
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
-	    unbindService(onService);
 	}
 
 	@Override
@@ -270,14 +161,7 @@ private boolean prueba;
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-	      // Save user preferences. We need an Editor object to
-	      // make changes. All objects are from android.context.Context
-	      SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-	      SharedPreferences.Editor editor = settings.edit();
-	      editor.putBoolean("silentMode", prueba);
 
-	      // Don't forget to commit your edits!!!
-	      editor.commit();
 	}
 
 }

@@ -26,6 +26,7 @@
 	    <activity android:name=".CanvasActivity"/>
 	    <activity android:name=".TimelineActivity"/>
 	    <activity android:name=".EncuestaActivity"/>
+	    <activity android:name=".DevelopingActivity"/>
 
 		
 		<service android:name="com.mru.mrnicoquitter.timer.NotificationService"/>
