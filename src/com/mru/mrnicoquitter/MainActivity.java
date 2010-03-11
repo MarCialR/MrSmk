@@ -58,8 +58,8 @@ private boolean prueba;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		//state = StateManagerSGTon.getState(getApplicationContext());
-		//bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
+		state = StateManagerSGTon.getState(getApplicationContext());
+		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		setContentView(R.layout.main_scrollview_tablelayout);
 		
 		

@@ -1,27 +1,34 @@
 package com.mru.mrnicoquitter;
 
 import java.util.ArrayList;
-import java.util.Map;
 
 import android.app.ListActivity;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.widget.ArrayAdapter;
 
+import com.mru.mrnicoquitter.state.State;
+import com.mru.mrnicoquitter.state.StateManagerSGTon;
+
 public class PrefsListActivity extends ListActivity {
 
-    SharedPreferences settings;
-    Map<String,?> settingsMap;
-	public static final String PREFS_NAME = "MyPrefsFile";
+
 	
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         //setContentView(R.layout.main);
-        settings = getSharedPreferences(PREFS_NAME, 0);
-        settingsMap= settings.getAll();
+        State state = StateManagerSGTon.getState(null);
+        SharedPreferences statePrefs = state.getPreferences();
+        SharedPreferences globalPrefs = state.getGlobalPreferences();        
 
+
+        ArrayList<String> MOSTRSAR = new ArrayList<String>();
+        MOSTRSAR.add("GLOBAL");
+        MOSTRSAR.addAll(globalPrefs.getAll().keySet());
+        MOSTRSAR.add("STATE");
+        MOSTRSAR.addAll(statePrefs.getAll().keySet());        
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this, 
-                R.layout.cigar_row, new ArrayList<String>(settingsMap.keySet())); 
+                R.layout.cigar_row, MOSTRSAR); 
        
       this.setListAdapter(directoryList); 
     }
