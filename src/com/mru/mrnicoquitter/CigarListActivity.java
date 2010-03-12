@@ -3,7 +3,9 @@ package com.mru.mrnicoquitter;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -21,6 +23,7 @@ import android.widget.TextView;
 
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.utils.DateUtils;
 
 public class CigarListActivity extends ListActivity {
 
@@ -40,10 +43,56 @@ public class CigarListActivity extends ListActivity {
 	}
 
 	private void transform(){
-
+		int counter = 0;
+		Calendar hoy = Calendar.getInstance(); 
+		int dayHoy = hoy.get(Calendar.DAY_OF_YEAR);
+		int dayBefore = -1;
+		Calendar before = Calendar.getInstance();
+		int dayActual;
+		Calendar actual;
+		boolean primero = true;
+		boolean more= true;
 		for (Cigar cig: cigarEntries){
-			textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr()));
+
+			actual = (Calendar.getInstance()); 
+			actual.setTimeInMillis(cig.getDate().getTime());
+			dayActual = actual.get(Calendar.DAY_OF_YEAR); 
+			if (primero){
+				dayBefore = dayActual;
+				primero = false;
+			}else 
+				dayBefore = before.get(Calendar.DAY_OF_YEAR); 
+			
+			// Si el cigarro es de hoy se printa normalmente
+			if ( dayActual == dayHoy){
+				if (counter >0 && more){
+					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
+					more = false;
+					
+				}
+				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));
+
+			} else{
+				// Si cambiamos de dia printamos el dia anterior
+				if (dayBefore!= actual .get(Calendar.DAY_OF_YEAR)){
+					
+					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
+					before.setTimeInMillis(actual.getTimeInMillis());
+					counter = 0;
+				} else{
+					before.setTimeInMillis(actual.getTimeInMillis());					
+				}
+			}
+			counter++;
+
 		}
+
+		textImageEntries.add(new ImageAndText("0", "  ----------------------"));	
+		for (Cigar cig: cigarEntries){
+
+				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));				
+
+		}		
 		return;
 	}
 
