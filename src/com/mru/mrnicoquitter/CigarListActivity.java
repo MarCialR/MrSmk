@@ -51,6 +51,8 @@ public class CigarListActivity extends ListActivity {
 		int dayActual;
 		Calendar actual;
 		boolean primero = true;
+		boolean more= true;
+
 		for (Cigar cig: cigarEntries){
 
 			actual = (Calendar.getInstance()); 
@@ -64,8 +66,11 @@ public class CigarListActivity extends ListActivity {
 			
 			// Si el cigarro es de hoy se printa normalmente
 			if ( dayActual == dayHoy){
-				if (counter >0)
+				if (counter >0 && more){
 					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
+					more = false;
+					
+				}
 				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));
 
 			} else{
