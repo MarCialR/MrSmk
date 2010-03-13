@@ -43,12 +43,14 @@ public class CausesAdapter extends BaseAdapter {
              super(context); 
              this.setOrientation(VERTICAL); 
              text = new TextView(context); 
-             text.setHeight(20); 
+             text.setHeight(30); 
              text.setText(str); 
-             text.setTextColor(Color.BLACK);
+             text.setTextColor(Color.BLUE);
              text.setTextSize(14);
              text.setGravity(HORIZONTAL);
-             addView(text, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT)); 
+             LayoutParams ll =new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
+
+             addView(text, ll); 
         } 
         public void setText(String title) { 
              text.setText(title); 
