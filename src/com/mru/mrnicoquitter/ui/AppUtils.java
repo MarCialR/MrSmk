@@ -1,6 +1,12 @@
 package com.mru.mrnicoquitter.ui;
 
+import java.util.prefs.Preferences;
+
+import com.mru.mrnicoquitter.state.State;
+import com.mru.mrnicoquitter.state.StateManagerSGTon;
+
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.widget.Toast;
 
@@ -14,11 +20,19 @@ public class AppUtils {
 		showToast(ctx, message, Toast.LENGTH_LONG);
 	}
 	
-	public final static  void showToast(Context ctx, String message, int duration){
+	private final static  void showToast(Context ctx, String message, int duration){
 		CharSequence text = message;
 		Toast toast = Toast.makeText(ctx, text, duration);
 		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 		toast.show();
 	}
+	
+	public final static  void showDebug(Context ctx, String message){
+		State state = StateManagerSGTon.getState(ctx);
+		SharedPreferences prefs = state.getGlobalPreferences();
+		
+		if (prefs.getBoolean("debug", false))
+			showToast(ctx, message, Toast.LENGTH_SHORT);
+	}	
 
 }

@@ -23,6 +23,8 @@
 	
 	    <activity android:name=".CigarListActivity"/>
 	    <activity android:name=".PrefsListActivity"/>
+	    <activity android:name=".PrefsListActivityText"/>
+	    <activity android:name=".TextViewer"/>	    
 	    <activity android:name=".CanvasActivity"/>
 	    <activity android:name=".TimelineActivity"/>
 	    <activity android:name=".EncuestaActivity"/>

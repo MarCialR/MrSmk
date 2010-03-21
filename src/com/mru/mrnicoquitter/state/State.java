@@ -1,5 +1,7 @@
 package com.mru.mrnicoquitter.state;
 
+import com.mru.mrnicoquitter.ui.AppUtils;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,15 +11,34 @@ public abstract class State {
 	protected SharedPreferences globalPreferences;
 	protected SharedPreferences preferences;
 	protected Context myContext;
-	protected static final String TD_PREFS = "TD_PREFS";
-	protected static final String Q1_PREFS = "Q1_PREFS";
+
 	
 	protected void initSuper(){
-		if (globalPreferences == null)
+		if (globalPreferences == null){
 			globalPreferences = myContext.getSharedPreferences(GLOBAL_PREFS, 0);
+
+		}
+		if (false){
+			
+			//AppUtils.showDebug(myContext, "DEBUGGING ON");
+	      SharedPreferences.Editor editor = globalPreferences.edit();
+	      editor.putBoolean("debug", true);
+
+	      // Don't forget to commit your edits!!!
+	      editor.commit();
+		} else {
+		      SharedPreferences.Editor editor = globalPreferences.edit();
+		      editor.putBoolean("debug", false);
+
+		      // Don't forget to commit your edits!!!
+		      editor.commit();			
+		}
+	      
 		if (!globalPreferences.getBoolean("created",false)){
+			//AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
 			fillStartingGlobalPreferences(globalPreferences);
 		}		
+
 	}
 	
 	private static void fillStartingGlobalPreferences(
@@ -42,6 +63,7 @@ public abstract class State {
 		this.preferences = preferences;
 	}
 
-	abstract public  Color getColor();
+	abstract public Color getColor();
+	abstract public int getLogo();
 
 }

@@ -20,6 +20,7 @@ import com.mru.mrnicoquitter.beans.Encuesta;
 import com.mru.mrnicoquitter.beans.EncuestaItem;
 import com.mru.mrnicoquitter.data.EncuestaHandler;
 import com.mru.mrnicoquitter.data.XMLParser;
+import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class EncuestaActivity extends Activity {
 
@@ -42,6 +43,8 @@ public class EncuestaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		
+		AppUtils.showDebug(getApplicationContext(), "Encuesta - onCreate!!");
 
 		mParser = new XMLParser();
 		

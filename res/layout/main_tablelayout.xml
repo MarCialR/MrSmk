@@ -3,7 +3,10 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:stretchColumns="2" android:scrollbarAlwaysDrawVerticalTrack="true" android:isScrollContainer="true">
+    android:stretchColumns="2"
+    android:gravity="center" 
+    android:scrollbarAlwaysDrawVerticalTrack="true" 
+    android:isScrollContainer="true">
 
     <TableRow>
 <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content" android:id="@+id/TypeSpinner" style="@layout/cigar_row"></Spinner>		        

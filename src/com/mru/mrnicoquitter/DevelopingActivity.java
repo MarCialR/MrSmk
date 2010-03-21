@@ -1,10 +1,12 @@
 package com.mru.mrnicoquitter;
 
+import static com.mru.mrnicoquitter.utils.Global.PREFS_NAME;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
@@ -12,7 +14,8 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.TextView;
+import android.widget.ImageView;
+import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
@@ -25,16 +28,15 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 public class DevelopingActivity extends Activity{
 
 	private State state;
-	private OnClickListener  prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
+	private static OnClickListener  prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, encuestaButtonListener;
 
-	Button prefsListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
-	ToggleButton runButton;
-	CheckBox notificarCheckBox;
+	private static Button prefsListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
+	private static ToggleButton runButton;
+	private static CheckBox notificarCheckBox;
 
 
 
-	public static final String PREFS_NAME = "MyPrefsFile";
 	
 	private NotificationService appService=null;
 	
@@ -54,7 +56,7 @@ private boolean prueba;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-//		state = StateManagerSGTon.getState(this);
+		state = StateManagerSGTon.getState(getApplicationContext());
 		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		setContentView(R.layout.developing);
 		
@@ -69,7 +71,9 @@ private boolean prueba;
 //       prueba = !silent;			
 //		
 
-
+		ImageView logo = (ImageView)  findViewById(R.id.Logo);
+		logo.setBackgroundResource(R.drawable.etapa0);
+		
 		TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
 		picker.setCurrentHour(0);
 		picker.setCurrentMinute(0);
@@ -106,7 +110,8 @@ private boolean prueba;
 		prefsListButton = (Button) findViewById(R.id.PrefsListButton);
 		prefsListListener = new OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
+				//Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
+				Intent myIntent = new Intent(v.getContext(),PrefsListActivityText.class);
 				startActivityForResult(myIntent, 0);
 			}
 		};
@@ -156,7 +161,10 @@ private boolean prueba;
 		runListener = new OnClickListener() { 
 			public void onClick(View v) {
 				try {
-
+					if (runButton.isChecked())
+						((ScrollView)v.getParent().getParent().getParent()).setBackgroundColor(Color.RED);
+					else 
+						((ScrollView)v.getParent().getParent().getParent()).setBackgroundColor(Color.TRANSPARENT);
 //					{
 //						NotificationService nS = new NotificationService();
 //						nS.setMainActivity(MainActivity.this);
@@ -195,6 +203,9 @@ private boolean prueba;
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
+		
+		AppUtils.showDebug(getApplicationContext(), "Developing - onCreate!!");
+		
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
 	    unbindService(onService);
@@ -204,6 +215,9 @@ private boolean prueba;
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
+		
+		AppUtils.showDebug(getApplicationContext(), "Developing - onCreate!!");
+		
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
 	}

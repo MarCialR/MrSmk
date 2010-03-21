@@ -10,50 +10,50 @@ import android.widget.TextView;
 
 public class CausesAdapter extends BaseAdapter { 
 	
-    private String[] content;
+    private String[] arrayCauses;
     private Context mContext;
     
     public CausesAdapter(Context context, String[] content) { 
          this.mContext = context; 
-         this.content = content;
+         this.arrayCauses = content;
     } 
     public int getCount() { 
-         return content.length; 
+         return arrayCauses.length; 
     } 
     public Object getItem(int position) { 
-         return content[position]; 
+         return arrayCauses[position]; 
     } 
     public long getItemId(int position) { 
          return position; 
     } 
 
     public View getView(int position, View convertView, ViewGroup parent) { 
-        MyView sv; 
+        CausesVW sv; 
         if (convertView == null) { 
-             sv = new MyView(mContext, content[position]); 
+             sv = new CausesVW(mContext, arrayCauses[position]); 
         } else { 
-             sv = (MyView) convertView; 
-             sv.setText(content[position]); 
+             sv = (CausesVW) convertView; 
+             sv.setText(arrayCauses[position]); 
         } 
         return sv; 
    } 
-    private class MyView extends LinearLayout { 
-        private TextView text; 
-        public MyView(Context context, String str) { 
+    private class CausesVW extends LinearLayout { 
+        private TextView causesTextVw; 
+        public CausesVW(Context context, String str) { 
              super(context); 
              this.setOrientation(VERTICAL); 
-             text = new TextView(context); 
-             text.setHeight(30); 
-             text.setText(str); 
-             text.setTextColor(Color.BLUE);
-             text.setTextSize(14);
-             text.setGravity(HORIZONTAL);
+             causesTextVw = new TextView(context); 
+             causesTextVw.setHeight(30); 
+             causesTextVw.setText(str); 
+             causesTextVw.setTextColor(Color.BLUE);
+             causesTextVw.setTextSize(14);
+             causesTextVw.setGravity(HORIZONTAL);
              LayoutParams ll =new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT);
 
-             addView(text, ll); 
+             addView(causesTextVw, ll); 
         } 
         public void setText(String title) { 
-             text.setText(title); 
+             causesTextVw.setText(title); 
         } 
    } 
 } 

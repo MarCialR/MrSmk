@@ -1,6 +1,8 @@
 package com.mru.mrnicoquitter;
 
+import java.io.File;
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.ListActivity;
 import android.content.SharedPreferences;
@@ -9,13 +11,18 @@ import android.widget.ArrayAdapter;
 
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
+import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class PrefsListActivity extends ListActivity {
 
-
+    private List<String> directoryEntries = new ArrayList<String>(); 
+    private File currentDirectory = new File("/"); 
 	
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        
+        AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
+        
         //setContentView(R.layout.main);
         State state = StateManagerSGTon.getState(null);
         SharedPreferences statePrefs = state.getPreferences();
@@ -32,4 +39,7 @@ public class PrefsListActivity extends ListActivity {
        
       this.setListAdapter(directoryList); 
     }
+    
+    
+   
 }
