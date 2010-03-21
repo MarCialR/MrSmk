@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<merge xmlns:android="http://schemas.android.com/apk/res/android">
+	<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+		android:layout_width="fill_parent" android:layout_height="wrap_content">
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:gravity="center_horizontal">
+			<Button android:id="@+id/PrefsListButton" android:text="View PrefsList"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<Button android:id="@+id/CanvasButton" android:text="Canvas"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<Button android:id="@+id/TimelineButton" android:text="Timeline"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<Button android:id="@+id/SendButton" android:text="Send"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<CheckBox android:id="@+id/notificarCheck" android:text="Me muero"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:clickable="true" />
+
+			<Button android:id="@+id/NotifButton" android:text="Notificar"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<TimePicker android:id="@+id/EsperarPicker"
+				android:visibility="gone" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+			<ToggleButton android:id="@+id/run" android:text="@+id/ToggleButton01"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+			<SeekBar android:id="@+id/SeekBar01" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" />
+
+			<Button android:id="@+id/EncuestaButton" android:text="Encuesta"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:textColor="@color/green_dark" android:shadowColor="@color/white_translucent" />
+
+		</LinearLayout>
+	</ScrollView>
+</merge>
+

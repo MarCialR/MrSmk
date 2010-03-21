@@ -1,10 +1,14 @@
 package com.mru.mrnicoquitter.state;
 
-import com.mru.mrnicoquitter.ui.AppUtils;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
+
+import com.mru.mrnicoquitter.R;
 
 public abstract class State {
 	public static final String GLOBAL_PREFS = "GLOBAL_PREFS";
@@ -65,5 +69,14 @@ public abstract class State {
 
 	abstract public Color getColor();
 	abstract public int getLogo();
+	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
+
+		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
+		inflater.inflate(contentLayout, commonLyt,true);
+		
+		ImageView logo = (ImageView)  commonLyt.findViewById(R.id.Logo);
+		logo.setBackgroundResource(getLogo());
+		return commonLyt;
+	}
 
 }

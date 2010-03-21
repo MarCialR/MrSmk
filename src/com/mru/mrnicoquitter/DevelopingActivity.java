@@ -3,6 +3,7 @@ package com.mru.mrnicoquitter;
 import static com.mru.mrnicoquitter.utils.Global.PREFS_NAME;
 import android.app.Activity;
 import android.content.ComponentName;
+import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.content.SharedPreferences;
@@ -10,11 +11,11 @@ import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
 import android.util.Log;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
 import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
@@ -58,8 +59,9 @@ private boolean prueba;
 		super.onCreate(savedInstanceState);
 		state = StateManagerSGTon.getState(getApplicationContext());
 		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
-		setContentView(R.layout.developing);
 		
+		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		setContentView(state.getCommonLayout(inflater,R.layout.lay_content_developing));		
 		
 //	       // Restore preferences
 //		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -71,8 +73,7 @@ private boolean prueba;
 //       prueba = !silent;			
 //		
 
-		ImageView logo = (ImageView)  findViewById(R.id.Logo);
-		logo.setBackgroundResource(R.drawable.etapa0);
+
 		
 		TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
 		picker.setCurrentHour(0);

@@ -4,21 +4,14 @@ import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.app.Activity;
-import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.opengl.Visibility;
 import android.os.Bundle;
-import android.os.IBinder;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.ViewGroup;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.TimePicker;
 
@@ -28,7 +21,6 @@ import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
-import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class MainActivity extends Activity {
@@ -40,20 +32,19 @@ public class MainActivity extends Activity {
 
 	private static Spinner tipo;
 	
-	private NotificationService appService=null;
+//	private NotificationService appService=null;
+//	
+//	private ServiceConnection onService = new ServiceConnection() {
+//		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
+//			appService=((NotificationService.LocalBinder)rawBinder).getService();
+//		}
+// 
+//		public void onServiceDisconnected(ComponentName className) {
+//			appService=null;
+//		}
+//	};	
 	
-	private ServiceConnection onService = new ServiceConnection() {
-		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-			appService=((NotificationService.LocalBinder)rawBinder).getService();
-		}
- 
-		public void onServiceDisconnected(ComponentName className) {
-			appService=null;
-		}
-	};	
-	
-private boolean prueba;
-	
+
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -70,20 +61,7 @@ private boolean prueba;
 		
 									//OJO con este this
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-	      
-		LinearLayout v1 = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
-		LinearLayout v2 = (LinearLayout)inflater.inflate(R.layout.lay_content_main, null);
-		int limite = v2.getChildCount();
-		for(int count = 0 ; count <limite;count++){
-			View temp = v2.getChildAt(0);
-			v2.removeViewAt(0);
-			v1.addView(temp, count+1);
-		}
-		v2 = null;
-		setContentView(v1);
-
-		ImageView logo = (ImageView)  findViewById(R.id.Logo);
-		logo.setBackgroundResource(state.getLogo());
+		setContentView(state.getCommonLayout(inflater,R.layout.lay_content_main));
 		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
 		String[] s = getResources().getStringArray(R.array.cigars);

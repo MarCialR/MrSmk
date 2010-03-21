@@ -12,7 +12,7 @@ public class S1_State extends State {
 	public S1_State(Context myContext){
 		this.myContext= myContext;
 		preferences = myContext.getSharedPreferences(S1_PREFS, 0);
-		Log.d("DEBUG", "Creado Q1_State");
+		Log.d("DEBUG", "Creado S1_State");
 	}
 
 	
