@@ -165,5 +165,9 @@ public class MainActivity extends Activity {
 		AppUtils.showDebug(getApplicationContext(), "Main - onStop!!");
 
 	}
+	public static void doNothing(){
+		return;
+		
+	}
 
 }

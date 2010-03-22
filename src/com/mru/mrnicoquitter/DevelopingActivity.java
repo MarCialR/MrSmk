@@ -16,6 +16,7 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioGroup;
 import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
@@ -74,6 +75,45 @@ private boolean prueba;
 //		
 
 
+		final RadioGroup grup = (RadioGroup) findViewById(R.id.RadioGroup01);
+		
+		Button changeButton = (Button) findViewById(R.id.SetStateButton);
+		
+		OnClickListener changeStateListener = new OnClickListener() {
+			public void onClick(View v) {
+				
+				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
+				StateManagerSGTon.setState(selected);
+
+
+			}
+		};
+		changeButton.setOnClickListener(changeStateListener);
+		
+		
+		/*
+		<RadioGroup android:id="@+id/RadioGroup01"
+			android:layout_width="wrap_content" android:layout_height="wrap_content">
+			<RadioButton android:text="TD_State" android:id="@+id/TD_State"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+			<RadioButton android:text="S1_State" android:id="@+id/S1_State"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+			<RadioButton android:text="S2_State" android:id="@+id/S2_State"
+				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+		</RadioGroup>
+
+		<Button android:id="@+id/SetStateButton" android:text="Set State"
+			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+*/			
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		
 		TimePicker picker = (TimePicker) findViewById(R.id.EsperarPicker);
 		picker.setCurrentHour(0);
@@ -235,14 +275,7 @@ private boolean prueba;
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-	      // Save user preferences. We need an Editor object to
-	      // make changes. All objects are from android.context.Context
-	      SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-	      SharedPreferences.Editor editor = settings.edit();
-	      editor.putBoolean("silentMode", prueba);
 
-	      // Don't forget to commit your edits!!!
-	      editor.commit();
 	}
 
 }

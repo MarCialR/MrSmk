@@ -1,21 +1,33 @@
 package com.mru.mrnicoquitter.state;
 
-import com.mru.mrnicoquitter.R;
-import static com.mru.mrnicoquitter.utils.Global.*;
-
+import static com.mru.mrnicoquitter.utils.Global.TD_PREFS;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.util.Log;
 
+import com.mru.mrnicoquitter.R;
+
 public class TD_State extends State {
-	
 
 	
 	public TD_State(Context myContext){
 		this.myContext= myContext;
-		initSuper();
-		preferences = myContext.getSharedPreferences(TD_PREFS, 0);
-		Log.d("DEBUG", "Creado TD_State");
+		initSuper("TD_State");
+		statePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
+		String activeStr = statePreferences.getString("active", "");
+		if ("".equals(activeStr) || "MainActivity".equals(activeStr)){
+	      SharedPreferences.Editor editor = statePreferences.edit();
+	      editor.putString("active", "com.mru.mrnicoquitter.MainActivity");
+	      editor.commit();
+		}
+		try {
+			active =  Class.forName(activeStr);
+		} catch (ClassNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} 
+		Log.d("DEBUG", "Creado TD_State y setteado active a "+active.getName());
 	}
 
 	@Override
@@ -28,5 +40,6 @@ public class TD_State extends State {
 	public int getLogo() {
 		return R.drawable.etapa0;
 	}
+
 	
 }

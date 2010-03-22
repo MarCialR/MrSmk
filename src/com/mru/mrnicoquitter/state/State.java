@@ -1,5 +1,6 @@
 package com.mru.mrnicoquitter.state;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -9,34 +10,29 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.mru.mrnicoquitter.R;
+import static com.mru.mrnicoquitter.utils.Global.GLOBAL_PREFS;;
 
 public abstract class State {
-	public static final String GLOBAL_PREFS = "GLOBAL_PREFS";
 	protected SharedPreferences globalPreferences;
-	protected SharedPreferences preferences;
+	protected SharedPreferences statePreferences;
 	protected Context myContext;
+	Class active;
 
 	
-	protected void initSuper(){
+	protected void initSuper(String stateStr){
 		if (globalPreferences == null){
 			globalPreferences = myContext.getSharedPreferences(GLOBAL_PREFS, 0);
 
 		}
+	    SharedPreferences.Editor editor = globalPreferences.edit();
+	    editor.putString ("state", stateStr);
 		if (false){
-			
-			//AppUtils.showDebug(myContext, "DEBUGGING ON");
-	      SharedPreferences.Editor editor = globalPreferences.edit();
 	      editor.putBoolean("debug", true);
-
-	      // Don't forget to commit your edits!!!
-	      editor.commit();
 		} else {
-		      SharedPreferences.Editor editor = globalPreferences.edit();
-		      editor.putBoolean("debug", false);
-
-		      // Don't forget to commit your edits!!!
-		      editor.commit();			
+	      editor.putBoolean("debug", false);
+		
 		}
+		editor.commit();	
 	      
 		if (!globalPreferences.getBoolean("created",false)){
 			//AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
@@ -48,11 +44,11 @@ public abstract class State {
 	private static void fillStartingGlobalPreferences(
 			SharedPreferences globalPreferences2) {
 		
-	      SharedPreferences.Editor editor = globalPreferences2.edit();
-	      editor.putBoolean("created", true);
-
-	      // Don't forget to commit your edits!!!
-	      editor.commit();
+//	      SharedPreferences.Editor editor = globalPreferences2.edit();
+//	      editor.putBoolean("created", true);
+//
+//	      // Don't forget to commit your edits!!!
+//	      editor.commit();
 	}
 
 	public SharedPreferences getGlobalPreferences() {
@@ -60,11 +56,11 @@ public abstract class State {
 	}
 	
 	public SharedPreferences getPreferences() {
-		return preferences;
+		return statePreferences;
 	}
 
 	public void setPreferences(SharedPreferences preferences) {
-		this.preferences = preferences;
+		this.statePreferences = preferences;
 	}
 
 	abstract public Color getColor();
@@ -78,5 +74,11 @@ public abstract class State {
 		logo.setBackgroundResource(getLogo());
 		return commonLyt;
 	}
+
+	
+	public Class getActivity() {
+		return active;
+	}
+
 
 }

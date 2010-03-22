@@ -6,6 +6,25 @@
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:orientation="vertical" android:layout_width="fill_parent"
 			android:layout_height="fill_parent" android:gravity="center_horizontal">
+	
+	
+			<RadioGroup android:id="@+id/RadioGroup01"
+				android:layout_width="wrap_content" android:layout_height="wrap_content">
+				<RadioButton android:text="TD_State" android:id="@+id/TD_State"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+				<RadioButton android:text="S1_State" android:id="@+id/S1_State"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+<!--
+				<RadioButton android:text="S2_State" android:id="@+id/S2_State"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+ -->					
+			</RadioGroup>
+
+			<Button android:id="@+id/SetStateButton" android:text="Set State"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				
+
+				
 			<Button android:id="@+id/PrefsListButton" android:text="View PrefsList"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
@@ -41,5 +60,7 @@
 
 		</LinearLayout>
 	</ScrollView>
+
+
 </merge>
 
