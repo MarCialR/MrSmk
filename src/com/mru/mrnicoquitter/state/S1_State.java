@@ -1,7 +1,6 @@
 package com.mru.mrnicoquitter.state;
 
 import static com.mru.mrnicoquitter.utils.Global.S1_PREFS;
-import android.app.Activity;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;

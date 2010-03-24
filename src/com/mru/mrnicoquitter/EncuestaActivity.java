@@ -1,6 +1,5 @@
 package com.mru.mrnicoquitter;
 
-import java.io.InputStream;
 import java.util.ArrayList;
 
 import android.app.Activity;
@@ -18,13 +17,12 @@ import android.widget.TextView;
 
 import com.mru.mrnicoquitter.beans.Encuesta;
 import com.mru.mrnicoquitter.beans.EncuestaItem;
-import com.mru.mrnicoquitter.data.EncuestaHandler;
 import com.mru.mrnicoquitter.data.XMLParser;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class EncuestaActivity extends Activity {
 
-	private XMLParser mParser;
+	private XMLParser parser;
 	private int encuestaItemCounter;
 	
 	ArrayList<EncuestaItem> items;	
@@ -43,16 +41,14 @@ public class EncuestaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 		// TODO Auto-generated method stub
 		super.onCreate(savedInstanceState);
+		encuestaItemCounter = 0;
 		
 		AppUtils.showDebug(getApplicationContext(), "Encuesta - onCreate!!");
-
-		mParser = new XMLParser();
 		
-		InputStream is = getApplicationContext().getResources().openRawResource(R.raw.cds);
-		EncuestaHandler myHandler = new EncuestaHandler();
-		mParser.parse(is, myHandler);
-		Encuesta e = myHandler.getEncuesta();
-		encuestaItemCounter = 0;
+		parser = new XMLParser("fagerstrom",getApplicationContext()); 
+
+		Encuesta e = parser.parse();
+		
 
 		items = e.getItems();
 
@@ -62,23 +58,26 @@ public class EncuestaActivity extends Activity {
 		goButton.setText("Siguiente");
 		OnClickListener notificarListener = new OnClickListener() {
 			public void onClick(View v) {
+				@SuppressWarnings("unused")
+				int id = rg.getCheckedRadioButtonId();
 				encuestaItemCounter++;
-				nextQuestion();
+				showNextQuestion();
 			}
 		};
 		goButton.setOnClickListener(notificarListener);
 		
-        nextQuestion();
+        showNextQuestion();
 		
         setContentView(table);		
 	}
+
 	
-	private void nextQuestion(){
+	private void showNextQuestion(){
 		table.removeAllViews();
 
         if (encuestaItemCounter != items.size()){
-        	it 			= items.get(encuestaItemCounter);
         	RadioButton rb;
+        	it 			= items.get(encuestaItemCounter);
         	
             questionRow 	= new TableRow(this);
             questionText= new TextView(this);
@@ -102,7 +101,7 @@ public class EncuestaActivity extends Activity {
         	table.addView(new TextView(this));
     		table.addView(goButton);
         }else {
-        	System.out.println("SEACABOOOOOOO");
+        	finish();
         }
 		return;
 	}

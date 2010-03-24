@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Cuántos cigarrillos fuma diariamente?</QUES>
+		<OPTION code = "0">Menos de 11</OPTION>
+		<OPTION code = "1">Entre 11 y 20</OPTION>
+		<OPTION code = "2">Entre 21 y 30</OPTION>
+		<OPTION code = "3">Más de 30</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Fuma más por la mañana que por la tarde?</QUES>
+		<OPTION code = "1">Sí</OPTION>
+		<OPTION code = "0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Cuándo fuma el primer cigarrillo después de despertarse?</QUES>
+		<OPTION code = "3">En el momento de levantarse</OPTION>
+		<OPTION code = "2">Entre 6 y 30 minutos después</OPTION>
+		<OPTION code = "1">Entre 31 y 60 minutos después</OPTION>
+		<OPTION code = "0">Más de una hora después</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Qué cigarrillo considera más importante?</QUES>
+		<OPTION code = "1">El primero</OPTION>
+		<OPTION code = "2">Otro</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Fuma también cuando está enfermo? (gripe, faringitis, catarro)</QUES>
+		<OPTION code = "1">Sí</OPTION>
+		<OPTION code = "0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">¿Le cuesta trabajo no fumar en el (cine, autobús, etc.)?</QUES>
+		<OPTION code = "1">Sí</OPTION>
+		<OPTION code = "0">No</OPTION>
+	</ITEM>
+</ROOT>
+<!-- 
+Se considera que con una puntuación total: 
+• Menos o igual a 3 puntos: dependencia baja
+• Entre 4-6 puntos: 		dependencia moderada 
+• 7 ó más: 					dependencia alta
+ -->

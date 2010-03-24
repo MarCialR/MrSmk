@@ -1,14 +1,12 @@
 package com.mru.mrnicoquitter.ui;
 
-import java.util.prefs.Preferences;
-
-import com.mru.mrnicoquitter.state.State;
-import com.mru.mrnicoquitter.state.StateManagerSGTon;
-
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.widget.Toast;
+
+import com.mru.mrnicoquitter.state.State;
+import com.mru.mrnicoquitter.state.StateManagerSGTon;
 
 public class AppUtils {
 	

@@ -1,8 +1,5 @@
 package com.mru.mrnicoquitter.data;
 
-import java.util.ArrayList;
-import java.util.Iterator;
-
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -21,13 +18,20 @@ public class EncuestaHandler extends DefaultHandler {
     private boolean in_option;
     private Encuesta encuesta;
     private EncuestaItem item;
-    
-    @Override 
+
+
+
+	public EncuestaHandler(Encuesta encuesta) {
+		super();
+		this.encuesta = encuesta;
+	}
+
+
+	@Override 
     public void startDocument() throws SAXException { 
 		//in_item		= false; 
 		in_ques		= false; 
 		in_option	= false;
-		encuesta 	= new Encuesta();
     } 
 /*
 	<ITEM>

@@ -77,11 +77,9 @@ public class NotificationService extends Service {
 
 	private class MyRunnable implements Runnable {
 		 
-		  private int value1;
 		  private String value2;
 		 
 		  public MyRunnable(String s, int e) {
-		    value1 = e;
 		    value2 = s;}
 		 
 		  public void run() { //implement run using value1 and value2
