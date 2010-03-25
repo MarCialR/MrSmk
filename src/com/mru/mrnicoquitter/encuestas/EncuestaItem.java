@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.beans;
+package com.mru.mrnicoquitter.encuestas;
 
 import java.util.ArrayList;
 
@@ -10,7 +10,7 @@ public class EncuestaItem{
 	private Integer code;
 	private Integer type;
 	private String ques;
-	private ArrayList<String> answs= new ArrayList<String>();
+	private ArrayList<AnswerItem> answs= new ArrayList<AnswerItem>();
 	
 	public Integer getCode() {
 		return code;
@@ -37,10 +37,10 @@ public class EncuestaItem{
 	public void setQues(String ques) {
 		this.ques = ques;
 	}
-	public ArrayList<String> getAnsws() {
+	public ArrayList<AnswerItem> getAnsws() {
 		return answs;
 	}
-	public void addAnswer(String answer) {
+	public void addAnswer(AnswerItem answer) {
 		this.answs.add(answer);
 	}
 	

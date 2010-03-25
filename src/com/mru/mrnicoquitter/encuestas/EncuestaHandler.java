@@ -1,11 +1,9 @@
-package com.mru.mrnicoquitter.data;
+package com.mru.mrnicoquitter.encuestas;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.mru.mrnicoquitter.beans.Encuesta;
-import com.mru.mrnicoquitter.beans.EncuestaItem;
 
 public class EncuestaHandler extends DefaultHandler {
 	
@@ -18,6 +16,7 @@ public class EncuestaHandler extends DefaultHandler {
     private boolean in_option;
     private Encuesta encuesta;
     private EncuestaItem item;
+    private AnswerItem answer;
 
 
 
@@ -36,7 +35,7 @@ public class EncuestaHandler extends DefaultHandler {
 /*
 	<ITEM>
 		<QUES code ="QA4562" type="multichoice">Empire Burlesque</QUES>
-		<OPTION >At vero eos et accusamus et iusto odio</OPTION>
+		<OPTION code = "1">At vero eos et accusamus et iusto odio</OPTION>
 		<OPTION >dignissimos ducimus qui blanditiis praesentium voluptatum</OPTION>
 		<OPTION ">deleniti atque corrupti quos dolores et quas molestias</OPTION>
 		<OPTION >excepturi sint occaecati cupiditate non provident,</OPTION>
@@ -54,6 +53,8 @@ public class EncuestaHandler extends DefaultHandler {
             item.setCode(Integer.valueOf(atts.getValue("code")));
             item.setType(atts.getValue("type"));
        }else if (localName.equals("OPTION")) { 
+    	   answer = new AnswerItem();
+    	   answer.setValue(Integer.valueOf(atts.getValue("value")));
     	   in_option = true; 
        } 
 	}
@@ -67,9 +68,9 @@ public class EncuestaHandler extends DefaultHandler {
 //            this.in_item = false; 
             encuesta.add(item);
        }else if (localName.equals("QUES")) { 
-            this.in_ques = false; 
+            in_ques = false; 
        }else if (localName.equals("OPTION")) { 
-              // Nothing to do here 
+            in_option = false; 
          } 
     } 
     
@@ -82,7 +83,8 @@ public class EncuestaHandler extends DefaultHandler {
          } else  if(this.in_option){ 
         	 String temita = new String(ch, start, length).trim();
         	 if (!temita.trim().equals(""))
-        		 item.addAnswer(temita);
+        		 answer.setText(temita);
+        		 item.addAnswer(answer);
          }
          
    }

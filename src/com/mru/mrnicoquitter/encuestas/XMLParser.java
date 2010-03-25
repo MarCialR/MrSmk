@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.data;
+package com.mru.mrnicoquitter.encuestas;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,7 +13,6 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 
-import com.mru.mrnicoquitter.beans.Encuesta;
 import com.mru.mrnicoquitter.utils.Utils;
 
 public class XMLParser {
