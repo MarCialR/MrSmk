@@ -44,7 +44,7 @@ public class CigarListActivity extends ListActivity {
 
 	private void transform(){
 		int counter = 0;
-		Calendar hoy = Calendar.getInstance(); 
+		Calendar hoy = Calendar.getInstance();
 		int dayHoy = hoy.get(Calendar.DAY_OF_YEAR);
 		int dayBefore = -1;
 		Calendar before = Calendar.getInstance();
@@ -88,12 +88,12 @@ public class CigarListActivity extends ListActivity {
 
 		}
 
-		textImageEntries.add(new ImageAndText("0", "  ----------------------"));	
-		for (Cigar cig: cigarEntries){
-
-				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));				
-
-		}		
+//		textImageEntries.add(new ImageAndText("0", "  ----------------------"));	
+//		for (Cigar cig: cigarEntries){
+//
+//				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));				
+//
+//		}		
 		return;
 	}
 
@@ -127,6 +127,7 @@ public class CigarListActivity extends ListActivity {
 			} while (c.moveToNext());
 		}
 		Collections.sort(cigarEntries);
+		Collections.reverse(cigarEntries);
 	}
 	
 	public class ImageAndTextListAdapter extends ArrayAdapter<ImageAndText> {

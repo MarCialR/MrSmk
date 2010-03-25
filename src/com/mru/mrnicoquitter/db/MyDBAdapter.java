@@ -72,6 +72,7 @@ public class MyDBAdapter {
 	public Cursor getAllEntries () {
 		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_TYPE},
 				null, null, null, null, null);
+		//null, null, null, null, "date DESC");
 	}
 	
 	public String getAllEntriesToSend(){

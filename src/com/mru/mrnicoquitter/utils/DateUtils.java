@@ -140,8 +140,8 @@ public class DateUtils {
   public static final String calendarToString(Calendar cal, String dateformat) {
     StringBuffer ret = new StringBuffer();
     if(dateformat.equals(FORMAT_YYYYMMDD) ) {
-      ret.append(cal.get(Calendar.YEAR));
-      ret.append("-");
+//      ret.append(cal.get(Calendar.YEAR));
+//      ret.append("-");
       
       String month = null;
       int mo = cal.get(Calendar.MONTH) + 1; /* Calendar month is zero indexed, string months are not */
