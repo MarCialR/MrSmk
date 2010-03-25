@@ -7,8 +7,8 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
@@ -32,14 +32,11 @@ public class EncuestaActivity extends Activity {
     TextView questionText;
     TableRow answerRow;
     RadioGroup rg;
-    
-    CheckBox check1 ;
-    TextView text1;	
-    
     Button goButton;
-	@Override
+
+    @Override
 	protected void onCreate(Bundle savedInstanceState) {
-		// TODO Auto-generated method stub
+
 		super.onCreate(savedInstanceState);
 		encuestaItemCounter = 0;
 		
@@ -53,6 +50,10 @@ public class EncuestaActivity extends Activity {
 		items = e.getItems();
 
         table 		= new TableLayout(this);
+        // Es necesario?
+        table.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
+        // IMPORTANTE
+        table.setColumnShrinkable(0, true);		
 
 		goButton = new Button(this);
 		goButton.setText("Siguiente");
@@ -60,6 +61,8 @@ public class EncuestaActivity extends Activity {
 			public void onClick(View v) {
 				@SuppressWarnings("unused")
 				int id = rg.getCheckedRadioButtonId();
+				RadioButton r = (RadioButton)findViewById(id);
+
 				encuestaItemCounter++;
 				showNextQuestion();
 			}
@@ -88,13 +91,15 @@ public class EncuestaActivity extends Activity {
             questionRow.addView(questionText);
             table.addView(questionRow);
 
-    		answerRow = new TableRow(this);
+
+            
+            answerRow = new TableRow(this);
     		rg = new RadioGroup(this);
     		int countermini = 0;
         	for (String an:it.getAnsws()){
         		rb = new RadioButton(this);
         		rb.setText(an);
-        		rg.addView(rb,countermini++);
+         		rg.addView(rb,countermini++);
         	}
         	answerRow.addView(rg);
         	table.addView(answerRow);
