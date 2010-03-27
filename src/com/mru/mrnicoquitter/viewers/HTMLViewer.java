@@ -3,6 +3,7 @@ package com.mru.mrnicoquitter.viewers;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Html;
 import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
@@ -16,7 +17,7 @@ public class HTMLViewer extends Activity {
 		TextView textArea = (TextView) findViewById(R.id.HTMLArea);
 		Intent i = getIntent();
 		String text = Utils.getXXX(i, getApplicationContext());
-		textArea.setText(text);
+		textArea.setText(Html.fromHtml(text));
 
 	}
 

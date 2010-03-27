@@ -75,14 +75,14 @@ public  class Utils {
     	
     	
 		String str2 = i.getStringExtra("fileName");
-		CharSequence styledText="";
+		String styledText="";
 		if (null != str2 && !str2.equals(""))
 
-			styledText = Html.fromHtml(Utils
-					.getRawResourceContent(str2, ctx));
+			styledText = Utils
+					.getRawResourceContent(str2, ctx);
 
 		
-    	return styledText.toString();
+    	return styledText;
     }
 		
 }

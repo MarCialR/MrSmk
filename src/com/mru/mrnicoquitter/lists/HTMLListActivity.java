@@ -24,7 +24,10 @@ public class HTMLListActivity extends ListActivity {
         super.onCreate(icicle);
         
         AppUtils.showDebug(getApplicationContext(), "HTMLListActivity - onCreate!!");
-        
+
+        filesEntries.add("a1_bienvenida");
+        filesEntries.add("a2_info_tabaquismo");
+        filesEntries.add("a3_tests");
         filesEntries.add("diez_mandamientos");
         
         
