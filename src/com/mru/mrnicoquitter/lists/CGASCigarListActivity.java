@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter;
+package com.mru.mrnicoquitter.lists;
 
 import java.util.ArrayList;
 import java.util.Iterator;

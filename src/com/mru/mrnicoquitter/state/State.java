@@ -1,6 +1,6 @@
 package com.mru.mrnicoquitter.state;
 
-import android.app.Activity;
+import static com.mru.mrnicoquitter.utils.Global.GLOBAL_PREFS;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -10,7 +10,6 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 
 import com.mru.mrnicoquitter.R;
-import static com.mru.mrnicoquitter.utils.Global.GLOBAL_PREFS;;
 
 public abstract class State {
 	protected SharedPreferences globalPreferences;

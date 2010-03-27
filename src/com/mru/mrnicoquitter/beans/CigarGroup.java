@@ -33,6 +33,10 @@ public class CigarGroup {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+	public Date getDate() {
+		return date;
+	}
+	
 	
 	
 }

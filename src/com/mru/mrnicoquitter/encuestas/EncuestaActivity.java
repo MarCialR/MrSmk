@@ -1,6 +1,5 @@
 package com.mru.mrnicoquitter.encuestas;
 
-import java.util.ArrayList;
 import java.util.Iterator;
 
 import android.app.Activity;
@@ -8,10 +7,7 @@ import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
-import android.widget.LinearLayout;
-import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
@@ -19,7 +15,6 @@ import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
-import com.mru.mrnicoquitter.utils.Utils;
 
 public class EncuestaActivity extends Activity {
 
@@ -41,7 +36,10 @@ public class EncuestaActivity extends Activity {
 		super.onCreate(savedInstanceState);
         AppUtils.showDebug(getApplicationContext(), "Encuesta - onCreate!!");
         
-        setContentView(R.layout.encuesta);	        
+        setContentView(R.layout.encuesta);	    
+
+		String _encuesta = getIntent().getStringExtra("encuesta");
+        
         
         answersTL = (TableLayout)findViewById(R.id.AnswersTL);
         // IMPORTANTE
@@ -49,7 +47,8 @@ public class EncuestaActivity extends Activity {
 
         questionText = (TextView)findViewById(R.id.Question);        
         
-		parser 	= new XMLParser("t_glover_nilsson",getApplicationContext()); 
+		//parser 	= new XMLParser("t_glover_nilsson",getApplicationContext()); 
+		parser 	= new XMLParser(_encuesta,getApplicationContext());		
 		e 		= parser.parse();
         it 		= e.iterator();
 
@@ -61,7 +60,7 @@ public class EncuestaActivity extends Activity {
 		goButton.setText("Siguiente");
 		OnClickListener notificarListener = new OnClickListener() {
 			public void onClick(View v) {
-				@SuppressWarnings("unused")
+
 				int id = rg.getCheckedRadioButtonId();
 				if (id == -1){
 					AppUtils.showToastShort(getApplicationContext(), "U need to choose 1!!");

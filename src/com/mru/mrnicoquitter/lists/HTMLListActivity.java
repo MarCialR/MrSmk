@@ -1,10 +1,5 @@
-package com.mru.mrnicoquitter;
+package com.mru.mrnicoquitter.lists;
 
-import java.io.BufferedReader;
-import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -16,9 +11,11 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.viewers.HTMLViewer;
 
-public class FilesListActivityText extends ListActivity {
+public class HTMLListActivity extends ListActivity {
 
     private List<String> filesEntries = new ArrayList<String>(); 
 
@@ -26,9 +23,9 @@ public class FilesListActivityText extends ListActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         
-        AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
+        AppUtils.showDebug(getApplicationContext(), "HTMLListActivity - onCreate!!");
         
-        filesEntries.add("diez_mandam");
+        filesEntries.add("diez_mandamientos");
         
         
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this, 
@@ -42,8 +39,8 @@ public class FilesListActivityText extends ListActivity {
 	protected void onListItemClick(ListView l, View v, int position, long id) {
 
 		TextView tv = (TextView)v;
-		Intent i = new Intent( this, TextViewer.class );
-		i.putExtra( "file", tv.getText());
+		Intent i = new Intent( getApplicationContext(), HTMLViewer.class );
+		i.putExtra( "fileName", tv.getText());
 		startActivity( i );
 
 	}

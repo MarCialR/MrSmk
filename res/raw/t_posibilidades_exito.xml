@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+<TITLE>
+CALCULE SUS POSIBILIDADES DE ÉXITO
+</TITLE>
+<EXPLAIN>A continuación, has de contestar a 16 cuestiones que nos permitirán ajustar el tratamiento y a tí, hacerte una idea de si es un buen momento para intentarlo. 
+</EXPLAIN>
+	<ITEM>
+		<QUES code="1" type="multichoice">Quiero dejar de fumar por:</QUES>
+		<OPTION value="2">decisión personal</OPTION>
+		<OPTION value="1">consejo profesional</OPTION>
+		<OPTION value="1">indicación familiar</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="2" type="multichoice">Deseo estar en mejor forma física</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="3" type="multichoice">Quiero hacer deporte o ya lo hago</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="4" type="multichoice">Necesito liberarme de esta dependencia</QUES>
+		<OPTION value="2">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="5" type="multichoice">No tengo problemas profesionales</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="6" type="multichoice">Voy a cuidar mi aspecto físico</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="7" type="multichoice">Estoy embarazada o mi pareja lo está</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="8" type="multichoice">Mi relación familiar es satisfactoria</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="9" type="multichoice">Tengo hijos pequeños</QUES>
+		<OPTION value="2">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="10" type="multichoice">Alguna vez he logrado dejado de fumar más de una semana</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="11" type="multichoice">Siempre consigo lo que quiero</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="12" type="multichoice">Me encuentro con buena moral actualmente</QUES>
+		<OPTION value="2">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>			
+	<ITEM>
+		<QUES code="13" type="multichoice">Soy de temperamento tranquilo</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="14" type="multichoice">Tendré una calidad de vida mejor</QUES>
+		<OPTION value="2">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="15" type="multichoice">Mi apetito es habitualmente estable</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+	<ITEM>
+		<QUES code="16" type="multichoice">Mi peso normalmente se mantiene igual</QUES>
+		<OPTION value="1">Si</OPTION>
+		<OPTION value="0">No</OPTION>
+	</ITEM>
+</ROOT>		      
+<!--
+1. Vengo per decisión personal					2
+Vengo por consejo profesional					1
+Vengo por indicación familiar					1
+
+2. Deseo estar en mejor forma física			1
+3. Quiero hacer deporte o ya lo hago			1
+4. Necesito liberarme de esta dependencia		2
+5. No tengo problemas profesionales				1
+6. Voy a cuidar mi aspecto físico				1
+7. Estoy embarazada o mi pareja lo está			1
+8. Mi relación familiar es satisfactoria		1
+9. Tengo hijos pequeños							2
+10. He dejado de fumar más de una semana		1
+11. Siempre consigo lo que quiero				1
+12. Me encuentro con buena moral actualmente	2
+13. Soy de temperamento tranquilo				1
+14. Tendré una calidad de vida mejor			2
+15. Mi apetito es habitualmente estable			1
+16. Mi peso normalmente se mantiene igual		1
+
+Suma los puntos obtenidos y el resultado será
+14 y más...... Altas posibilidades de éxito
+10 a 13....... Bastantes posibilidades de conseguirlo
+6 a 9........ Puedes tener alguna dificultad superable
+Menos de 6.... Medita si este es el momento
+-->

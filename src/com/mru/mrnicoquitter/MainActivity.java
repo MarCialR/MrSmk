@@ -19,6 +19,7 @@ import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.lists.CigarListActivity;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
 import com.mru.mrnicoquitter.ui.AppUtils;

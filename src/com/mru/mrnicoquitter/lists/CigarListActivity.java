@@ -1,11 +1,10 @@
-package com.mru.mrnicoquitter;
+package com.mru.mrnicoquitter.lists;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.List;
 
 import android.app.Activity;
@@ -34,8 +33,6 @@ public class CigarListActivity extends ListActivity {
 		super.onCreate(icicle);
 		// setContentView(R.layout.main);
 		loadCigars();
-		ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this,
-				R.layout.cigar_row, getStringList());
 		transform();
 		ImageAndTextListAdapter IAA = new ImageAndTextListAdapter(this,textImageEntries );
 
@@ -96,7 +93,7 @@ public class CigarListActivity extends ListActivity {
 //		}		
 		return;
 	}
-
+/*
 	private List<String> getStringList() {
 		List<String> cigarStrings = new ArrayList<String>();
 		for (Cigar cig : cigarEntries) {
@@ -104,7 +101,7 @@ public class CigarListActivity extends ListActivity {
 		}
 		return cigarStrings;
 	}
-
+*/
 	private void loadCigars() {
 		MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
 		Cursor c = dba.getAllEntries();

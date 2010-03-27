@@ -1,12 +1,10 @@
 package com.mru.mrnicoquitter;
 
-import static com.mru.mrnicoquitter.utils.Global.PREFS_NAME;
 import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
-import android.content.SharedPreferences;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.IBinder;
@@ -22,7 +20,9 @@ import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.mru.mrnicoquitter.db.MyDBAdapter;
-import com.mru.mrnicoquitter.encuestas.EncuestaActivity;
+import com.mru.mrnicoquitter.lists.EncuestaListActivity;
+import com.mru.mrnicoquitter.lists.HTMLListActivity;
+import com.mru.mrnicoquitter.lists.PrefsListActivity;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
@@ -31,10 +31,10 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 public class DevelopingActivity extends Activity{
 
 	private State state;
-	private static OnClickListener  prefsListListener, filesListListener, canvasButtonListener, timelineButtonListener, sendListener,
-			 notificarOnOffListener, notificarListener, runListener, encuestaButtonListener;
+	private static OnClickListener  prefsListListener, encuestasListListener, htmlListListener, canvasButtonListener, timelineButtonListener, sendListener,
+			 notificarOnOffListener, notificarListener, runListener;
 
-	private static Button prefsListButton, filesListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
+	private static Button prefsListButton, encuestasListButton, htmlListButton, canvasButton, timelineButton, sendButton, notifButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 
@@ -52,8 +52,6 @@ public class DevelopingActivity extends Activity{
 			appService=null;
 		}
 	};	
-	
-private boolean prueba;
 	
 	/** Called when the activity is first created. */
 	@Override
@@ -90,24 +88,6 @@ private boolean prueba;
 			}
 		};
 		changeButton.setOnClickListener(changeStateListener);
-		
-		
-		/*
-		<RadioGroup android:id="@+id/RadioGroup01"
-			android:layout_width="wrap_content" android:layout_height="wrap_content">
-			<RadioButton android:text="TD_State" android:id="@+id/TD_State"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-			<RadioButton android:text="S1_State" android:id="@+id/S1_State"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-			<RadioButton android:text="S2_State" android:id="@+id/S2_State"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-		</RadioGroup>
-
-		<Button android:id="@+id/SetStateButton" android:text="Set State"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
-*/			
-		
-		
 		
 		
 		
@@ -152,26 +132,34 @@ private boolean prueba;
 		prefsListButton = (Button) findViewById(R.id.PrefsListButton);
 		prefsListListener = new OnClickListener() {
 			public void onClick(View v) {
-				//Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
-				Intent myIntent = new Intent(v.getContext(),PrefsListActivityText.class);
+				Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
 				startActivityForResult(myIntent, 0);
 			}
 		};
 		prefsListButton.setOnClickListener(prefsListListener);
 
 		
+				encuestasListButton = (Button) findViewById(R.id.EncuestasListButton);
+				encuestasListListener = new OnClickListener() {
+		 			public void onClick(View v) {
+						Intent myIntent = new Intent(v.getContext(),EncuestaListActivity.class);
+
+		 				startActivityForResult(myIntent, 0);
+		 			}
+		 		};
+				encuestasListButton.setOnClickListener(encuestasListListener);
 		
+
 		
-		
-		filesListButton = (Button) findViewById(R.id.FilesListButton);
-		filesListListener = new OnClickListener() {
+
+		htmlListButton = (Button) findViewById(R.id.HTMLListButton);
+		htmlListListener = new OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),FilesListActivityText.class);
+				Intent myIntent = new Intent(v.getContext(),HTMLListActivity.class);
 				startActivityForResult(myIntent, 0);
 			}
 		};
-		filesListButton.setOnClickListener(filesListListener);
-		
+		htmlListButton.setOnClickListener(htmlListListener);		
 		
 		
 		
@@ -244,15 +232,6 @@ private boolean prueba;
 			runButton.setOnClickListener(runListener);
 			
 
-			encuestaButton= (Button) findViewById(R.id.EncuestaButton);
-			encuestaButtonListener= new OnClickListener() {
-				public void onClick(View v) {
-					Intent myIntent = new Intent(v.getContext(),EncuestaActivity.class);
-					startActivityForResult(myIntent, 0);
-				}
-			};
-			encuestaButton.setOnClickListener(encuestaButtonListener);				
-			
 
 	}
 

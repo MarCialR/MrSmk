@@ -25,11 +25,14 @@
 				
 
 				
-			<Button android:id="@+id/PrefsListButton" android:text="View PrefsList"
+			<Button android:id="@+id/PrefsListButton" android:text="View Preferences"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-			<Button android:id="@+id/FilesListButton" android:text="View FilesList"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />				
+			<Button android:id="@+id/EncuestasListButton" android:text="View Tests"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				
+			<Button android:id="@+id/HTMLListButton" android:text="View HTMLs"
+				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
 			<Button android:id="@+id/CanvasButton" android:text="Canvas"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
@@ -56,11 +59,11 @@
 
 			<SeekBar android:id="@+id/SeekBar01" android:layout_width="wrap_content"
 				android:layout_height="wrap_content" />
-
+<!-- 
 			<Button android:id="@+id/EncuestaButton" android:text="Encuesta"
 				android:layout_width="wrap_content" android:layout_height="wrap_content"
 				android:textColor="@color/green_dark" android:shadowColor="@color/white_translucent" />
-
+ -->
 		</LinearLayout>
 	</ScrollView>
 
