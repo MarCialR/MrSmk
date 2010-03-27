@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	<ITEM>
+		<QUES code ="124881" type="multichoice">1. Fumar es muy importante para mí</QUES>
+		<OPTION value = "0">nada en absoluto</OPTION>
+		<OPTION value = "1">algo</OPTION>
+		<OPTION value = "2">moderadamente</OPTION>
+		<OPTION value = "3">mucho</OPTION>
+		<OPTION value = "4">muchisimo</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">2. Juego y manipulo el cigarrillo como parte del ritual del hábito de fumar</QUES>
+		<OPTION value = "0">nada en absoluto</OPTION>
+		<OPTION value = "1">algo</OPTION>
+		<OPTION value = "2">moderadamente</OPTION>
+		<OPTION value = "3">mucho</OPTION>
+		<OPTION value = "4">muchisimo</OPTION>		
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">3. Juego y manipulo el paquete de tabaco como parte del ritual del hábito de fumar</QUES>
+		<OPTION value = "0">nada en absoluto</OPTION>
+		<OPTION value = "1">algo</OPTION>
+		<OPTION value = "2">moderadamente</OPTION>
+		<OPTION value = "3">mucho</OPTION>
+		<OPTION value = "4">muchisimo</OPTION>			
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">4. ¿Ocupa sus manos y dedos para evitar el tabaco?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>			
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">5. ¿Suele ponerse algo en la boca para evitar fumar?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">6. ¿Se recompensa a sí mismo con un cigarrillo tras cumplir una tarea?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">7. ¿Se angustia cuando se queda sin cigarrillos o no consigue encontrar el paquete de tabaco?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">8. Cuando no tiene tabaco, ¿le resulta difícil concentrarse y realizar cualquier tarea?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>		
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">9. ¿Cuándo se halla en un lugar en el que está prohibido fumar, juega con su cigarrillo o paquete de tabaco?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>		
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">10. ¿Algunos lugares o circunstancias le incitan a fumar: su sillón favorito, sofá, habitación, coche o bebida (alcohol, café)?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>				
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">11. ¿Se encuentra a menudo encendiendo un cigarrillo por rutina, sin desearlo realmente?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>				
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">12. ¿Le ayudaría a reducir el estrés el tener un cigarrillo en las manos aunque sea sin encenderlo?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">13- ¿A menudo se coloca cigarrillos sin encender u otros objetos en la boca (bolígrafos, palillos, chicles...) y los chupa para relajarse del estrés, tensión frustración, etc.?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">14. ¿Parte de su placer de fumar procede del ritual que supone encender un cigarrillo?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>		
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">15. ¿Parte del placer del tabaco consiste en mirar el humo cuando lo expulsa?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>		
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">16. ¿Enciende alguna vez un cigarrillo sin darse cuenta de que ya tiene uno encendido en el cenicero?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>		
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">17. Cuando está solo en un restaurante, parada de autobús, fiesta, etc. ¿se siente más seguro, a salvo o más confiado con un cigarrillo en las manos?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">18. ¿Suele encender un cigarrillo si sus amigos lo hacen?</QUES>
+		<OPTION value = "0">nunca</OPTION>
+		<OPTION value = "1">raramente</OPTION>
+		<OPTION value = "2">a veces</OPTION>
+		<OPTION value = "3">a menudo</OPTION>
+		<OPTION value = "4">siempre</OPTION>	
+	</ITEM>								
+</ROOT>
+<!-- 
+1. Fumar es muy importante para mí
+2. Juego y manipulo el cigarrillo como parte del ritual del hábito de fumar
+3. Juego y manipulo el paquete de tabaco como parte del ritual del hábito de fumar
+4. ¿Ocupa sus manos y dedos para evitar el tabaco?
+5. ¿Suele ponerse algo en la boca para evitar fumar?
+6. ¿Se recompensa a sí mismo con un cigarrillo tras cumplir una tarea?
+7. ¿Se angustia cuando se queda sin cigarrillos o no consigue encontrar el paquete de tabaco?
+8. Cuando no tiene tabaco, ¿le resulta difícil concentrarse y realizar cualquier tarea?
+9. ¿Cuándo se halla en un lugar en el que está prohibido fumar, juega con su cigarrillo o paquete de tabaco?
+10. ¿Algunos lugares o circunstancias le incitan a fumar: su sillón favorito, sofá, habitación, coche o bebida (alcohol, café)?
+11. ¿Se encuentra a menudo encendiendo un cigarrillo por rutina, sin desearlo realmente?
+12. ¿Le ayudaría a reducir el estrés el tener un cigarrillo en las manos aunque sea sin encenderlo?
+13- ¿A menudo se coloca cigarrillos sin encender u otros objetos en la boca (bolígrafos, palillos, chicles...) y los chupa para relajarse del estrés, tensión frustración, etc.?
+14. ¿Parte de su placer de fumar procede del ritual que supone encender un cigarrillo?
+15. ¿Parte del placer del tabaco consiste en mirar el humo cuando lo expulsa?
+16. ¿Enciende alguna vez un cigarrillo sin darse cuenta de que ya tiene uno encendido en el cenicero?
+17. Cuando está solo en un restaurante, parada de autobús, fiesta, etc. ¿se siente más seguro, a salvo o más confiado con un cigarrillo en las manos?
+18. ¿Suele encender un cigarrillo si sus amigos lo hacen?
+ -->

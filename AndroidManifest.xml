@@ -6,7 +6,7 @@
   
     <application android:label="@string/app_name" android:icon="@drawable/splash_launcher">
     
-	 	<activity android:name=".Splash">
+	 	<activity android:name=".Splash" android:theme="@android:style/Theme.NoTitleBar">
 			<intent-filter>
 			    <action android:name="android.intent.action.MAIN" />
 			    <category android:name="android.intent.category.LAUNCHER" />
@@ -14,21 +14,23 @@
 		</activity>
 	
 		<activity android:name=".MainActivity"
-		          android:label="@string/app_name">
+		          android:label="@string/app_name"
+		          android:theme="@android:style/Theme.NoTitleBar">
 			<intent-filter>
 		    	<action android:name="com.droidnova.android.splashscreen.MyApp" />
 		    	<category android:name="android.intent.category.DEFAULT" />
 			</intent-filter>
 		</activity>
 	
-	    <activity android:name=".CigarListActivity"/>
-	    <activity android:name=".PrefsListActivity"/>
-	    <activity android:name=".PrefsListActivityText"/>
-	    <activity android:name=".TextViewer"/>	    
-	    <activity android:name=".CanvasActivity"/>
-	    <activity android:name=".TimelineActivity"/>
-	    <activity android:name=".EncuestaActivity"/>
-	    <activity android:name=".DevelopingActivity"/>
+	    <activity android:name=".CigarListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".PrefsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".PrefsListActivityText" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".FilesListActivityText" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".TextViewer" android:theme="@android:style/Theme.NoTitleBar"/>	    
+	    <activity android:name=".CanvasActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".TimelineActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name="com.mru.mrnicoquitter.encuestas.EncuestaActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".DevelopingActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 
 		
 		<service android:name="com.mru.mrnicoquitter.timer.NotificationService"/>

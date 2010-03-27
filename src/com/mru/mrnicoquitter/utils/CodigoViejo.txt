@@ -19,3 +19,20 @@
 
 	      // Don't forget to commit your edits!!!
 	      editor.commit();
+	      
+	      
+	      
+	      
+	      
+	      
+<?xml version="1.0" encoding="utf-8"?>
+<ROOT>
+	<ITEM>
+		<QUES code ="000000000000000000" type="multichoice">000000000000000000</QUES>
+		<OPTION value = "000000000000000000">000000000000000000</OPTION>
+		<OPTION value = "000000000000000000">000000000000000000</OPTION>
+		<OPTION value = "000000000000000000">000000000000000000</OPTION>
+		<OPTION value = "000000000000000000">000000000000000000</OPTION>
+		<OPTION value = "000000000000000000">000000000000000000</OPTION>		
+	</ITEM>
+</ROOT>		      

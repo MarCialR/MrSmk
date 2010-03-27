@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter;
+package com.mru.mrnicoquitter.encuestas;
 
 import java.util.ArrayList;
 import java.util.Iterator;
@@ -10,17 +10,14 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.ViewGroup.LayoutParams;
 import android.widget.Button;
+import android.widget.LinearLayout;
 import android.widget.RadioButton;
 import android.widget.RadioGroup;
 import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
-import com.mru.mrnicoquitter.encuestas.AnswerItem;
-import com.mru.mrnicoquitter.encuestas.Encuesta;
-import com.mru.mrnicoquitter.encuestas.EncuestaItem;
-import com.mru.mrnicoquitter.encuestas.EncuestaRadioButton;
-import com.mru.mrnicoquitter.encuestas.XMLParser;
+import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.utils.Utils;
 
@@ -31,28 +28,35 @@ public class EncuestaActivity extends Activity {
 	Encuesta e; 
 	Iterator<EncuestaItem> it;	
 	EncuestaItem item;
-    TableLayout table;
-    TableRow questionRow;
+
     TextView questionText;
     TableRow answerRow;
     RadioGroup rg;
     Button goButton;
+    TableLayout answersTL;
 
     @Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-        table 				= new TableLayout(this);
-        // Es necesario?
-        table.setLayoutParams(new LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
-        // IMPORTANTE
-        table.setColumnShrinkable(0, true);		
         AppUtils.showDebug(getApplicationContext(), "Encuesta - onCreate!!");
+        
+        setContentView(R.layout.encuesta);	        
+        
+        answersTL = (TableLayout)findViewById(R.id.AnswersTL);
+        // IMPORTANTE
+        answersTL.setColumnShrinkable(0, true);		
 
-		parser 	= new XMLParser("fagerstrom",getApplicationContext()); 
+        questionText = (TextView)findViewById(R.id.Question);        
+        
+		parser 	= new XMLParser("t_glover_nilsson",getApplicationContext()); 
 		e 		= parser.parse();
         it 		= e.iterator();
 
+        
+
+        
+        
 		goButton 			= new Button(this);
 		goButton.setText("Siguiente");
 		OnClickListener notificarListener = new OnClickListener() {
@@ -72,26 +76,22 @@ public class EncuestaActivity extends Activity {
 		
         showNextQuestion();
 		
-        setContentView(table);		
+        	
 	}
 
 	
 	private void showNextQuestion(){
-		table.removeAllViews();
+		answersTL.removeAllViews();
 
         if (it.hasNext()){
         	EncuestaRadioButton rb;
         	item 				= it.next();
         	
-            questionRow 	= new TableRow(this);
-            questionText	= new TextView(this);
             questionText.setText("\n"+item.getQues()+"\n");
-            questionText.setTextSize(24f);
+            questionText.setTextSize(20f);
             //questionText.setTextColor(R.color.green_dark);
-            questionText.setGravity(Gravity.CENTER_HORIZONTAL);            
-            questionRow.addView(questionText);
-            table.addView(questionRow);
-
+            questionText.setGravity(Gravity.CENTER_HORIZONTAL);           
+            
             answerRow = new TableRow(this);
     		rg = new RadioGroup(this);
         	for (AnswerItem an:item.getAnsws()){
@@ -101,9 +101,9 @@ public class EncuestaActivity extends Activity {
          		rg.addView(rb);
         	}
         	answerRow.addView(rg);
-        	table.addView(answerRow);
-        	table.addView(new TextView(this));
-    		table.addView(goButton);
+        	answersTL.addView(answerRow);
+        	answersTL.addView(new TextView(this));
+        	answersTL.addView(goButton);
         }else {
         	AppUtils.showToastLong(getApplicationContext(), "El resultado es :" + e.getResult() );
         	finish();

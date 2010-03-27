@@ -22,6 +22,7 @@ import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.encuestas.EncuestaActivity;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
@@ -30,10 +31,10 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 public class DevelopingActivity extends Activity{
 
 	private State state;
-	private static OnClickListener  prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
+	private static OnClickListener  prefsListListener, filesListListener, canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, encuestaButtonListener;
 
-	private static Button prefsListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
+	private static Button prefsListButton, filesListButton, canvasButton, timelineButton, sendButton, notifButton, encuestaButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 
@@ -158,6 +159,21 @@ private boolean prueba;
 		};
 		prefsListButton.setOnClickListener(prefsListListener);
 
+		
+		
+		
+		
+		filesListButton = (Button) findViewById(R.id.FilesListButton);
+		filesListListener = new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),FilesListActivityText.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		filesListButton.setOnClickListener(filesListListener);
+		
+		
+		
 		
 		
 		canvasButton = (Button) findViewById(R.id.CanvasButton);
