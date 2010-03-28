@@ -37,3 +37,8 @@
 	</ITEM>
 </ROOT>		      
 <!--  -->
+
+
+		<script src="../raw/testjs.js" type="text/javascript"/>
+		
+		<img src="../drawable/etapa1.png" alt="sdfoji"></img>

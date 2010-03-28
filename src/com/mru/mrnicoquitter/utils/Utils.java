@@ -15,13 +15,18 @@ import android.text.Html;
 
 public  class Utils {
 	public static int getId(String str, Context ctx){
-		return ctx.getResources().getIdentifier(str, "raw", "R");
+		return ctx.getResources().getIdentifier(str, "raw", "com.mru.mrnicoquitter");
 	}
 	public static InputStream getInputStreambyName(String str, Context ctx){
 		Resources rr = ctx.getResources();
 		return  rr.openRawResource(rr.getIdentifier(str, "raw", "com.mru.mrnicoquitter"));           
 	}
 
+	public static InputStream getInputStreamById(int id, Context ctx){
+		Resources rr = ctx.getResources();
+		return  rr.openRawResource(id);           
+	}
+	
     public static String getRawResourceContent(String filename, Context ctx){
 
  		StringBuffer sb = new StringBuffer();
@@ -43,7 +48,27 @@ public  class Utils {
 		}
 		return sb.toString();
     }
-    
+    public static String getRawResourceContentById(int id, Context ctx){
+
+ 		StringBuffer sb = new StringBuffer();
+
+	  InputStreamReader in= new InputStreamReader(Utils.getInputStreamById(id, ctx));
+	    BufferedReader bin= new BufferedReader(in);
+
+
+ 		String s;
+ 		try {
+			while ((s = bin.readLine()) != null) {
+				System.out.println(s);
+				sb.append(s);
+			}
+
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return sb.toString();
+    }    
 
 	public static String getPrefsContent(String filename) {
 		FileReader fr;

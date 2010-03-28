@@ -29,6 +29,8 @@ public class HTMLListActivity extends ListActivity {
         filesEntries.add("a2_info_tabaquismo");
         filesEntries.add("a3_tests");
         filesEntries.add("diez_mandamientos");
+        filesEntries.add("test");
+        filesEntries.add("assets");
         
         
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this, 
