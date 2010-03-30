@@ -42,3 +42,17 @@
 		<script src="../raw/testjs.js" type="text/javascript"/>
 		
 		<img src="../drawable/etapa1.png" alt="sdfoji"></img>
+		
+		
+		<link rel="stylesheet" type="text/css" href="file:///android_asset/css/filefeaturedcontentglider.css" />
+
+<script type="text/javascript" src="file:///android_asset/js/featuredcontentglider.js">
+
+/***********************************************
+* Featured Content Glider script- (c) Dynamic Drive DHTML code library (www.dynamicdrive.com)
+* Visit http://www.dynamicDrive.com for hundreds of DHTML scripts
+* This notice must stay intact for legal use
+***********************************************/
+
+</script>
+		
