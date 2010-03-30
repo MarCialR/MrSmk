@@ -30,7 +30,7 @@ public class HTMLListActivity extends ListActivity {
         filesEntries.add("a3_tests");
         filesEntries.add("diez_mandamientos");
         filesEntries.add("test");
-        filesEntries.add("assets");
+        filesEntries.add("mitos_del_tabaco");
         
         
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this, 
