@@ -11,6 +11,8 @@
 
 
 
+
+
 	      // Save user preferences. We need an Editor object to
 	      // make changes. All objects are from android.context.Context
 	      SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
@@ -19,7 +21,7 @@
 
 	      // Don't forget to commit your edits!!!
 	      editor.commit();
-	           
+      
 	      
 	      
 	      

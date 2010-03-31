@@ -17,6 +17,8 @@ public class HTMLViewer extends Activity {
 		WebView temp_WebView = (WebView) findViewById(R.id.webview);
 		temp_WebView.getSettings().setJavaScriptEnabled(true);
 		temp_WebView.getSettings().setLoadsImagesAutomatically(true);
+		temp_WebView.setBackgroundColor(R.color.dark);
+		temp_WebView.getSettings().setJavaScriptCanOpenWindowsAutomatically(true);
 		temp_WebView.loadUrl("file:///android_asset/" + filename + ".html");
 
 	}
