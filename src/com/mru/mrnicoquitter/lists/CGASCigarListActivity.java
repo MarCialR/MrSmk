@@ -1,5 +1,5 @@
 package com.mru.mrnicoquitter.lists;
-
+/*
 import java.util.ArrayList;
 import java.util.Iterator;
 import java.util.List;
@@ -12,8 +12,8 @@ import android.widget.ListView;
 
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.beans.CigarGroup;
-
-public class CGASCigarListActivity extends ListView {
+*/
+public class CGASCigarListActivity {/*extends ListView {
 
 	public CGASCigarListActivity(Context context) {
 		super(context);
@@ -65,7 +65,7 @@ public class CGASCigarListActivity extends ListView {
     private class GroupItem extends LinearLayout {
     // Layout para poder poner varios views dentro
 
-    /* VARIABLES MIEMBRO */
+    //VARIABLES MIEMBRO 
     	Context mContext;
 // el constructor
 
@@ -83,13 +83,14 @@ public class CGASCigarListActivity extends ListView {
 // cada GroupItem representa un grupo con su subgrupo de contactos. Por eso los parámetros.
             LinearLayout content = new LinearLayout(mContext);
             content.setOrientation(HORIZONTAL);
-	    content.setGravity(Gravity.CENTER_VERTICAL);
+            content.setGravity(Gravity.CENTER_VERTICAL);
 // esto es el contenedor  principal de las views de la fila.
 
-/* Poblar de contenido el layout */
-/* Los elementos que quieras que tengan las acciones, sólo tienes que ponerles un Listener */
+// Poblar de contenido el layout 
+// Los elementos que quieras que tengan las acciones, sólo tienes que ponerles un Listener 
 
 // Cuando todo está OK, añadimos el layout a la clase
             addView(content, new LinearLayout.LayoutParams(LayoutParams.FILL_PARENT, LayoutParams.WRAP_CONTENT));
         }}
+*/
 }

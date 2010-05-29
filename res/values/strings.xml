@@ -2,4 +2,5 @@
 <resources>
     <string name="app_name">Mr Quitter</string>
     <string name="success">Added!</string>
+    <string name="Btn_load_cigars_file">Load File</string>
 </resources>

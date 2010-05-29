@@ -19,7 +19,7 @@ import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
-import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.EncuestaListActivity;
 import com.mru.mrnicoquitter.lists.HTMLListActivity;
 import com.mru.mrnicoquitter.lists.PrefsListActivity;
@@ -27,14 +27,15 @@ import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
 
 public class DevelopingActivity extends Activity{
 
 	private State state;
 	private static OnClickListener  prefsListListener, encuestasListListener, htmlListListener, canvasButtonListener, timelineButtonListener, sendListener,
-			 notificarOnOffListener, notificarListener, runListener;
+			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
 
-	private static Button prefsListButton, encuestasListButton, htmlListButton, canvasButton, timelineButton, sendButton, notifButton;
+	private static Button prefsListButton, encuestasListButton, htmlListButton, canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 
@@ -137,6 +138,15 @@ public class DevelopingActivity extends Activity{
 			}
 		};
 		prefsListButton.setOnClickListener(prefsListListener);
+		
+		loadCigarFileButton= (Button) findViewById(R.id.loadCigarFileButton);
+		loadCigarFileListener = new OnClickListener() {
+			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),LoadCigarsFileActivity.class);
+				startActivityForResult(myIntent, 0);
+			}
+		};
+		loadCigarFileButton.setOnClickListener(loadCigarFileListener);		
 
 		
 				encuestasListButton = (Button) findViewById(R.id.EncuestasListButton);
@@ -195,9 +205,11 @@ public class DevelopingActivity extends Activity{
 				emailIntent.setType("plain/text");
 				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcialemilio@gmail.com" });
 				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
-				String dbToSave = MyDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
-				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
-				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+				//String dbToSave = CigarDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
+				String dbToSave = CigarDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSendAsJSON();
+				Log.d("DevelopingActivity", dbToSave);
+//				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
+//				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 			}
 		};
 		sendButton.setOnClickListener(sendListener);

@@ -1,10 +1,12 @@
 package com.mru.mrnicoquitter.beans;
 
+import java.io.Serializable;
 import java.util.Date;
 
 import android.content.Context;
 
-public class Cigar implements Comparable<Cigar>{
+@SuppressWarnings("serial")
+public class Cigar implements Comparable<Cigar>, Serializable{
 	private int id;
 	private String dateStr;
 	private int tipo;

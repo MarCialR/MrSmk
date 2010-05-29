@@ -1,6 +1,7 @@
 package com.mru.mrnicoquitter.db;
 
-import com.mru.mrnicoquitter.beans.Cigar;
+import java.util.ArrayList;
+import java.util.List;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -8,20 +9,13 @@ import android.database.*;
 import android.database.sqlite.*;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
-public class MyDBAdapter {
-	
-	   private static MyDBAdapter INSTANCE;
 
-	   public static MyDBAdapter getInstance(Context c) {
-		   if (INSTANCE == null){
-			   INSTANCE = new MyDBAdapter(c);
-			   return INSTANCE;
-		   } else
-			   return INSTANCE;
-	   }
-	
-	
-	private static final String DATABASE_NAME 	= "mrQuitter.db";
+import com.google.gson.Gson;
+import com.mru.mrnicoquitter.beans.Cigar;
+import static com.mru.mrnicoquitter.db.DBConstants.*;
+
+public class CigarDBAdapter {
+
 	private static final String DATABASE_TABLE 	= "cigars";
 	private static final int DATABASE_VERSION 	= 1;
 	public static final String KEY_ID			= "_id";	// The index (key) column name for use in where clauses.
@@ -32,11 +26,21 @@ public class MyDBAdapter {
 	private static final String DATABASE_CREATE = "create table " +	DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_DATE + " date not null, "+ KEY_TYPE + " integer not null);";
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
-	private myDbHelper dbHelper;				// Database open/upgrade helper
+	private myDbHelper dbHelper;				// Database open/upgrade helper	
+	
+	private static CigarDBAdapter INSTANCE;
 
-	private MyDBAdapter(Context _context) {
-		context = _context;
-		dbHelper = new myDbHelper(context, DATABASE_NAME, null,DATABASE_VERSION);
+	public static CigarDBAdapter getInstance(Context c) {
+		if (INSTANCE == null) {
+			INSTANCE = new CigarDBAdapter(c);
+			return INSTANCE;
+		} else
+			return INSTANCE;
+	}
+
+	private CigarDBAdapter(Context _context) {
+		context 	= _context;
+		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DATABASE_VERSION);
 		try {
 			db = dbHelper.getWritableDatabase();
 		}
@@ -45,13 +49,29 @@ public class MyDBAdapter {
 		}
 	}
 
-	public MyDBAdapter open() throws SQLException {
+	public CigarDBAdapter open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
 		return this;
 	}
 	
 	public void close() {
 		db.close();
+	}
+	public void bulkInsert(List<Cigar> list){
+
+		try{
+			ContentValues 	newValues = new ContentValues();
+			for (Cigar cigar:list){
+				newValues.remove(KEY_DATE);
+				newValues.remove(KEY_TYPE);
+				newValues.put(KEY_DATE, cigar.getDateStr());
+				newValues.put(KEY_TYPE, cigar.getId());
+				db.insert(DATABASE_TABLE, null, newValues);
+			}
+		}catch (Exception e) {
+			close();
+		}
+		return;	
 	}
 	
 	public long insertEntry(Cigar _myObject) {
@@ -81,13 +101,35 @@ public class MyDBAdapter {
         if (c.moveToFirst()){
         	do {
         		Cigar cigar = new Cigar();
-        		cigar.setDateStr(c.getString(MyDBAdapter.COLUMN_DATE));
-        		cigar.setTipo(c.getInt(MyDBAdapter.COLUMN_TYPE));
+        		cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
+        		cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+        		
         		sb.append(cigar.toSave()).append("\n");
         	}while (c.moveToNext());
         }
         return sb.toString();
 	}
+	public String getAllEntriesToSendAsJSON(){
+		Gson gson = new Gson();
+		List<Cigar> cigars = new ArrayList<Cigar>();
+    	Cursor c = getAllEntries();
+        if (c.moveToFirst()){
+        	do {
+        		Cigar cigar = new Cigar();
+        		cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
+        		cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+        		
+        		cigars.add(cigar);
+        	}while (c.moveToNext());
+        }
+        return gson.toJson(cigars);
+	}
+	
+	/*
+BagOfPrimitives obj = new BagOfPrimitives();
+Gson gson = new Gson();
+String json = gson.toJson(obj);  
+	 */
 	
 	public Cigar getEntry(long _rowIndex) {
 		Cigar objectInstance = new Cigar();
@@ -96,7 +138,7 @@ public class MyDBAdapter {
 		return objectInstance;
 	}
 	public int updateEntry(long _rowIndex, Cigar _myObject) {
-		String where = KEY_ID + "=" + _rowIndex;
+		String where 				= KEY_ID + "=" + _rowIndex;
 		ContentValues contentValues = new ContentValues();
 		//TODO fill in the ContentValue based on the new object
 		return db.update(DATABASE_TABLE, contentValues, where, null);

@@ -18,15 +18,14 @@ import com.mru.mrnicoquitter.viewers.TextViewer;
 public class PrefsListActivity extends ListActivity {
 
 	private List<String> directoryEntries = new ArrayList<String>();
-	File prefsDirectory = new File(
-			"/data/data/com.mru.mrnicoquitter/shared_prefs/");
+	File prefsDirectory;
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
 		AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
 
-		File prefsDirectory = new File(
+		prefsDirectory = new File(
 				"/data/data/com.mru.mrnicoquitter/shared_prefs/");
 
 		int currentPathStringLenght = prefsDirectory.getAbsolutePath().length();

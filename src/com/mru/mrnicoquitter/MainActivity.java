@@ -18,7 +18,7 @@ import android.widget.TimePicker;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
-import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
@@ -99,7 +99,7 @@ public class MainActivity extends Activity {
 				}
 				cigar.setDateStr(sdf.format(c.getTime()));
 				cigar.setId((int) tipo.getSelectedItemId());
-				MyDBAdapter dba = MyDBAdapter
+				CigarDBAdapter dba = CigarDBAdapter
 						.getInstance(getApplicationContext());
 				dba.insertEntry(cigar);
 				AppUtils.showToastShort(getApplicationContext(),

@@ -15,7 +15,7 @@ public abstract class State {
 	protected SharedPreferences globalPreferences;
 	protected SharedPreferences statePreferences;
 	protected Context myContext;
-	Class active;
+	Class<?> active;
 
 	
 	protected void initSuper(String stateStr){
@@ -25,12 +25,14 @@ public abstract class State {
 		}
 	    SharedPreferences.Editor editor = globalPreferences.edit();
 	    editor.putString ("state", stateStr);
-		if (false){
+		/* No se para que era esto => lo comento
+		 * if (false){
 	      editor.putBoolean("debug", true);
 		} else {
 	      editor.putBoolean("debug", false);
-		
-		}
+		}*/
+		editor.putBoolean("debug", false);
+
 		editor.commit();	
 	      
 		if (!globalPreferences.getBoolean("created",false)){
@@ -75,7 +77,7 @@ public abstract class State {
 	}
 
 	
-	public Class getActivity() {
+	public Class<?> getActivity() {
 		return active;
 	}
 

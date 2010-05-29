@@ -26,6 +26,8 @@
 	    <activity android:name="com.mru.mrnicoquitter.lists.PrefsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 	    <activity android:name="com.mru.mrnicoquitter.lists.EncuestaListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 	    <activity android:name="com.mru.mrnicoquitter.lists.HTMLListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+
+	    <activity android:name="com.mru.mrnicoquitter.utils.LoadCigarsFileActivity" android:theme="@android:style/Theme.NoTitleBar"/>	    
 	    
 	    <activity android:name="com.mru.mrnicoquitter.viewers.TextViewer" android:theme="@android:style/Theme.NoTitleBar"/>	    
 	    <activity android:name="com.mru.mrnicoquitter.viewers.HTMLViewer" android:theme="@android:style/Theme.NoTitleBar"/>

@@ -2,7 +2,7 @@ package com.mru.mrnicoquitter.state;
 
 import static com.mru.mrnicoquitter.utils.Global.TD_PREFS;
 import android.content.Context;
-import android.content.SharedPreferences;
+import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.util.Log;
 
@@ -17,9 +17,10 @@ public class TD_State extends State {
 		statePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
 		String activeStr = statePreferences.getString("active", "");
 		if ("".equals(activeStr) || "MainActivity".equals(activeStr)){
-	      SharedPreferences.Editor editor = statePreferences.edit();
-	      editor.putString("active", "com.mru.mrnicoquitter.MainActivity");
-	      editor.commit();
+			activeStr		= "com.mru.mrnicoquitter.MainActivity";
+			Editor editor 	= statePreferences.edit();
+			editor.putString("active", activeStr);
+			editor.commit();
 		}
 		try {
 			active =  Class.forName(activeStr);

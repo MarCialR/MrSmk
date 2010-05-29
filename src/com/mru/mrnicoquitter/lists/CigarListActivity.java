@@ -21,7 +21,7 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mru.mrnicoquitter.beans.Cigar;
-import com.mru.mrnicoquitter.db.MyDBAdapter;
+import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.utils.DateUtils;
 
 public class CigarListActivity extends ListActivity {
@@ -38,7 +38,30 @@ public class CigarListActivity extends ListActivity {
 
 		this.setListAdapter(IAA);
 	}
+	private void loadCigars() {
+		CigarDBAdapter dba = CigarDBAdapter.getInstance(getApplicationContext());
+		Cursor c = dba.getAllEntries();
+		
+		SimpleDateFormat sdf = new SimpleDateFormat(
+				"yyyy-MM-dd'T'HH:mm:ss.SSS");
 
+		if (c.moveToFirst()) {
+			do {
+				Cigar cigar = new Cigar();
+				cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
+				cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+				try {
+					cigar.setDate(sdf.parse(c.getString(CigarDBAdapter.COLUMN_DATE)));
+				} catch (ParseException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				cigarEntries.add(cigar);
+			} while (c.moveToNext());
+		}
+		Collections.sort(cigarEntries);
+		Collections.reverse(cigarEntries);
+	}
 	private void transform(){
 		int counter = 0;
 		Calendar hoy = Calendar.getInstance();
@@ -102,30 +125,7 @@ public class CigarListActivity extends ListActivity {
 		return cigarStrings;
 	}
 */
-	private void loadCigars() {
-		MyDBAdapter dba = MyDBAdapter.getInstance(getApplicationContext());
-		Cursor c = dba.getAllEntries();
-		
-		SimpleDateFormat sdf = new SimpleDateFormat(
-				"yyyy-MM-dd'T'HH:mm:ss.SSS");
 
-		if (c.moveToFirst()) {
-			do {
-				Cigar cigar = new Cigar();
-				cigar.setDateStr(c.getString(MyDBAdapter.COLUMN_DATE));
-				cigar.setTipo(c.getInt(MyDBAdapter.COLUMN_TYPE));
-				try {
-					cigar.setDate(sdf.parse(c.getString(MyDBAdapter.COLUMN_DATE)));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				cigarEntries.add(cigar);
-			} while (c.moveToNext());
-		}
-		Collections.sort(cigarEntries);
-		Collections.reverse(cigarEntries);
-	}
 	
 	public class ImageAndTextListAdapter extends ArrayAdapter<ImageAndText> {
 		List<ImageAndText> yyyyyyyyyyyyyyy;

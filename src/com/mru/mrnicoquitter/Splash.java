@@ -34,7 +34,7 @@ public class Splash extends Activity {
                
                public void run() { 
                     /* Create an Intent that will start the Menu-Activity. */ 
-            	   Class goTo = state.getActivity();
+            	   Class<?> goTo = state.getActivity();
                     Intent mainIntent = new Intent(com.mru.mrnicoquitter.Splash.this,goTo); 
                     Splash.this.startActivity(mainIntent); 
                     Splash.this.finish(); 
