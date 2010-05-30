@@ -38,19 +38,16 @@ public class DevelopingActivity extends Activity{
 	private static Button prefsListButton, encuestasListButton, htmlListButton, canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
-
-
-
 	
-	private NotificationService appService=null;
+	private NotificationService appService	=	null;
 	
-	private ServiceConnection onService=new ServiceConnection() {
+	private ServiceConnection onService	=	new ServiceConnection() {
 		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-			appService=((NotificationService.LocalBinder)rawBinder).getService();
+			appService	=	((NotificationService.LocalBinder)rawBinder).getService();
 		}
  
 		public void onServiceDisconnected(ComponentName className) {
-			appService=null;
+			appService	=	null;
 		}
 	};	
 	

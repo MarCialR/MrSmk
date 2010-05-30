@@ -5,10 +5,14 @@ import android.content.SharedPreferences;
 import android.view.Gravity;
 import android.widget.Toast;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.state.State;
 import com.mru.mrnicoquitter.state.StateManagerSGTon;
 
 public class AppUtils {
+	
+	//public final static SharedPreferences = StateManagerSGTon.getState(getApplicationContext()).getGlobalPreferences();
+	
 	
 	public final static  void showToastShort(Context ctx, String message){
 		showToast(ctx, message, Toast.LENGTH_SHORT);
@@ -29,7 +33,7 @@ public class AppUtils {
 		State state = StateManagerSGTon.getState(ctx);
 		SharedPreferences prefs = state.getGlobalPreferences();
 		
-		if (prefs.getBoolean("debug", false))
+		if (prefs.getBoolean(DEBUG, false))
 			showToast(ctx, message, Toast.LENGTH_SHORT);
 	}	
 

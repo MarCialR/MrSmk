@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Mr Quitter</string>
+    <string name="success">Added!</string>
+    <string name="Btn_load_cigars_file">Load File</string>
+    <string name="T_CIGARRO_GUARDADO">!!Cigar Saved!"</string>
+    
+    <string name="NOT_TICKER_TEXT">Text to display in the status bar when the notification is launched</string>
+	<string name="NOT_EXTENDED_STATUS_TEXT">Text to display in the extended status window</string>
+	<string name="NOT_EXPANDED_TITLE">Notification Title</string>
+</resources>

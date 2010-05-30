@@ -20,6 +20,7 @@ import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.utils.DateUtils;
@@ -146,7 +147,7 @@ public class CigarListActivity extends ListActivity {
 	        // Load the image and set it on the ImageView
 	        ImageView imageView = new ImageView(getApplicationContext());
 	        Resources res = getApplicationContext().getResources();
-	        int identif = res.getIdentifier("ty"+imageAndText.getImageUrl(), "drawable", "com.mru.mrnicoquitter");
+	        int identif = res.getIdentifier("ty"+imageAndText.getImageUrl(), "drawable", PKG_BASE);
 	        
 	        
 	        Drawable daw = res.getDrawable(identif);

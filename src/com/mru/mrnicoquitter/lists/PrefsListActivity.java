@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.viewers.TextViewer;
@@ -25,8 +26,7 @@ public class PrefsListActivity extends ListActivity {
 
 		AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
 
-		prefsDirectory = new File(
-				"/data/data/com.mru.mrnicoquitter/shared_prefs/");
+		prefsDirectory = new File(DIR_SHARED_PREFS);
 
 		int currentPathStringLenght = prefsDirectory.getAbsolutePath().length();
 
@@ -48,7 +48,7 @@ public class PrefsListActivity extends ListActivity {
 				+ this.directoryEntries.get(position);
 
 		Intent i = new Intent(this, TextViewer.class);
-		i.putExtra("clickedFileLocation", clickedFileLocation);
+		i.putExtra(STR_EXTRA_CLICKED_FILE_LOCATION, clickedFileLocation);
 		startActivity(i);
 
 	}

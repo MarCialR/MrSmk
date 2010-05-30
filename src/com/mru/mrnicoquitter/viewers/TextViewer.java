@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.TextView;
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.utils.Utils;
 
@@ -16,8 +17,8 @@ public class TextViewer extends Activity {
 		TextView textArea 			= (TextView) findViewById(R.id.TextArea);
 
 		Intent i 					= getIntent();
-		String clickedFileLocation 	= i.getStringExtra("clickedFileLocation");
-		String fullContents 		= i.getStringExtra("fullContents");
+		String clickedFileLocation 	= i.getStringExtra(STR_EXTRA_CLICKED_FILE_LOCATION);
+		String fullContents 		= i.getStringExtra(STR_EXTRA_FULL_CONTENTS);
 		String text 				= null;
 
 		if (null!=fullContents && !"".equals(fullContents))

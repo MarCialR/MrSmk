@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.webkit.WebView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 
 public class HTMLViewer extends Activity {
@@ -11,7 +12,7 @@ public class HTMLViewer extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		String filename = getIntent().getStringExtra("fileName");
+		String filename = getIntent().getStringExtra(STR_EXTRA_FILENAME);
 
 		setContentView(R.layout.web_view);
 		WebView temp_WebView = (WebView) findViewById(R.id.webview);

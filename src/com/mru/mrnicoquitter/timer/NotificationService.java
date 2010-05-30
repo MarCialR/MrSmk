@@ -20,10 +20,14 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class NotificationService extends Service {
 	private NotificationManager notificationManager;	
-	private static MainActivity MAIN_ACTIVITY;
-	private Timer timer = new Timer();
-	private static final long UPDATE_INTERVAL = 3000;
-	private final Binder binder=new LocalBinder();
+	Notification notification;
+	private Timer timer 						= new Timer();
+	private static final long UPDATE_INTERVAL 	= 3000;
+	private final Binder binder					= new LocalBinder();
+	int icon;
+	long when;
+	
+	
 	synchronized public void setNotification(String notifText, int segsToWait) {
 		setToast(notifText,segsToWait);
 	}
@@ -36,38 +40,23 @@ public class NotificationService extends Service {
 	private void setToast(String s, int e){
 		// La unica puta forma qu eencontreeeeeee!!!!!			
 
+		Context context 	= getApplicationContext();
+		notificationManager = (NotificationManager)getSystemService(Context.NOTIFICATION_SERVICE);		
+		icon 				= R.drawable.no_smoking_icon;
+		when 				= System.currentTimeMillis();
+		notification 		= new Notification(icon, getString(R.string.NOT_TICKER_TEXT), when);
 		
-		String svcName = Context.NOTIFICATION_SERVICE;
-
-		notificationManager = (NotificationManager)getSystemService(svcName);		
-		
-		// Choose a drawable to display as the status bar icon
-		int icon = R.drawable.no_smoking_icon;
-		// Text to display in the status bar when the notification is launched
-		String tickerText = "Notification";
-		// The extended status bar orders notification in time order
-		long when = System.currentTimeMillis();
-		Notification notification = new Notification(icon, tickerText, when);
-		
-		Context context = getApplicationContext();
-		// Text to display in the extended status window
-		String expandedText = "Extended status text";
-		// Title for the expanded status
-		String expandedTitle = "Notification Title";
 		// Intent to launch an activity when the extended text is clicked
 		Intent intent = new Intent(this, MainActivity.class);
 		PendingIntent launchIntent = PendingIntent.getActivity(context, 0, intent, 0);
-		notification.setLatestEventInfo(context,expandedTitle,
-				expandedText,
-				launchIntent);
+		notification.setLatestEventInfo(context,
+										getString(R.string.NOT_EXPANDED_TITLE),
+										getString(R.string.NOT_EXTENDED_STATUS_TEXT),
+										launchIntent);
 //		long[] vibrate = new long[] { 1000, 1000, 1000, 1000, 1000 };
 //		notification.vibrate = vibrate;
 		int notificationRef = 1;
 		notificationManager.notify(notificationRef, notification);		
-		
-		
-		
-		
 		
 		Handler mHandler = new Handler();
 		Runnable makeToast = new MyRunnable(s,e);
@@ -80,7 +69,8 @@ public class NotificationService extends Service {
 		  private String value2;
 		 
 		  public MyRunnable(String s, int e) {
-		    value2 = s;}
+		    value2 = s;
+		    }
 		 
 		  public void run() { //implement run using value1 and value2
 				AppUtils.showToastShort(getApplicationContext(), this.value2);
@@ -91,11 +81,11 @@ public class NotificationService extends Service {
 				notificationManager.cancel(1);
 				
 				// Choose a drawable to display as the status bar icon
-				int icon = R.drawable.smoking_icon_transp;
+				icon = R.drawable.smoking_icon_transp;
 				// Text to display in the status bar when the notification is launched
 				String tickerText = "Notification";
 				// The extended status bar orders notification in time order
-				long when = System.currentTimeMillis();
+				when = System.currentTimeMillis();
 				Notification notification = new Notification(icon, tickerText, when);
 				
 				Context context = getApplicationContext();
@@ -123,9 +113,7 @@ public class NotificationService extends Service {
 //	public static void setUpdateListener(NotifListener l) {
 //		NOTIF_LISTENER = l;
 //		}
-	public static void setMainActivity(MainActivity activity) {
-		MAIN_ACTIVITY = activity;
-	}
+
 
 	/** not using ipc... dont care about this method */
 	public IBinder onBind(Intent intent) {
@@ -139,8 +127,6 @@ public class NotificationService extends Service {
 		// init the service here
 		_startService();
 
-		if (MAIN_ACTIVITY != null)
-			AppUtils.showToastShort(MAIN_ACTIVITY, "MyService started");
 	}
 
 	@Override
@@ -149,15 +135,13 @@ public class NotificationService extends Service {
 
 		_shutdownService();
 
-		if (MAIN_ACTIVITY != null)
-			AppUtils.showToastShort(MAIN_ACTIVITY.getApplicationContext(), "MyService stopped");
 	}
 
 	private void _startService() {
 		
 		timer.schedule(new TimerTask() {
 			public void run() {
-				AppUtils.showToastShort(MAIN_ACTIVITY.getApplicationContext(), "MyService running");
+
 			}
 		}, UPDATE_INTERVAL);
 		Log.i(getClass().getSimpleName(), "Timer started!!!");

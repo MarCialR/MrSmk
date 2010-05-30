@@ -3,7 +3,7 @@ package com.mru.mrnicoquitter.state;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.util.Log;
-import static com.mru.mrnicoquitter.utils.Global.*;
+import static com.mru.mrnicoquitter.Global.*;
 
 public class StateManagerSGTon {
 

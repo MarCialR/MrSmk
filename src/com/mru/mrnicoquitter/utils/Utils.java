@@ -14,6 +14,7 @@ import java.util.List;
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
 import com.mru.mrnicoquitter.beans.Cigar;
+import static com.mru.mrnicoquitter.Global.*;
 
 import android.content.Context;
 import android.content.Intent;
@@ -22,14 +23,12 @@ import android.content.res.Resources;
 
 public class Utils {
 	public static int getId(String str, Context ctx) {
-		return ctx.getResources().getIdentifier(str, "raw",
-				"com.mru.mrnicoquitter");
+		return ctx.getResources().getIdentifier(str, DEF_TYPE_RAW,PKG_BASE);
 	}
 
 	public static InputStream getInputStreambyName(String str, Context ctx) {
 		Resources rr = ctx.getResources();
-		return rr.openRawResource(rr.getIdentifier(str, "raw",
-				"com.mru.mrnicoquitter"));
+		return rr.openRawResource(rr.getIdentifier(str, DEF_TYPE_RAW,PKG_BASE));
 	}
 
 	public static InputStream getInputStreamById(int id, Context ctx) {
@@ -54,7 +53,7 @@ public class Utils {
 		try {
 			while ((s = bin.readLine()) != null) {
 				System.out.println(s);
-				sb.append(s).append("\n");
+				sb.append(s).append(NEWLINE);
 			}
 
 		} catch (IOException e) {
@@ -179,7 +178,7 @@ public class Utils {
 
 	public static String getXXX(Intent i, Context ctx) {
 
-		String str2 		= i.getStringExtra("fileName");
+		String str2 		= i.getStringExtra(STR_EXTRA_FILENAME);
 		String styledText 	= "";
 		if ( null != str2 && !str2.equals("") )
 			styledText = Utils.getRawResourceContent(str2, ctx);

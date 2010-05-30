@@ -1,6 +1,6 @@
 package com.mru.mrnicoquitter.state;
 
-import static com.mru.mrnicoquitter.utils.Global.GLOBAL_PREFS;
+import static com.mru.mrnicoquitter.Global.*;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -24,18 +24,11 @@ public abstract class State {
 
 		}
 	    SharedPreferences.Editor editor = globalPreferences.edit();
-	    editor.putString ("state", stateStr);
-		/* No se para que era esto => lo comento
-		 * if (false){
-	      editor.putBoolean("debug", true);
-		} else {
-	      editor.putBoolean("debug", false);
-		}*/
-		editor.putBoolean("debug", false);
-
+	    editor.putString (PREF_ACTUAL_STATE, stateStr);
+		editor.putBoolean(DEBUG, false);
 		editor.commit();	
 	      
-		if (!globalPreferences.getBoolean("created",false)){
+		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
 			//AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
 			fillStartingGlobalPreferences(globalPreferences);
 		}		

@@ -13,6 +13,7 @@ import android.widget.TableLayout;
 import android.widget.TableRow;
 import android.widget.TextView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
@@ -86,7 +87,7 @@ public class EncuestaActivity extends Activity {
         	EncuestaRadioButton rb;
         	item 				= it.next();
         	
-            questionText.setText("\n"+item.getQues()+"\n");
+            questionText.setText(NEWLINE+item.getQues()+NEWLINE);
             questionText.setTextSize(20f);
             //questionText.setTextColor(R.color.green_dark);
             questionText.setGravity(Gravity.CENTER_HORIZONTAL);           

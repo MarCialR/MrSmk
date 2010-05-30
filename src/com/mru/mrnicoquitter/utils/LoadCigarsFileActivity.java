@@ -10,11 +10,11 @@ import android.content.pm.PackageManager.NameNotFoundException;
 import android.content.res.AssetManager;
 import android.content.res.Resources;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
@@ -25,8 +25,7 @@ public class LoadCigarsFileActivity extends ListActivity {
 	
 
 	private List<String> directoryEntries = new ArrayList<String>();
-	File prefsDirectory = new File(
-			"/data/data/com.mru.mrnicoquitter/shared_prefs/");
+	File prefsDirectory = new File(DIR_SHARED_PREFS);
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
@@ -57,12 +56,12 @@ public class LoadCigarsFileActivity extends ListActivity {
 				+ */this.directoryEntries.get(position);
 		
 		Intent i = new Intent(this, TextViewer.class);
-		i.putExtra("clickedFileLocation", clickedFileLocation);
+		i.putExtra(STR_EXTRA_CLICKED_FILE_LOCATION, clickedFileLocation);
 
 
 	    Resources res=null;
 		try {
-			res = createPackageContext("com.mru.mrnicoquitter", 0).getResources();
+			res = createPackageContext(PKG_BASE, 0).getResources();
 		} catch (NameNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

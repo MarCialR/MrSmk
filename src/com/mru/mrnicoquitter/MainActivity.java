@@ -102,8 +102,7 @@ public class MainActivity extends Activity {
 				CigarDBAdapter dba = CigarDBAdapter
 						.getInstance(getApplicationContext());
 				dba.insertEntry(cigar);
-				AppUtils.showToastShort(getApplicationContext(),
-						"Cigarro guardado!");
+				AppUtils.showToastShort(getApplicationContext(),getString(R.string.T_CIGARRO_GUARDADO));
 			}
 		};
 

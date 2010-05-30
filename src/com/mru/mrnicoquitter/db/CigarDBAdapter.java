@@ -12,7 +12,7 @@ import android.util.Log;
 
 import com.google.gson.Gson;
 import com.mru.mrnicoquitter.beans.Cigar;
-import static com.mru.mrnicoquitter.db.DBConstants.*;
+import static com.mru.mrnicoquitter.Global.*;
 
 public class CigarDBAdapter {
 
@@ -104,7 +104,7 @@ public class CigarDBAdapter {
         		cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
         		cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
         		
-        		sb.append(cigar.toSave()).append("\n");
+        		sb.append(cigar.toSave()).append(NEWLINE);
         	}while (c.moveToNext());
         }
         return sb.toString();

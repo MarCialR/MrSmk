@@ -11,6 +11,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.viewers.HTMLViewer;
@@ -45,7 +46,7 @@ public class HTMLListActivity extends ListActivity {
 
 		TextView tv = (TextView)v;
 		Intent i = new Intent( getApplicationContext(), HTMLViewer.class );
-		i.putExtra( "fileName", tv.getText());
+		i.putExtra( STR_EXTRA_FILENAME, tv.getText());
 		startActivity( i );
 
 	}
