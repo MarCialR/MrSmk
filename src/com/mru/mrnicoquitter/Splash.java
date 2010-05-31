@@ -1,9 +1,9 @@
 package com.mru.mrnicoquitter;
 
-import static com.mru.mrnicoquitter.Global.SPLASH_DISPLAY_LENGHT;
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.state.State;
-import com.mru.mrnicoquitter.state.StateManagerSGTon;
+//import com.mru.mrnicoquitter.stage.Stage;
+//import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 
 import android.app.Activity; 
 import android.content.Intent; 
@@ -17,7 +17,7 @@ public class Splash extends Activity {
      // =========================================================== 
       
 
-     private State state;
+     //private Stage stage;
 
      // =========================================================== 
      // "Constructors" 
@@ -29,17 +29,23 @@ public class Splash extends Activity {
           super.onCreate(icicle); 
           setContentView(R.layout.splash_screen); 
            
-  		state = StateManagerSGTon.getState(getApplicationContext());
+  		//stage = StageManagerSGTon.getStage(getApplicationContext());
           /* New Handler to start the Menu-Activity 
            * and close this Splash-Screen after some seconds.*/ 
           new Handler().postDelayed(new Runnable(){ 
                
                public void run() { 
                    /* Create an Intent that will start the Menu-Activity. */ 
-            	   Class<?> goTo = state.getActivity();
-                   Intent mainIntent = new Intent(com.mru.mrnicoquitter.Splash.this,goTo); 
-                   Splash.this.startActivity(mainIntent); 
-                   Splash.this.finish(); 
+            	   Class<?> goTo;
+				try {
+					goTo = Class.forName(ACVTY_FLOW_CLASS);//stage.getActivity();
+					Intent mainIntent = new Intent(com.mru.mrnicoquitter.Splash.this,goTo); 
+					Splash.this.startActivity(mainIntent); 
+					Splash.this.finish(); 
+				} catch (ClassNotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
                } 
           }, SPLASH_DISPLAY_LENGHT); 
      } 

@@ -3,6 +3,7 @@
     <string name="app_name">Mr Quitter</string>
     <string name="success">Added!</string>
     <string name="Btn_load_cigars_file">Load File</string>
+    <string name="Btn_next">Next</string>
     <string name="T_CIGARRO_GUARDADO">!!Cigar Saved!"</string>
     
     <string name="NOT_TICKER_TEXT">Text to display in the status bar when the notification is launched</string>

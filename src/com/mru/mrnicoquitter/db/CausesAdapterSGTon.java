@@ -1,5 +1,7 @@
 package com.mru.mrnicoquitter.db;
 
+import com.mru.mrnicoquitter.R;
+
 import android.content.Context;
 
 public class CausesAdapterSGTon {
@@ -10,10 +12,10 @@ public class CausesAdapterSGTon {
 
    private CausesAdapterSGTon() {}
  
-   public static CausesAdapterSGTon getInstance(Context c, String [] s) {
+   public static CausesAdapterSGTon getInstance(Context c) {
 	   if (INSTANCE == null){
 		   INSTANCE = new CausesAdapterSGTon();
-		   list = new CausesAdapter(c, s);
+		   list = new CausesAdapter(c, c.getResources().getStringArray(R.array.cigars));
 		   return INSTANCE;
 	   } else
 		   return INSTANCE;

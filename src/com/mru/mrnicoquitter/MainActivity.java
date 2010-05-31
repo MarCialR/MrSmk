@@ -7,7 +7,10 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.ContextMenu;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -20,12 +23,13 @@ import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
-import com.mru.mrnicoquitter.state.State;
-import com.mru.mrnicoquitter.state.StateManagerSGTon;
+import com.mru.mrnicoquitter.stage.Stage;
+import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.ui.MrMenu;
 
 public class MainActivity extends Activity {
-	private State state;
+	private Stage stage;
 	private static OnClickListener saveListener, listListener, olvidoListener, developingListener;
 
 	private static Button saveButton, listButton, developingButton;
@@ -54,7 +58,7 @@ public class MainActivity extends Activity {
 		
 		AppUtils.showDebug(getApplicationContext(), "Main - onCreate!!");
 		
-		state = StateManagerSGTon.getState(getApplicationContext());
+		stage = StageManagerSGTon.getStage(getApplicationContext());
 		//bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		//setContentView(R.layout.main_scrollview_tablelayout);
 //		setContentView(R.layout.main_linear_layout);
@@ -62,11 +66,11 @@ public class MainActivity extends Activity {
 		
 									//OJO con este this
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		setContentView(state.getCommonLayout(inflater,R.layout.lay_content_main));
+		setContentView(stage.getCommonLayout(inflater,R.layout.lay_content_main));
 		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
-		String[] s = getResources().getStringArray(R.array.cigars);
-		CausesAdapter myAdapter = CausesAdapterSGTon.getInstance(getApplicationContext(), s).getList();
+
+		CausesAdapter myAdapter = CausesAdapterSGTon.getInstance(getApplicationContext()).getList();
 		tipo.setAdapter(myAdapter);
 
 		olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
@@ -169,5 +173,22 @@ public class MainActivity extends Activity {
 		return;
 		
 	}
+	
+	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+	// Menu button - option menu
+	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+
+	/** hook into menu button for activity */
+	@Override public boolean onCreateOptionsMenu(Menu menu) {
+	  MrMenu.populateMenu(this,menu);
+	  return super.onCreateOptionsMenu(menu);
+	}
+
+	/** when menu button option selected */
+	@Override public boolean onOptionsItemSelected(MenuItem item) {
+	  return MrMenu.applyMenuChoice(this,item) || super.onOptionsItemSelected(item);
+	}
+
+
 
 }

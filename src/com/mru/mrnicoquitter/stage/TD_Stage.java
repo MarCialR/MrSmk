@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.state;
+package com.mru.mrnicoquitter.stage;
 
 import static com.mru.mrnicoquitter.Global.*;
 import static com.mru.mrnicoquitter.Global.TD_PREFS;
@@ -9,17 +9,18 @@ import android.util.Log;
 
 import com.mru.mrnicoquitter.R;
 
-public class TD_State extends State {
+public class TD_Stage extends Stage {
 
 	
-	public TD_State(Context myContext){
-		this.myContext= myContext;
-		initSuper(TD_STATE);
-		statePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
-		String activeStr = statePreferences.getString(PREF_ACTIVE_ACVTY, EMPTY);
-		if (EMPTY.equals(activeStr) || ACVTY_MAIN.equals(activeStr)){
+	public TD_Stage(Context myContext){
+		this.myContext	= myContext;
+		subSTGsId 		= R.array.TD_Stages_Descriptions;
+		initSuper(TD_STAGE);
+		stagePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
+		String activeStr = stagePreferences.getString(PREF_ACTIVE_ACVTY, EMPTY);
+		if (EMPTY.equals(activeStr)){
 			activeStr		= ACVTY_MAIN_CLASS;
-			Editor editor 	= statePreferences.edit();
+			Editor editor 	= stagePreferences.edit();
 			editor.putString(PREF_ACTIVE_ACVTY, activeStr);
 			editor.commit();
 		}

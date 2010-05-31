@@ -26,8 +26,24 @@
         <item>ordenador</item>
 		<item>moto/coche</item>
     </string-array>
+    
+<integer-array name="S1_Stages_codes">
+	<item>345</item>
+</integer-array>
 
-    <!-- Used in View/Spinner1.java -->
+    <string-array name="TD_Stages_Descriptions">
+        <item>a1_bienvenida.html</item>
+        <item>t_fagerstrom.xml</item>
+        <item>a3_tests.html</item>
+        <item>t_glover_nilsson.xml</item>
+        <item>t_posibilidades_exito</item>
+    </string-array>
+        
+    <string-array name="S1_Stages_Descriptions">
+        <item>diez_mandamientos.html</item>
+        <item>mitos_del_tabaco.html</item>
+    </string-array>
+
     <string-array name="colors">
         <item>red</item>
         <item>orange</item>

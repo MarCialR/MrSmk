@@ -23,15 +23,15 @@ import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.EncuestaListActivity;
 import com.mru.mrnicoquitter.lists.HTMLListActivity;
 import com.mru.mrnicoquitter.lists.PrefsListActivity;
-import com.mru.mrnicoquitter.state.State;
-import com.mru.mrnicoquitter.state.StateManagerSGTon;
+import com.mru.mrnicoquitter.stage.Stage;
+import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
 
 public class DevelopingActivity extends Activity{
 
-	private State state;
+	private Stage stage;
 	private static OnClickListener  prefsListListener, encuestasListListener, htmlListListener, canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
 
@@ -55,15 +55,15 @@ public class DevelopingActivity extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		state = StateManagerSGTon.getState(getApplicationContext());
+		stage = StageManagerSGTon.getStage(getApplicationContext());
 		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		setContentView(state.getCommonLayout(inflater,R.layout.lay_content_developing));		
+		setContentView(stage.getCommonLayout(inflater,R.layout.lay_content_developing));		
 		
 //	       // Restore preferences
 //		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);
-//       //SharedPreferences settings = state.getPreferences();
+//       //SharedPreferences settings = stage.getPreferences();
 //       //Map<String,?> uu= settings.getAll();
 //       boolean silent = settings.getBoolean("silentMode", false);
 //       TextView messg = (TextView)findViewById(R.id.TextView01);
@@ -76,16 +76,16 @@ public class DevelopingActivity extends Activity{
 		
 		Button changeButton = (Button) findViewById(R.id.SetStateButton);
 		
-		OnClickListener changeStateListener = new OnClickListener() {
+		OnClickListener changeStageListener = new OnClickListener() {
 			public void onClick(View v) {
 				
 				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
-				StateManagerSGTon.setState(selected);
+				StageManagerSGTon.setStage(selected);
 
 
 			}
 		};
-		changeButton.setOnClickListener(changeStateListener);
+		changeButton.setOnClickListener(changeStageListener);
 		
 		
 		
@@ -146,15 +146,15 @@ public class DevelopingActivity extends Activity{
 		loadCigarFileButton.setOnClickListener(loadCigarFileListener);		
 
 		
-				encuestasListButton = (Button) findViewById(R.id.EncuestasListButton);
-				encuestasListListener = new OnClickListener() {
-		 			public void onClick(View v) {
-						Intent myIntent = new Intent(v.getContext(),EncuestaListActivity.class);
+		encuestasListButton = (Button) findViewById(R.id.EncuestasListButton);
+		encuestasListListener = new OnClickListener() {
+ 			public void onClick(View v) {
+				Intent myIntent = new Intent(v.getContext(),EncuestaListActivity.class);
 
-		 				startActivityForResult(myIntent, 0);
-		 			}
-		 		};
-				encuestasListButton.setOnClickListener(encuestasListListener);
+ 				startActivityForResult(myIntent, 0);
+ 			}
+ 		};
+		encuestasListButton.setOnClickListener(encuestasListListener);
 		
 
 		

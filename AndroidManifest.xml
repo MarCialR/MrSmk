@@ -18,23 +18,24 @@
 		          android:theme="@android:style/Theme.NoTitleBar">
 		</activity>
 
+	    <activity android:name=".FlowActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 	    <activity android:name=".DevelopingActivity" android:theme="@android:style/Theme.NoTitleBar"/>	
 	    <activity android:name=".CanvasActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 	    <activity android:name=".TimelineActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 
-	    <activity android:name="com.mru.mrnicoquitter.lists.CigarListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
-	    <activity android:name="com.mru.mrnicoquitter.lists.PrefsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
-	    <activity android:name="com.mru.mrnicoquitter.lists.EncuestaListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
-	    <activity android:name="com.mru.mrnicoquitter.lists.HTMLListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".lists.CigarListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".lists.PrefsListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".lists.EncuestaListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".lists.HTMLListActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 
-	    <activity android:name="com.mru.mrnicoquitter.utils.LoadCigarsFileActivity" android:theme="@android:style/Theme.NoTitleBar"/>	    
+	    <activity android:name=".utils.LoadCigarsFileActivity" android:theme="@android:style/Theme.NoTitleBar"/>	    
 	    
-	    <activity android:name="com.mru.mrnicoquitter.viewers.TextViewer" android:theme="@android:style/Theme.NoTitleBar"/>	    
-	    <activity android:name="com.mru.mrnicoquitter.viewers.HTMLViewer" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".viewers.TextViewer" android:theme="@android:style/Theme.NoTitleBar"/>	    
+	    <activity android:name=".viewers.HTMLViewer" android:theme="@android:style/Theme.NoTitleBar"/>
 	    	    
-	    <activity android:name="com.mru.mrnicoquitter.encuestas.EncuestaActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".encuestas.EncuestaActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		
-		<service android:name="com.mru.mrnicoquitter.timer.NotificationService"/>
+		<service android:name=".timer.NotificationService"/>
     </application>
     
     <uses-sdk android:minSdkVersion="3"/>

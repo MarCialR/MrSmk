@@ -58,7 +58,7 @@ public class EncuestaActivity extends Activity {
         
         
 		goButton 			= new Button(this);
-		goButton.setText("Siguiente");
+		goButton.setText(getString(R.string.Btn_next));
 		OnClickListener notificarListener = new OnClickListener() {
 			public void onClick(View v) {
 
