@@ -2,11 +2,10 @@ package com.mru.mrnicoquitter;
 
 import com.mru.mrnicoquitter.ui.CustomDrawableView;
 
-import android.app.Activity;
 import android.os.Bundle;
 
 
-public class CanvasActivity extends Activity {
+public class CanvasActivity extends QActivity {
 
 	
 	CustomDrawableView mCustomDrawableView;

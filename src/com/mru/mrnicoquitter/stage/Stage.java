@@ -15,14 +15,15 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 
 
 public abstract class Stage {
+	protected static int logoId;
 	protected static SharedPreferences globalPreferences;
 	protected SharedPreferences stagePreferences;
 	protected Context myContext;
-	protected String[] subSTGs;
 	protected int subSTGsId;		//Identifica el array de Stages
-	protected int activeSubSTG;
 	Class<?> active;
+	protected String[] subSTGs;
 
+	protected int activeSubSTG;		// posicion en el array de Stages ¡¡ De momento son Strings!!	
 	
 	protected void initSuper(String stageStr){
 		if (globalPreferences == null){
@@ -67,15 +68,14 @@ public abstract class Stage {
 		this.stagePreferences = preferences;
 	}
 
-	abstract public Color getColor();
-	abstract public int getLogo();
+
 	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
 
 		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
 		inflater.inflate(contentLayout, commonLyt,true);
 		
-		ImageView logo = (ImageView)  commonLyt.findViewById(R.id.Logo);
-		logo.setBackgroundResource(getLogo());
+		ImageView logo = (ImageView) commonLyt.findViewById(R.id.Logo);
+		logo.setBackgroundResource(logoId);
 		return commonLyt;
 	}
 
@@ -83,6 +83,21 @@ public abstract class Stage {
 	public Class<?> getActivity() {
 		return active;
 	}
+	
+	public Stage prev(){
+		activeSubSTG--;
+		if (activeSubSTG==-1)
+			activeSubSTG = subSTGs.length-1;
+		return this;
+	}	
+	
+	public Stage next(){
+		activeSubSTG++;
+		if (activeSubSTG==subSTGs.length)
+			activeSubSTG = 0;
+		return this;
+	}
+
 	
 	public String getInfo(){
 		StringBuffer sb = new StringBuffer();
@@ -98,5 +113,18 @@ public abstract class Stage {
 		return sb.toString();
 	}
 
+	public String getStageName() {
+		String className = this.getClass().toString();
+		return className.substring(0, className.lastIndexOf("."));
+	}
+
+	public Color getColor() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	public int getLogo() {
+		return logoId;
+	}
 
 }

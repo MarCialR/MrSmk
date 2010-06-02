@@ -12,6 +12,7 @@ import android.widget.Toast;
 
 import static com.mru.mrnicoquitter.Global.*;
 
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.stage.Stage;
 import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 
@@ -36,7 +37,7 @@ public class AppUtils {
 	}
 	
 	public final static  void showDebug(Context ctx, String message){
-		Stage stage = StageManagerSGTon.getStage(ctx);
+		Stage stage = FlowManagerSGTon.getStage(ctx);
 		SharedPreferences prefs = stage.getGlobalPreferences();
 		
 		if (prefs.getBoolean(DEBUG, false))

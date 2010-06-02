@@ -14,10 +14,12 @@ public class TD_Stage extends Stage {
 	
 	public TD_Stage(Context myContext){
 		this.myContext	= myContext;
+		logoId = R.drawable.etapa0;
 		subSTGsId 		= R.array.TD_Stages_Descriptions;
 		initSuper(TD_STAGE);
 		stagePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
 		String activeStr = stagePreferences.getString(PREF_ACTIVE_ACVTY, EMPTY);
+		activeStr = ACVTY_MAIN_CLASS;
 		if (EMPTY.equals(activeStr)){
 			activeStr		= ACVTY_MAIN_CLASS;
 			Editor editor 	= stagePreferences.edit();
@@ -32,17 +34,5 @@ public class TD_Stage extends Stage {
 		} 
 		Log.d(DEBUG, "Creado TD_State y setteado active a "+active.getName());
 	}
-
-	@Override
-	public Color getColor() {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public int getLogo() {
-		return R.drawable.etapa0;
-	}
-
 	
 }

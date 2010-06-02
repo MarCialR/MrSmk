@@ -1,6 +1,5 @@
 package com.mru.mrnicoquitter;
 
-import android.app.Activity;
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
@@ -20,18 +19,17 @@ import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.EncuestaListActivity;
 import com.mru.mrnicoquitter.lists.HTMLListActivity;
 import com.mru.mrnicoquitter.lists.PrefsListActivity;
-import com.mru.mrnicoquitter.stage.Stage;
-import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
 
-public class DevelopingActivity extends Activity{
+public class DevelopingActivity extends QActivity{
 
-	private Stage stage;
+
 	private static OnClickListener  prefsListListener, encuestasListListener, htmlListListener, canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
 
@@ -41,7 +39,7 @@ public class DevelopingActivity extends Activity{
 	
 	private NotificationService appService	=	null;
 	
-	private ServiceConnection onService	=	new ServiceConnection() {
+	private ServiceConnection onService	= new ServiceConnection() {
 		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
 			appService	=	((NotificationService.LocalBinder)rawBinder).getService();
 		}
@@ -55,9 +53,10 @@ public class DevelopingActivity extends Activity{
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		stage = StageManagerSGTon.getStage(getApplicationContext());
-		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
-		
+
+//		bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
+		//HA DADO PROBLEMAS
+//		unbindService(onService);
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
 		setContentView(stage.getCommonLayout(inflater,R.layout.lay_content_developing));		
 		
@@ -80,7 +79,7 @@ public class DevelopingActivity extends Activity{
 			public void onClick(View v) {
 				
 				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
-				StageManagerSGTon.setStage(selected);
+				FlowManagerSGTon.setStage(selected);
 
 
 			}
@@ -240,45 +239,7 @@ public class DevelopingActivity extends Activity{
 			} };
 			runButton.setOnClickListener(runListener);
 			
-
-
-	}
-
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		
-		AppUtils.showDebug(getApplicationContext(), "Developing - onCreate!!");
-		
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	    unbindService(onService);
-	}
-
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		
-		AppUtils.showDebug(getApplicationContext(), "Developing - onCreate!!");
-		
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	}
-
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
+			
 
 	}
 

@@ -2,7 +2,6 @@ package com.mru.mrnicoquitter.encuestas;
 
 import java.util.Iterator;
 
-import android.app.Activity;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -14,10 +13,12 @@ import android.widget.TableRow;
 import android.widget.TextView;
 
 import static com.mru.mrnicoquitter.Global.*;
+
+import com.mru.mrnicoquitter.QActivity;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
-public class EncuestaActivity extends Activity {
+public class EncuestaActivity extends QActivity {
 
 	private XMLParser parser;
 
@@ -35,7 +36,6 @@ public class EncuestaActivity extends Activity {
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-        AppUtils.showDebug(getApplicationContext(), "Encuesta - onCreate!!");
         
         setContentView(R.layout.encuesta);	    
 

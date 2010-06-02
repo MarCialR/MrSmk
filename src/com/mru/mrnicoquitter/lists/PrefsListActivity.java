@@ -49,6 +49,7 @@ public class PrefsListActivity extends ListActivity {
 
 		Intent i = new Intent(this, TextViewer.class);
 		i.putExtra(STR_EXTRA_CLICKED_FILE_LOCATION, clickedFileLocation);
+		i.putExtra(STR_EXTRA_NEWLAINEA, TRUE);
 		startActivity(i);
 
 	}

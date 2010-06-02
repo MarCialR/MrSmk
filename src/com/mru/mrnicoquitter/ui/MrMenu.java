@@ -1,30 +1,57 @@
 package com.mru.mrnicoquitter.ui;
 
+import static com.mru.mrnicoquitter.Global.*;
 import android.app.Activity;
+import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.mru.mrnicoquitter.DevelopingActivity;
 import com.mru.mrnicoquitter.R;
 
 public class MrMenu {
 
 	/** respond to menu item selection */
 	public static boolean applyMenuChoice(Activity actv,MenuItem item) {
-	  switch (item.getOrder()) {
-	    case Menu1:
-	      AppUtils.showToastShort(actv, "MenuOption1 is selected");
-	      return true;
-	    case Menu2:
-	      AppUtils.showToastShort(actv, "MenuOption2 is selected");
-	      return true;
-	    case Menu3:
-	      AppUtils.showToastShort(actv, "MenuOption3 is selected");
-	      return true;
-	    case Menu4:
-	      AppUtils.showToastShort(actv, "MenuOption4 is selected");
-	      return true;
-	  }
-	  return false;
+		Class<?> goTo;
+		switch (item.getOrder()) {
+
+		case Menu1:
+
+
+
+			try {
+				goTo = Class.forName(ACVTY_FLOW_CLASS);
+				Intent mainIntent = new Intent(actv,goTo); 
+				actv.startActivity(mainIntent); 
+				actv.finish();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
+			return true;
+		case Menu2:
+
+			try {
+				goTo = Class.forName(ACVTY_DEVELOPING_CLASS);
+				Intent mainIntent = new Intent(actv,goTo); 
+				actv.startActivity(mainIntent); 
+				actv.finish();
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+			return true;
+		case Menu3:
+			AppUtils.showToastShort(actv, "MenuOption3 is selected");
+			return true;
+		case Menu4:
+			AppUtils.showToastShort(actv, "MenuOption4 is selected");
+			return true;
+		}
+		return false;
 	}
 	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 	// menu item constants
@@ -41,13 +68,13 @@ public class MrMenu {
 	  // these only show up in context menu, not options menu
 	  menu.setQwertyMode(false);
 
-	  MenuItem item1 = menu.add(0, Menu.NONE, Menu1, "MenuOption1");
+	  MenuItem item1 = menu.add(0, Menu.NONE, Menu1, "Flow Control");
 	  {
 	    item1.setAlphabeticShortcut('a');
 	    item1.setIcon(AppUtils.resizeImage(actv, R.drawable.ty0, 32, 32));
 	  }
 
-	  MenuItem item2 = menu.add(0,Menu.NONE, Menu2, "MenuOption2");
+	  MenuItem item2 = menu.add(0,Menu.NONE, Menu2, "Developer Options");
 	  {
 	    item2.setAlphabeticShortcut('b');
 	    item2.setIcon(AppUtils.resizeImage(actv, R.drawable.ty1, 32, 32));

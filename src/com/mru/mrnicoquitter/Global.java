@@ -8,20 +8,22 @@ public  class Global {
 
 	public static final String STR_EXTRA_FILENAME				= "fileName";
 	public static final String STR_EXTRA_CLICKED_FILE_LOCATION	= "clickedFileLocation";
-	public static final String STR_EXTRA_FULL_CONTENTS			= "fullContents";	
+	public static final String STR_EXTRA_FULL_CONTENTS			= "fullContents";
+	public static final String STR_EXTRA_NEWLAINEA				= "ponerNEWLINES_A_las_prEFS";
 	
 	public static final String DEBUG							= "DEBUG";	
 	public static final String EMPTY							= "";
+	public static final String TRUE								= "TRUE";
 	public static final String NEWLINE							= "\n";	
+	
 
 	public static final String PREF_ACTIVE_ACVTY				= "active";
-	public static final String PREF_ACTUAL_STAGE				= "actual stage";
+	public static final String PREF_ACTUAL_STAGE				= "ACTUAL STAGE";
 	public static final String PREF_CREATED						= "created";
 	
 	public static final String DIR_SHARED_PREFS					= "/data/data/com.mru.mrnicoquitter/shared_prefs/";	
 	
 	public static final String GLOBAL_PREFS 					= "GLOBAL";
-	public static final String STAGE							= "STAGE";
 	public static final String TD_PREFS 						= "TD_PREFS";
 	public static final String TD_STAGE 						= "TD_Stage";
 	public static final String S1_PREFS 						= "S1_PREFS";

@@ -3,11 +3,9 @@ package com.mru.mrnicoquitter;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
-import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.view.ContextMenu;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -23,16 +21,14 @@ import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
-import com.mru.mrnicoquitter.stage.Stage;
-import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.ui.MrMenu;
 
-public class MainActivity extends Activity {
-	private Stage stage;
-	private static OnClickListener saveListener, listListener, olvidoListener, developingListener;
+public class MainActivity extends QActivity {
 
-	private static Button saveButton, listButton, developingButton;
+	private static OnClickListener saveListener, listListener, olvidoListener;
+
+	private static Button saveButton, listButton;
 	private static CheckBox olvidoCheckBox;
 
 	private static Spinner tipo;
@@ -56,9 +52,7 @@ public class MainActivity extends Activity {
 		
 		super.onCreate(savedInstanceState);
 		
-		AppUtils.showDebug(getApplicationContext(), "Main - onCreate!!");
-		
-		stage = StageManagerSGTon.getStage(getApplicationContext());
+
 		//bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		//setContentView(R.layout.main_scrollview_tablelayout);
 //		setContentView(R.layout.main_linear_layout);
@@ -121,73 +115,14 @@ public class MainActivity extends Activity {
 		};
 		listButton.setOnClickListener(listListener);
 
-		
-		
-		developingButton = (Button) findViewById(R.id.DevelopingButton);
-		developingListener = new OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),DevelopingActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		};
 
-		developingButton.setOnClickListener(developingListener);	
+
 
 	}
 
-	@Override
-	protected void onDestroy() {
-		// TODO Auto-generated method stub
-		super.onDestroy();
-		AppUtils.showDebug(getApplicationContext(), "Main - onDestroy!!");
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	}
 
-	@Override
-	protected void onPause() {
-		// TODO Auto-generated method stub
-		super.onPause();
-		AppUtils.showDebug(getApplicationContext(), "Main - onPause!!");
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	}
-
-	@Override
-	protected void onRestart() {
-		// TODO Auto-generated method stub
-		super.onRestart();
-		AppUtils.showDebug(getApplicationContext(), "Main - onRestart!!");
-//		Intent svc = new Intent(this, NotificationService.class);
-//	    stopService(svc);
-	}
-
-	@Override
-	protected void onStop() {
-		// TODO Auto-generated method stub
-		super.onStop();
-		AppUtils.showDebug(getApplicationContext(), "Main - onStop!!");
-
-	}
-	public static void doNothing(){
-		return;
-		
-	}
 	
-	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
-	// Menu button - option menu
-	//XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
 
-	/** hook into menu button for activity */
-	@Override public boolean onCreateOptionsMenu(Menu menu) {
-	  MrMenu.populateMenu(this,menu);
-	  return super.onCreateOptionsMenu(menu);
-	}
-
-	/** when menu button option selected */
-	@Override public boolean onOptionsItemSelected(MenuItem item) {
-	  return MrMenu.applyMenuChoice(this,item) || super.onOptionsItemSelected(item);
-	}
 
 
 

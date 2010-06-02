@@ -11,40 +11,62 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
+import com.mru.mrnicoquitter.flow.Flowable;
 import com.mru.mrnicoquitter.stage.Stage;
 import com.mru.mrnicoquitter.stage.StageManagerSGTon;
 
 public class FlowActivity extends Activity {
 
 	private Stage stage;
-	private OnClickListener goListener;
+	private OnClickListener prevListener, goListener, nextListener;
+	private TextView info;
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		stage = StageManagerSGTon.getStage(getApplicationContext());
+		stage = FlowManagerSGTon.getStage(getApplicationContext());
 		setContentView(buildView());
-		TextView tipo = (TextView) this.findViewById(R.id.FlowText);
-		tipo.setText(stage.getInfo());
+		info = (TextView) this.findViewById(R.id.FlowText);
 		
+		info.setText(stage.getInfo());
 
-		Button go = (Button) findViewById(R.id.Flow_GO_Button);
+		
+		//			PREVIOUS BUTTON
+		prevListener = new OnClickListener() {
+			public void onClick(View v) {
+				info.setText(stage.prev().getInfo());				
+			}
+		};
+		((Button) findViewById(R.id.Flow_PREV_Button)).setOnClickListener(prevListener);
+
+		
+		//			GO BUTTON
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
 				startActivity(new Intent(v.getContext(),stage.getActivity()));
 				finish();
 			}
 		};
-		go.setOnClickListener(goListener);	
+		((Button) findViewById(R.id.Flow_GO_Button)).setOnClickListener(goListener);
+
+		
+		//			NEXT BUTTON
+		nextListener = new OnClickListener() {
+			public void onClick(View v) {
+				info.setText(stage.next().getInfo());			
+			}
+		};
+		((Button) findViewById(R.id.Flow_NEXT_Button)).setOnClickListener(nextListener);
 
 	}
 	
 	private View buildView(){
+		
 		//OJO con este this
-
-		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.flow, null);
+		LayoutInflater inflater	= (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout commonLyt	= (LinearLayout)inflater.inflate(R.layout.flow, null);
 		inflater.inflate(R.layout.flow_header, commonLyt,true);
 		inflater.inflate(R.layout.flow_body, commonLyt,true);
 		inflater.inflate(R.layout.flow_buttons, commonLyt,true);

@@ -2,7 +2,6 @@ package com.mru.mrnicoquitter;
 
 import com.mru.mrnicoquitter.R;
 
-import android.app.Activity;
 import android.content.Context; 
 import android.graphics.Bitmap; 
 import android.graphics.BitmapFactory; 
@@ -17,7 +16,7 @@ import android.view.WindowManager;
 import android.view.GestureDetector.OnGestureListener; 
 import android.view.ViewGroup.LayoutParams; 
 
-public class TimelineActivity extends Activity { 
+public class TimelineActivity extends QActivity { 
     
    ScrollableImageView scrollImageView; 
     
