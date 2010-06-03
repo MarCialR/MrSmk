@@ -16,10 +16,10 @@ public class TD_Stage extends Stage {
 		this.myContext	= myContext;
 		logoId = R.drawable.etapa0;
 		subSTGsId 		= R.array.TD_Stages_Descriptions;
-		initSuper(TD_STAGE);
+		initStageCommons(TD_STAGE);
 		stagePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
 		String activeStr = stagePreferences.getString(PREF_ACTIVE_ACVTY, EMPTY);
-		activeStr = ACVTY_MAIN_CLASS;
+		//TODO activeStr = ACVTY_MAIN_CLASS;
 		if (EMPTY.equals(activeStr)){
 			activeStr		= ACVTY_MAIN_CLASS;
 			Editor editor 	= stagePreferences.edit();
@@ -27,12 +27,12 @@ public class TD_Stage extends Stage {
 			editor.commit();
 		}
 		try {
-			active =  Class.forName(activeStr);
+			activeClassToLaunch =  Class.forName(activeStr);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		Log.d(DEBUG, "Creado TD_State y setteado active a "+active.getName());
+		Log.d(DEBUG, "Creado TD_State y setteado active a "+activeClassToLaunch.getName());
 	}
 	
 }

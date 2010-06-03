@@ -8,5 +8,7 @@
         
     <string name="NOT_TICKER_TEXT">Notification</string>
 	<string name="NOT_EXTENDED_STATUS_TEXT">Extended status text</string>
-	<string name="NOT_EXPANDED_TITLE">Notification Title</string>        
+	<string name="NOT_EXPANDED_TITLE">Notification Title</string>   
+	<string name="FlowText">FlowText</string>
+	     
 </resources>

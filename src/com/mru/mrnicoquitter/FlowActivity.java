@@ -12,9 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.flow.Flowable;
+
 import com.mru.mrnicoquitter.stage.Stage;
-import com.mru.mrnicoquitter.stage.StageManagerSGTon;
+
 
 public class FlowActivity extends Activity {
 
@@ -45,7 +45,7 @@ public class FlowActivity extends Activity {
 		//			GO BUTTON
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(),stage.getActivity()));
+				startActivity(new Intent(v.getContext(),stage.getActiveClassToLaunch()));
 				finish();
 			}
 		};

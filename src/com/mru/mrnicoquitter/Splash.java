@@ -39,7 +39,7 @@ public class Splash extends Activity {
 				/* Create an Intent that will start the Menu-Activity. */
 				Class<?> goTo;
 				// goTo = Class.forName(ACVTY_FLOW_CLASS);
-				goTo = stage.getActivity();
+				goTo = stage.getActiveClassToLaunch();
 				Intent mainIntent = new Intent(Splash.this, goTo);
 				Splash.this.startActivity(mainIntent);
 				Splash.this.finish();

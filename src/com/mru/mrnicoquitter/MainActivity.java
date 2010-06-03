@@ -7,8 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuItem;
+
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
@@ -22,7 +21,6 @@ import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
 import com.mru.mrnicoquitter.ui.AppUtils;
-import com.mru.mrnicoquitter.ui.MrMenu;
 
 public class MainActivity extends QActivity {
 
@@ -114,9 +112,6 @@ public class MainActivity extends QActivity {
 			}
 		};
 		listButton.setOnClickListener(listListener);
-
-
-
 
 	}
 

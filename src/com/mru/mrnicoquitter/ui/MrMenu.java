@@ -17,9 +17,6 @@ public class MrMenu {
 		switch (item.getOrder()) {
 
 		case Menu1:
-
-
-
 			try {
 				goTo = Class.forName(ACVTY_FLOW_CLASS);
 				Intent mainIntent = new Intent(actv,goTo); 

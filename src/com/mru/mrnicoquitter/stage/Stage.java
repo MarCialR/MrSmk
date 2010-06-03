@@ -3,71 +3,43 @@ package com.mru.mrnicoquitter.stage;
 import static com.mru.mrnicoquitter.Global.*;
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.ui.AppUtils;
-
 
 public abstract class Stage {
+	// ===========================================================
+	// Fields
+	// ===========================================================	
 	protected static int logoId;
-	protected static SharedPreferences globalPreferences;
+
 	protected SharedPreferences stagePreferences;
 	protected Context myContext;
 	protected int subSTGsId;		//Identifica el array de Stages
-	Class<?> active;
+	Class<?> activeClassToLaunch;
 	protected String[] subSTGs;
 
 	protected int activeSubSTG;		// posicion en el array de Stages ¡¡ De momento son Strings!!	
 	
-	protected void initSuper(String stageStr){
-		if (globalPreferences == null){
-			globalPreferences = myContext.getSharedPreferences(GLOBAL_PREFS, 0);
+	// ===========================================================
+	// 		Constructors & Initialization
+	// ===========================================================	
+	protected void initStageCommons(String stageStr){
+		if (stagePreferences == null){
+			stagePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
 
 		}
-	    Editor editor = globalPreferences.edit();
-	    editor.putString (PREF_ACTUAL_STAGE, stageStr);
-		editor.putBoolean(DEBUG, false);
-		editor.commit();	
-	      
-		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
-			fillStartingGlobalPreferences(globalPreferences);
-		}		
-		initStages();
-
-	}
-	
-	private void initStages() {
 		subSTGs = myContext.getResources().getStringArray(subSTGsId);
 	}
 
-	private static void fillStartingGlobalPreferences(SharedPreferences globalPrefs) {
-		
-	      SharedPreferences.Editor editor = globalPrefs.edit();
-	      editor.putBoolean(PREF_CREATED, true);
-
-	      // Don't forget to commit your edits!!!
-	      editor.commit();
-	}
-
-	public SharedPreferences getGlobalPreferences() {
-		return globalPreferences;
-	}
-	
 	public SharedPreferences getPreferences() {
 		return stagePreferences;
 	}
-
-	public void setPreferences(SharedPreferences preferences) {
-		this.stagePreferences = preferences;
-	}
-
 
 	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
 
@@ -76,12 +48,13 @@ public abstract class Stage {
 		
 		ImageView logo = (ImageView) commonLyt.findViewById(R.id.Logo);
 		logo.setBackgroundResource(logoId);
+		TextView text= (TextView) commonLyt.findViewById(R.id.StageInfo);
+		text.setText(getFlowText());
 		return commonLyt;
 	}
-
 	
-	public Class<?> getActivity() {
-		return active;
+	public Class<?> getActiveClassToLaunch() {
+		return activeClassToLaunch;
 	}
 	
 	public Stage prev(){
@@ -97,7 +70,6 @@ public abstract class Stage {
 			activeSubSTG = 0;
 		return this;
 	}
-
 	
 	public String getInfo(){
 		StringBuffer sb = new StringBuffer();
@@ -111,6 +83,10 @@ public abstract class Stage {
 			counter++;
 		}
 		return sb.toString();
+	}
+
+	public String getFlowText(){
+		return activeClassToLaunch.getName()+"\n"+subSTGs[activeSubSTG];
 	}
 
 	public String getStageName() {

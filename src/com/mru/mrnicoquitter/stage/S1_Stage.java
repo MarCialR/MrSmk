@@ -17,12 +17,12 @@ public class S1_Stage extends Stage {
 		this.myContext= myContext;
 		logoId = R.drawable.etapa1;
 		subSTGsId = R.array.S1_Stages_Descriptions;
-		initSuper(S1_STAGE);
+		initStageCommons(S1_STAGE);
 		stagePreferences = myContext.getSharedPreferences(S1_PREFS, 0);
 		
 		//Hay que revisar esta mierda!!
 		String activeStr = stagePreferences.getString(PREF_ACTIVE_ACVTY, EMPTY);
-		activeStr = ACVTY_MAIN_CLASS;
+		//activeStr = ACVTY_MAIN_CLASS;
 		if (EMPTY.equals(activeStr)){
 			
 			//ESTO ESTAAA FATALLL;
@@ -33,12 +33,12 @@ public class S1_Stage extends Stage {
 			editor.commit();
 		}
 		try {
-			active =  Class.forName(activeStr);
+			activeClassToLaunch =  Class.forName(activeStr);
 		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		Log.d(DEBUG, "Creado S1_Stage y setteado active a "+active.getName());		
+		Log.d(DEBUG, "Creado S1_Stage y setteado active a "+activeClassToLaunch.getName());		
 		
 	}
 
