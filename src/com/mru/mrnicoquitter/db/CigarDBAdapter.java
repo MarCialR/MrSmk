@@ -16,14 +16,6 @@ import static com.mru.mrnicoquitter.Global.*;
 
 public class CigarDBAdapter {
 
-	private static final String DATABASE_TABLE 	= "cigars";
-	private static final int DATABASE_VERSION 	= 1;
-	public static final String KEY_ID			= "_id";	// The index (key) column name for use in where clauses.
-	public static final String KEY_DATE			= "date";	// The name and column index of each column in your database.
-	public static final int COLUMN_DATE 		= 1;
-	public static final String KEY_TYPE			= "type";	// The name and column index of each column in your database.
-	public static final int COLUMN_TYPE 		= 2;
-	private static final String DATABASE_CREATE = "create table " +	DATABASE_TABLE + " (" + KEY_ID + " integer primary key autoincrement, " + KEY_DATE + " date not null, "+ KEY_TYPE + " integer not null);";
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
 	private myDbHelper dbHelper;				// Database open/upgrade helper	
@@ -40,7 +32,7 @@ public class CigarDBAdapter {
 
 	private CigarDBAdapter(Context _context) {
 		context 	= _context;
-		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DATABASE_VERSION);
+		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DB_CIGARS_VERSION);
 		try {
 			db = dbHelper.getWritableDatabase();
 		}
@@ -62,11 +54,11 @@ public class CigarDBAdapter {
 		try{
 			ContentValues 	newValues = new ContentValues();
 			for (Cigar cigar:list){
-				newValues.remove(KEY_DATE);
-				newValues.remove(KEY_TYPE);
-				newValues.put(KEY_DATE, cigar.getDateStr());
-				newValues.put(KEY_TYPE, cigar.getId());
-				db.insert(DATABASE_TABLE, null, newValues);
+				newValues.remove(CIGARS_KEY_DATE);
+				newValues.remove(CIGARS_KEY_TYPE);
+				newValues.put(CIGARS_KEY_DATE, cigar.getDateStr());
+				newValues.put(CIGARS_KEY_TYPE, cigar.getId());
+				db.insert(DB_CIGARS_TABLE, null, newValues);
 			}
 		}catch (Exception e) {
 			close();
@@ -79,18 +71,18 @@ public class CigarDBAdapter {
 		ContentValues newValues = new ContentValues();
 		//newValues.
 		// Assign values for each row.
-		newValues.put(KEY_DATE, _myObject.getDateStr());
-		newValues.put(KEY_TYPE, _myObject.getId());
+		newValues.put(CIGARS_KEY_DATE, _myObject.getDateStr());
+		newValues.put(CIGARS_KEY_TYPE, _myObject.getId());
 		// Insert the row into your table
-		return db.insert(DATABASE_TABLE, null, newValues);		
+		return db.insert(DB_CIGARS_TABLE, null, newValues);		
 	}
 
 	public boolean removeEntry(long _rowIndex) {
-		return db.delete(DATABASE_TABLE, KEY_ID +
+		return db.delete(DB_CIGARS_TABLE, CIGARS_KEY_ID +
 				"=" + _rowIndex, null) > 0;
 	}
 	public Cursor getAllEntries () {
-		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_TYPE},
+		return db.query(DB_CIGARS_TABLE, new String[] {CIGARS_KEY_ID, CIGARS_KEY_DATE, CIGARS_KEY_TYPE},
 				null, null, null, null, null);
 		//null, null, null, null, "date DESC");
 	}
@@ -101,8 +93,8 @@ public class CigarDBAdapter {
         if (c.moveToFirst()){
         	do {
         		Cigar cigar = new Cigar();
-        		cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
-        		cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+        		cigar.setDateStr(c.getString(CIGARS_COL_DATE));
+        		cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
         		
         		sb.append(cigar.toSave()).append(NEWLINE);
         	}while (c.moveToNext());
@@ -116,8 +108,8 @@ public class CigarDBAdapter {
         if (c.moveToFirst()){
         	do {
         		Cigar cigar = new Cigar();
-        		cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
-        		cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+        		cigar.setDateStr(c.getString(CIGARS_COL_DATE));
+        		cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
         		
         		cigars.add(cigar);
         	}while (c.moveToNext());
@@ -138,10 +130,10 @@ String json = gson.toJson(obj);
 		return objectInstance;
 	}
 	public int updateEntry(long _rowIndex, Cigar _myObject) {
-		String where 				= KEY_ID + "=" + _rowIndex;
+		String where 				= CIGARS_KEY_ID + "=" + _rowIndex;
 		ContentValues contentValues = new ContentValues();
 		//TODO fill in the ContentValue based on the new object
-		return db.update(DATABASE_TABLE, contentValues, where, null);
+		return db.update(DB_CIGARS_TABLE, contentValues, where, null);
 	}
 	private static class myDbHelper extends SQLiteOpenHelper {
 		public myDbHelper(Context context, String name,
@@ -153,7 +145,7 @@ String json = gson.toJson(obj);
 		// to create a new one.
 		@Override
 		public void onCreate(SQLiteDatabase _db) {
-			_db.execSQL(DATABASE_CREATE);
+			_db.execSQL(DB_CIGARS_CREATE);
 		}
 		// Called when there is a database version mismatch meaning that
 		// the version of the database on disk needs to be upgraded to
@@ -171,7 +163,7 @@ String json = gson.toJson(obj);
 			// _oldVersion and _newVersion values.
 			// The simplest case is to drop the old table and create a
 			// new one.
-			_db.execSQL("DROP TABLE IF EXISTS " + DATABASE_TABLE);
+			_db.execSQL(DB_CIGARS_DROP);
 			// Create a new one.
 			onCreate(_db);
 		}

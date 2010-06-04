@@ -11,10 +11,12 @@ public class StageState {
 	private String stagePreferencesName;
 	
 
+
 	public StageState() {
 		super();
 	}
 	public StageState(int _logoId, int _stageID, String[] _subSTGs,
+
 			int _activeSubSTG, String _stagePreferencesName) {
 		super();
 		this.logoId = _logoId;
@@ -22,6 +24,7 @@ public class StageState {
 		this.subSTGs = _subSTGs;
 		this.activeSubSTG = _activeSubSTG;
 		this.stagePreferencesName = _stagePreferencesName;
+
 	}
 	public int getLogoId() {
 		return logoId;
@@ -54,5 +57,6 @@ public class StageState {
 	public void setStagePreferencesName(String stagePreferencesName) {
 		this.stagePreferencesName = stagePreferencesName;
 	}
+
 
 }

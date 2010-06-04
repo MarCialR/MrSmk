@@ -55,7 +55,15 @@ public abstract class Stage {
 	public SharedPreferences getPreferences() {
 		return stagePreferences;
 	}
-
+	protected void initCommons(Context _context, StageState _state) {
+		myContext				= _context;
+		logoId					= _state.getLogoId();
+		activeSubSTG			= _state.getActiveSubSTG();
+		subSTGs					= _state.getSubSTGs();
+		stageID					= _state.getStageID();
+		stagePreferencesName	= _state.getStagePreferencesName();
+	
+	}
 	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
 
 		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
@@ -128,7 +136,9 @@ public abstract class Stage {
 	}
 
 	public Object getStageState() {
+
 		return new StageState(logoId, stageID, subSTGs, activeSubSTG,stagePreferencesName);
+
 	}
 
 }

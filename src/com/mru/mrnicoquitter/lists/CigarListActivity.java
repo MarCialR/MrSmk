@@ -42,6 +42,7 @@ public class CigarListActivity extends ListActivity {
 	private void loadCigars() {
 		CigarDBAdapter dba = CigarDBAdapter.getInstance(getApplicationContext());
 		Cursor c = dba.getAllEntries();
+
 		
 		SimpleDateFormat sdf = new SimpleDateFormat(
 				"yyyy-MM-dd'T'HH:mm:ss.SSS");
@@ -49,10 +50,10 @@ public class CigarListActivity extends ListActivity {
 		if (c.moveToFirst()) {
 			do {
 				Cigar cigar = new Cigar();
-				cigar.setDateStr(c.getString(CigarDBAdapter.COLUMN_DATE));
-				cigar.setTipo(c.getInt(CigarDBAdapter.COLUMN_TYPE));
+				cigar.setDateStr(c.getString(CIGARS_COL_DATE));
+				cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
 				try {
-					cigar.setDate(sdf.parse(c.getString(CigarDBAdapter.COLUMN_DATE)));
+					cigar.setDate(sdf.parse(c.getString(CIGARS_COL_DATE)));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -60,6 +61,7 @@ public class CigarListActivity extends ListActivity {
 				cigarEntries.add(cigar);
 			} while (c.moveToNext());
 		}
+		c.close();// TODO revisar cursores
 		Collections.sort(cigarEntries);
 		Collections.reverse(cigarEntries);
 	}

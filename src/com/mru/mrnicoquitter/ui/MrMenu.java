@@ -21,28 +21,36 @@ public class MrMenu {
 				goTo = Class.forName(ACVTY_FLOW_CLASS);
 				Intent mainIntent = new Intent(actv,goTo); 
 				actv.startActivity(mainIntent); 
-				actv.finish();
+
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-
 			return true;
+
 		case Menu2:
 
 			try {
 				goTo = Class.forName(ACVTY_DEVELOPING_CLASS);
 				Intent mainIntent = new Intent(actv,goTo); 
 				actv.startActivity(mainIntent); 
-				actv.finish();
+				//actv.finish();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-			
 			return true;
+
 		case Menu3:
-			AppUtils.showToastShort(actv, "MenuOption3 is selected");
+			//AppUtils.showToastShort(actv, "MenuOption3 is selected");
+			try {
+				goTo = Class.forName(ACVTY_PREFSLIST_CLASS);
+				Intent mainIntent = new Intent(actv,goTo); 
+				actv.startActivity(mainIntent); 
+			} catch (ClassNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}			
 			return true;
 		case Menu4:
 			AppUtils.showToastShort(actv, "MenuOption4 is selected");
@@ -77,7 +85,7 @@ public class MrMenu {
 	    item2.setIcon(AppUtils.resizeImage(actv, R.drawable.ty1, 32, 32));
 	  }
 
-	  MenuItem item3 = menu.add(0, Menu.NONE,Menu3, "MenuOption3");
+	  MenuItem item3 = menu.add(0, Menu.NONE,Menu3, "Preferences");
 	  {
 	    item3.setNumericShortcut('1');
 	    item3.setIcon(AppUtils.resizeImage(actv, R.drawable.ty2, 32, 32));

@@ -6,6 +6,8 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.ui.MrMenu;
 
 import android.app.Activity;
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -78,4 +80,9 @@ public class QActivity extends Activity {
 		return className.substring(0, className.lastIndexOf("."));
 	}	
 
+	
+	public void AA(Context context, Class<TimelineActivity> classs, int i) {
+		startActivityForResult(new Intent(context,classs), i);
+		
+	} 	
 }

@@ -26,6 +26,7 @@ public class FlowManagerSGTon {
 	private static Stage stage;
 	private static SharedPreferences globalPreferences;	
 	private static Gson gson;
+	private static boolean firstRun;
 	
 	// ===========================================================
 	// 		Constructors & Initialization
@@ -38,9 +39,10 @@ public class FlowManagerSGTon {
 		gson 				= new Gson();	
 	      
 		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			fillStartingGlobalPreferences();
+			initMrQuitter();
 			setStage(S1);
 		} else {
+			firstRun = true;// normalmente a false
 			String dehidratedStage = globalPreferences.getString(PREF_ACTUAL_STAGE, null);
 		
 			if (null != dehidratedStage)
@@ -51,12 +53,15 @@ public class FlowManagerSGTon {
 		
 	}
 
-	private static void fillStartingGlobalPreferences() {
+	private static void initMrQuitter() {
+		firstRun = true;
 		AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
 		SharedPreferences.Editor editor = globalPreferences.edit();
 		editor.putBoolean(PREF_CREATED, true);
 		editor.putBoolean(DEBUG, false);
 		editor.commit();	      // Don't forget to commit your edits!!!
+		
+
 	}
 
 	// ===========================================================
@@ -74,7 +79,9 @@ public class FlowManagerSGTon {
 	public static Stage getStage() {
 		return stage;
 	}
-	
+	public static boolean isFirstRun(){
+		return firstRun;
+	}
 	public static void hidrataStage(String dehidratedStage){
 		
 		StageState stageState = ((StageState)gson.fromJson(dehidratedStage, StageState.class));
@@ -114,7 +121,8 @@ public class FlowManagerSGTon {
 
 	public static FlowManagerSGTon initManager(Context applicationContext) {
 		myContext = applicationContext;
-		INSTANCE = new FlowManagerSGTon();
+		if (INSTANCE==null)
+			INSTANCE = new FlowManagerSGTon();
 		return INSTANCE;
 	}
 

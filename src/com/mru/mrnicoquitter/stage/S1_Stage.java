@@ -38,12 +38,14 @@ public class S1_Stage extends Stage {
 	}
 
 	public S1_Stage(Context _context, StageState _state) {
+
 		myContext				= _context;
 		logoId					= _state.getLogoId();
 		activeSubSTG			= _state.getActiveSubSTG();
 		subSTGs					= _state.getSubSTGs();
 		stageID					= _state.getStageID();
 		stagePreferencesName	= _state.getStagePreferencesName();
+
 	}
 	
 	

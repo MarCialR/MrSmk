@@ -189,8 +189,8 @@ public class DevelopingActivity extends QActivity{
 		timelineButton = (Button) findViewById(R.id.TimelineButton);
 		timelineButtonListener= new OnClickListener() {
 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),TimelineActivity.class);
-				startActivityForResult(myIntent, 0);
+				AA(v.getContext(), TimelineActivity.class,  0);
+
 			}
 		};
 		timelineButton.setOnClickListener(timelineButtonListener);		
