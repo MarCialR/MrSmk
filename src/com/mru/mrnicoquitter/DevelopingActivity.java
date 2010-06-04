@@ -18,6 +18,8 @@ import android.widget.ScrollView;
 import android.widget.TimePicker;
 import android.widget.ToggleButton;
 
+import static com.mru.mrnicoquitter.Global.*;
+
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.EncuestaListActivity;
@@ -79,8 +81,11 @@ public class DevelopingActivity extends QActivity{
 			public void onClick(View v) {
 				
 				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
-				FlowManagerSGTon.setStage(selected);
-
+				int stage = -999;
+				if (selected.equalsIgnoreCase(S1_STAGE)) 
+					FlowManagerSGTon.setStage(S1);
+				else if (selected.equalsIgnoreCase(S2_STAGE)) 
+					FlowManagerSGTon.setStage(S2);
 
 			}
 		};

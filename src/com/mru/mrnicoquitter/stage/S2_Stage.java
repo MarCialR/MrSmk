@@ -1,24 +1,27 @@
 package com.mru.mrnicoquitter.stage;
 
 import static com.mru.mrnicoquitter.Global.*;
-
+import static com.mru.mrnicoquitter.Global.S2_PREFS;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-
+import android.graphics.Color;
 import android.util.Log;
 
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.StageState;
 
-public class S1_Stage extends Stage {
 
-	
-	public S1_Stage(Context _context){
+public class S2_Stage extends Stage {
+
+	public S2_Stage(Context _context){
+
 		myContext			= _context;
-		logoId 				= R.drawable.etapa0;
-		subSTGsId 			= R.array.S1_Stages_Descriptions;
-		stagePreferences 	= myContext.getSharedPreferences(S1_PREFS, 0);
+		logoId 				= R.drawable.etapa1;
+		subSTGsId 			= R.array.S2_Stages_Descriptions;
+		stagePreferences 	= myContext.getSharedPreferences(S2_PREFS, 0);
 		subSTGs 			= myContext.getResources().getStringArray(subSTGsId);
+		
 		
 		if (activeSubSTG==0){
 			Editor editor 	= stagePreferences.edit();
@@ -34,10 +37,10 @@ public class S1_Stage extends Stage {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} 
-		Log.d(DEBUG, "Creado S1_State y setteado active a "+subSTGs[activeSubSTG]);
+		Log.d(DEBUG, "Creado S1_State y setteado active a "+subSTGs[activeSubSTG]);		
+		
 	}
-
-	public S1_Stage(Context _context, StageState _state) {
+	public S2_Stage(Context _context, StageState _state) {
 		myContext				= _context;
 		logoId					= _state.getLogoId();
 		activeSubSTG			= _state.getActiveSubSTG();
@@ -46,7 +49,7 @@ public class S1_Stage extends Stage {
 		stagePreferencesName	= _state.getStagePreferencesName();
 	}
 	
-	
-	
-	
+
+
+
 }

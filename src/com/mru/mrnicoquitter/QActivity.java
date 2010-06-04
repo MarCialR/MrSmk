@@ -19,7 +19,7 @@ public class QActivity extends Activity {
 		
 		//OJITO CON ESTO!!! hay que asegurarse que ese estage es singleton tb (o algo asi)
 		if (stage==null)
-			stage = FlowManagerSGTon.getStage(getApplicationContext());
+			stage = FlowManagerSGTon.getStage();
 		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onCreate!!");
 	}
 	@Override

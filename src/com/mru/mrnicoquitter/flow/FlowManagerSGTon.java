@@ -1,18 +1,19 @@
 package com.mru.mrnicoquitter.flow;
 
-
 import static com.mru.mrnicoquitter.Global.*;
 
-import com.mru.mrnicoquitter.stage.S1_Stage;
-import com.mru.mrnicoquitter.stage.Stage;
-import com.mru.mrnicoquitter.stage.TD_Stage;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.google.gson.Gson;
 
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-
 import android.util.Log;
+
+import com.mru.mrnicoquitter.beans.StageState;
+import com.mru.mrnicoquitter.stage.S2_Stage;
+import com.mru.mrnicoquitter.stage.Stage;
+import com.mru.mrnicoquitter.stage.S1_Stage;
+import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class FlowManagerSGTon {
 
@@ -24,86 +25,86 @@ public class FlowManagerSGTon {
 	private static Context myContext;
 	private static Stage stage;
 	private static SharedPreferences globalPreferences;	
+	private static Gson gson;
 	
 	// ===========================================================
 	// 		Constructors & Initialization
 	// ===========================================================	
 	
-	private FlowManagerSGTon(Context c) {
-		if (myContext == null){
-			myContext = c;
-		}
-	    Editor editor = globalPreferences.edit();
-	    editor.putString (PREF_ACTUAL_STAGE, stageStr);
-		editor.putBoolean(DEBUG, false);
-		editor.commit();	
+	private FlowManagerSGTon() {
+
+		globalPreferences 	= myContext.getSharedPreferences(GLOBAL_PREFS, Context.MODE_PRIVATE);
+//		forzarDEBUG();
+		gson 				= new Gson();	
 	      
 		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
-			fillStartingGlobalPreferences(globalPreferences);
-		}				
-	}
-	
-	private static void fillStartingGlobalPreferences(SharedPreferences globalPrefs) {
+			fillStartingGlobalPreferences();
+			setStage(S1);
+		} else {
+			String dehidratedStage = globalPreferences.getString(PREF_ACTUAL_STAGE, null);
 		
-	      SharedPreferences.Editor editor = globalPrefs.edit();
-	      editor.putBoolean(PREF_CREATED, true);
-	      editor.commit();	      // Don't forget to commit your edits!!!
+			if (null != dehidratedStage)
+				hidrataStage(dehidratedStage);
+			else
+				throw new RuntimeException();
+		}
+		
+	}
+
+	private static void fillStartingGlobalPreferences() {
+		AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
+		SharedPreferences.Editor editor = globalPreferences.edit();
+		editor.putBoolean(PREF_CREATED, true);
+		editor.putBoolean(DEBUG, false);
+		editor.commit();	      // Don't forget to commit your edits!!!
 	}
 
 	// ===========================================================
 	// 		GETTERs & SETTERs
 	// ===========================================================	
 	
-	public static FlowManagerSGTon getInstance(Context c) {
-		if (INSTANCE == null) {
-			INSTANCE = new FlowManagerSGTon(c);
-			return INSTANCE;
-		} else
-			return INSTANCE;
+	public static FlowManagerSGTon getInstance() {
+		return INSTANCE;
 	}
 	
 	static public SharedPreferences getGlobalPreferences() {
 		return globalPreferences;
 	}	
 
-	public static Stage getStage(Context c) {
-		if (myContext == null){
-			myContext = c;
-		}
-		if (stage == null) {
-			SharedPreferences global_prefs = myContext.getSharedPreferences(GLOBAL_PREFS, 0);
-			
-			String stageStr = global_prefs.getString(PREF_ACTUAL_STAGE, EMPTY);
-			if (EMPTY.equals(stageStr)){
-				stageStr	= TD_STAGE;
-				global_prefs.edit().putString(PREF_ACTUAL_STAGE, stageStr).commit();
-			}
-			// Zona Limpieza  
-			else if(stageStr.equals("S1_State")){
-				stageStr	= S1_STAGE;
-				global_prefs.edit().putString(PREF_ACTUAL_STAGE, stageStr).commit();	
-			}
-			else if(stageStr.equals("TD_State")){
-				stageStr	= TD_STAGE;
-				global_prefs.edit().putString(PREF_ACTUAL_STAGE, stageStr).commit();	
-			}			
-			setStage(stageStr);
-		}
+	public static Stage getStage() {
 		return stage;
 	}
 	
-	public static void setStage(String stageName){
-		clearPreferences();
-		if (stageName.equals(TD_STAGE))
-			stage = new TD_Stage(myContext);
-		else if(stageName.equals(S1_STAGE))
-			stage = new S1_Stage(myContext);
+	public static void hidrataStage(String dehidratedStage){
+		
+		StageState stageState = ((StageState)gson.fromJson(dehidratedStage, StageState.class));
+		stage = Stage.initStage(myContext, stageState);
+	}
 
+	public static void setStage(StageState stageState){
 		
-		Log.d(DEBUG, "Cambiado Stage a: "+stageName);	
+	}
+	
+	public static void setStage(int stageID){
+		clearPreferences();
+		switch (stageID){
+			case S1:
+				stage = new S1_Stage(myContext);
+				break;
+			case S2:
+				stage = new S2_Stage(myContext);
+				break;
+			case S3:
+				stage = new S2_Stage(myContext);
+				break;
+			case S4:
+				stage = new S2_Stage(myContext);
+				break;				
+		}
 		
-		globalPreferences.edit().putString (PREF_ACTUAL_STAGE, stageName).commit();
+		Log.d(DEBUG, "Cambiado Stage a: "+ stage.getStageName());	
+		String AAAAA = gson.toJson(stage.getStageState());
+		globalPreferences.edit().putString (PREF_ACTUAL_STAGE,AAAAA).commit();	
 	}
 
 	private static void clearPreferences() {
@@ -111,5 +112,19 @@ public class FlowManagerSGTon {
 		
 	}
 
+	public static FlowManagerSGTon initManager(Context applicationContext) {
+		myContext = applicationContext;
+		INSTANCE = new FlowManagerSGTon();
+		return INSTANCE;
+	}
 
+	// ===========================================================
+	// 		UTILITIES
+	// ===========================================================	
+
+//	private void forzarDEBUG() {
+//	    Editor editor 		= globalPreferences.edit();
+//		editor.putBoolean(DEBUG, false);
+//		editor.commit();	
+//	}
 }

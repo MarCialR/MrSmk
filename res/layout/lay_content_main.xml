@@ -2,25 +2,32 @@
 
 <merge xmlns:android="http://schemas.android.com/apk/res/android">
 
-	<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:orientation="vertical" android:layout_width="fill_parent"
-		android:layout_height="fill_parent" android:gravity="center_horizontal">
-		<Spinner android:id="@+id/TypeSpinner" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" style="@layout/cigar_row" />
+	<LinearLayout 	xmlns:android="http://schemas.android.com/apk/res/android"
+					android:orientation="vertical" android:layout_width="fill_parent"
+					android:layout_height="fill_parent" android:gravity="center"
+					android:layout_marginBottom="40px">
+					
+		<Spinner 	android:id="@+id/TypeSpinner" android:layout_width="wrap_content"
+					android:gravity="center_horizontal"
+					android:layout_height="wrap_content" style="@layout/cigar_row" />
 
-		<Button android:id="@+id/SaveButton" android:text="Save"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		<Button 	android:id="@+id/SaveButton" android:text="Save" 
+					android:gravity="center_horizontal"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-		<Button android:id="@+id/ViewListButton" android:text="View List"
-			android:layout_width="wrap_content" android:layout_height="wrap_content" />
+		<Button 	android:id="@+id/ViewListButton" android:text="View List"
+					android:gravity="center_horizontal"
+					android:layout_width="wrap_content" android:layout_height="wrap_content" />
 
-		<CheckBox android:id="@+id/olvidado" android:text="Se me olvido"
-			android:layout_width="wrap_content" android:layout_height="wrap_content"
-			android:clickable="true" />
+		<CheckBox	android:id="@+id/olvidado" android:text="Se me olvido"
+					android:gravity="center_horizontal"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"
+					android:clickable="true" />
 
 		<TimePicker android:id="@+id/CuandoFumadoPicker"
-			android:visibility="gone" android:layout_width="wrap_content"
-			android:layout_height="wrap_content" />
+					android:layout_width="wrap_content"	android:layout_height="wrap_content" 
+					android:gravity="center_horizontal"
+					android:visibility="gone" />
 
 	</LinearLayout>
 

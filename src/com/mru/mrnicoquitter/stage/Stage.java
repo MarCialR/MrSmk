@@ -1,6 +1,9 @@
 package com.mru.mrnicoquitter.stage;
 
 import static com.mru.mrnicoquitter.Global.*;
+
+import java.lang.reflect.Type;
+
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.graphics.Color;
@@ -11,14 +14,17 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.beans.StageState;
 
 public abstract class Stage {
 	// ===========================================================
 	// Fields
 	// ===========================================================	
-	protected static int logoId;
+	protected int stageID;
+	protected int logoId;
 
 	protected SharedPreferences stagePreferences;
+	protected String stagePreferencesName;
 	protected Context myContext;
 	protected int subSTGsId;		//Identifica el array de Stages
 	Class<?> activeClassToLaunch;
@@ -29,12 +35,21 @@ public abstract class Stage {
 	// ===========================================================
 	// 		Constructors & Initialization
 	// ===========================================================	
-	protected void initStageCommons(String stageStr){
-		if (stagePreferences == null){
-			stagePreferences = myContext.getSharedPreferences(TD_PREFS, 0);
 
+	public static Stage initStage (Context context, StageState state){
+		switch (state.getStageID()){
+		case S1:
+			return new S1_Stage(context,state);
+		case S2:
+			return new S2_Stage(context,state);
+
+		case S3:
+			return new S1_Stage(context,state);
+
+		case S4:
+			return new S1_Stage(context,state);
 		}
-		subSTGs = myContext.getResources().getStringArray(subSTGsId);
+		return new S1_Stage(context,state);
 	}
 
 	public SharedPreferences getPreferences() {
@@ -101,6 +116,19 @@ public abstract class Stage {
 
 	public int getLogo() {
 		return logoId;
+	}
+
+
+	public int getStageID() {
+		return stageID;
+	}
+
+	public void setStageID(int stageID) {
+		this.stageID = stageID;
+	}
+
+	public Object getStageState() {
+		return new StageState(logoId, stageID, subSTGs, activeSubSTG,stagePreferencesName);
 	}
 
 }

@@ -24,10 +24,19 @@ public  class Global {
 	public static final String DIR_SHARED_PREFS					= "/data/data/com.mru.mrnicoquitter/shared_prefs/";	
 	
 	public static final String GLOBAL_PREFS 					= "GLOBAL";
-	public static final String TD_PREFS 						= "TD_PREFS";
-	public static final String TD_STAGE 						= "TD_Stage";
+	
+    // =========================================================== 
+    // 						STAGES
+    // ===========================================================
+	public static final int NO_DEF								= -999;	
+	public static final int S1									= 1;
+	public static final int S2									= 2;
+	public static final int S3									= 3;
+	public static final int S4									= 4;
 	public static final String S1_PREFS 						= "S1_PREFS";
 	public static final String S1_STAGE 						= "S1_Stage";
+	public static final String S2_PREFS 						= "S2_PREFS";
+	public static final String S2_STAGE 						= "S2_Stage";
 	
 	public static final String PKG_BASE							= "com.mru.mrnicoquitter";
 	

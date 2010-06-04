@@ -26,7 +26,7 @@ public class FlowActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		stage = FlowManagerSGTon.getStage(getApplicationContext());
+		stage = FlowManagerSGTon.getStage();
 		setContentView(buildView());
 		info = (TextView) this.findViewById(R.id.FlowText);
 		

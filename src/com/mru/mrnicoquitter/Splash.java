@@ -28,7 +28,8 @@ public class Splash extends Activity {
 		super.onCreate(icicle);
 		setContentView(R.layout.splash_screen);
 
-		stage = FlowManagerSGTon.getStage(getApplicationContext());
+		FlowManagerSGTon.initManager(getApplicationContext());
+		stage = FlowManagerSGTon.getStage();
 		/*
 		 * New Handler to start the Menu-Activity and close this Splash-Screen
 		 * after some seconds.
