@@ -1,13 +1,13 @@
 package com.mru.mrnicoquitter.db.flow;
 
+import java.util.List;
+
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.*;
 import android.database.sqlite.*;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
-
-import com.google.gson.Gson;
 
 import com.mru.mrnicoquitter.beans.FlowItem;
 import static com.mru.mrnicoquitter.Global.*;
@@ -39,6 +39,56 @@ public class FlowObjectDBAdapter {
 		}
 	}
 
+
+	public void bulkInsert(List<String> list){
+		System.out.println("EXECUTING FLOW DB BULK INSERTS:");
+		for (String flowItemInsert : list){
+			System.out.println(flowItemInsert);
+			db.execSQL(flowItemInsert);
+		}
+		return;	
+	}
+
+	public long insertEntry(FlowItem _myObject) {
+		ContentValues newValues = new ContentValues();
+		newValues.put(FLOW_KEY_ID, _myObject.getId());
+		newValues.put(FLOW_KEY_OBJECT, _myObject.getId());
+		return db.insert(DB_FLOW_TABLE, null, newValues);		
+	}
+
+
+
+	public FlowItem getEntry(int _rowIndex) {
+		FlowItem objectInstance = null;
+//        Cursor c = db.query(DB_FLOW_TABLE, new String[] {FLOW_KEY_OBJECT},
+//        		FLOW_KEY_ID + " = " + 1004, null, null, null, null);
+//        Cursor c = db.query("SELECT " + FLOW_KEY_OBJECT +
+//        		 
+//                " FROM " + DB_FLOW_TABLE
+//
+//                + " WHERE Age > 10 LIMIT 7;",
+//
+//                null);
+        
+        Cursor c = db.rawQueryWithFactory(null, "SELECT " + FLOW_KEY_OBJECT +
+        		 
+                " FROM " + DB_FLOW_TABLE
+
+                + " WHERE " + FLOW_KEY_ID + " = 1004", null, null);
+		if (c.moveToFirst()) {
+			objectInstance = new FlowItem();
+			objectInstance.setId(_rowIndex);
+			objectInstance.setJson(c.getString(0));
+		}
+		c.close();
+		return objectInstance;
+	}
+	
+	public void cleanDB() {
+		db.execSQL("DELETE FROM " + DB_FLOW_TABLE);
+		System.out.println("FLOW DB: DELETING ALL ROWS...");
+		
+	}	
 	public FlowObjectDBAdapter open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
 		return this;
@@ -46,58 +96,6 @@ public class FlowObjectDBAdapter {
 	
 	public void close() {
 		db.close();
-	}
-//	public void bulkInsert(List<FlowItem> list){
-//
-//		try{
-//			ContentValues 	newValues = new ContentValues();
-//			for (FlowItem cigar:list){
-//				newValues.remove(KEY_DATE);
-//				newValues.remove(KEY_OBJECT);
-//				newValues.put(KEY_DATE, cigar.getDateStr());
-//				newValues.put(KEY_OBJECT, cigar.getId());
-//				db.insert(DATABASE_TABLE, null, newValues);
-//			}
-//		}catch (Exception e) {
-//			close();
-//		}
-//		return;	
-//	}
-	
-	public long insertEntry(FlowItem _myObject) {
-		ContentValues newValues = new ContentValues();
-		newValues.put(FLOW_COL_ID, _myObject.getId());
-		newValues.put(FLOW_KEY_OBJECT, _myObject.getId());
-		return db.insert(DB_FLOW_TABLE, null, newValues);		
-	}
-
-	public boolean removeEntry(long _rowIndex) {
-		return db.delete(DB_FLOW_TABLE, FLOW_COL_ID +
-				"=" + _rowIndex, null) > 0;
-	}
-//	public Cursor getAllEntries () {
-//		return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_OBJECT},
-//				null, null, null, null, null);
-//		//null, null, null, null, "date DESC");
-//	}
-
-	public FlowItem getEntry(int _rowIndex) {
-		FlowItem objectInstance = null;
-        Cursor c = db.query(DB_FLOW_TABLE, new String[] {FLOW_COL_ID},
-				null, null, null, null, null);
-		if (c.moveToFirst()) {
-			objectInstance = new FlowItem();
-			objectInstance.setId(_rowIndex);
-			objectInstance.setJson(c.getString(FLOW_COL_OBJECT));
-		}
-		c.close();
-		return objectInstance;
-	}
-	public int updateEntry(long _rowIndex, FlowItem _myObject) {
-		String where 				= FLOW_COL_ID + "=" + _rowIndex;
-		ContentValues contentValues = new ContentValues();
-		//TODO fill in the ContentValue based on the new object
-		return db.update(DB_FLOW_TABLE, contentValues, where, null);
 	}
 	private static class myDbHelper extends SQLiteOpenHelper {
 		public myDbHelper(Context context, String name,
@@ -132,4 +130,22 @@ public class FlowObjectDBAdapter {
 			onCreate(_db);
 		}
 	}
+//	public boolean removeEntry(long _rowIndex) {
+//	return db.delete(DB_FLOW_TABLE, FLOW_KECOL_ID +
+//			"=" + _rowIndex, null) > 0;
+//}
+
+
+	
+//	public Cursor getAllEntries () {
+//	return db.query(DATABASE_TABLE, new String[] {KEY_ID, KEY_DATE, KEY_OBJECT},
+//			null, null, null, null, null);
+//	//null, null, null, null, "date DESC");
+//}	
+//	public int updateEntry(long _rowIndex, FlowItem _myObject) {
+//	String where 				= FLOW_COL_ID + "=" + _rowIndex;
+//	ContentValues contentValues = new ContentValues();
+//	//TODO fill in the ContentValue based on the new object
+//	return db.update(DB_FLOW_TABLE, contentValues, where, null);
+//}	
 }

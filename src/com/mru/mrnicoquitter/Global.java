@@ -70,10 +70,12 @@ public  class Global {
     
 	public static final String 	DB_FLOW_TABLE 		= "FLOW_TABLE";
 	public static final int 	DB_FLOW_VERSION 	= 1;
-	public static final String 	FLOW_COL_ID			= "id";	// The index (key) column name for use in where clauses.
+	public static final String 	FLOW_COL_AUTO		= "auto_id";	// The index (key) column name for use in where clauses.
+	public static final String 	FLOW_KEY_ID			= "id";	// The name and column index of each column in your database.
+	public static final int 	FLOW_COL_ID		 	= 1;
 	public static final String 	FLOW_KEY_OBJECT		= "object";	// The name and column index of each column in your database.
-	public static final int 	FLOW_COL_OBJECT 	= 1;
-	public static final String 	DB_FLOW_CREATE 		= "create table " +	DB_FLOW_TABLE + " (" + FLOW_COL_ID + " integer primary key, " + FLOW_KEY_OBJECT + " string not null);";
+	public static final int 	FLOW_COL_OBJECT 	= 2;
+	public static final String 	DB_FLOW_CREATE 		= "create table " +	DB_FLOW_TABLE + " (" + FLOW_COL_AUTO + " integer primary key, " + FLOW_KEY_ID + " integer, " + FLOW_KEY_OBJECT + " string not null);";
 	public static final String 	DB_FLOW_DROP 		= "DROP TABLE IF EXISTS " + DB_FLOW_TABLE;
 	
 	

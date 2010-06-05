@@ -1,11 +1,10 @@
 package com.mru.mrnicoquitter.stage;
 
 import static com.mru.mrnicoquitter.Global.*;
-import static com.mru.mrnicoquitter.Global.S2_PREFS;
+
 import android.content.Context;
-import android.content.SharedPreferences;
 import android.content.SharedPreferences.Editor;
-import android.graphics.Color;
+
 import android.util.Log;
 
 import com.mru.mrnicoquitter.R;

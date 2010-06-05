@@ -4,12 +4,16 @@ import static com.mru.mrnicoquitter.Global.*;
 
 import java.io.BufferedInputStream;
 import java.io.DataInputStream;
-import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.beans.FlowItem;
+import com.mru.mrnicoquitter.db.CigarDBAdapter;
+import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.stage.Stage;
 
@@ -58,18 +62,22 @@ public class Splash extends Activity {
 	}
 
 	private void initFlows() {
-		InputStream fis 	= null;
+		InputStream fis 		= null;
 		BufferedInputStream bis = null;
 		DataInputStream dis 	= null;
+		List<String> inserts 	= new ArrayList<String>();
 
 		try {
 			Resources res = getApplicationContext().getResources();
-			fis = res.openRawResource(R.raw.flows_inserts);
+			fis = res.openRawResource(R.raw.flow_inserts);
 			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
 			dis = new DataInputStream(bis);
 
+			System.out.println("INSERTS DETECTED:\n");			
 			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
-				System.out.println(dis.readLine());
+				String line = dis.readLine();
+				inserts.add(line);
+				System.out.println(line);
 			}
 
 			fis.close();
@@ -81,5 +89,11 @@ public class Splash extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		FlowObjectDBAdapter FlowDB = FlowObjectDBAdapter.getInstance(getApplicationContext()).open();
+		FlowDB.cleanDB();
+		FlowDB.bulkInsert(inserts);
+		FlowItem it = FlowDB.getEntry(1004);
+		FlowDB.close();
+		System.out.println("sdfs");
 	}
 }

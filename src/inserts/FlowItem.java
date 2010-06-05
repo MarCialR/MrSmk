@@ -1,4 +1,4 @@
-package aaaaaaaaaaaaa;
+package inserts;
 
 import java.io.Serializable;
 

@@ -1,0 +1,4 @@
+INSERT INTO FLOW_TABLE (id,object) VALUES (1001, '{"id":1001,"name":"fagerstrom"}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1003, '{"id":1003,"name":"lls  skkej f"}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1004, '{"id":1004,"name":"lorem ipsum"}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1005, '{"id":1005,"name":"aujhd dfdgf"}');

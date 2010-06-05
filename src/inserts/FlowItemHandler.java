@@ -1,12 +1,10 @@
-package aaaaaaaaaaaaa;
+package inserts;
 
 import java.util.List;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
-
-
 
 public class FlowItemHandler extends DefaultHandler {
 	
@@ -61,7 +59,7 @@ public class FlowItemHandler extends DefaultHandler {
         		 item.setName(name);
          }
    }
-    public List<FlowItem> getEncuesta() { 
+    public List<FlowItem> getList() { 
         return this.itemsList; 
    }    
     
