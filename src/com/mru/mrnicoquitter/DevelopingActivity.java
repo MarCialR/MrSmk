@@ -81,11 +81,10 @@ public class DevelopingActivity extends QActivity{
 			public void onClick(View v) {
 				
 				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
-				int stage = -999;
-				if (selected.equalsIgnoreCase(S1_STAGE)) 
-					FlowManagerSGTon.setStage(S1);
-				else if (selected.equalsIgnoreCase(S2_STAGE)) 
-					FlowManagerSGTon.setStage(S2);
+				if (selected.equalsIgnoreCase(PHASE_1)) 
+					FlowManagerSGTon.setPhase(PHASE_1_CODE);
+				else if (selected.equalsIgnoreCase(PHASE_2)) 
+					FlowManagerSGTon.setPhase(PHASE_2_CODE);
 
 			}
 		};
@@ -246,6 +245,18 @@ public class DevelopingActivity extends QActivity{
 			
 			
 
+	}
+
+	@Override
+	protected String[] getMandatoryFields() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected boolean isOKToLaunch() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 
 }

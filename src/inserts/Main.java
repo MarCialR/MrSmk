@@ -9,7 +9,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 import java.util.List;
-import static com.mru.mrnicoquitter.Global.*;
+import static inserts.Global.*;
 import com.google.gson.Gson;
 
 public class Main {
@@ -27,7 +27,7 @@ public class Main {
 		gson 					= new Gson();
 		FlowXMLParser parser 	= new FlowXMLParser("");
 
-		List<FlowItem> listita = parser.parse(inputFile);
+		List<Stage> listita = parser.parse(inputFile);
 
 		// for (Entry<Object, Object> entry : System.getProperties().entrySet())
 		// {
@@ -60,18 +60,21 @@ public class Main {
 		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputINSERTS));		
 	}
 
-	private static String getInserts(List<FlowItem> listita) {
+	private static String getInserts(List<Stage> listita) {
 		sb = new StringBuilder();
-		for (FlowItem it : listita)
+		for (Stage it : listita)
 			sb.append("INSERT INTO " + DB_FLOW_TABLE + " (" + FLOW_KEY_ID + "," + FLOW_KEY_OBJECT + ") " +
 					 "VALUES (" + it.getId() + ", '" + gson.toJson(it)).append("');\n");
 		return sb.toString();
 	}
 
-	private static String getGson(List<FlowItem> listita) {
+	private static String getGson(List<Stage> listita) {
 		sb = new StringBuilder();
-		for (FlowItem it : listita)
-			sb.append(gson.toJson(it)).append("\n");
+		for (Stage it : listita){
+			it.convert();
+			String xxxxxxx = gson.toJson(it);
+			sb.append(xxxxxxx).append("\n");
+		}
 		return sb.toString();
 	}
 

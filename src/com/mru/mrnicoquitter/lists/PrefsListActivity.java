@@ -26,7 +26,7 @@ public class PrefsListActivity extends ListActivity {
 
 		AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
 
-		prefsDirectory = new File(DIR_SHARED_PREFS);
+		prefsDirectory = new File(PREFERENCES_DIR);
 
 		int currentPathStringLenght = prefsDirectory.getAbsolutePath().length();
 

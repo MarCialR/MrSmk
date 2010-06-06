@@ -6,16 +6,16 @@ import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
 
-import com.mru.mrnicoquitter.beans.FlowItem;
+import com.mru.mrnicoquitter.beans.Stage;
 
 public class FlowItemHandler extends DefaultHandler {
 	
     private boolean in_id; 
     private boolean in_name;
-    private FlowItem item;
-    private List<FlowItem> itemsList;
+    private Stage item;
+    private List<Stage> itemsList;
 
-	public FlowItemHandler(List<FlowItem> itemsList2) {
+	public FlowItemHandler(List<Stage> itemsList2) {
 		super();
 		this.itemsList = itemsList2;
 	}
@@ -33,7 +33,7 @@ public class FlowItemHandler extends DefaultHandler {
     
 	public void startElement(String uri, String localName, String qName, Attributes atts) throws SAXException {
 		if (localName.equals("ITEM")) { 
-    		item			= new FlowItem();
+    		item			= new Stage();
        }else if (localName.equals("ID")) { 
             this.in_id = true; 
        }else if (localName.equals("NAME")) { 
@@ -61,7 +61,7 @@ public class FlowItemHandler extends DefaultHandler {
         		 item.setName(name);
          }
    }
-    public List<FlowItem> getEncuesta() { 
+    public List<Stage> getEncuesta() { 
         return this.itemsList; 
    }    
     

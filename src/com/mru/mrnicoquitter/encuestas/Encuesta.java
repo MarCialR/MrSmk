@@ -26,12 +26,10 @@ public class Encuesta implements Iterator<EncuestaItem>{
 	}
 	@Override
 	public boolean hasNext() {
-		// TODO Auto-generated method stub
 		return iterator.hasNext();
 	}
 	@Override
 	public EncuestaItem next() {
-		// TODO Auto-generated method stub
 		return iterator.next();
 	}
 	@Override

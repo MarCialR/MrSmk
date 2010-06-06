@@ -1,4 +1,2 @@
-INSERT INTO FLOW_TABLE (id,object) VALUES (1001, '{"id":1001,"name":"fagerstrom"}');
-INSERT INTO FLOW_TABLE (id,object) VALUES (1003, '{"id":1003,"name":"lls  skkej f"}');
-INSERT INTO FLOW_TABLE (id,object) VALUES (1004, '{"id":1004,"name":"lorem ipsum"}');
-INSERT INTO FLOW_TABLE (id,object) VALUES (1005, '{"id":1005,"name":"aujhd dfdgf"}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1002, '{"id":1002,"name":"t_fagerstrom","activity":"com.mru.mrnicoquitter.encuestas.EncuestaActivity","extrasArray":[null]}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1001, '{"id":1001,"name":"a1_bienvenida","activity":"com.mru.mrnicoquitter.viewers.HTMLViewer","extrasArray":[null]}');

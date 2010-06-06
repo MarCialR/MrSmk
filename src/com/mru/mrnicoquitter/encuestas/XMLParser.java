@@ -38,8 +38,7 @@ public class XMLParser {
 	}
 
 	public final Encuesta parse() {
-		InputStream is = Utils.getInputStreambyName(encuesta.getEncuestaName(),
-				ctx);
+		InputStream is = Utils.getInputStreambyName(encuesta.getEncuestaName(), ctx);
 		if (mReader.getContentHandler() == null) {
 			mReader.setContentHandler(new EncuestaHandler(encuesta));
 		}

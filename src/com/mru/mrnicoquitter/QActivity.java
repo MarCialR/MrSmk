@@ -1,7 +1,7 @@
 package com.mru.mrnicoquitter;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.stage.Stage;
+import com.mru.mrnicoquitter.stage.Phase;
 import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.ui.MrMenu;
 
@@ -13,15 +13,19 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 
-public class QActivity extends Activity {
-	protected static Stage stage;
+public abstract class QActivity extends Activity {
+	protected static Phase stage;
+	
+	protected abstract boolean isOKToLaunch();
+	protected abstract String[] getMandatoryFields();	
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		
-		//OJITO CON ESTO!!! hay que asegurarse que ese estage es singleton tb (o algo asi)
+		//OJITO CON ESTO!!! hay que asegurarse que ese Stage es singleton tb (o algo asi)
 		if (stage==null)
-			stage = FlowManagerSGTon.getStage();
+			stage = FlowManagerSGTon.getPhase();
 		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onCreate!!");
 	}
 	@Override

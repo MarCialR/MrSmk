@@ -13,12 +13,12 @@ import android.widget.TextView;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
-import com.mru.mrnicoquitter.stage.Stage;
+import com.mru.mrnicoquitter.stage.Phase;
 
 
 public class FlowActivity extends Activity {
 
-	private Stage stage;
+	private Phase phase;
 	private OnClickListener prevListener, goListener, nextListener;
 	private TextView info;
 	/** Called when the activity is first created. */
@@ -26,17 +26,18 @@ public class FlowActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		stage = FlowManagerSGTon.getStage();
+		phase = FlowManagerSGTon.getPhase();
 		setContentView(buildView());
 		info = (TextView) this.findViewById(R.id.FlowText);
 		
-		info.setText(stage.getInfo());
+		info.setText(FlowManagerSGTon.getInfo());
 
 		
 		//			PREVIOUS BUTTON
 		prevListener = new OnClickListener() {
 			public void onClick(View v) {
-				info.setText(stage.prev().getInfo());				
+				FlowManagerSGTon.prev();
+				info.setText(FlowManagerSGTon.getInfo());				
 			}
 		};
 		((Button) findViewById(R.id.Flow_PREV_Button)).setOnClickListener(prevListener);
@@ -45,7 +46,7 @@ public class FlowActivity extends Activity {
 		//			GO BUTTON
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(),stage.getActiveClassToLaunch()));
+				startActivity(new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
 				finish();
 			}
 		};
@@ -55,7 +56,8 @@ public class FlowActivity extends Activity {
 		//			NEXT BUTTON
 		nextListener = new OnClickListener() {
 			public void onClick(View v) {
-				info.setText(stage.next().getInfo());			
+				FlowManagerSGTon.next();
+				info.setText(FlowManagerSGTon.getInfo());			
 			}
 		};
 		((Button) findViewById(R.id.Flow_NEXT_Button)).setOnClickListener(nextListener);

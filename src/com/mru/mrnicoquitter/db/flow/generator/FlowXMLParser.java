@@ -15,13 +15,13 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 
-import com.mru.mrnicoquitter.beans.FlowItem;
+import com.mru.mrnicoquitter.beans.Stage;
 import com.mru.mrnicoquitter.utils.Utils;
 
 public class FlowXMLParser {
 	private SAXParser mParser;
 	private XMLReader mReader;
-	private List<FlowItem> itemsList;
+	private List<Stage> itemsList;
 	private Context ctx;
 
 	public FlowXMLParser(String string, Context _ctx) {
@@ -31,7 +31,7 @@ public class FlowXMLParser {
 		try {
 			mParser = f.newSAXParser();
 			mReader = mParser.getXMLReader();
-			itemsList = new ArrayList<FlowItem>();
+			itemsList = new ArrayList<Stage>();
 
 		} catch (ParserConfigurationException pcEx) {
 
@@ -40,7 +40,7 @@ public class FlowXMLParser {
 		}
 	}
 
-	public final List<FlowItem> parse() {
+	public final List<Stage> parse() {
 		InputStream is =  null;
 		if (ctx!=null)
 			is = Utils.getInputStreambyName(itemsList.toString()/*getEncuestaName()*/,ctx);
@@ -65,7 +65,7 @@ public class FlowXMLParser {
 	}
 	public static void main(String[] args) {
 		FlowXMLParser parser = new FlowXMLParser("", null);
-		List<FlowItem> listita = parser.parse();
+		List<Stage> listita = parser.parse();
 		System.out.println(listita);
 
 	}

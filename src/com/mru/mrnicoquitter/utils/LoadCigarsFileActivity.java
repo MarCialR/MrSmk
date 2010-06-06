@@ -25,7 +25,7 @@ public class LoadCigarsFileActivity extends ListActivity {
 	
 
 	private List<String> directoryEntries = new ArrayList<String>();
-	File prefsDirectory = new File(DIR_SHARED_PREFS);
+	File prefsDirectory = new File(PREFERENCES_DIR);
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);

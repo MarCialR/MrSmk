@@ -6,13 +6,12 @@ import com.google.gson.Gson;
 
 import android.content.Context;
 import android.content.SharedPreferences;
-import android.content.SharedPreferences.Editor;
 import android.util.Log;
 
-import com.mru.mrnicoquitter.beans.StageState;
-import com.mru.mrnicoquitter.stage.S2_Stage;
-import com.mru.mrnicoquitter.stage.Stage;
-import com.mru.mrnicoquitter.stage.S1_Stage;
+import com.mru.mrnicoquitter.beans.PhaseState;
+import com.mru.mrnicoquitter.stage.P2_Phase;
+import com.mru.mrnicoquitter.stage.Phase;
+import com.mru.mrnicoquitter.stage.P1_Phase;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
 public class FlowManagerSGTon {
@@ -23,45 +22,33 @@ public class FlowManagerSGTon {
 	
 	private static FlowManagerSGTon INSTANCE;
 	private static Context myContext;
-	private static Stage stage;
+	private static Phase phase;
+	//private static String[] 
 	private static SharedPreferences globalPreferences;	
 	private static Gson gson;
-	private static boolean firstRun;
-	
+
+
 	// ===========================================================
 	// 		Constructors & Initialization
 	// ===========================================================	
 	
+	public static Phase initManager(Context applicationContext) {
+		myContext 	= applicationContext;
+		INSTANCE 	= new FlowManagerSGTon();
+		return phase;
+	}
+	
 	private FlowManagerSGTon() {
 
-		globalPreferences 	= myContext.getSharedPreferences(GLOBAL_PREFS, Context.MODE_PRIVATE);
-//		forzarDEBUG();
-		gson 				= new Gson();	
-	      
-		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			initMrQuitter();
-			setStage(S1);
-		} else {
-			firstRun = true;// normalmente a false
-			String dehidratedStage = globalPreferences.getString(PREF_ACTUAL_STAGE, null);
+		gson 					= new Gson();	
+		globalPreferences 		= myContext.getSharedPreferences(PREFS_GLOBAL, Context.MODE_PRIVATE);
+		String dehidratedStage 	= globalPreferences.getString(PREF_ACTUAL_PHASE_DEHIDRATED, null);
+	
+		if (null != dehidratedStage)
+			phase = hidrataStage(dehidratedStage);
+		else
+			setPhase(PHASE_1_CODE);
 		
-			if (null != dehidratedStage)
-				hidrataStage(dehidratedStage);
-			else
-				throw new RuntimeException();
-		}
-		
-	}
-
-	private static void initMrQuitter() {
-		firstRun = true;
-		AppUtils.showToastShort(myContext, "creating " + GLOBAL_PREFS);
-		SharedPreferences.Editor editor = globalPreferences.edit();
-		editor.putBoolean(PREF_CREATED, true);
-		editor.putBoolean(DEBUG, false);
-		editor.commit();	      // Don't forget to commit your edits!!!
-		
-
 	}
 
 	// ===========================================================
@@ -76,63 +63,96 @@ public class FlowManagerSGTon {
 		return globalPreferences;
 	}	
 
-	public static Stage getStage() {
-		return stage;
-	}
-	public static boolean isFirstRun(){
-		return firstRun;
-	}
-	public static void hidrataStage(String dehidratedStage){
-		
-		StageState stageState = ((StageState)gson.fromJson(dehidratedStage, StageState.class));
-		stage = Stage.initStage(myContext, stageState);
+	public static Phase getPhase() {
+		return phase;
 	}
 
-	public static void setStage(StageState stageState){
+	public static Phase hidrataStage(String dehidratedStage){
+		
+		PhaseState stageState = ((PhaseState)gson.fromJson(dehidratedStage, PhaseState.class));
+		return Phase.initPhase(myContext, stageState);
+	}
+
+	public static void setStage(PhaseState stageState){
 		
 	}
 	
-	public static void setStage(int stageID){
+	public static void setPhase(int phaseID){
 		clearPreferences();
-		switch (stageID){
-			case S1:
-				stage = new S1_Stage(myContext);
+		switch (phaseID){
+			case PHASE_1_CODE:
+				phase = new P1_Phase(myContext);
 				break;
-			case S2:
-				stage = new S2_Stage(myContext);
+			case PHASE_2_CODE:
+				phase = new P2_Phase(myContext);
 				break;
-			case S3:
-				stage = new S2_Stage(myContext);
+			case PHASE_3_CODE:
+				phase = new P2_Phase(myContext);
 				break;
-			case S4:
-				stage = new S2_Stage(myContext);
+			case PHASE_4_CODE:
+				phase = new P2_Phase(myContext);
 				break;				
+			default:
+				throw new RuntimeException();
 		}
 		
-		Log.d(DEBUG, "Cambiado Stage a: "+ stage.getStageName());	
-		String AAAAA = gson.toJson(stage.getStageState());
-		globalPreferences.edit().putString (PREF_ACTUAL_STAGE,AAAAA).commit();	
+		Log.d("FlowManagerSGTon", "Cambiada FASE a: "+ phase.getStageName());	
+		String deHidratedStageState = gson.toJson(phase.getStageState());
+		globalPreferences.edit().putString (PREF_ACTUAL_PHASE_DEHIDRATED,deHidratedStageState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID).commit();
+		phaseStagesCodes = phase.getCodes();
+		phaseStagesNames = phase.getNames();
+		activeStageIndex = 0;
+		
 	}
+
 
 	private static void clearPreferences() {
 		// TODO Auto-generated method stub
 		
 	}
 
-	public static FlowManagerSGTon initManager(Context applicationContext) {
-		myContext = applicationContext;
-		if (INSTANCE==null)
-			INSTANCE = new FlowManagerSGTon();
-		return INSTANCE;
-	}
 
 	// ===========================================================
 	// 		UTILITIES
-	// ===========================================================	
+	// ===========================================================
+	
+	private static int[] phaseStagesCodes;
+	private static String[] phaseStagesNames ;
+	private static int activeStageIndex;	
 
-//	private void forzarDEBUG() {
-//	    Editor editor 		= globalPreferences.edit();
-//		editor.putBoolean(DEBUG, false);
-//		editor.commit();	
-//	}
+	public static void  prev(){
+		activeStageIndex--;
+		if (activeStageIndex==-1)
+			activeStageIndex = phaseStagesCodes.length-1;
+	}	
+	
+	public static void next(){
+		activeStageIndex++;
+		if (activeStageIndex==phaseStagesCodes.length)
+			activeStageIndex = 0;
+	}
+	
+	public static String getInfo(){
+		StringBuffer sb = new StringBuffer();
+		sb.append(phase.getStageName()).append(NEWLINE);
+		sb.append("SUB_STAGES").append(NEWLINE);
+		int counter = 0;
+		for(int stageIt:phaseStagesCodes){
+			if (counter == activeStageIndex)
+				sb.append("* - ");
+			sb.append(phaseStagesNames[activeStageIndex]).append(NEWLINE);;
+			counter++;
+		}
+		return sb.toString();
+	}
+
+	public static void setPhaseStagesCodes(int[] phaseStagesCodes) {
+		FlowManagerSGTon.phaseStagesCodes = phaseStagesCodes;
+	}
+
+	public static void setPhaseStagesNames(String[] phaseStagesNames) {
+		FlowManagerSGTon.phaseStagesNames = phaseStagesNames;
+	}
+	
+
 }

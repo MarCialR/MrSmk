@@ -1,4 +1,2 @@
-{"id":1001,"name":"fagerstrom"}
-{"id":1003,"name":"lls  skkej f"}
-{"id":1004,"name":"lorem ipsum"}
-{"id":1005,"name":"aujhd dfdgf"}
+{"id":1002,"name":"t_fagerstrom","activity":"com.mru.mrnicoquitter.encuestas.EncuestaActivity","extrasArray":[null]}
+{"id":1001,"name":"a1_bienvenida","activity":"com.mru.mrnicoquitter.viewers.HTMLViewer","extrasArray":[null]}

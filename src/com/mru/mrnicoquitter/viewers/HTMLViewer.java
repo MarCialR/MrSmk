@@ -12,7 +12,7 @@ public class HTMLViewer extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		String filename = getIntent().getStringExtra(STR_EXTRA_FILENAME);
+		String filename = getIntent().getStringExtra(STR_EXTRA_R_RAW_FILENAME);
 
 		setContentView(R.layout.web_view);
 		WebView temp_WebView = (WebView) findViewById(R.id.webview);

@@ -19,7 +19,7 @@ import org.xml.sax.XMLReader;
 public class FlowXMLParser {
 	private SAXParser mParser;
 	private XMLReader mReader;
-	private List<FlowItem> itemsList;
+	private List<Stage> itemsList;
 
 	public FlowXMLParser(String string) {
 
@@ -27,11 +27,11 @@ public class FlowXMLParser {
 		try {
 			mParser = f.newSAXParser();
 			mReader = mParser.getXMLReader();
-			itemsList = new ArrayList<FlowItem>();
+			itemsList = new ArrayList<Stage>();
 		} catch (Exception ex) {ex.printStackTrace();}
 	}
 
-	public final List<FlowItem> parse(File _aFile) {
+	public final List<Stage> parse(File _aFile) {
 		InputStream is = null;
 		try {
 			is = new BufferedInputStream(new FileInputStream(_aFile));

@@ -19,13 +19,10 @@ import com.mru.mrnicoquitter.viewers.HTMLViewer;
 public class HTMLListActivity extends ListActivity {
 
     private List<String> filesEntries = new ArrayList<String>(); 
-
 	
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
-        
         AppUtils.showDebug(getApplicationContext(), "HTMLListActivity - onCreate!!");
-
         filesEntries.add("a1_bienvenida");
         filesEntries.add("a2_info_tabaquismo");
         filesEntries.add("a3_tests");
@@ -33,20 +30,16 @@ public class HTMLListActivity extends ListActivity {
         filesEntries.add("test");
         filesEntries.add("mitos_del_tabaco");
         
-        
         ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this, 
                 R.layout.cigar_row, this.filesEntries); 
        
-      this.setListAdapter(directoryList); 
-        
-
+        this.setListAdapter(directoryList); 
     }
     
 	protected void onListItemClick(ListView l, View v, int position, long id) {
-
 		TextView tv = (TextView)v;
-		Intent i = new Intent( getApplicationContext(), HTMLViewer.class );
-		i.putExtra( STR_EXTRA_FILENAME, tv.getText());
+		Intent i 	= new Intent( getApplicationContext(), HTMLViewer.class );
+		i.putExtra( STR_EXTRA_R_RAW_FILENAME, tv.getText());
 		startActivity( i );
 
 	}

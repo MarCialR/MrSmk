@@ -21,43 +21,32 @@ import com.mru.mrnicoquitter.ui.AppUtils;
 public class EncuestaActivity extends QActivity {
 
 	private XMLParser parser;
-
 	Encuesta e; 
 	Iterator<EncuestaItem> it;	
 	EncuestaItem item;
-
     TextView questionText;
     TableRow answerRow;
     RadioGroup rg;
     Button goButton;
     TableLayout answersTL;
 
-    @Override
 	protected void onCreate(Bundle savedInstanceState) {
 
 		super.onCreate(savedInstanceState);
-        
-        setContentView(R.layout.encuesta);	    
+		String _encuesta = getIntent().getStringExtra(STR_EXTRA_ENCUESTA_NAME);
 
-		String _encuesta = getIntent().getStringExtra("encuesta");
-        
-        
-        answersTL = (TableLayout)findViewById(R.id.AnswersTL);
-        // IMPORTANTE
-        answersTL.setColumnShrinkable(0, true);		
-
-        questionText = (TextView)findViewById(R.id.Question);        
-        
 		//parser 	= new XMLParser("t_glover_nilsson",getApplicationContext()); 
 		parser 	= new XMLParser(_encuesta,getApplicationContext());		
 		e 		= parser.parse();
         it 		= e.iterator();
 
         
-
+        setContentView(R.layout.encuesta);	    
+        questionText 	= (TextView)findViewById(R.id.Question);
+        answersTL 		= (TableLayout)findViewById(R.id.AnswersTL);
+        answersTL.setColumnShrinkable(0, true);        // IMPORTANTE		
         
-        
-		goButton 			= new Button(this);
+		goButton 		= new Button(this);
 		goButton.setText(getString(R.string.Btn_next));
 		OnClickListener notificarListener = new OnClickListener() {
 			public void onClick(View v) {
@@ -75,8 +64,6 @@ public class EncuestaActivity extends QActivity {
 		goButton.setOnClickListener(notificarListener);
 		
         showNextQuestion();
-		
-        	
 	}
 
 	
@@ -109,5 +96,19 @@ public class EncuestaActivity extends QActivity {
         	finish();
         }
 		return;
+	}
+
+
+	@Override
+	protected String[] getMandatoryFields() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+
+	@Override
+	protected boolean isOKToLaunch() {
+		// TODO Auto-generated method stub
+		return false;
 	}
 }

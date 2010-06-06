@@ -27,19 +27,27 @@
 		<item>moto/coche</item>
     </string-array>
     
-<integer-array name="S2_Stages_codes">
-	<item>345</item>
-</integer-array>
 
-    <string-array name="S1_Stages_Descriptions">
+
+    <integer-array name="PHASE_1_Stages_Codes">
+        <item>1001</item>
+        <item>1002</item>
+    </integer-array>
+    
+    <string-array name="PHASE_1_Stages_Descriptions">
         <item>a1_bienvenida.html</item>
         <item>t_fagerstrom.xml</item>
-        <item>a3_tests.html</item>
+        <!-- item>a3_tests.html</item>
         <item>t_glover_nilsson.xml</item>
-        <item>t_posibilidades_exito</item>
+        <item>t_posibilidades_exito</item-->
     </string-array>
+    
+    <integer-array name="PHASE_2_Stages_Codes">
+        <item>2001</item>
+        <item>2002</item>
+    </integer-array>
         
-    <string-array name="S2_Stages_Descriptions">
+    <string-array name="PHASE_2_Stages_Descriptions">
         <item>diez_mandamientos.html</item>
         <item>mitos_del_tabaco.html</item>
     </string-array>
@@ -52,61 +60,4 @@
         <item>blue</item>
         <item>violet</item>
     </string-array>
-    
-    <!-- Used in View/Spinner1.java -->
-    <string-array name="lapse">
-        <item>1:00</item>
-        <item>5:00</item>
-        <item>6:00</item>
-        <item>30:00</item>
-        <item>40:00</item>
-    </string-array>
-
-    <!-- Used in App/SearchInvoke.java -->
-    <string-array name="search_menuModes">
-        <item>Search Key</item>
-        <item>Menu Item</item>
-        <item>Type-To-Search</item>
-        <item>Disabled</item>
-    </string-array>
-    
-    <!-- Used in app/dialog examples -->
-    <string-array name="select_dialog_items">
-        <item>Command one</item>
-        <item>Command two</item>
-        <item>Command three</item>
-        <item>Command four</item>
-    </string-array>
-    
-    <string-array name="select_dialog_items2">
-        <item>Map</item>
-        <item>Satellite</item>
-        <item>Traffic</item>
-        <item>Street view</item>
-    </string-array>
-    
-    <string-array name="select_dialog_items3">
-        <item>Every Monday</item>
-        <item>Every Tuesday</item>
-        <item>Every Wednesday</item>
-        <item>Every Thursday</item>
-        <item>Every Friday</item>
-        <item>Every Saturday</item>
-        <item>Every Sunday</item>
-    </string-array>
-    
-    <!-- Used in app/menu examples -->
-    <string-array name="entries_list_preference">
-        <item>Alpha Option 01</item>
-        <item>Beta Option 02</item>
-        <item>Charlie Option 03</item>  
-    </string-array>
-
-    <!-- Used in app/menu examples -->
-    <string-array name="entryvalues_list_preference">
-        <item>alpha</item>
-        <item>beta</item>
-        <item>charlie</item>  
-    </string-array>
-    
 </resources>

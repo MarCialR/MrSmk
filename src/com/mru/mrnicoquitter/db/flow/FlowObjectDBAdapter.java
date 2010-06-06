@@ -9,7 +9,7 @@ import android.database.sqlite.*;
 import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
-import com.mru.mrnicoquitter.beans.FlowItem;
+import com.mru.mrnicoquitter.beans.Stage;
 import static com.mru.mrnicoquitter.Global.*;
 
 public class FlowObjectDBAdapter {
@@ -49,7 +49,7 @@ public class FlowObjectDBAdapter {
 		return;	
 	}
 
-	public long insertEntry(FlowItem _myObject) {
+	public long insertEntry(Stage _myObject) {
 		ContentValues newValues = new ContentValues();
 		newValues.put(FLOW_KEY_ID, _myObject.getId());
 		newValues.put(FLOW_KEY_OBJECT, _myObject.getId());
@@ -58,8 +58,8 @@ public class FlowObjectDBAdapter {
 
 
 
-	public FlowItem getEntry(int _rowIndex) {
-		FlowItem objectInstance = null;
+	public Stage getEntry(int _rowIndex) {
+		Stage objectInstance = null;
 //        Cursor c = db.query(DB_FLOW_TABLE, new String[] {FLOW_KEY_OBJECT},
 //        		FLOW_KEY_ID + " = " + 1004, null, null, null, null);
 //        Cursor c = db.query("SELECT " + FLOW_KEY_OBJECT +
@@ -71,12 +71,10 @@ public class FlowObjectDBAdapter {
 //                null);
         
         Cursor c = db.rawQueryWithFactory(null, "SELECT " + FLOW_KEY_OBJECT +
-        		 
                 " FROM " + DB_FLOW_TABLE
-
-                + " WHERE " + FLOW_KEY_ID + " = 1004", null, null);
+                + " WHERE " + FLOW_KEY_ID + " = " + _rowIndex, null, null);
 		if (c.moveToFirst()) {
-			objectInstance = new FlowItem();
+			objectInstance = new Stage();
 			objectInstance.setId(_rowIndex);
 			objectInstance.setJson(c.getString(0));
 		}

@@ -115,6 +115,18 @@ public class MainActivity extends QActivity {
 
 	}
 
+	@Override
+	protected String[] getMandatoryFields() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected boolean isOKToLaunch() {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
 
 	
 

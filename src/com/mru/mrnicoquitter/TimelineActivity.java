@@ -191,5 +191,17 @@ public class TimelineActivity extends QActivity {
       public void setGestureScanner(GestureDetector gestureScanner) { 
          this.gestureScanner = gestureScanner; 
       } 
-   } 
+   }
+
+@Override
+protected String[] getMandatoryFields() {
+	// TODO Auto-generated method stub
+	return null;
+}
+
+@Override
+protected boolean isOKToLaunch() {
+	// TODO Auto-generated method stub
+	return false;
+} 
 } 

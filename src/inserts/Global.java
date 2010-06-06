@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter;
+package inserts;
 
 public  class Global {
 	

@@ -16,4 +16,16 @@ public class CanvasActivity extends QActivity {
 	  //setContentView(R.layout.canvas);	
 	    setContentView(mCustomDrawableView);
 	}
+
+	@Override
+	protected String[] getMandatoryFields() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	protected boolean isOKToLaunch() {
+		// TODO Auto-generated method stub
+		return false;
+	}
 }
