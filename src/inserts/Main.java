@@ -1,5 +1,7 @@
 package inserts;
-
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
 import java.io.File;
@@ -8,6 +10,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
+import java.util.ArrayList;
 import java.util.List;
 import static inserts.Global.*;
 import com.google.gson.Gson;
@@ -19,26 +22,32 @@ public class Main {
 	private static final String OUTPUT_FILE_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQttr\\assets\\HELPER_THINGS\\flow_inserts";
 	private static StringBuilder sb;
 	private static Gson gson;
-
+	private static ObjectMapper mapper;
+	private static boolean json_not_jackson = false;
+	private static List<Stage> listita;
+	private static List<String> asJsonListita;
 	public static void main(String[] args) {
 		File inputFile 			= new File(INPUT_FILE);
 		File outputPlain 		= new File(OUTPUT_FILE_GSON);
 		File outputINSERTS		= new File(OUTPUT_FILE_INSERTS);
 		gson 					= new Gson();
 		FlowXMLParser parser 	= new FlowXMLParser("");
-
-		List<Stage> listita = parser.parse(inputFile);
+		mapper = new ObjectMapper(); // can reuse, share globally
+		listita = parser.parse(inputFile);
+		asJsonListita = new ArrayList<String> ();
+		asJsonListita = getGson(listita);
 
 		// for (Entry<Object, Object> entry : System.getProperties().entrySet())
 		// {
 		// System.out.println(entry.getKey() + ": "+ entry.getValue());
 		// }
 
-		System.out.println("ORIGINAL FILE CONTENTS: \n"
-				+ getContents(inputFile));
+		System.out.println("ORIGINAL FILE CONTENTS: \n"+ getContents(inputFile));
 
+		String gORj ;
 		try {
-			setContents(outputPlain, getGson(listita));
+			gORj = (String) (json_not_jackson?getGson(listita):mapper.writeValueAsString(listita));
+			setContents(outputPlain, gORj);
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -49,7 +58,7 @@ public class Main {
 		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputPlain));
 		
 		try {
-			setContents(outputINSERTS, getInserts(listita));
+			setContents(outputINSERTS, getInserts(listita,asJsonListita));
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -60,22 +69,35 @@ public class Main {
 		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputINSERTS));		
 	}
 
-	private static String getInserts(List<Stage> listita) {
+	private static String getInserts(List<Stage> listita, List<String> listitaJSON) {
 		sb = new StringBuilder();
-		for (Stage it : listita)
+		int counter = 0;
+		for (Stage it : listita){
 			sb.append("INSERT INTO " + DB_FLOW_TABLE + " (" + FLOW_KEY_ID + "," + FLOW_KEY_OBJECT + ") " +
-					 "VALUES (" + it.getId() + ", '" + gson.toJson(it)).append("');\n");
+					 "VALUES (" + it.getId() + ", '" + listitaJSON.get(counter)).append("');\n");
+			counter++;
+		}
 		return sb.toString();
 	}
 
-	private static String getGson(List<Stage> listita) {
-		sb = new StringBuilder();
-		for (Stage it : listita){
-			it.convert();
-			String xxxxxxx = gson.toJson(it);
-			sb.append(xxxxxxx).append("\n");
+	private static List<String> getGson(List<Stage> listita) {
+
+		try {
+			for (Stage it : listita){
+				String xxx = mapper.writeValueAsString(it);
+				asJsonListita.add(xxx);
+			}
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return sb.toString();
+		return asJsonListita;
 	}
 
 	/**

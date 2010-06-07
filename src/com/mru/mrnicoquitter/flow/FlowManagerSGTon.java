@@ -2,6 +2,12 @@ package com.mru.mrnicoquitter.flow;
 
 import static com.mru.mrnicoquitter.Global.*;
 
+import java.io.IOException;
+
+import org.codehaus.jackson.JsonGenerationException;
+import org.codehaus.jackson.map.JsonMappingException;
+import org.codehaus.jackson.map.ObjectMapper;
+
 import com.google.gson.Gson;
 
 import android.content.Context;
@@ -26,6 +32,8 @@ public class FlowManagerSGTon {
 	//private static String[] 
 	private static SharedPreferences globalPreferences;	
 	private static Gson gson;
+	static ObjectMapper mapper = new ObjectMapper(); // can reuse, share globally
+
 
 
 	// ===========================================================
@@ -97,7 +105,21 @@ public class FlowManagerSGTon {
 		}
 		
 		Log.d("FlowManagerSGTon", "Cambiada FASE a: "+ phase.getStageName());	
-		String deHidratedStageState = gson.toJson(phase.getStageState());
+		   //2 User user = mapper.readValue(new File("user.json"), User.class);
+		//String deHidratedStageState = gson.toJson(phase.getStageState());
+		String deHidratedStageState = null;
+		try {
+			deHidratedStageState = mapper.writeValueAsString(phase.getStageState());
+		} catch (JsonGenerationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		globalPreferences.edit().putString (PREF_ACTUAL_PHASE_DEHIDRATED,deHidratedStageState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID).commit();
 		phaseStagesCodes = phase.getCodes();
 		phaseStagesNames = phase.getNames();

@@ -1,2 +1,2 @@
-INSERT INTO FLOW_TABLE (id,object) VALUES (1002, '{"id":1002,"name":"t_fagerstrom","activity":"com.mru.mrnicoquitter.encuestas.EncuestaActivity","extrasArray":[null]}');
-INSERT INTO FLOW_TABLE (id,object) VALUES (1001, '{"id":1001,"name":"a1_bienvenida","activity":"com.mru.mrnicoquitter.viewers.HTMLViewer","extrasArray":[null]}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1002, '{"name":"t_fagerstrom","id":1002,"json":null,"activity":"com.mru.mrnicoquitter.encuestas.EncuestaActivity","extras":[{"name":"STR_EXTRA_ENCUESTA_NAME","contents":"t_fagerstrom"}],"extrasArray":null}');
+INSERT INTO FLOW_TABLE (id,object) VALUES (1001, '{"name":"a1_bienvenida","id":1001,"json":null,"activity":"com.mru.mrnicoquitter.viewers.HTMLViewer","extras":[{"name":"STR_EXTRA_R_RAW_FILENAME","contents":"a1_bienvenida"}],"extrasArray":null}');

@@ -48,9 +48,10 @@ public class Splash extends Activity {
 		context = getApplicationContext();
 		
 		SharedPreferences globalPreferences 	= context.getSharedPreferences(PREFS_GLOBAL, Context.MODE_PRIVATE);
-		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			initMrQuitter(globalPreferences);
-		}		
+//		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
+//			initMrQuitter(globalPreferences);
+//		}	
+		initMrQuitter(globalPreferences);
 
 		phase = FlowManagerSGTon.initManager(context);
 
