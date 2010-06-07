@@ -10,10 +10,11 @@ import android.content.res.Resources;
 public class P1_Phase extends Phase {
 	
 	public P1_Phase(Context _context){
-		id					= PHASE_1_CODE;
-		myContext			= _context;
-		logoId 				= R.drawable.etapa0;
-		phasePreferences 	= myContext.getSharedPreferences(PREFS_PHASE_1, Context.MODE_PRIVATE);
+		id						= PHASE_1_CODE;
+		myContext				= _context;
+		logoId 					= R.drawable.etapa0;
+		phasePreferencesName 	= PREFS_PHASE_1;
+		phasePreferences 		= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);		phasePreferences 	= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);
 	}
 
 	public P1_Phase(Context _context, PhaseState _state) {
@@ -22,12 +23,12 @@ public class P1_Phase extends Phase {
 
 	@Override
 	public int[] getCodes() {
-		return Resources.getSystem().getIntArray(R.array.PHASE_1_Stages_Codes);
+		return oneCodes;//Resources.getSystem().getIntArray(R.array.phaseOneStagesCodes);
 		
 	}
 
 	@Override
 	public String[] getNames() {
-		return Resources.getSystem().getStringArray(R.array.PHASE_1_Stages_Descriptions);
+		return oneDescriptions;//Resources.getSystem().getStringArray(R.array.phaseOneStagesDescriptions);
 	}
 }

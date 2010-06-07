@@ -2,6 +2,9 @@ package com.mru.mrnicoquitter;
 
 public  class Global {
 	
+	public static String[] oneDescriptions = {"a1_bienvenida.html","t_fagerstrom.xml"};
+	public static int[] oneCodes = {1001,1002};	
+	
 	public static final String DEF_TYPE_RAW						= "raw";
 	public static final String DEBUG							= "DEBUG";	
 	public static final String EMPTY							= "";

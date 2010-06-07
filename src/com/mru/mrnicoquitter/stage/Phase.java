@@ -29,25 +29,27 @@ public abstract class Phase {
 	// ===========================================================
 	// 		Constructors & Initialization
 	// ===========================================================	
+	
+	
 
-	public static Phase initPhase (Context context, PhaseState phase){
+	public static Phase initPhase (Context context, PhaseState phaseState){
 		
-		switch (phase.getId()){
+		switch (phaseState.getId()){
 		
 			case PHASE_1_CODE:
-				return new P1_Phase(context,phase);
+				return new P1_Phase(context,phaseState);
 				
 			case PHASE_2_CODE:
-				return new P2_Phase(context,phase);
+				return new P2_Phase(context,phaseState);
 	
 			case PHASE_3_CODE:
-				return new P1_Phase(context,phase);
+				return new P1_Phase(context,phaseState);
 	
 			case PHASE_4_CODE:
-				return new P1_Phase(context,phase);
+				return new P1_Phase(context,phaseState);
 				
 			default:
-				return new P1_Phase(context,phase);				
+				return new P1_Phase(context,phaseState);				
 		}
 	}
 
@@ -75,7 +77,7 @@ public abstract class Phase {
 
 	public String getStageName() {
 		String className = this.getClass().toString();
-		return className.substring(0, className.lastIndexOf("."));
+		return className.substring( className.lastIndexOf(".")+1, className.length());
 	}
 
 	public Color getColor() {
@@ -97,8 +99,8 @@ public abstract class Phase {
 		this.id = stageID;
 	}
 
-	public Object getStageState() {
-		return new PhaseState(logoId, id, phasePreferencesName);
+	public PhaseState getPhaseState(int activeStageCode) {
+		return new PhaseState(logoId, id, phasePreferencesName, activeStageCode);
 	}
 
 	abstract public int[] getCodes();

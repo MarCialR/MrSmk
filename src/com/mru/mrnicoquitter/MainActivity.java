@@ -58,7 +58,7 @@ public class MainActivity extends QActivity {
 		
 									//OJO con este this
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		setContentView(stage.getCommonLayout(inflater,R.layout.lay_content_main));
+		setContentView(phase.getCommonLayout(inflater,R.layout.lay_content_main));
 		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
 

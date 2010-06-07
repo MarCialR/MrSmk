@@ -9,12 +9,8 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.prefs.Preferences;
 
-import com.google.gson.Gson;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.beans.Stage;
-import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.stage.Phase;
@@ -52,7 +48,7 @@ public class Splash extends Activity {
 //			initMrQuitter(globalPreferences);
 //		}	
 		initMrQuitter(globalPreferences);
-
+		//String[] lsls = Resources.getSystem().getStringArray(R.array.phaseOneStagesDescriptions);
 		phase = FlowManagerSGTon.initManager(context);
 
 		/*
@@ -61,17 +57,8 @@ public class Splash extends Activity {
 		new Handler().postDelayed(new Runnable() {
 
 			public void run() {
-				/* Create an Intent that will start the Menu-Activity. */
-				//Class<?> goTo = phase.getActiveClassToLaunch();
-				 Class<?> goTo = null;
-				try {
-					goTo = Class.forName(ACVTY_MAIN_CLASS);
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				Intent mainIntent = new Intent(Splash.this, goTo);
-				Splash.this.startActivity(mainIntent);
+				FlowManagerSGTon.forceNext();
+				Splash.this.startActivity(FlowManagerSGTon.getIntent(Splash.this));
 				Splash.this.finish();
 
 			}

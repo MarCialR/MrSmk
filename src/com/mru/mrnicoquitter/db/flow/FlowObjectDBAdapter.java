@@ -58,8 +58,8 @@ public class FlowObjectDBAdapter {
 
 
 
-	public Stage getEntry(int _rowIndex) {
-		Stage objectInstance = null;
+	public String getEntry(int _rowIndex) {
+		String objectInstance = null;
 //        Cursor c = db.query(DB_FLOW_TABLE, new String[] {FLOW_KEY_OBJECT},
 //        		FLOW_KEY_ID + " = " + 1004, null, null, null, null);
 //        Cursor c = db.query("SELECT " + FLOW_KEY_OBJECT +
@@ -74,9 +74,7 @@ public class FlowObjectDBAdapter {
                 " FROM " + DB_FLOW_TABLE
                 + " WHERE " + FLOW_KEY_ID + " = " + _rowIndex, null, null);
 		if (c.moveToFirst()) {
-			objectInstance = new Stage();
-			objectInstance.setId(_rowIndex);
-			objectInstance.setJson(c.getString(0));
+			objectInstance = c.getString(0);
 		}
 		c.close();
 		return objectInstance;

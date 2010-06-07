@@ -14,7 +14,7 @@ import android.view.MenuItem;
 
 
 public abstract class QActivity extends Activity {
-	protected static Phase stage;
+	protected static Phase phase;
 	
 	protected abstract boolean isOKToLaunch();
 	protected abstract String[] getMandatoryFields();	
@@ -24,8 +24,8 @@ public abstract class QActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		
 		//OJITO CON ESTO!!! hay que asegurarse que ese Stage es singleton tb (o algo asi)
-		if (stage==null)
-			stage = FlowManagerSGTon.getPhase();
+		if (phase==null)
+			phase = FlowManagerSGTon.getPhase();
 		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onCreate!!");
 	}
 	@Override

@@ -60,7 +60,7 @@ public class DevelopingActivity extends QActivity{
 		//HA DADO PROBLEMAS
 //		unbindService(onService);
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		setContentView(stage.getCommonLayout(inflater,R.layout.lay_content_developing));		
+		setContentView(phase.getCommonLayout(inflater,R.layout.lay_content_developing));		
 		
 //	       // Restore preferences
 //		SharedPreferences settings = getSharedPreferences(PREFS_NAME, 0);

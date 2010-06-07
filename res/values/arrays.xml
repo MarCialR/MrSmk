@@ -29,25 +29,23 @@
     
 
 
-    <integer-array name="PHASE_1_Stages_Codes">
+    <integer-array name="phaseOneStagesCodes">
         <item>1001</item>
         <item>1002</item>
     </integer-array>
     
-    <string-array name="PHASE_1_Stages_Descriptions">
+    <string-array name="phaseOneStagesDescriptions">
         <item>a1_bienvenida.html</item>
         <item>t_fagerstrom.xml</item>
-        <!-- item>a3_tests.html</item>
-        <item>t_glover_nilsson.xml</item>
-        <item>t_posibilidades_exito</item-->
+
     </string-array>
     
-    <integer-array name="PHASE_2_Stages_Codes">
+    <integer-array name="phaseTwoStagesCodes">
         <item>2001</item>
         <item>2002</item>
     </integer-array>
         
-    <string-array name="PHASE_2_Stages_Descriptions">
+    <string-array name="phaseTwoStagesDescriptions">
         <item>diez_mandamientos.html</item>
         <item>mitos_del_tabaco.html</item>
     </string-array>
