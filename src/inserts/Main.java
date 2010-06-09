@@ -96,8 +96,8 @@ public class Main {
 		
 		sb.append("public static int[] oneCodes = {").append(OneCodes.substring(0, OneCodes.length()-2)).append("};\n");
 		sb.append("public static int[] twoCodes = {").append(TwoCodes.substring(0, TwoCodes.length()-2)).append("};\n");
-		sb.append("public static String[] oneDescriptions = {").append(OneDescriptions.substring(0, OneDescriptions.length()-2)).append("\"};\n");
-		sb.append("public static String[] twoDescriptions = {").append(TwoDescriptions.substring(0, TwoDescriptions.length()-2)).append("\"};\n");			
+		sb.append("public static String[] oneDescriptions = {").append(OneDescriptions.substring(0, OneDescriptions.length()-1)).append("\"};\n");
+		sb.append("public static String[] twoDescriptions = {").append(TwoDescriptions.substring(0, TwoDescriptions.length()-1)).append("\"};\n");			
 	
 
 		return sb.toString();

@@ -12,13 +12,17 @@ import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.Spinner;
+import android.widget.TextView;
 import android.widget.TimePicker;
 
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
 import com.mru.mrnicoquitter.ui.AppUtils;
 
@@ -42,7 +46,38 @@ public class MainActivity extends QActivity {
 //			appService=null;
 //		}
 //	};	
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+		/*
+		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+			android:id="@+id/Common" 
+			android:orientation="vertical" android:layout_width="fill_parent"
+			android:layout_height="fill_parent" android:gravity="center"
+			android:background="@drawable/smoke40">
+
+			<ImageView android:id="@+id/Logo" android:layout_width="wrap_content"
+				android:layout_height="wrap_content" android:layout_marginTop="10px"
+				android:layout_marginBottom="10px" />
+				
+			<TextView android:text="@+id/StageInfo" android:id="@+id/StageInfo" 
+				android:layout_width="wrap_content" android:layout_height="wrap_content"
+				android:layout_marginBottom="10px"/>
+				
+
+		</LinearLayout>
+*/		
+		View v = (View) findViewById(R.id.Common);
+		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
 	
+		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
+		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
+		logo.setBackgroundResource(phase.getLogo());
+		text.setText(FlowManagerSGTon.getHeaderText());	
+		v= commonLyt;
+	}
 
 	/** Called when the activity is first created. */
 	@Override
@@ -114,6 +149,8 @@ public class MainActivity extends QActivity {
 		listButton.setOnClickListener(listListener);
 
 	}
+
+
 
 	@Override
 	protected String[] getMandatoryFields() {

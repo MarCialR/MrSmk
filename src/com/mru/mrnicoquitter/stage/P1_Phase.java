@@ -10,6 +10,7 @@ import android.content.res.Resources;
 public class P1_Phase extends Phase {
 	
 	public P1_Phase(Context _context){
+		super();
 		id						= PHASE_1_CODE;
 		myContext				= _context;
 		logoId 					= R.drawable.etapa0;
@@ -18,6 +19,7 @@ public class P1_Phase extends Phase {
 	}
 
 	public P1_Phase(Context _context, PhaseState _state) {
+		super();		
 		initCommons(_context, _state);
 	}
 

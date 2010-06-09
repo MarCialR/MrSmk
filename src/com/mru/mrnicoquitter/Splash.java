@@ -47,7 +47,7 @@ public class Splash extends Activity {
 		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
 			initMrQuitter(globalPreferences);
 		}	
-//		initMrQuitter(globalPreferences);
+		//initMrQuitter(globalPreferences);
 		//String[] lsls = Resources.getSystem().getStringArray(R.array.phaseOneStagesDescriptions);
 		phase = FlowManagerSGTon.initManager(context);
 

@@ -3,7 +3,7 @@
 <!--
 *******************************************************************************
 													PHASE 1
-***************************************************NOT_YET_
+
 *******************************************************************************
 -->
 	<STAGE>
@@ -15,28 +15,28 @@
 
 	<STAGE>
 		<ID>1002</ID>
-		<NAME>***************************************************NOT_YET_presentacion</NAME>
+		<NAME>NOT_YET_presentacion</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
 		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_presentacion</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1003</ID>
-		<NAME>***************************************************NOT_YET_info_tabaquismo</NAME>
+		<NAME>NOT_YET_info_tabaquismo</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
 		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_info_tabaquismo</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1004</ID>
-		<NAME>***************************************************NOT_YET_t_historia_clinica</NAME>
+		<NAME>NOT_YET_t_historia_clinica</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
 		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_historia_clinica</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1005</ID>
-		<NAME>***************************************************NOT_YET_razones_para_dejar_de_fumar</NAME>
+		<NAME>NOT_YET_razones_para_dejar_de_fumar</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
 		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_razones_para_dejar_de_fumar</EXTRA>
 	</STAGE>   

@@ -2,10 +2,10 @@ package com.mru.mrnicoquitter;
 
 public  class Global {
 
-	public static int[] oneCodes = {1001,1002,1003,1004,1005,1006,1007,1008,100};
-	public static int[] twoCodes = {2001,200};
-	public static String[] oneDescriptions = {"a1_bienvenida","***************************************************NOT_YET_presentacion","***************************************************NOT_YET_info_tabaquismo","***************************************************NOT_YET_t_historia_clinica","***************************************************NOT_YET_razones_para_dejar_de_fumar","t_fagerstrom","t_glover_nilsson","t_motivacion","MAIN"};
-	public static String[] twoDescriptions = {"diez_mandamientos","MAIN"};	
+	public static int[] oneCodes = {1001,1002,1003,1004,1005,1006,1007,1008,1009};
+	public static int[] twoCodes = {2001,2003};
+	public static String[] oneDescriptions = {"a1_bienvenida","NOT_YET_presentacion","NOT_YET_info_tabaquismo","NOT_YET_t_historia_clinica","NOT_YET_razones_para_dejar_de_fumar","t_fagerstrom","t_glover_nilsson","t_motivacion","MAIN"};
+	public static String[] twoDescriptions = {"diez_mandamientos","MAIN"};
 	public static final String DEF_TYPE_RAW						= "raw";
 	public static final String DEBUG							= "DEBUG";	
 	public static final String EMPTY							= "";
@@ -29,8 +29,8 @@ public  class Global {
     // 						STAGES
     // ===========================================================
 	public static final int NO_DEF								= -999;	
-	public static final int PHASE_1_CODE						= 100;
-	public static final int PHASE_2_CODE						= 200;
+	public static final int PHASE_1_CODE						= 1009;
+	public static final int PHASE_2_CODE						= 2003;
 	public static final int PHASE_3_CODE						= 300;
 	public static final int PHASE_4_CODE						= 400;
 

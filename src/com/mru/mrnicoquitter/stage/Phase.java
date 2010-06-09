@@ -21,6 +21,7 @@ public abstract class Phase {
 	// ===========================================================	
 	protected int id;
 	protected int logoId;
+	protected String phaseName;
 
 	protected SharedPreferences phasePreferences;
 	protected String phasePreferencesName;
@@ -54,6 +55,12 @@ public abstract class Phase {
 		}
 	}
 
+	public Phase() {
+		super();
+		String className = this.getClass().toString();
+		phaseName = className.substring( className.lastIndexOf(".")+1, className.length());
+	}
+
 	protected void initCommons(Context _context, PhaseState _phaseState) {
 		myContext				= _context;
 		logoId					= _phaseState.getLogoId();
@@ -77,8 +84,7 @@ public abstract class Phase {
 
 
 	public String getPhaseName() {
-		String className = this.getClass().toString();
-		return className.substring( className.lastIndexOf(".")+1, className.length());
+		return phaseName;
 	}
 
 	public Color getColor() {

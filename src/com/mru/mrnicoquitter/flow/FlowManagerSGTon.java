@@ -92,7 +92,7 @@ public class FlowManagerSGTon {
 		return phase;
 	}
 
-	public static void hidrataPhase(String dehidratedPhase){
+	private static void hidrataPhase(String dehidratedPhase){
 		
 		PhaseState stageState = ((PhaseState)gson.fromJson(dehidratedPhase, PhaseState.class));
 		phase = Phase.initPhase(myContext, stageState);
@@ -160,13 +160,9 @@ private static void setStage(){
 	}
 }
 
-	public static void setPhaseStagesCodes(int[] phaseStagesCodes) {
-		FlowManagerSGTon.phaseStagesCodes = phaseStagesCodes;
-	}
-
-	public static void setPhaseStagesNames(String[] phaseStagesNames) {
-		FlowManagerSGTon.phaseStagesNames = phaseStagesNames;
-	}
+	public static Stage getActualStage() {
+	return actualStage;
+}
 
 	// ===========================================================
 	// 		UTILITIES
@@ -204,7 +200,7 @@ private static void setStage(){
 		for(int stageIt:phaseStagesCodes){
 			if (counter == activeStageIndex)
 				sb.append("* - ");
-			sb.append(activeStageIndex).append("-(").append(phaseStagesCodes[counter]).append(")").append(phaseStagesNames[counter]).append(NEWLINE);;
+			sb.append("(").append(phaseStagesCodes[counter]).append(")").append(phaseStagesNames[counter]).append(NEWLINE);;
 			counter++;
 		}
 		return sb.toString();

@@ -11,6 +11,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
+import com.mru.mrnicoquitter.beans.Stage;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
 import com.mru.mrnicoquitter.stage.Phase;
@@ -46,7 +47,9 @@ public class FlowActivity extends Activity {
 		//			GO BUTTON
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(FlowManagerSGTon.getIntent(FlowActivity.this));//new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
+				System.out.println();
+				Stage stage = FlowManagerSGTon.getActualStage();
+				FlowActivity.this.startActivity(FlowManagerSGTon.getIntent(FlowActivity.this));//new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
 				FlowActivity.this.finish();
 			}
 		};
