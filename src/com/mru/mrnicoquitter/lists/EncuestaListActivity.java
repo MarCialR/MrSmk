@@ -28,7 +28,7 @@ public class EncuestaListActivity extends ListActivity {
 
 		filesEntries.add("t_fagerstrom");
 		filesEntries.add("t_glover_nilsson");
-		filesEntries.add("t_posibilidades_exito");
+		filesEntries.add("t_motivacion");
 
 		ArrayAdapter<String> directoryList = new ArrayAdapter<String>(this,
 				R.layout.cigar_row, this.filesEntries);

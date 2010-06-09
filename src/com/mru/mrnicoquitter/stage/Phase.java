@@ -13,6 +13,7 @@ import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.PhaseState;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
 public abstract class Phase {
 	// ===========================================================
@@ -69,13 +70,13 @@ public abstract class Phase {
 		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
 		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
 		logo.setBackgroundResource(logoId);
-		text.setText("getFlowText()");
+		text.setText(FlowManagerSGTon.getHeaderText());
 		return commonLyt;
 	}
 	
 
 
-	public String getStageName() {
+	public String getPhaseName() {
 		String className = this.getClass().toString();
 		return className.substring( className.lastIndexOf(".")+1, className.length());
 	}

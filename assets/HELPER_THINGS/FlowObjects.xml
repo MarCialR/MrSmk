@@ -1,0 +1,90 @@
+<ROOT>
+
+<!--
+*******************************************************************************
+													PHASE 1
+***************************************************NOT_YET_
+*******************************************************************************
+-->
+	<STAGE>
+		<ID>1001</ID>
+		<NAME>a1_bienvenida</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >a1_bienvenida</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1002</ID>
+		<NAME>***************************************************NOT_YET_presentacion</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_presentacion</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1003</ID>
+		<NAME>***************************************************NOT_YET_info_tabaquismo</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_info_tabaquismo</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1004</ID>
+		<NAME>***************************************************NOT_YET_t_historia_clinica</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_historia_clinica</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1005</ID>
+		<NAME>***************************************************NOT_YET_razones_para_dejar_de_fumar</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_razones_para_dejar_de_fumar</EXTRA>
+	</STAGE>   
+
+
+	<STAGE>
+		<ID>1006</ID>
+		<NAME>t_fagerstrom</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_fagerstrom</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1007</ID>
+		<NAME>t_glover_nilsson</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_glover_nilsson</EXTRA>
+	</STAGE>   
+	<STAGE>
+		<ID>1008</ID>
+		<NAME>t_motivacion</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_motivacion</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>1009</ID>
+		<NAME>MAIN</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.MainActivity</ACTIVITY>
+	</STAGE>   
+
+<!--
+*******************************************************************************
+													PHASE 2
+*******************************************************************************
+-->
+
+	<STAGE>
+		<ID>2001</ID>
+		<NAME>diez_mandamientos</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >diez_mandamientos</EXTRA>
+	</STAGE>   
+
+	<STAGE>
+		<ID>2003</ID>
+		<NAME>MAIN</NAME>
+		<ACTIVITY>com.mru.mrnicoquitter.MainActivity</ACTIVITY>
+	</STAGE>   
+
+</ROOT>

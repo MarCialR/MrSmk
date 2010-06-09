@@ -46,8 +46,8 @@ public class FlowActivity extends Activity {
 		//			GO BUTTON
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
-				startActivity(new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
-				finish();
+				startActivity(FlowManagerSGTon.getIntent(FlowActivity.this));//new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
+				FlowActivity.this.finish();
 			}
 		};
 		((Button) findViewById(R.id.Flow_GO_Button)).setOnClickListener(goListener);

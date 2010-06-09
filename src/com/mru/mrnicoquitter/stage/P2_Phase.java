@@ -15,7 +15,8 @@ public class P2_Phase extends Phase {
 		myContext 				= _context;
 		logoId 					= R.drawable.etapa1;
 		phasePreferencesName 	= PREFS_PHASE_2;
-		phasePreferences 		= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);		phasePreferences 	= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);
+		phasePreferences 		= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);		
+		
 		
 	}
 
@@ -25,12 +26,12 @@ public class P2_Phase extends Phase {
 
 	@Override
 	public int[] getCodes() {
-		return Resources.getSystem().getIntArray(R.array.phaseTwoStagesCodes);
+		return twoCodes;
 		
 	}
 
 	@Override
 	public String[] getNames() {
-		return Resources.getSystem().getStringArray(R.array.phaseTwoStagesDescriptions);
+		return twoDescriptions;
 	}
 }

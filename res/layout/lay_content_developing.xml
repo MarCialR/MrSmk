@@ -10,14 +10,15 @@
 	
 			<RadioGroup android:id="@+id/RadioGroup01"
 				android:layout_width="wrap_content" android:layout_height="wrap_content">
-				<RadioButton android:text="S1_Stage" android:id="@+id/S1_Stage"
+				<RadioButton android:text="PHASE_1" android:id="@+id/S1_Stage"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-				<RadioButton android:text="S2_Stage" android:id="@+id/S2_Stage"
+				<RadioButton android:text="PHASE_2" android:id="@+id/S2_Stage"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-<!--
-				<RadioButton android:text="S2_State" android:id="@+id/S2_State"
+				<RadioButton android:text="PHASE_3" android:id="@+id/S3_Stage"
 					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
- -->					
+				<RadioButton android:text="PHASE_4" android:id="@+id/S4_Stage"
+					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+
 			</RadioGroup>
 
 			<Button android:id="@+id/SetStateButton" android:text="Set State"

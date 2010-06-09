@@ -69,10 +69,12 @@ public class FlowObjectDBAdapter {
 //                + " WHERE Age > 10 LIMIT 7;",
 //
 //                null);
-        
-        Cursor c = db.rawQueryWithFactory(null, "SELECT " + FLOW_KEY_OBJECT +
-                " FROM " + DB_FLOW_TABLE
-                + " WHERE " + FLOW_KEY_ID + " = " + _rowIndex, null, null);
+        String sqlQuery = "SELECT " + FLOW_KEY_OBJECT +
+        " FROM " + DB_FLOW_TABLE
+        + " WHERE " + FLOW_KEY_ID + " = " + _rowIndex;
+		Log.w("FlowObjectDBAdapter",sqlQuery);
+		
+        Cursor c = db.rawQueryWithFactory(null, sqlQuery, null, null);
 		if (c.moveToFirst()) {
 			objectInstance = c.getString(0);
 		}
@@ -112,7 +114,7 @@ public class FlowObjectDBAdapter {
 		public void onUpgrade(SQLiteDatabase _db, int _oldVersion,
 				int _newVersion) {
 			// Log the version upgrade.
-			Log.w("TaskDBAdapter", "Upgrading from version " +
+			Log.w("FlowObjectDBAdapter", "Upgrading from version " +
 					_oldVersion + " to " +
 					_newVersion +
 			", which will destroy all old data");

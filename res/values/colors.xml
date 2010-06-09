@@ -5,6 +5,7 @@
     <color name="green">#ff9da842</color>
     <color name="green_dark">#ff648c13</color>
     <color name="dark">#ff132e28</color>
+    <color name="black">#ff000000</color>    
     <color name="red">#ffa12d0d</color>
     <color name="white_translucent">#99ffffff</color>
 </resources>

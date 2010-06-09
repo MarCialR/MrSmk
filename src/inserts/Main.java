@@ -17,9 +17,9 @@ import com.google.gson.Gson;
 
 public class Main {
 
-	private static final String INPUT_FILE = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQttr\\assets\\HELPER_THINGS\\test.xml";
-	private static final String OUTPUT_FILE_GSON = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQttr\\assets\\HELPER_THINGS\\output.txt";
-	private static final String OUTPUT_FILE_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQttr\\assets\\HELPER_THINGS\\flow_inserts";
+	private static final String INPUT_FILE = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\FlowObjects.xml";
+	private static final String OUTPUT_FILE_GSON = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\globals.txt";
+	private static final String OUTPUT_FILE_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\flow_inserts";
 	private static StringBuilder sb;
 	private static Gson gson;
 	private static ObjectMapper mapper;
@@ -45,9 +45,13 @@ public class Main {
 		System.out.println("ORIGINAL FILE CONTENTS: \n"+ getContents(inputFile));
 
 		String gORj ;
+		String globalArrays;
 		try {
-			gORj = (String) (json_not_jackson?getGson(listita):mapper.writeValueAsString(listita));
-			setContents(outputPlain, gORj);
+//			gORj = (String) (json_not_jackson?getGson(listita):mapper.writeValueAsString(listita));
+//			setContents(outputPlain, gORj);
+			globalArrays = getGlobalArrays(parser);
+			setContents(outputPlain, globalArrays);
+			
 		} catch (FileNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -69,6 +73,36 @@ public class Main {
 		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputINSERTS));		
 	}
 
+	private static String getGlobalArrays(FlowXMLParser parser) {
+		String OneCodes = "";
+		String TwoCodes = "";
+		String OneDescriptions = "";
+		String TwoDescriptions = "";
+		List<String> Descriptions = parser.getDescriptions();
+		StringBuffer sb = new StringBuffer();
+		int counter = 0;
+		for(String code: parser.getCodes()){
+			if ( code.startsWith("1")){
+				OneCodes += code+",";
+				OneDescriptions += "\"" + Descriptions.get(counter)+"\",";
+			}
+			if ( code.startsWith("2")){
+				TwoCodes += code+",";
+				TwoDescriptions += "\"" + Descriptions.get(counter)+"\",";
+			}
+			
+			counter++;
+		}
+		
+		sb.append("public static int[] oneCodes = {").append(OneCodes.substring(0, OneCodes.length()-2)).append("};\n");
+		sb.append("public static int[] twoCodes = {").append(TwoCodes.substring(0, TwoCodes.length()-2)).append("};\n");
+		sb.append("public static String[] oneDescriptions = {").append(OneDescriptions.substring(0, OneDescriptions.length()-2)).append("\"};\n");
+		sb.append("public static String[] twoDescriptions = {").append(TwoDescriptions.substring(0, TwoDescriptions.length()-2)).append("\"};\n");			
+	
+
+		return sb.toString();
+	}
+
 	private static String getInserts(List<Stage> listita, List<String> listitaJSON) {
 		sb = new StringBuilder();
 		int counter = 0;
@@ -80,12 +114,11 @@ public class Main {
 		return sb.toString();
 	}
 
-	private static List<String> getGson(List<Stage> listita) {
+	private static List<String> getGson(List<Stage> listaInserts) {
 
 		try {
-			for (Stage it : listita){
-				String xxx = mapper.writeValueAsString(it);
-				asJsonListita.add(xxx);
+			for (Stage it : listaInserts){
+				asJsonListita.add(mapper.writeValueAsString(it));
 			}
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block

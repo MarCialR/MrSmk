@@ -1,7 +1,11 @@
 package inserts;
 
 public  class Global {
-	
+
+	public static String[] oneDescriptions = {"a1_bienvenida","t_fagerstrom","MAIN"};
+	public static int[] oneCodes = {1001,1002,1003};	
+	public static String[] twoDescriptions = {"diez_mandamientos","t_posibilidades_exito","MAIN"};
+	public static int[] twoCodes = {2001,2002,2003};		
 	public static final String DEF_TYPE_RAW						= "raw";
 	public static final String DEBUG							= "DEBUG";	
 	public static final String EMPTY							= "";

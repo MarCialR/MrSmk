@@ -11,6 +11,7 @@ import org.codehaus.jackson.map.ObjectMapper;
 
 import com.google.gson.Gson;
 
+import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -19,6 +20,7 @@ import android.util.Log;
 
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.Splash;
+import com.mru.mrnicoquitter.beans.IntentExtra;
 import com.mru.mrnicoquitter.beans.PhaseState;
 import com.mru.mrnicoquitter.beans.Stage;
 import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
@@ -60,7 +62,7 @@ public class FlowManagerSGTon {
 	private FlowManagerSGTon() {
 
 		gson 					= new Gson();	
-		globalPreferences 		= myContext.getSharedPreferences(PREFS_GLOBAL, Context.MODE_PRIVATE);
+		globalPreferences 		= myContext.getSharedPreferences(PREFS_GLOBAL, Context.MODE_WORLD_READABLE);
 		String dehidratedPhase 	= globalPreferences.getString(PREF_ACTUAL_PHASE_DEHIDRATED, null);
 	
 		if (null != dehidratedPhase)
@@ -99,7 +101,7 @@ public class FlowManagerSGTon {
 	}
 
 	
-	public static void setPhase(int phaseID){
+	public static Phase setPhase(int phaseID){
 		clearPreferences();
 		switch (phaseID){
 			case PHASE_1_CODE:
@@ -120,7 +122,7 @@ public class FlowManagerSGTon {
 		phaseStagesCodes = phase.getCodes();
 		phaseStagesNames = phase.getNames();
 		activeStageIndex = 0;		
-		Log.d("FlowManagerSGTon", "Cambiada FASE a: "+ phase.getStageName());	
+		Log.d("FlowManagerSGTon", "Cambiada FASE a: "+ phase.getPhaseName());	
 
 		String deHidratedPhaseState = null;
 		try {
@@ -136,43 +138,48 @@ public class FlowManagerSGTon {
 			e.printStackTrace();
 		}
 		globalPreferences.edit().putString (PREF_ACTUAL_PHASE_DEHIDRATED,deHidratedPhaseState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID).commit();
-
+return phase;
 		
 	}
 
+private static void setStage(){
+	FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(myContext).open();
+	String deH = flowDB.getEntry(getActiveStageCode());
+	flowDB.close();		
+	try {
+		actualStage = mapper.readValue(deH, Stage.class);
+	} catch (JsonParseException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (JsonMappingException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	} catch (IOException e) {
+		// TODO Auto-generated catch block
+		e.printStackTrace();
+	}
+}
 
-	private static void clearPreferences() {
-		// TODO Auto-generated method stub
-		
+	public static void setPhaseStagesCodes(int[] phaseStagesCodes) {
+		FlowManagerSGTon.phaseStagesCodes = phaseStagesCodes;
 	}
 
+	public static void setPhaseStagesNames(String[] phaseStagesNames) {
+		FlowManagerSGTon.phaseStagesNames = phaseStagesNames;
+	}
 
 	// ===========================================================
 	// 		UTILITIES
 	// ===========================================================
-	
+	private static void clearPreferences() {
+		// TODO Auto-generated method stub
+		
+	}
 	public static void forceNext(){
 		if (actualStage!= null)
 			next();
-
-		//String deHidStage = 
-		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(myContext).open();
-		String deH = flowDB.getEntry(getActiveStageCode());
-		flowDB.close();		
-		try {
-			actualStage = mapper.readValue(deH, Stage.class);
-		} catch (JsonParseException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println();
-		//String deHidratedStageState = gson.toJson(phase.getStageState());
+		setStage();
+		
 	}
 	
 	
@@ -191,29 +198,28 @@ public class FlowManagerSGTon {
 	
 	public static String getInfo(){
 		StringBuffer sb = new StringBuffer();
-		sb.append(phase.getStageName()).append(NEWLINE);
+		sb.append(phase.getPhaseName()).append(NEWLINE);
 		sb.append("SUB_STAGES").append(NEWLINE);
 		int counter = 0;
 		for(int stageIt:phaseStagesCodes){
 			if (counter == activeStageIndex)
 				sb.append("* - ");
-			sb.append(phaseStagesNames[activeStageIndex]).append(NEWLINE);;
+			sb.append(activeStageIndex).append("-(").append(phaseStagesCodes[counter]).append(")").append(phaseStagesNames[counter]).append(NEWLINE);;
 			counter++;
 		}
 		return sb.toString();
 	}
-
-	public static void setPhaseStagesCodes(int[] phaseStagesCodes) {
-		FlowManagerSGTon.phaseStagesCodes = phaseStagesCodes;
+	public static CharSequence getHeaderText() {
+		// TODO Auto-generated method stub
+		return phase.getPhaseName();
 	}
 
-	public static void setPhaseStagesNames(String[] phaseStagesNames) {
-		FlowManagerSGTon.phaseStagesNames = phaseStagesNames;
-	}
 
-	public static Intent getIntent(Splash splash) {
+	public static Intent getIntent(Activity splash) {
+		setStage();
 		/* Create an Intent that will start the Menu-Activity. */
 		//Class<?> goTo = phase.getActiveClassToLaunch();
+		
 		 Class<?> goTo = null;
 		try {
 			goTo = Class.forName(actualStage.getActivity());
@@ -221,8 +227,14 @@ public class FlowManagerSGTon {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return new Intent(splash, goTo);
+		Intent i = new Intent(splash, goTo);
+		for (IntentExtra ie: actualStage.getExtras())
+			i.putExtra(ie.getName(), ie.getContents());
+		
+		return i; 
 	}
+
+
 	
 
 }

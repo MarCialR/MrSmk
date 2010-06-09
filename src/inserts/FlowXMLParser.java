@@ -20,7 +20,9 @@ public class FlowXMLParser {
 	private SAXParser mParser;
 	private XMLReader mReader;
 	private List<Stage> itemsList;
-
+    private List<String> codes;
+    private List<String> descriptions;
+    
 	public FlowXMLParser(String string) {
 
 		SAXParserFactory f = SAXParserFactory.newInstance();
@@ -42,10 +44,10 @@ public class FlowXMLParser {
 //		else{
 //			// recogerlo por metodo clasico de filesistem
 //		}
-		FlowItemHandler flowsList = new FlowItemHandler(itemsList);
+		FlowItemHandler realParser = new FlowItemHandler(itemsList);
 		
 		if (mReader.getContentHandler() == null) {
-			mReader.setContentHandler(flowsList);
+			mReader.setContentHandler(realParser);
 		}
 
 		try {
@@ -57,8 +59,17 @@ public class FlowXMLParser {
 		} catch (SAXException saxEx) {
 
 		}
-		itemsList = flowsList.getList();
+		itemsList = realParser.getStagesList();
+		codes = realParser.getCodes();
+		descriptions = realParser.getDescriptions();
 		return itemsList;
 	}
+	public List<String> getCodes() {
+		return codes;
+	}
 
+	public List<String> getDescriptions() {
+		return descriptions;
+	}    
+    
 }

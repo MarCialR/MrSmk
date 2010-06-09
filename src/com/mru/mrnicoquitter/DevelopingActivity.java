@@ -82,10 +82,17 @@ public class DevelopingActivity extends QActivity{
 				
 				String selected = ((Button) findViewById(grup.getCheckedRadioButtonId())).getText().toString();
 				if (selected.equalsIgnoreCase(PHASE_1)) 
-					FlowManagerSGTon.setPhase(PHASE_1_CODE);
+					phase = FlowManagerSGTon.setPhase(PHASE_1_CODE);
 				else if (selected.equalsIgnoreCase(PHASE_2)) 
-					FlowManagerSGTon.setPhase(PHASE_2_CODE);
-
+					phase = FlowManagerSGTon.setPhase(PHASE_2_CODE);
+				else if (selected.equalsIgnoreCase(PHASE_3)) 
+					phase = FlowManagerSGTon.setPhase(PHASE_3_CODE);
+				else if (selected.equalsIgnoreCase(PHASE_4)) 
+					phase = FlowManagerSGTon.setPhase(PHASE_4_CODE);		
+			
+				Intent i = new Intent(DevelopingActivity.this, DevelopingActivity.this.getClass());
+				DevelopingActivity.this.startActivity(i);
+				DevelopingActivity.this.finish();
 			}
 		};
 		changeButton.setOnClickListener(changeStageListener);
