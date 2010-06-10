@@ -17,6 +17,10 @@ import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 public class AppUtils {
 	
 	
+	public final static  void showToastShort(String message){
+		showToast(FlowManagerSGTon.getAppContext(), message, Toast.LENGTH_SHORT);
+	}
+	
 	public final static  void showToastShort(Context ctx, String message){
 		showToast(ctx, message, Toast.LENGTH_SHORT);
 	}

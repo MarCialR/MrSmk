@@ -18,29 +18,35 @@ import android.view.ViewGroup;
 import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
+import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.beans.Cigar;
+import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
+import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
 import com.mru.mrnicoquitter.utils.DateUtils;
 
 public class CigarListActivity extends ListActivity {
 
-	private List<Cigar> cigarEntries = new ArrayList<Cigar>();
+	private List<Cigar> cigarEntries 			= new ArrayList<Cigar>();
+	private List<Day> dayEntries 				= new ArrayList<Day>();
 	private List<ImageAndText> textImageEntries = new ArrayList<ImageAndText>();
 
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
-		// setContentView(R.layout.main);
-		loadCigars();
-		transform();
-		ImageAndTextListAdapter IAA = new ImageAndTextListAdapter(this,textImageEntries );
+
+		loadToday();
+		loadHistoric();
+		
+		transformBOTH();
+		ListAdapter IAA = new ImageAndTextListAdapter(this,textImageEntries );
 
 		this.setListAdapter(IAA);
 	}
-	private void loadCigars() {
-		CigarDBAdapter dba = CigarDBAdapter.getInstance(getApplicationContext());
+	private void loadToday() {
+		CigarDBAdapter dba = CigarDBAdapter.getInstance();
 		Cursor c = dba.getAllEntries();
 
 		
@@ -63,62 +69,87 @@ public class CigarListActivity extends ListActivity {
 		}
 		c.close();// TODO revisar cursores
 		Collections.sort(cigarEntries);
-		Collections.reverse(cigarEntries);
+		Collections.reverse(cigarEntries);		
 	}
-	private void transform(){
-		int counter = 0;
-		Calendar hoy = Calendar.getInstance();
-		int dayHoy = hoy.get(Calendar.DAY_OF_YEAR);
-		int dayBefore = -1;
-		Calendar before = Calendar.getInstance();
-		int dayActual;
-		Calendar actual;
-		boolean primero = true;
-		boolean more= true;
 
-		for (Cigar cig: cigarEntries){
+	private void loadHistoric() {
+		CigarHistoricDBAdapter dba = CigarHistoricDBAdapter.getInstance(getApplicationContext());
+		Cursor c = dba.getAllEntries();
 
-			actual = (Calendar.getInstance()); 
-			actual.setTimeInMillis(cig.getDate().getTime());
-			dayActual = actual.get(Calendar.DAY_OF_YEAR); 
-			if (primero){
-				dayBefore = dayActual;
-				primero = false;
-			}else 
-				dayBefore = before.get(Calendar.DAY_OF_YEAR); 
-			
-			// Si el cigarro es de hoy se printa normalmente
-			if ( dayActual == dayHoy){
-				if (counter >0 && more){
-					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
-					more = false;
-					
-				}
-				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));
-
-			} else{
-				// Si cambiamos de dia printamos el dia anterior
-				if (dayBefore!= actual .get(Calendar.DAY_OF_YEAR)){
-					
-					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
-					before.setTimeInMillis(actual.getTimeInMillis());
-					counter = 0;
-				} else{
-					before.setTimeInMillis(actual.getTimeInMillis());					
-				}
-			}
-			counter++;
-
+		if (c.moveToFirst()) {
+			do {
+				Day day = new Day();
+				day.setDayNumber(c.getInt(CIGARS_H_COL_DAY));
+				day.setCigarCount(c.getInt(CIGARS_H_COL_COUNT));
+				dayEntries.add(day);
+			} while (c.moveToNext());
 		}
-
-//		textImageEntries.add(new ImageAndText("0", "  ----------------------"));	
-//		for (Cigar cig: cigarEntries){
-//
-//				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));				
-//
-//		}		
+		c.close();// TODO revisar cursores
+		Collections.sort(dayEntries);
+		Collections.reverse(dayEntries);
+	}
+	
+	
+	
+	private void transformBOTH(){
+		for (Day day: dayEntries){
+			textImageEntries.add(new ImageAndText("0", day.getCigarCount() + " cigarrillos el " + day.getDayNumber() + "dia"));
+		}
+		for (Cigar cig: cigarEntries){
+			textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));
+		}
 		return;
 	}
+	
+//	
+//	private void transform(){
+//		int counter = 0;
+//		Calendar hoy = Calendar.getInstance();
+//		int dayHoy = hoy.get(Calendar.DAY_OF_YEAR);
+//		int dayBefore = -1;
+//		Calendar before = Calendar.getInstance();
+//		int dayActual;
+//		Calendar actual;
+//		boolean primero = true;
+//		boolean more= true;
+//
+//		for (Cigar cig: cigarEntries){
+//
+//			actual = (Calendar.getInstance()); 
+//			actual.setTimeInMillis(cig.getDate().getTime());
+//			dayActual = actual.get(Calendar.DAY_OF_YEAR); 
+//			if (primero){
+//				dayBefore = dayActual;
+//				primero = false;
+//			}else 
+//				dayBefore = before.get(Calendar.DAY_OF_YEAR); 
+//			
+//			// Si el cigarro es de hoy se printa normalmente
+//			if ( dayActual == dayHoy){
+//				if (counter >0 && more){
+//					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
+//					more = false;
+//					
+//				}
+//				textImageEntries.add(new ImageAndText(""+cig.getTipo(), cig.getDateStr() + " - " + cig.getTipo()));
+//
+//			} else{
+//				// Si cambiamos de dia printamos el dia anterior
+//				if (dayBefore!= actual.get(Calendar.DAY_OF_YEAR)){
+//					
+//					textImageEntries.add(new ImageAndText("0", counter + " cigarrillos el " + DateUtils.calendarToString(before, DateUtils.FORMAT_YYYYMMDD)));
+//					before.setTimeInMillis(actual.getTimeInMillis());
+//					counter = 0;
+//				} else{
+//					before.setTimeInMillis(actual.getTimeInMillis());					
+//				}
+//			}
+//			counter++;
+//		}
+//		return;
+//	}	
+	
+	
 /*
 	private List<String> getStringList() {
 		List<String> cigarStrings = new ArrayList<String>();

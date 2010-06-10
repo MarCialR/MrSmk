@@ -1,5 +1,7 @@
 package com.mru.mrnicoquitter;
 
+import java.text.SimpleDateFormat;
+
 public  class Global {
 
 	public static int[] oneCodes = {1001,1002,1003,1004,1005,1006,1007,1008,1009};
@@ -100,6 +102,20 @@ public  class Global {
 	public static final String 	DB_CIGARS_CREATE	= "create table " +	DB_CIGARS_TABLE + " (" + CIGARS_KEY_ID + " integer primary key autoincrement, " + CIGARS_KEY_DATE + " date not null, "+ CIGARS_KEY_TYPE + " integer not null);";
 	public static final String 	DB_CIGARS_DROP 		= "DROP TABLE IF EXISTS " + DB_CIGARS_TABLE;	
     
+	public static final String 	DB_CIGARS_H_TABLE 	= "CIGARS_HISTORIC_TABLE";
+	public static final int 	DB_CIGARS_H_VERSION = 1;
+	public static final String 	CIGARS_H_KEY_ID		= "_id";
+	public static final String 	CIGARS_H_KEY_DAY	= "day";
+	public static final int 	CIGARS_H_COL_DAY 	= 1;
+	public static final String 	CIGARS_H_KEY_COUNT	= "count";
+	public static final int 	CIGARS_H_COL_COUNT 	= 2;
+	public static final String 	DB_CIGARS_H_CREATE	= "create table " +	DB_CIGARS_H_TABLE + " (" + CIGARS_H_KEY_ID + " integer primary key autoincrement, " + CIGARS_H_KEY_DAY + " integer not null, "+ CIGARS_H_KEY_COUNT + " integer not null);";
+	public static final String 	DB_CIGARS_H_DROP 	= "DROP TABLE IF EXISTS " + DB_CIGARS_H_TABLE;	
 
-    
+    // =========================================================== 
+    // 						UTILS
+    // =========================================================== 
+	
+	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");	
+	
 }

@@ -18,6 +18,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.TimePicker;
 
+import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
@@ -121,19 +122,18 @@ public class MainActivity extends QActivity {
 				Cigar cigar = new Cigar();
 				olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
 				Calendar c = Calendar.getInstance();
-				SimpleDateFormat sdf = new SimpleDateFormat(
-						"yyyy-MM-dd'T'HH:mm:ss.SSS");
+
 				if (olvidoCheckBox.isChecked()) {
 					TimePicker picker = (TimePicker) findViewById(R.id.CuandoFumadoPicker);
 					c.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
 					c.set(Calendar.MINUTE, picker.getCurrentMinute());
 				}
-				cigar.setDateStr(sdf.format(c.getTime()));
+				cigar.setDateStr(SDF.format(c.getTime()));
 				cigar.setId((int) tipo.getSelectedItemId());
-				CigarDBAdapter dba = CigarDBAdapter
-						.getInstance(getApplicationContext());
-				dba.insertEntry(cigar);
-				AppUtils.showToastShort(getApplicationContext(),getString(R.string.T_CIGARRO_GUARDADO));
+				
+				CigarDBAdapter.inserttt(cigar);
+				
+
 			}
 		};
 

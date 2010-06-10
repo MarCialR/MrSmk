@@ -11,7 +11,11 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 import com.google.gson.Gson;
+import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.Cigar;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
+import com.mru.mrnicoquitter.ui.AppUtils;
+
 import static com.mru.mrnicoquitter.Global.*;
 
 public class CigarDBAdapter {
@@ -22,14 +26,22 @@ public class CigarDBAdapter {
 	
 	private static CigarDBAdapter INSTANCE;
 
-	public static CigarDBAdapter getInstance(Context c) {
+//	public static CigarDBAdapter getInstance(Context c) {
+//		if (INSTANCE == null) {
+//			INSTANCE = new CigarDBAdapter(c);
+//			return INSTANCE;
+//		} else
+//			return INSTANCE;
+//	}
+
+	public static CigarDBAdapter getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new CigarDBAdapter(c);
+			INSTANCE = new CigarDBAdapter(FlowManagerSGTon.getAppContext());
 			return INSTANCE;
 		} else
 			return INSTANCE;
 	}
-
+	
 	private CigarDBAdapter(Context _context) {
 		context 	= _context;
 		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DB_CIGARS_VERSION);
@@ -99,6 +111,7 @@ public class CigarDBAdapter {
         		sb.append(cigar.toSave()).append(NEWLINE);
         	}while (c.moveToNext());
         }
+        close();
         return sb.toString();
 	}
 	public String getAllEntriesToSendAsJSON(){
@@ -114,6 +127,7 @@ public class CigarDBAdapter {
         		cigars.add(cigar);
         	}while (c.moveToNext());
         }
+        close();
         return gson.toJson(cigars);
 	}
 	
@@ -167,5 +181,11 @@ String json = gson.toJson(obj);
 			// Create a new one.
 			onCreate(_db);
 		}
+	}
+	public static void inserttt(Cigar cigar) {
+		CigarDBAdapter dba = CigarDBAdapter.getInstance();
+		dba.insertEntry(cigar);
+		dba.close();
+		AppUtils.showToastShort(FlowManagerSGTon.getAppContext().getString(R.string.T_CIGARRO_GUARDADO));
 	}
 }

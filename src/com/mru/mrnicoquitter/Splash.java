@@ -11,6 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
 import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.stage.Phase;
@@ -44,11 +45,10 @@ public class Splash extends Activity {
 		context = getApplicationContext();
 		
 		SharedPreferences globalPreferences 	= context.getSharedPreferences(PREFS_GLOBAL, Context.MODE_PRIVATE);
-		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
-			initMrQuitter(globalPreferences);
-		}	
-		//initMrQuitter(globalPreferences);
-		//String[] lsls = Resources.getSystem().getStringArray(R.array.phaseOneStagesDescriptions);
+//		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
+//			initMrQuitter(globalPreferences);
+//		}	
+		initMrQuitter(globalPreferences);
 		phase = FlowManagerSGTon.initManager(context);
 
 		/*
@@ -68,11 +68,19 @@ public class Splash extends Activity {
 	}
 
 	private void initMrQuitter(SharedPreferences globalPreferences) {
+
+		insertFlows();
+		insertDays();		
+		AppUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
+		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
+//		forzarDEBUG();
+	}
+	
+	private void insertFlows() {
 		InputStream fis 		= null;
 		BufferedInputStream bis = null;
 		DataInputStream dis 	= null;
-		List<String> inserts 	= new ArrayList<String>();
-
+		List<String> inserts 	= new ArrayList<String>();		
 		try {
 			Resources res = getApplicationContext().getResources();
 			fis = res.openRawResource(R.raw.flow_inserts);
@@ -99,14 +107,45 @@ public class Splash extends Activity {
 		flowDB.bulkInsert(inserts);
 		flowDB.close();
 		
-		AppUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
-		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
+	}	
+	private void insertDays() {
+		InputStream fis 		= null;
+		BufferedInputStream bis = null;
+		DataInputStream dis 	= null;
+		List<String> inserts 	= new ArrayList<String>();		
+		try {
+			Resources res = getApplicationContext().getResources();
+			fis = res.openRawResource(R.raw.day_inserts);
+			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
+			dis = new DataInputStream(bis);
+
+			System.out.println("!!! FLOW INSERTS DETECTED !!!");			
+			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
+				String line = dis.readLine();
+				inserts.add(line);
+			}
+
+			fis.close();
+			bis.close();
+			dis.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		CigarHistoricDBAdapter flowDB = CigarHistoricDBAdapter.getInstance(getApplicationContext()).open();
+		flowDB.cleanDB();
+		flowDB.bulkInsert(inserts);
+		flowDB.close();
 		
-//		forzarDEBUG();
-	}
+	}		
+	
 //	private void forzarDEBUG() {
 //    Editor editor 		= globalPreferences.edit();
 //	editor.putBoolean(DEBUG, false);
 //	editor.commit();	
 //}	
+
+
 }

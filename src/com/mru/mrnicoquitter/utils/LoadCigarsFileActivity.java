@@ -70,7 +70,7 @@ public class LoadCigarsFileActivity extends ListActivity {
 	    AssetManager assets = res.getAssets(); 
 
 		List<Cigar> test = Utils.getAssetsCigarContents(clickedFileLocation, assets);
-		CigarDBAdapter.getInstance(this).bulkInsert(test);
+		CigarDBAdapter.getInstance().bulkInsert(test);
 		AppUtils.showToastShort(this, "Done Loading Cigars");
 	}
 	

@@ -83,6 +83,9 @@ public class FlowManagerSGTon {
 	public static FlowManagerSGTon getInstance() {
 		return INSTANCE;
 	}
+	public static Context getAppContext() {
+		return myContext;
+	}
 	
 	static public SharedPreferences getGlobalPreferences() {
 		return globalPreferences;
@@ -177,8 +180,6 @@ private static void setStage(){
 		setStage();
 		
 	}
-	
-	
 
 	public static void  prev(){
 		activeStageIndex--;

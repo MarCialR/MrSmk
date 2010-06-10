@@ -213,7 +213,7 @@ public class DevelopingActivity extends QActivity{
 				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcialemilio@gmail.com" });
 				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
 				//String dbToSave = CigarDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
-				String dbToSave = CigarDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSendAsJSON();
+				String dbToSave = CigarDBAdapter.getInstance().getAllEntriesToSendAsJSON();
 				Log.d("DevelopingActivity", dbToSave);
 //				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
 //				startActivity(Intent.createChooser(emailIntent, "Send mail..."));

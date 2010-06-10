@@ -41,9 +41,9 @@ public class FlowObjectDBAdapter {
 
 
 	public void bulkInsert(List<String> list){
-		System.out.println("EXECUTING FLOW DB BULK INSERTS:");
+		Log.d("CigarHistoricDBAdapter","EXECUTING FLOW DB BULK INSERTS:");
 		for (String flowItemInsert : list){
-			System.out.println(flowItemInsert);
+			Log.d("CigarHistoricDBAdapter",flowItemInsert);
 			db.execSQL(flowItemInsert);
 		}
 		return;	

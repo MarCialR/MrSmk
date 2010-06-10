@@ -19,7 +19,8 @@ public class Main {
 
 	private static final String INPUT_FILE = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\FlowObjects.xml";
 	private static final String OUTPUT_FILE_GSON = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\globals.txt";
-	private static final String OUTPUT_FILE_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\flow_inserts";
+	private static final String FLOW_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\res\\raw\\flow_inserts";
+	private static final String DAY_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\res\\raw\\day_inserts";	
 	private static StringBuilder sb;
 	private static Gson gson;
 	private static ObjectMapper mapper;
@@ -28,8 +29,9 @@ public class Main {
 	private static List<String> asJsonListita;
 	public static void main(String[] args) {
 		File inputFile 			= new File(INPUT_FILE);
-		File outputPlain 		= new File(OUTPUT_FILE_GSON);
-		File outputINSERTS		= new File(OUTPUT_FILE_INSERTS);
+		File gsonPlain 			= new File(OUTPUT_FILE_GSON);
+		File flowINSERTS		= new File(FLOW_INSERTS);
+		File dayINSERTS			= new File(DAY_INSERTS);		
 		gson 					= new Gson();
 		FlowXMLParser parser 	= new FlowXMLParser("");
 		mapper = new ObjectMapper(); // can reuse, share globally
@@ -50,28 +52,24 @@ public class Main {
 //			gORj = (String) (json_not_jackson?getGson(listita):mapper.writeValueAsString(listita));
 //			setContents(outputPlain, gORj);
 			globalArrays = getGlobalArrays(parser);
-			setContents(outputPlain, globalArrays);
+			
+//			setContents(gsonPlain, globalArrays);
+//			System.out.println("NEW FILE CONTENTS: \n" + getContents(gsonPlain));
+			
+			setContents(flowINSERTS, getFlowInserts(listita,asJsonListita));
+			System.out.println("NEW FILE CONTENTS: \n" + getContents(flowINSERTS));		
+			
+			setContents(dayINSERTS, getDayInserts());
+			System.out.println("NEW FILE CONTENTS: \n" + getContents(dayINSERTS));		
 			
 		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputPlain));
-		
-		try {
-			setContents(outputINSERTS, getInserts(listita,asJsonListita));
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		System.out.println("NEW FILE CONTENTS: \n" + getContents(outputINSERTS));		
 	}
+
+
 
 	private static String getGlobalArrays(FlowXMLParser parser) {
 		String OneCodes = "";
@@ -103,7 +101,7 @@ public class Main {
 		return sb.toString();
 	}
 
-	private static String getInserts(List<Stage> listita, List<String> listitaJSON) {
+	private static String getFlowInserts(List<Stage> listita, List<String> listitaJSON) {
 		sb = new StringBuilder();
 		int counter = 0;
 		for (Stage it : listita){
@@ -114,6 +112,15 @@ public class Main {
 		return sb.toString();
 	}
 
+	private static String getDayInserts() {
+		sb = new StringBuilder();
+		sb.append("INSERT INTO " + DB_CIGARS_H_TABLE+ " (" + CIGARS_H_KEY_DAY + "," + CIGARS_H_KEY_COUNT+ ") " + "VALUES (1,17);\n");
+		sb.append("INSERT INTO " + DB_CIGARS_H_TABLE+ " (" + CIGARS_H_KEY_DAY + "," + CIGARS_H_KEY_COUNT+ ") " + "VALUES (2,23);\n");
+		sb.append("INSERT INTO " + DB_CIGARS_H_TABLE+ " (" + CIGARS_H_KEY_DAY + "," + CIGARS_H_KEY_COUNT+ ") " + "VALUES (3,19);\n");
+		sb.append("INSERT INTO " + DB_CIGARS_H_TABLE+ " (" + CIGARS_H_KEY_DAY + "," + CIGARS_H_KEY_COUNT+ ") " + "VALUES (4,32);\n");	
+		return sb.toString();
+	}
+	
 	private static List<String> getGson(List<Stage> listaInserts) {
 
 		try {
