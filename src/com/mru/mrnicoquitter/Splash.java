@@ -68,9 +68,8 @@ public class Splash extends Activity {
 	}
 
 	private void initMrQuitter(SharedPreferences globalPreferences) {
-
 		insertFlows();
-		insertDays();		
+		insertDays();	
 		AppUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
 		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
 //		forzarDEBUG();
@@ -102,7 +101,7 @@ public class Splash extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(getApplicationContext()).open();
+		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(getApplicationContext());
 		flowDB.cleanDB();
 		flowDB.bulkInsert(inserts);
 		flowDB.close();
@@ -134,10 +133,10 @@ public class Splash extends Activity {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		CigarHistoricDBAdapter flowDB = CigarHistoricDBAdapter.getInstance(getApplicationContext()).open();
-		flowDB.cleanDB();
-		flowDB.bulkInsert(inserts);
-		flowDB.close();
+		CigarHistoricDBAdapter daysDB = CigarHistoricDBAdapter.getInstance(getApplicationContext());
+		daysDB.cleanDB();
+		daysDB.bulkInsert(inserts);
+		daysDB.close();
 		
 	}		
 	

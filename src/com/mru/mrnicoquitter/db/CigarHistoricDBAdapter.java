@@ -103,7 +103,7 @@ public class CigarHistoricDBAdapter {
 //	}
 
 	public void cleanDB() {
-		
+		db.getSyncedTables();
 		db.execSQL("DELETE FROM " + DB_CIGARS_H_TABLE);
 		Log.d("CigarHistoricDBAdapter","CIGARS HISTORIC DB: DELETING ALL ROWS...");
 		
@@ -119,6 +119,7 @@ public class CigarHistoricDBAdapter {
 		// to create a new one.
 		@Override
 		public void onCreate(SQLiteDatabase _db) {
+			_db.execSQL(DB_CIGARS_H_DROP);
 			_db.execSQL(DB_CIGARS_H_CREATE);
 		}
 		// Called when there is a database version mismatch meaning that
