@@ -10,13 +10,15 @@ import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 import com.mru.mrnicoquitter.beans.Stage;
+import com.mru.mrnicoquitter.db.NewDataBaseHelper;
+
 import static com.mru.mrnicoquitter.Global.*;
 
 public class FlowObjectDBAdapter {
 
 	private SQLiteDatabase db;		// Variable to hold the database instance
 	private final Context context;	// Context of the application using the database.
-	private myDbHelper dbHelper;	// Database open/upgrade helper	
+	private NewDataBaseHelper dbHelper;	// Database open/upgrade helper	
 	
 	private static FlowObjectDBAdapter INSTANCE;
 
@@ -30,7 +32,7 @@ public class FlowObjectDBAdapter {
 
 	private FlowObjectDBAdapter(Context _context) {
 		context 	= _context;
-		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DB_FLOW_VERSION);
+		dbHelper 	= new NewDataBaseHelper(context);
 		try {
 			db = dbHelper.getWritableDatabase();
 		}
@@ -51,8 +53,8 @@ public class FlowObjectDBAdapter {
 
 	public long insertEntry(Stage _myObject) {
 		ContentValues newValues = new ContentValues();
-		newValues.put(FLOW_KEY_ID, _myObject.getId());
-		newValues.put(FLOW_KEY_OBJECT, _myObject.getId());
+		newValues.put(FLOW_KEY_ID, _myObject.getObject_id());
+		newValues.put(FLOW_KEY_OBJECT, _myObject.getObject_id());
 		return db.insert(DB_FLOW_TABLE, null, newValues);		
 	}
 
@@ -95,39 +97,7 @@ public class FlowObjectDBAdapter {
 	public void close() {
 		db.close();
 	}
-	private static class myDbHelper extends SQLiteOpenHelper {
-		public myDbHelper(Context context, String name,
-				CursorFactory factory, int version) {
-			super(context, name, factory, version);
-		}
-		// Called when no database exists in
-		// disk and the helper class needs
-		// to create a new one.
-		@Override
-		public void onCreate(SQLiteDatabase _db) {
-			_db.execSQL(DB_FLOW_CREATE);
-		}
-		// Called when there is a database version mismatch meaning that
-		// the version of the database on disk needs to be upgraded to
-		// the current version.
-		@Override
-		public void onUpgrade(SQLiteDatabase _db, int _oldVersion,
-				int _newVersion) {
-			// Log the version upgrade.
-			Log.w("FlowObjectDBAdapter", "Upgrading from version " +
-					_oldVersion + " to " +
-					_newVersion +
-			", which will destroy all old data");
-			// Upgrade the existing database to conform to the new version.
-			// Multiple previous versions can be handled by comparing
-			// _oldVersion and _newVersion values.
-			// The simplest case is to drop the old table and create a
-			// new one.
-			_db.execSQL(DB_FLOW_DROP);
-			// Create a new one.
-			onCreate(_db);
-		}
-	}
+
 //	public boolean removeEntry(long _rowIndex) {
 //	return db.delete(DB_FLOW_TABLE, FLOW_KECOL_ID +
 //			"=" + _rowIndex, null) > 0;

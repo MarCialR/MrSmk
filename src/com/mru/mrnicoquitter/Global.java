@@ -79,12 +79,14 @@ public  class Global {
     // 						DATABASES
     // =========================================================== 
 
+    //The Android's default system path of your application database.
+	public static final String DATABASE_PATH 		= "/data/data/com.mru.mrnicoquitter/databases/";
 	public static final String 	DATABASE_NAME 		= "mrQuitter.db";
     
 	public static final String 	DB_FLOW_TABLE 		= "FLOW_TABLE";
 	public static final int 	DB_FLOW_VERSION 	= 1;
 	public static final String 	FLOW_COL_AUTO		= "auto_id";	// The index (key) column name for use in where clauses.
-	public static final String 	FLOW_KEY_ID			= "id";	// The name and column index of each column in your database.
+	public static final String 	FLOW_KEY_ID			= "object_id";	// The name and column index of each column in your database.
 	public static final int 	FLOW_COL_ID		 	= 1;
 	public static final String 	FLOW_KEY_OBJECT		= "object";	// The name and column index of each column in your database.
 	public static final int 	FLOW_COL_OBJECT 	= 2;

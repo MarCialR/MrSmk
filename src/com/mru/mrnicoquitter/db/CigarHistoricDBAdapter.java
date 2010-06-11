@@ -16,7 +16,7 @@ public class CigarHistoricDBAdapter {
 
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
-	private myDbHelper dbHelper;				// Database open/upgrade helper	
+	private NewDataBaseHelper dbHelper;				// Database open/upgrade helper	
 	
 	private static CigarHistoricDBAdapter INSTANCE;
 
@@ -30,7 +30,7 @@ public class CigarHistoricDBAdapter {
 
 	private CigarHistoricDBAdapter(Context _context) {
 		context 	= _context;
-		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null, DB_CIGARS_H_VERSION);
+		dbHelper 	= new NewDataBaseHelper(context);
 		try {
 			db = dbHelper.getWritableDatabase();
 		}
@@ -67,11 +67,11 @@ public class CigarHistoricDBAdapter {
 		return db.insert(DB_CIGARS_H_TABLE, null, newValues);		
 	}
 
-	public Cursor getAllEntries () {
-		return db.query(DB_CIGARS_H_TABLE, new String[] {CIGARS_H_KEY_DAY, CIGARS_H_KEY_COUNT},
+	public Cursor getAllHistoricEntries () {
+		return db.query(DB_CIGARS_H_TABLE, new String[] {CIGARS_H_KEY_ID,CIGARS_H_KEY_DAY, CIGARS_H_KEY_COUNT},
 				null, null, null, null, CIGARS_H_KEY_DAY + " DESC");
 	}
-	
+
 //	public String getAllEntriesToSend(){
 //    	Cursor c = getAllEntries();
 //    	StringBuffer sb = new StringBuffer(); 
@@ -103,44 +103,10 @@ public class CigarHistoricDBAdapter {
 //	}
 
 	public void cleanDB() {
-		db.getSyncedTables();
 		db.execSQL("DELETE FROM " + DB_CIGARS_H_TABLE);
 		Log.d("CigarHistoricDBAdapter","CIGARS HISTORIC DB: DELETING ALL ROWS...");
 		
 	}	
 	
-	private static class myDbHelper extends SQLiteOpenHelper {
-		public myDbHelper(Context context, String name,
-				CursorFactory factory, int version) {
-			super(context, name, factory, version);
-		}
-		// Called when no database exists in
-		// disk and the helper class needs
-		// to create a new one.
-		@Override
-		public void onCreate(SQLiteDatabase _db) {
-			_db.execSQL(DB_CIGARS_H_DROP);
-			_db.execSQL(DB_CIGARS_H_CREATE);
-		}
-		// Called when there is a database version mismatch meaning that
-		// the version of the database on disk needs to be upgraded to
-		// the current version.
-		@Override
-		public void onUpgrade(SQLiteDatabase _db, int _oldVersion,
-				int _newVersion) {
-			// Log the version upgrade.
-			Log.w("TaskDBAdapter", "Upgrading from version " +
-					_oldVersion + " to " +
-					_newVersion +
-			", which will destroy all old data");
-			// Upgrade the existing database to conform to the new version.
-			// Multiple previous versions can be handled by comparing
-			// _oldVersion and _newVersion values.
-			// The simplest case is to drop the old table and create a
-			// new one.
-			_db.execSQL(DB_CIGARS_H_DROP);
-			// Create a new one.
-			onCreate(_db);
-		}
-	}
+
 }

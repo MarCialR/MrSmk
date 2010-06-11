@@ -22,7 +22,7 @@ public class CigarDBAdapter {
 
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
-	private myDbHelper dbHelper;				// Database open/upgrade helper	
+	private NewDataBaseHelper dbHelper;				// Database open/upgrade helper	
 	
 	private static CigarDBAdapter INSTANCE;
 
@@ -37,25 +37,24 @@ public class CigarDBAdapter {
 	public static CigarDBAdapter getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new CigarDBAdapter(FlowManagerSGTon.getAppContext());
-			return INSTANCE;
-		} else
+		}
 			return INSTANCE;
 	}
 	
 	private CigarDBAdapter(Context _context) {
 		context 	= _context;
-		dbHelper 	= new myDbHelper(context, DATABASE_NAME, null,DB_CIGARS_VERSION);
+		dbHelper 	= new NewDataBaseHelper(context);
 		try {
-			db = dbHelper.getWritableDatabase();
+			db = dbHelper.openDataBase();
 		}
 		catch (SQLiteException ex){
 			db = dbHelper.getReadableDatabase();	
 		}
 	}
 
-	public CigarDBAdapter open() throws SQLException {
+	private void open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
-		return this;
+		return;
 	}
 	
 	public void close() {
@@ -79,6 +78,7 @@ public class CigarDBAdapter {
 	}
 	
 	public long insertEntry(Cigar _myObject) {
+		open();
 		// Create a new row of values to insert.
 		ContentValues newValues = new ContentValues();
 		//newValues.
@@ -86,7 +86,18 @@ public class CigarDBAdapter {
 		newValues.put(CIGARS_KEY_DATE, _myObject.getDateStr());
 		newValues.put(CIGARS_KEY_TYPE, _myObject.getId());
 		// Insert the row into your table
-		return db.insert(DB_CIGARS_TABLE, null, newValues);		
+		long que = 0L;
+		try {
+			que = db.insert(DB_CIGARS_TABLE, null, newValues);
+		}
+		catch(Exception e){
+			System.out.println(e);
+			close();    
+		} finally{
+			close();
+		}
+		
+		return 		que;
 	}
 
 	public boolean removeEntry(long _rowIndex) {
@@ -130,62 +141,10 @@ public class CigarDBAdapter {
         close();
         return gson.toJson(cigars);
 	}
-	
-	/*
-BagOfPrimitives obj = new BagOfPrimitives();
-Gson gson = new Gson();
-String json = gson.toJson(obj);  
-	 */
-	
-	public Cigar getEntry(long _rowIndex) {
-		Cigar objectInstance = new Cigar();
-		//TODO Return a cursor to a row from the database and
-		//use the values to populate an instance of MyObject
-		return objectInstance;
-	}
-	public int updateEntry(long _rowIndex, Cigar _myObject) {
-		String where 				= CIGARS_KEY_ID + "=" + _rowIndex;
-		ContentValues contentValues = new ContentValues();
-		//TODO fill in the ContentValue based on the new object
-		return db.update(DB_CIGARS_TABLE, contentValues, where, null);
-	}
-	private static class myDbHelper extends SQLiteOpenHelper {
-		public myDbHelper(Context context, String name,
-				CursorFactory factory, int version) {
-			super(context, name, factory, version);
-		}
-		// Called when no database exists in
-		// disk and the helper class needs
-		// to create a new one.
-		@Override
-		public void onCreate(SQLiteDatabase _db) {
-			_db.execSQL(DB_CIGARS_CREATE);
-		}
-		// Called when there is a database version mismatch meaning that
-		// the version of the database on disk needs to be upgraded to
-		// the current version.
-		@Override
-		public void onUpgrade(SQLiteDatabase _db, int _oldVersion,
-				int _newVersion) {
-			// Log the version upgrade.
-			Log.w("TaskDBAdapter", "Upgrading from version " +
-					_oldVersion + " to " +
-					_newVersion +
-			", which will destroy all old data");
-			// Upgrade the existing database to conform to the new version.
-			// Multiple previous versions can be handled by comparing
-			// _oldVersion and _newVersion values.
-			// The simplest case is to drop the old table and create a
-			// new one.
-			_db.execSQL(DB_CIGARS_DROP);
-			// Create a new one.
-			onCreate(_db);
-		}
-	}
+
 	public static void inserttt(Cigar cigar) {
 		CigarDBAdapter dba = CigarDBAdapter.getInstance();
 		dba.insertEntry(cigar);
-		dba.close();
 		AppUtils.showToastShort(FlowManagerSGTon.getAppContext().getString(R.string.T_CIGARRO_GUARDADO));
 	}
 }

@@ -9,7 +9,7 @@ import java.util.List;
 public class Stage implements Serializable{
 	private String json;
 	
-	private int id;
+	private int object_id;
 	private String name;
 	private String activity;
 	private transient List<IntentExtra> extras;
@@ -33,12 +33,12 @@ public class Stage implements Serializable{
 		this.json = json;
 	}
 
-	public int getId() {
-		return id;
+	public int getObject_id() {
+		return object_id;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setObject_id(int object_id) {
+		this.object_id = object_id;
 	}
 
 	public String getName() {

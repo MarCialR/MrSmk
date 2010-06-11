@@ -54,7 +54,7 @@ public class FlowItemHandler extends DefaultHandler {
 
    public void characters(char ch[], int start, int length) { 
          if(this.in_id){ 
-             item.setId(Integer.valueOf(new String(ch, start, length).trim()));
+             item.setObject_id(Integer.valueOf(new String(ch, start, length).trim()));
          } else  if(this.in_name){ 
         	 String name = new String(ch, start, length).trim();
         	 if (!name.trim().equals(""))

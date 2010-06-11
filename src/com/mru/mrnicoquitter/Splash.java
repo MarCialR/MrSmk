@@ -12,6 +12,7 @@ import java.util.List;
 
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
+import com.mru.mrnicoquitter.db.NewDataBaseHelper;
 import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.stage.Phase;
@@ -68,8 +69,15 @@ public class Splash extends Activity {
 	}
 
 	private void initMrQuitter(SharedPreferences globalPreferences) {
-		insertFlows();
-		insertDays();	
+		//insertFlows();
+		//insertDays();	
+		NewDataBaseHelper dbH = new NewDataBaseHelper(context);
+		try {
+			dbH.createDataBase();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		AppUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
 		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
 //		forzarDEBUG();
