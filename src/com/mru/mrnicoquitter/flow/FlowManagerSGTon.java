@@ -88,6 +88,8 @@ public class FlowManagerSGTon {
 	}
 	
 	static public SharedPreferences getGlobalPreferences() {
+		if (globalPreferences == null)
+			globalPreferences = myContext.getSharedPreferences(PREFS_GLOBAL, Context.MODE_WORLD_READABLE);
 		return globalPreferences;
 	}	
 

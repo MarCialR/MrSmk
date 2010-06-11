@@ -22,6 +22,7 @@ import android.widget.ListAdapter;
 import android.widget.TextView;
 
 import static com.mru.mrnicoquitter.Global.*;
+
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
@@ -71,10 +72,16 @@ public class CigarListActivity extends ListActivity {
 		Collections.sort(cigarEntries);
 		Collections.reverse(cigarEntries);		
 	}
+/*		return db.query(DB_CIGARS_TABLE, new String[] {CIGARS_KEY_ID, CIGARS_KEY_DATE, CIGARS_KEY_TYPE},
+				null, null, null, null, null);
+		//null, null, null, null, "date DESC");
+	}
 
+	public Cursor getAllHistoricEntries () {
+		return db.query(DB_CIGARS_H_TABLE, new String[] {CIGARS_H_KEY_ID, CIGARS_H_KEY_DAY, CIGARS_H_KEY_COUNT},*/
 	private void loadHistoric() {
 		CigarHistoricDBAdapter dba = CigarHistoricDBAdapter.getInstance(getApplicationContext());
-		Cursor c = dba.getAllEntries();
+		Cursor c = dba.getAllHistoricEntries();
 
 		if (c.moveToFirst()) {
 			do {

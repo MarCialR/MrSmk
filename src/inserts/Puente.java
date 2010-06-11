@@ -12,10 +12,12 @@ import java.io.IOException;
 import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import static inserts.Global.*;
+import static com.mru.mrnicoquitter.Global.*;
 import com.google.gson.Gson;
+import com.mru.mrnicoquitter.beans.Stage;
+import com.mru.mrnicoquitter.db.flow.generator.FlowXMLParser;
 
-public class Main {
+public class Puente {
 
 	private static final String INPUT_FILE = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\FlowObjects.xml";
 	private static final String OUTPUT_FILE_GSON = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\globals.txt";
@@ -27,7 +29,7 @@ public class Main {
 	private static boolean json_not_jackson = false;
 	private static List<Stage> listita;
 	private static List<String> asJsonListita;
-	public static void main(String[] args) {
+	public static void main() {
 		File inputFile 			= new File(INPUT_FILE);
 		File gsonPlain 			= new File(OUTPUT_FILE_GSON);
 		File flowINSERTS		= new File(FLOW_INSERTS);
@@ -106,7 +108,7 @@ public class Main {
 		int counter = 0;
 		for (Stage it : listita){
 			sb.append("INSERT INTO " + DB_FLOW_TABLE + " (" + FLOW_KEY_ID + "," + FLOW_KEY_OBJECT + ") " +
-					 "VALUES (" + it.getId() + ", '" + listitaJSON.get(counter)).append("');\n");
+					 "VALUES (" + it.getObject_id() + ", '" + listitaJSON.get(counter)).append("');\n");
 			counter++;
 		}
 		return sb.toString();
