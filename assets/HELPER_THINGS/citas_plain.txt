@@ -1,205 +1,167 @@
-MOTIVATIONAL	A positive attitude may not solve all your problems,<br/>but it will annoy enough people to make it worth the effort.	Anonymous
-MOTIVATIONAL	It was a high counsel that I once heard given to a young person,<br/>'Always do what you are afraid to do.'	Ralph Waldo Emerson
-MOTIVATIONAL	Take calculated risks.<br/>That is quite different from being rash.	George S. Patton
-MOTIVATIONAL	If you do not hope, you will not find what is beyond your hopes.	St. Clement of Alexandra
-MOTIVATIONAL	We are all inventors, each sailing out on a voyage of discovery, guided each by a private chart, of which there is no duplicate.<br/>The world is all gates, all opportunities.	Ralph Waldo Emerson
-MOTIVATIONAL	Seek the lofty by reading, hearing and seeing great work at some moment every day.	Thornton Wilder
-MOTIVATIONAL	The only way of finding the limits of the possible is by going beyond them into the impossible.	Arthur C. Clarke
-MOTIVATIONAL	Without inspiration the best powers of the mind remain dormant.<br/>There is a fuel in us which needs to be ignited with sparks.	Johann Gottfried Von Herder
-MOTIVATIONAL	We are what we repeatedly do.<br/>Excellence, therefore, is not an act but a habit.	Aristotle
-MOTIVATIONAL	Work spares us from three evils:<br/>boredom, vice, and need.	Voltaire
-MOTIVATIONAL	Experience is the child of thought,<br/>and thought is the child of action.	Benjamin Disraeli
-MOTIVATIONAL	You cannot plough a field by turning it over in your mind.	Anonymous
-MOTIVATIONAL	The best way out is always through.	Robert Frost
-MOTIVATIONAL	Do not wait to strike till the iron is hot;<br/>but make it hot by striking.	William B. Sprague
-MOTIVATIONAL	Nothing will ever be attempted if all possible objections must first be overcome.	Samuel Johnson
-MOTIVATIONAL	Fortune favors the brave.	Publius Terence
-MOTIVATIONAL	When the best things are not possible, the best may be made of those that are.	Richard Hooker
-MOTIVATIONAL	He who hesitates is lost.	Proverb
-MOTIVATIONAL	Great spirits have always encountered violent opposition from mediocre minds.	Albert Einstein
-MOTIVATIONAL	Knowing is not enough; we must apply.<br/>Willing is not enough; we must do.	Johann Wolfgang von Goethe 
-MOTIVATIONAL	We are still masters of our fate.<br/>We are still captains of our souls.	Winston Churchill
-MOTIVATIONAL	Nothing great was ever achieved without enthusiasm.	Ralph Waldo Emerson
-MOTIVATIONAL	For hope is but the dream<br/>of those that wake.	Matthew Prior
-MOTIVATIONAL	Constant dripping hollows out a stone.	Lucretius
-MOTIVATIONAL	Nothing contributes so much to tranquilize the mind as a steady purpose,<br/>a point on which the soul may fix its intellectual eye.	Mary Shelley
-		
-FEAR OF FAILURE	I was never afraid of failure, for I would sooner fail than not be among the best.	John Keats
-FEAR OF FAILURE	It is foolish to fear what you cannot avoid.<br/>Stultum est timere quod vitare non potes.	Publius Syrus
-FEAR OF FAILURE	He that is down needs fear no fall.	John Bunyan
-FEAR OF FAILURE	Never let the fear of striking out get in your way.	George Herman "Babe" Ruth
-FEAR OF FAILURE	One who fears failure limits his activities. <br/>Failure is only the opportunity to more intelligently begin again.	Henry Ford
-FEAR OF FAILURE	The greatest mistake you can make in life is to continually be afraid you will make one.	Elbert Hubbard
-FEAR OF FAILURE	Little minds are tamed and subdued by misfortunes; but great minds rise above them.	Washington Irving
-FEAR OF FAILURE	It is the want of diligence, rather than the want of means, that causes most failures.	Alfred Mercier
-FEAR OF FAILURE	Our greatest glory consist not in never falling, but in rising every time we fall.	Oliver Goldsmith
-FEAR OF FAILURE	The greatest men sometimes overshoot themselves, but then their very mistakes are so many lessons of instruction. 	Tom Browne
-FEAR OF FAILURE	Experience teaches slowly, and at the cost of mistakes.	James A. Froude
-FEAR OF FAILURE	Wherever we look upon this earth, the opportunities take shape within the problems.	Nelson A. Rockefeller
-FEAR OF FAILURE	What would life be if we had no courage to attempt anything?	Vincent van Gogh
-FEAR OF FAILURE	There is no failure except in no longer trying.	Elbert Hubbard
-FEAR OF FAILURE	He who fears being conquered is sure of defeat.	Napoleon Bonaparte
-FEAR OF FAILURE	A man's life is interesting primarily when he has failed--I well know.<br/>For it's a sign that he tried to surpass himself.	Georges Clemenceau
-FEAR OF FAILURE	There is no impossibility to him who stands prepared to conquer every hazard. <br/>The fearful are the failing.	Sarah J. Hale
-FEAR OF FAILURE	Our doubts are traitors, and make us lose the good we oft might win, by fearing to attempt.	William Shakespeare
-FEAR OF FAILURE	Disappointments are to the soul what thunderstorms are to the air.	Johann C. F. von Schiller
-FEAR OF FAILURE	Half of the failures in life come from pulling one's horse when he is leaping.	Thomas Hood
-FEAR OF FAILURE	Failure teaches success.	Japanese Saying
-FEAR OF FAILURE	It is hard to fail, but it is worse never to have tried to succeed.	Theodore Roosevelt
-FEAR OF FAILURE	Go back a little to leap further. 	John Clarke
-FEAR OF FAILURE	Every failure brings with it the seed of an equivalent success.	Napoleon Hill
-FEAR OF FAILURE	We learn wisdom from failure much more than success. We often discover what we will do, by finding out what we will not do.	Samuel Smiles
-FEAR OF FAILURE	Failure is blindness to the strategic element in events; success is readiness for instant action when the opportune moment arrives. 	Newell D. Hillis
-FEAR OF FAILURE	They fail, and they alone, who have not striven. 	Thomas Bailey Aldrich
-FEAR OF FAILURE	We learn wisdom from failure much more than success. We often discover what we will do, by finding out what we will not do.	Samuel Smiles
-		
-GOALS	The ability to convert ideas to things is the secret to outward success.	Henry Ward Beecher
-GOALS	The ability to concentrate and to use your time well is everything if you want to succeed in business--or almost anywhere else for that matter.	Lee Iacocca
-GOALS	A wise man will make more opportunities than he finds.	Francis Bacon
-GOALS	In everything the ends well defined are the secret of durable success.	Victor Cousins
-GOALS	Winning isn't everything, but wanting to win is.	Vince Lombardi
-GOALS	Failures do what is tension relieving,<br/>while winners do what is goal achieving. 	Dennis Waitley
-GOALS	A man should have any number of little aims about which he should be conscious and for which he should have names, but he should have neither name for, nor consciousness concerning, the main aim of his life.	Samuel Butler
-GOALS	Goals are the fuel in the furnace of achievement.	Brian Tracy, Eat that Frog
-GOALS	The great and glorious masterpiece of man is to know how to live to purpose.	Michel de Montaigne
-GOALS	Ah, but a man's reach should exceed his grasp,<br/>or what's a heaven for?	Robert Browning
-GOALS	The significance of a man is not in what he attains but in what he longs to attain.	Kahlil Gibran
-GOALS	Every ceiling, when reached, becomes a floor, upon which one walks as a matter of course and prescriptive right.	Aldous Huxley
-GOALS	If you don't know where you are going,<br/>you'll end up someplace else.	Yogi Berra
-GOALS	We can always redeem the man who aspires and strives.	Johann Wolfgang von Goethe
-GOALS	Life can be pulled by goals just as surely as it can be pushed by drives.	Viktor Frankl
-GOALS	To reach a port, we must sail—Sail, not tie at anchor—Sail, not drift.	Franklin Roosevelt
-GOALS	There is no happiness except in the realization that we have accomplished something.	Henry Ford
-GOALS	Our plans miscarry because they have no aim. When a man does not know what harbor he is making for, no wind is the right wind.	Seneca
-GOALS	It is not enough to take steps which may some day lead to a goal; each step must be itself a goal and a step likewise.	Johann Wolfgang von Goethe
-GOALS	Who aims at excellence will be above mediocrity; who aims at mediocrity will be far short of it.	Burmese Saying
-GOALS	In absence of clearly defined goals, we become strangely loyal to performing daily acts of trivia.	Author Unknown
-GOALS	Don't bunt. Aim out of the ballpark.	David Ogilvy
-GOALS	There are two things to aim at in life; first to get what you want, and after that to enjoy it. Only the wisest of mankind has achieved the second.	Logan Pearsall Smith
-		
-INSPIRATIONAL	Try not to become a man of success but a man of value.	Albert Einstein
-INSPIRATIONAL	If you have built castles in the air, your work need not be lost; that is where they should be.<br/>Now put foundations under them.	Henry David Thoreau
-INSPIRATIONAL	Inspiration and genius--one and the same.	Victor Hugo
-INSPIRATIONAL	To find what you seek in the road of life, the best proverb of all is that which says:<br/>"Leave no stone unturned."	Edward Bulwer Lytton
-INSPIRATIONAL	If you would create something,<br/>you must be something.	Johann Wolfgang von Goethe
-INSPIRATIONAL	Every artist was first an amateur.	Ralph Waldo Emerson
-INSPIRATIONAL	The more difficulties one has to encounter, within and without, the more significant and the higher in inspiration his life will be.	Horace Bushnell
-INSPIRATIONAL	Life has no smooth road for any of us; and in the bracing atmosphere of a high aim the very roughness stimulates the climber to steadier steps, till the legend, over steep ways to the stars, fulfills itself. 	W. C. Doane
-INSPIRATIONAL	Do we not all agree to call rapid thought and noble impulse by the name of inspiration?	George Eliot
-INSPIRATIONAL	No great man ever complains of want of opportunities.	Ralph Waldo Emerson
-INSPIRATIONAL	Men do less than they ought,<br/>unless they do all they can.	Thomas Carlyle
-INSPIRATIONAL	Men's best successes come after their disappointments. 	Henry Ward Beecher.
-INSPIRATIONAL	Let thy words be few.	Ecclesiastes 5:2 from Words of Wisdom
-INSPIRATIONAL	Happy are those who dream dreams and are ready to pay the price to make them come true.	Leon J. Suenes
-INSPIRATIONAL	The power of imagination makes us infinite.	John Muir
-INSPIRATIONAL	First say to yourself what you would be;<br/>and then do what you have to do.	Epictetus
-		
-SUCCESS	Along with success comes a reputation for wisdom.	Euripides
-SUCCESS	They can because they think they can.	Virgil
-SUCCESS	Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude. 	Thomas Jefferson
-SUCCESS	Keep steadily before you the fact that all true success depends at last upon yourself.	Theodore T. Hunger
-SUCCESS	We are all motivated by a keen desire for praise, and the better a man is, the more he is inspired to glory.	Cicero
-SUCCESS	Success is the sum of small efforts, repeated day in and day out.	Robert Collier
-SUCCESS	The thing always happens that you really believe in; and the belief in a thing makes it happen.	Frank Loyd Wright
-SUCCESS	A failure is a man who has blundered, but is not able to cash in on the experience.	Elbert Hubbard
-SUCCESS	There is only one success:<br/>to be able to spend your life in your own way.	Christopher Morley
-SUCCESS	Success is sweet:<br/>the sweeter if long delayed and attained through manifold struggles and defeats. 	A. Branson Alcott
-SUCCESS	The secret of success is to know something nobody else knows.	Aristotle Onassis
-SUCCESS	The greatest results in life are usually attained by simple means and the exercise of ordinary qualities.<br/>These may for the most part be summed in these two:<br/>common-sense and perseverance.	Owen Feltham
-SUCCESS	Failures do what is tension relieving, while winners do what is goal achieving.	Dennis Waitley
-SUCCESS	The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will.	Vince Lombardi
-SUCCESS	I cannot give you the formula for success, but I can give you the formula for failure, which is:<br/>Try to please everybody.	Herbert Bayard Swope
-SUCCESS	Success does not consist in never making blunders, but in never making the same one a second time.	Josh Billings
-SUCCESS	The secret of success in life is for a man to be ready for his opportunity when it comes.	Earl of Beaconsfield
-SUCCESS	Success is the good fortune that comes from aspiration, desperation, perspiration and inspiration.	Evan Esar
-SUCCESS	The surest way not to fail is to determine to succeed.	Richard Brinsley Sheridan
-SUCCESS	If you wish success in life, make perseverance your bosom friend, experience your wise counselor, caution your elder brother, and hope your guardian genius.	Jospeph Addison
-SUCCESS	Impatience never commanded success.	Edwin H. Chapin
-SUCCESS	The talent of success is nothing more than doing what you can do, well.	Henry W. Longfellow
-SUCCESS	To climb steep hills requires a slow pace at first.	Shakespeare
-SUCCESS	Try not to become a man of success but a man of value.	Albert Einstein
-SUCCESS	The man who makes a success of an important venture never wails for the crowd.<br/>He strikes out for himself.<br/>It takes nerve, it takes a great lot of grit; but the man that succeeds has both.<br/>Anyone can fail.<br/>The public admires the man who has enough confidence in himself to take a chance. These chances are the main things after all.<br/>The man who tries to succeed must expect to be criticized. Nothing important was ever done but the greater number consulted previously doubted the possibility.<br/>Success is the accomplishment of that which most people think can't be done.	C. V. White
-		
-LIFE	Dost thou love life? <br/>Then do not squander time, <br/>for that is the stuff life is made of.	Benjamin Franklin
-LIFE	Life is either a daring adventure or nothing.	Helen Keller 
-LIFE	Life is like a game of cards. The hand that is dealt you represents determinism; the way you play it is free will.	Jawaharal Nehru
-LIFE	Life is like the dice that, falling, still show a different face. So life, though it remains the same, is always presenting different aspects.	Alexis
-LIFE	Our life's a stage, a comedy: either learn to play and take it lightly, or bear its troubles patiently.	Palladas
-LIFE	The geat blessing of mankind are within us and within our reach; but we shut our eyes, and like people in the dark, we fall foul upon the very thing we search for, without finding it.	Seneca
-LIFE	Govern thy life and thoughts as if the whole world were to see the one, and read the other.	Thomas Fuller
-LIFE	Most of the shadows of this life are caused by our standing in our own sunshine.	Ralph Waldo Emerson
-LIFE	Unrest of spirit is a mark of life; one problem after another presents itself and in the solving of them we can find our greatest pleasure.	Kal Menninger
-LIFE	Life is short, art long, opportunity fleeting, experience treacherous, judgment difficult.	Hypocrites
-LIFE	After the game,<br/>the king and the pawn go into the same box.	Italian Proverb
-LIFE	Life is a tragedy for those who feel,<br/>and a comedy for those who think.	La Bruyere
-LIFE	Life is like a library owned by the author.<br/>In it are a few books which he wrote himself,<br/>but most of them were written for him.	Harry Emerson Fosdick
-LIFE	We make our fortunes, and we call them fate.	Earl of Beaconsfield
-LIFE	The best way to prepare for life is to begin to live.	Elbert Hubbard
-LIFE	Life's a voyage that's homeward bound.	Herman Melville
-LIFE	The whole of life is but a moment of time. It is our duty, therefore to use it, not to misuse it.	Plutarch
-LIFE	Life is a rich strain of music, suggesting a realm too fair to be.	George William Curtis
-LIFE	The boundaries which divide life from death<br/>are at best shadowy and vague.<br/>Who shall say where one ends,<br/>and the other begins?	Edgar Alan Poe
-LIFE	One way to get the most out of life is<br/>to look upon it as an adventure.	William Feather
-LIFE	Life is a succession of lessons which must be lived to be understood.	Ralph Waldo Emerson
-LIFE	There are no classes in life for beginners:<br/>right away you are always asked to deal with what is most difficult.	Rainer Maria Rilke
-LIFE	To live is like to love:<br/>all reason is against it, and all healthy instinct for it.	Samuel Butler
-LIFE	One life:<br/>a little gleam of time between two eternities.	Thomas Carlyle
-LIFE	Life is a pure flame,<br/>and we live by an invisible sun within us.	Sir Thomas Brown
-LIFE	As I grow to understand life less and less,<br/>I learn to love it more and more.	Jules Renard
-		
-WISDOM	Nature and wisdom never are at strife.	Plutarch
-WISDOM	It is easier to be wise for others than for ourselves.	Francois De La Rochefoucauld
-WISDOM	The art of being wise is knowing what to overlook.	William James
-WISDOM	The first step in the acquisition of wisdom is silence,<br/>the second listening,<br/>the third memory,<br/>the fourth practice,<br/>the fifth teaching others.	Solomon Ibn Gabriol
-WISDOM	Years teach us more than books.	Berthold Auerbach
-WISDOM	The wisdom of nations lies in their proverbs,<br/>which are brief and pithy.	William Penn
-WISDOM	The middle course is the best.	Cleobulus
-WISDOM	The only medicine for suffering, crime, and all the other woes of mankind, is wisdom.	Thomas Huxley
-WISDOM	A wise man learns by the mistakes of others,<br/>a fool by his own.	Latin Proverb
-WISDOM	Silence does not always mark wisdom.	Samuel Taylor Coleridge.
-WISDOM	No man was ever wise by chance.	Seneca
-WISDOM	Not to know at large of things remote<br/>From use, obscure and subtle, but to know<br/>That which before us lies in daily life,<br/>Is the prime wisdom.	John Milton
-WISDOM	By associating with wise people you will become wise yourself.	Menander
-WISDOM	The seat of knowledge is in the head,<br/>of wisdom, in the heart.	William Hazlitt
-WISDOM	Of all parts of wisdom the practice is the best.	John Tillotson
-WISDOM	The more a man knows, the more he forgives.	Catherine the Great
-WISDOM	A loving heart is the truest wisdom.	Charles Dickens
-WISDOM	One who understands much displays a greater simplicity of character than one who understands little.	Alexander Chase
-WISDOM	How prone to doubt, how cautious are the wise!	Homer
-WISDOM	On every thorn, delightful wisdom grows,In every rill a sweet instruction flows.	Edward Young
-WISDOM	The man of wisdom is never of two minds;<br/>the man of benevolence never worries;<br/>the man of courage is never afraid.	Confucius
-		
-FAVORITAS	If we all worked on the assumption that what is accepted as true were really true,<br/>there would be little hope of advance.	Orville Wright
-FAVORITAS	When I want to read a novel, I write one.	Benjamin Disraeli
-FAVORITAS	In questions of science, the authority of a thousand is not worth the humble reasoning of a single individual.	Galileo Galilei
-FAVORITAS	You have enemies? Good. That means you've stood up for something, sometime in your life 	Winston Churchill
-FAVORITAS	Play for more than you can afford to lose<br/>and you will learn the game.	Winston Churchill
-FAVORITAS	Patience and the mulberry leaf becomes a silk gown.	Chinese Proverb
-FAVORITAS	Never say more than is necessary.	Richard Brinsley Sheridan
-FAVORITAS	You must be the change you wish to see in the world.	Mahatma Ghandi
-FAVORITAS	There comes a time when one must take a position that is neither safe, nor politic, nor popular, but he must take it because his conscience tells him it is right....	Martin Luther
-FAVORITAS	That which does not kill you makes you stronger.	Neitzsche
-FAVORITAS	It is better to light one candle than to curse the darkness.	Chinese Proverb
-FAVORITAS	Anyone who has never made a mistake <br/>has never tried anything new.	Albert Einstein
-FAVORITAS	We always strive after what is forbidden, and desire the things refused us.	Ovid
-FAVORITAS	The Athenians, alarmed at the internal decay of their Republic, asked Demosthenes what to do. <br/>His reply: "Do not do what you are doing now."	Joseph Ray
-FAVORITAS	When one door closes another opens.<br/>But often we look so long so regretfully upon the closed door that we fail to see the one that has opened for us.	Helen Keller
-FAVORITAS	If you don't know where you are going,<br/>you'll end up some place else.	Yogi Berra
-FAVORITAS	There is time for everything.	Thomas A. Edison
-FAVORITAS	The worst thing you can try to do is cling to something that is gone, or to recreate it.	Johnette Napolitano
-FAVORITAS	Every generation laughs at the old fashions,<br/>but religiously follows the new.	Henry David Thoreau
-FAVORITAS	You cannot step twice into the same river, for other waters are continually flowing on.	Heraclitus
-FAVORITAS	I demolish my bridges behind me...<br/>then there is no choice but to move forward.	Firdtjof Nansen
-FAVORITAS	Nothing can bring you peace but yourself.	Ralph Waldo Emerson
-FAVORITAS	Happiness does not depend on outward things, but on the way we see them.	Leo Tolstoy
-FAVORITAS	The first and greatest commandment is,<br/>Don't let them scare you.	Elmer Davis
-FAVORITAS	The art of living lies less in eliminating our troubles than in growing with them.	Bernard M. Baruch
-FAVORITAS	We don't live in a world of reality,<br/>we live in a world of perceptions.	Gerald J. Simmons
-FAVORITAS	The shortest way to do many things is to do only one thing at a time.	Richard Cech
-FAVORITAS	Distrust any enterprise that requires new clothes.	Henry David Thoreau
-FAVORITAS	Imagination is more important than knowledge.	Albert Einstein
-		
-CASERAS	One good thing about today is that you get to finish what you started yesterday and you get to plant the seed to tomorrow's fruits.<br/>You don't finish or start anything on your bed. So get out of bed and go do something because the world waits for you.<br/>Are you gonna let us down?	Anonymous
-CASERAS	Wanting something is not enough.<br/>You must hunger for it.<br/>Your motivation must be absolutely compelling in order to overcome the obstacles that will invariably come your way.	Les Brown
-CASERAS	The pain you feel today will be the strength you feel tomorrow.	Robert Moore
-CASERAS	To be brave you must see the danger and feel the fear, only then will you know what must be done to be brave.	Chinese saying
+1	MOTIVATIONAL	A positive attitude may not solve all your problems,<br/>but it will annoy enough people to make it worth the effort.	Anonymous		Anónimo
+1	MOTIVATIONAL	It was a high counsel that I once heard given to a young person,<br/>'Always do what you are afraid to do.'	Ralph Waldo Emerson		
+1	MOTIVATIONAL	Take calculated risks.<br/>That is quite different from being rash.	George S. Patton		
+1	MOTIVATIONAL	If you do not hope, you will not find what is beyond your hopes.	St. Clement of Alexandra		San Clemente de Alejandría
+1	MOTIVATIONAL	We are all inventors, each sailing out on a voyage of discovery, guided each by a private chart, of which there is no duplicate.<br/>The world is all gates, all opportunities.	Ralph Waldo Emerson		
+1	MOTIVATIONAL	Seek the lofty by reading, hearing and seeing great work at some moment every day.	Thornton Wilder		
+1	MOTIVATIONAL	The only way of finding the limits of the possible is by going beyond them into the impossible.	Arthur C. Clarke		
+1	MOTIVATIONAL	Without inspiration the best powers of the mind remain dormant.<br/>There is a fuel in us which needs to be ignited with sparks.	Johann Gottfried Von Herder		
+1	MOTIVATIONAL	We are what we repeatedly do.<br/>Excellence, therefore, is not an act but a habit.	Aristotle		Aristóteles
+1	MOTIVATIONAL	Work spares us from three evils:<br/>boredom, vice, and need.	Voltaire		
+1	MOTIVATIONAL	Experience is the child of thought,<br/>and thought is the child of action.	Benjamin Disraeli		
+1	MOTIVATIONAL	You cannot plough a field by turning it over in your mind.	Anonymous		Anónimo
+1	MOTIVATIONAL	The best way out is always through.	Robert Frost		
+1	MOTIVATIONAL	Do not wait to strike till the iron is hot;<br/>but make it hot by striking.	William B. Sprague		
+1	MOTIVATIONAL	Nothing will ever be attempted if all possible objections must first be overcome.	Samuel Johnson		
+1	MOTIVATIONAL	Fortune favors the brave.	Publius Terence		
+1	MOTIVATIONAL	When the best things are not possible, the best may be made of those that are.	Richard Hooker		
+1	MOTIVATIONAL	He who hesitates is lost.	Proverb		Proverbio
+1	MOTIVATIONAL	Great spirits have always encountered violent opposition from mediocre minds.	Albert Einstein		
+1	MOTIVATIONAL	Knowing is not enough; we must apply.<br/>Willing is not enough; we must do.	Johann Wolfgang von Goethe 		
+1	MOTIVATIONAL	We are still masters of our fate.<br/>We are still captains of our souls.	Winston Churchill		
+1	MOTIVATIONAL	Nothing great was ever achieved without enthusiasm.	Ralph Waldo Emerson		
+1	MOTIVATIONAL	For hope is but the dream<br/>of those that wake.	Matthew Prior		
+1	MOTIVATIONAL	Constant dripping hollows out a stone.	Lucretius		Lucrecio
+1	MOTIVATIONAL	Nothing contributes so much to tranquilize the mind as a steady purpose,<br/>a point on which the soul may fix its intellectual eye.	Mary Shelley		
+2	FEAR OF FAILURE	I was never afraid of failure, for I would sooner fail than not be among the best.	John Keats		
+2	FEAR OF FAILURE	It is foolish to fear what you cannot avoid.<br/>Stultum est timere quod vitare non potes.	Publius Syrus		
+2	FEAR OF FAILURE	He that is down needs fear no fall.	John Bunyan		
+2	FEAR OF FAILURE	Never let the fear of striking out get in your way.	George Herman "Babe" Ruth		
+2	FEAR OF FAILURE	One who fears failure limits his activities. <br/>Failure is only the opportunity to more intelligently begin again.	Henry Ford		
+2	FEAR OF FAILURE	The greatest mistake you can make in life is to continually be afraid you will make one.	Elbert Hubbard		
+2	FEAR OF FAILURE	Little minds are tamed and subdued by misfortunes; but great minds rise above them.	Washington Irving		
+2	FEAR OF FAILURE	It is the want of diligence, rather than the want of means, that causes most failures.	Alfred Mercier		
+2	FEAR OF FAILURE	Our greatest glory consist not in never falling, but in rising every time we fall.	Oliver Goldsmith		
+2	FEAR OF FAILURE	The greatest men sometimes overshoot themselves, but then their very mistakes are so many lessons of instruction. 	Tom Browne		
+2	FEAR OF FAILURE	Experience teaches slowly, and at the cost of mistakes.	James A. Froude		
+2	FEAR OF FAILURE	Wherever we look upon this earth, the opportunities take shape within the problems.	Nelson A. Rockefeller		
+2	FEAR OF FAILURE	What would life be if we had no courage to attempt anything?	Vincent van Gogh		
+2	FEAR OF FAILURE	There is no failure except in no longer trying.	Elbert Hubbard		
+2	FEAR OF FAILURE	He who fears being conquered is sure of defeat.	Napoleon Bonaparte		
+2	FEAR OF FAILURE	A man's life is interesting primarily when he has failed--I well know.<br/>For it's a sign that he tried to surpass himself.	Georges Clemenceau		
+2	FEAR OF FAILURE	There is no impossibility to him who stands prepared to conquer every hazard. <br/>The fearful are the failing.	Sarah J. Hale		
+2	FEAR OF FAILURE	Our doubts are traitors, and make us lose the good we oft might win, by fearing to attempt.	William Shakespeare		
+2	FEAR OF FAILURE	Disappointments are to the soul what thunderstorms are to the air.	Johann C. F. von Schiller		
+2	FEAR OF FAILURE	Half of the failures in life come from pulling one's horse when he is leaping.	Thomas Hood		
+2	FEAR OF FAILURE	Failure teaches success.	Japanese Saying		
+2	FEAR OF FAILURE	It is hard to fail, but it is worse never to have tried to succeed.	Theodore Roosevelt		
+2	FEAR OF FAILURE	Go back a little to leap further. 	John Clarke		
+2	FEAR OF FAILURE	Every failure brings with it the seed of an equivalent success.	Napoleon Hill		
+2	FEAR OF FAILURE	We learn wisdom from failure much more than success. We often discover what we will do, by finding out what we will not do.	Samuel Smiles		
+2	FEAR OF FAILURE	Failure is blindness to the strategic element in events; success is readiness for instant action when the opportune moment arrives. 	Newell D. Hillis		
+2	FEAR OF FAILURE	They fail, and they alone, who have not striven. 	Thomas Bailey Aldrich		
+2	FEAR OF FAILURE	We learn wisdom from failure much more than success. We often discover what we will do, by finding out what we will not do.	Samuel Smiles		
+3	GOALS	The ability to convert ideas to things is the secret to outward success.	Henry Ward Beecher		
+3	GOALS	The ability to concentrate and to use your time well is everything if you want to succeed in business--or almost anywhere else for that matter.	Lee Iacocca		
+3	GOALS	A wise man will make more opportunities than he finds.	Francis Bacon		
+3	GOALS	In everything the ends well defined are the secret of durable success.	Victor Cousins		
+3	GOALS	Winning isn't everything, but wanting to win is.	Vince Lombardi		
+3	GOALS	Failures do what is tension relieving,<br/>while winners do what is goal achieving. 	Dennis Waitley		
+3	GOALS	A man should have any number of little aims about which he should be conscious and for which he should have names, but he should have neither name for, nor consciousness concerning, the main aim of his life.	Samuel Butler		
+3	GOALS	Goals are the fuel in the furnace of achievement.	Brian Tracy, Eat that Frog		
+3	GOALS	The great and glorious masterpiece of man is to know how to live to purpose.	Michel de Montaigne		
+3	GOALS	Ah, but a man's reach should exceed his grasp,<br/>or what's a heaven for?	Robert Browning		
+3	GOALS	The significance of a man is not in what he attains but in what he longs to attain.	Kahlil Gibran		
+3	GOALS	Every ceiling, when reached, becomes a floor, upon which one walks as a matter of course and prescriptive right.	Aldous Huxley		
+3	GOALS	If you don't know where you are going,<br/>you'll end up someplace else.	Yogi Berra		
+3	GOALS	We can always redeem the man who aspires and strives.	Johann Wolfgang von Goethe		
+3	GOALS	Life can be pulled by goals just as surely as it can be pushed by drives.	Viktor Frankl		
+3	GOALS	To reach a port, we must sail—Sail, not tie at anchor—Sail, not drift.	Franklin Roosevelt		
+3	GOALS	There is no happiness except in the realization that we have accomplished something.	Henry Ford		
+3	GOALS	Our plans miscarry because they have no aim. When a man does not know what harbor he is making for, no wind is the right wind.	Seneca		
+3	GOALS	It is not enough to take steps which may some day lead to a goal; each step must be itself a goal and a step likewise.	Johann Wolfgang von Goethe		
+3	GOALS	Who aims at excellence will be above mediocrity; who aims at mediocrity will be far short of it.	Burmese Saying		
+3	GOALS	In absence of clearly defined goals, we become strangely loyal to performing daily acts of trivia.	Author Unknown		
+3	GOALS	Don't bunt. Aim out of the ballpark.	David Ogilvy		
+3	GOALS	There are two things to aim at in life; first to get what you want, and after that to enjoy it. Only the wisest of mankind has achieved the second.	Logan Pearsall Smith		
+4	INSPIRATIONAL	Try not to become a man of success but a man of value.	Albert Einstein		
+4	INSPIRATIONAL	If you have built castles in the air, your work need not be lost; that is where they should be.<br/>Now put foundations under them.	Henry David Thoreau		
+4	INSPIRATIONAL	Inspiration and genius--one and the same.	Victor Hugo		
+4	INSPIRATIONAL	To find what you seek in the road of life, the best proverb of all is that which says:<br/>"Leave no stone unturned."	Edward Bulwer Lytton		
+4	INSPIRATIONAL	If you would create something,<br/>you must be something.	Johann Wolfgang von Goethe		
+4	INSPIRATIONAL	Every artist was first an amateur.	Ralph Waldo Emerson		
+4	INSPIRATIONAL	The more difficulties one has to encounter, within and without, the more significant and the higher in inspiration his life will be.	Horace Bushnell		
+4	INSPIRATIONAL	Life has no smooth road for any of us; and in the bracing atmosphere of a high aim the very roughness stimulates the climber to steadier steps, till the legend, over steep ways to the stars, fulfills itself. 	W. C. Doane		
+4	INSPIRATIONAL	Do we not all agree to call rapid thought and noble impulse by the name of inspiration?	George Eliot		
+4	INSPIRATIONAL	No great man ever complains of want of opportunities.	Ralph Waldo Emerson		
+4	INSPIRATIONAL	Men do less than they ought,<br/>unless they do all they can.	Thomas Carlyle		
+4	INSPIRATIONAL	Men's best successes come after their disappointments. 	Henry Ward Beecher.		
+4	INSPIRATIONAL	Let thy words be few.	Ecclesiastes 5:2 from Words of Wisdom		
+4	INSPIRATIONAL	Happy are those who dream dreams and are ready to pay the price to make them come true.	Leon J. Suenes		
+4	INSPIRATIONAL	The power of imagination makes us infinite.	John Muir		
+4	INSPIRATIONAL	First say to yourself what you would be;<br/>and then do what you have to do.	Epictetus		
+5	SUCCESS	Along with success comes a reputation for wisdom.	Euripides		
+5	SUCCESS	They can because they think they can.	Virgil		
+5	SUCCESS	Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude. 	Thomas Jefferson		
+5	SUCCESS	Keep steadily before you the fact that all true success depends at last upon yourself.	Theodore T. Hunger		
+5	SUCCESS	We are all motivated by a keen desire for praise, and the better a man is, the more he is inspired to glory.	Cicero		
+5	SUCCESS	Success is the sum of small efforts, repeated day in and day out.	Robert Collier		
+5	SUCCESS	The thing always happens that you really believe in; and the belief in a thing makes it happen.	Frank Loyd Wright		
+5	SUCCESS	A failure is a man who has blundered, but is not able to cash in on the experience.	Elbert Hubbard		
+5	SUCCESS	There is only one success:<br/>to be able to spend your life in your own way.	Christopher Morley		
+5	SUCCESS	Success is sweet:<br/>the sweeter if long delayed and attained through manifold struggles and defeats. 	A. Branson Alcott		
+5	SUCCESS	The secret of success is to know something nobody else knows.	Aristotle Onassis		
+5	SUCCESS	The greatest results in life are usually attained by simple means and the exercise of ordinary qualities.<br/>These may for the most part be summed in these two:<br/>common-sense and perseverance.	Owen Feltham		
+5	SUCCESS	Failures do what is tension relieving, while winners do what is goal achieving.	Dennis Waitley		
+5	SUCCESS	The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will.	Vince Lombardi		
+5	SUCCESS	I cannot give you the formula for success, but I can give you the formula for failure, which is:<br/>Try to please everybody.	Herbert Bayard Swope		
+5	SUCCESS	Success does not consist in never making blunders, but in never making the same one a second time.	Josh Billings		
+5	SUCCESS	The secret of success in life is for a man to be ready for his opportunity when it comes.	Earl of Beaconsfield		
+5	SUCCESS	Success is the good fortune that comes from aspiration, desperation, perspiration and inspiration.	Evan Esar		
+5	SUCCESS	The surest way not to fail is to determine to succeed.	Richard Brinsley Sheridan		
+5	SUCCESS	If you wish success in life, make perseverance your bosom friend, experience your wise counselor, caution your elder brother, and hope your guardian genius.	Jospeph Addison		
+5	SUCCESS	Impatience never commanded success.	Edwin H. Chapin		
+5	SUCCESS	The talent of success is nothing more than doing what you can do, well.	Henry W. Longfellow		
+5	SUCCESS	To climb steep hills requires a slow pace at first.	Shakespeare		
+5	SUCCESS	Try not to become a man of success but a man of value.	Albert Einstein		
+5	SUCCESS	The man who makes a success of an important venture never wails for the crowd.<br/>He strikes out for himself.<br/>It takes nerve, it takes a great lot of grit; but the man that succeeds has both.<br/>Anyone can fail.<br/>The public admires the man who has enough confidence in himself to take a chance. These chances are the main things after all.<br/>The man who tries to succeed must expect to be criticized. Nothing important was ever done but the greater number consulted previously doubted the possibility.<br/>Success is the accomplishment of that which most people think can't be done.	C. V. White		
+6	LIFE	Dost thou love life? <br/>Then do not squander time, <br/>for that is the stuff life is made of.	Benjamin Franklin		
+6	LIFE	Life is either a daring adventure or nothing.	Helen Keller 		
+6	LIFE	Life is like a game of cards. The hand that is dealt you represents determinism; the way you play it is free will.	Jawaharal Nehru		
+6	LIFE	Life is like the dice that, falling, still show a different face. So life, though it remains the same, is always presenting different aspects.	Alexis		
+6	LIFE	Our life's a stage, a comedy: either learn to play and take it lightly, or bear its troubles patiently.	Palladas		
+6	LIFE	The geat blessing of mankind are within us and within our reach; but we shut our eyes, and like people in the dark, we fall foul upon the very thing we search for, without finding it.	Seneca		
+6	LIFE	Govern thy life and thoughts as if the whole world were to see the one, and read the other.	Thomas Fuller		
+6	LIFE	Most of the shadows of this life are caused by our standing in our own sunshine.	Ralph Waldo Emerson		
+6	LIFE	Unrest of spirit is a mark of life; one problem after another presents itself and in the solving of them we can find our greatest pleasure.	Kal Menninger		
+6	LIFE	Life is short, art long, opportunity fleeting, experience treacherous, judgment difficult.	Hypocrites		
+6	LIFE	After the game,<br/>the king and the pawn go into the same box.	Italian Proverb		
+6	LIFE	Life is a tragedy for those who feel,<br/>and a comedy for those who think.	La Bruyere		
+6	LIFE	Life is like a library owned by the author.<br/>In it are a few books which he wrote himself,<br/>but most of them were written for him.	Harry Emerson Fosdick		
+6	LIFE	We make our fortunes, and we call them fate.	Earl of Beaconsfield		
+6	LIFE	The best way to prepare for life is to begin to live.	Elbert Hubbard		
+6	LIFE	Life's a voyage that's homeward bound.	Herman Melville		
+6	LIFE	The whole of life is but a moment of time. It is our duty, therefore to use it, not to misuse it.	Plutarch		
+6	LIFE	Life is a rich strain of music, suggesting a realm too fair to be.	George William Curtis		
+6	LIFE	The boundaries which divide life from death<br/>are at best shadowy and vague.<br/>Who shall say where one ends,<br/>and the other begins?	Edgar Alan Poe		
+6	LIFE	One way to get the most out of life is<br/>to look upon it as an adventure.	William Feather		
+6	LIFE	Life is a succession of lessons which must be lived to be understood.	Ralph Waldo Emerson		
+6	LIFE	There are no classes in life for beginners:<br/>right away you are always asked to deal with what is most difficult.	Rainer Maria Rilke		
+6	LIFE	To live is like to love:<br/>all reason is against it, and all healthy instinct for it.	Samuel Butler		
+6	LIFE	One life:<br/>a little gleam of time between two eternities.	Thomas Carlyle		
+6	LIFE	Life is a pure flame,<br/>and we live by an invisible sun within us.	Sir Thomas Brown		
+6	LIFE	As I grow to understand life less and less,<br/>I learn to love it more and more.	Jules Renard		
+7	WISDOM	Nature and wisdom never are at strife.	Plutarch		
+7	WISDOM	It is easier to be wise for others than for ourselves.	Francois De La Rochefoucauld		
+7	WISDOM	The art of being wise is knowing what to overlook.	William James		
+7	WISDOM	The first step in the acquisition of wisdom is silence,<br/>the second listening,<br/>the third memory,<br/>the fourth practice,<br/>the fifth teaching others.	Solomon Ibn Gabriol		
+7	WISDOM	Years teach us more than books.	Berthold Auerbach		
+7	WISDOM	The wisdom of nations lies in their proverbs,<br/>which are brief and pithy.	William Penn		
+7	WISDOM	The middle course is the best.	Cleobulus		
+7	WISDOM	The only medicine for suffering, crime, and all the other woes of mankind, is wisdom.	Thomas Huxley		
+7	WISDOM	A wise man learns by the mistakes of others,<br/>a fool by his own.	Latin Proverb		
+7	WISDOM	Silence does not always mark wisdom.	Samuel Taylor Coleridge.		
+7	WISDOM	No man was ever wise by chance.	Seneca		
+7	WISDOM	Not to know at large of things remote<br/>From use, obscure and subtle, but to know<br/>That which before us lies in daily life,<br/>Is the prime wisdom.	John Milton		
+7	WISDOM	By associating with wise people you will become wise yourself.	Menander		
+7	WISDOM	The seat of knowledge is in the head,<br/>of wisdom, in the heart.	William Hazlitt		
+7	WISDOM	Of all parts of wisdom the practice is the best.	John Tillotson		
+7	WISDOM	The more a man knows, the more he forgives.	Catherine the Great		
+7	WISDOM	A loving heart is the truest wisdom.	Charles Dickens		
+7	WISDOM	One who understands much displays a greater simplicity of character than one who understands little.	Alexander Chase		
+7	WISDOM	How prone to doubt, how cautious are the wise!	Homer		
+7	WISDOM	On every thorn, delightful wisdom grows,In every rill a sweet instruction flows.	Edward Young		
+7	WISDOM	The man of wisdom is never of two minds;<br/>the man of benevolence never worries;<br/>the man of courage is never afraid.	Confucius		
+8	FAVORITAS	If we all worked on the assumption that what is accepted as true were really true,<br/>there would be little hope of advance.	Orville Wright		
+8	FAVORITAS	When I want to read a novel, I write one.	Benjamin Disraeli		
+8	FAVORITAS	In questions of science, the authority of a thousand is not worth the humble reasoning of a single individual.	Galileo Galilei

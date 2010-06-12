@@ -114,6 +114,22 @@ public  class Global {
 	public static final String 	DB_CIGARS_H_CREATE	= "create table " +	DB_CIGARS_H_TABLE + " (" + CIGARS_H_KEY_ID + " integer primary key autoincrement, " + CIGARS_H_KEY_DAY + " integer not null, "+ CIGARS_H_KEY_COUNT + " integer not null);";
 	public static final String 	DB_CIGARS_H_DROP 	= "DROP TABLE IF EXISTS " + DB_CIGARS_H_TABLE;	
 
+	public static final String 	DB_CITAS_TABLE 		= "CITAS_TABLE";
+	public static final int 	DB_CITAS_VERSION 	= 1;
+	public static final String 	CITAS_KEY_USED		= "used";
+	public static final String 	CITAS_KEY_ID		= "id";
+	public static final String 	CITAS_KEY_TYPE		= "type";
+	public static final String 	CITAS_KEY_TEXT_EN	= "text_en";
+	public static final String 	CITAS_KEY_AUT_EN	= "author_en";
+	public static final String 	CITAS_KEY_TEXT_ES	= "text_es";
+	public static final String 	CITAS_KEY_AUT_ES	= "author_es";
+	public static final String 	DB_CITAS_CREATE		= "create table " +	DB_CITAS_TABLE + " (" 	+ CITAS_KEY_ID + " integer primary key, " 
+																								+ CITAS_KEY_TYPE + " integer not null, "
+																								+ CITAS_KEY_TEXT_EN + " text, "
+																								+ CITAS_KEY_AUT_EN + " text, "
+																								+ CITAS_KEY_TEXT_ES + " text, "
+																								+ CITAS_KEY_AUT_ES + " text );";
+	public static final String 	DB_CITAS_DROP 		= "DROP TABLE IF EXISTS " + DB_CITAS_TABLE;	
     // =========================================================== 
     // 						UTILS
     // =========================================================== 

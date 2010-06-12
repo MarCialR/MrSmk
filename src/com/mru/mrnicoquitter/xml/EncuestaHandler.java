@@ -1,8 +1,12 @@
-package com.mru.mrnicoquitter.encuestas;
+package com.mru.mrnicoquitter.xml;
 
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
+
+import com.mru.mrnicoquitter.beans.AnswerItem;
+import com.mru.mrnicoquitter.beans.Encuesta;
+import com.mru.mrnicoquitter.beans.EncuestaItem;
 
 
 public class EncuestaHandler extends DefaultHandler {

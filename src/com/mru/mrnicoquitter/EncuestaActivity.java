@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.encuestas;
+package com.mru.mrnicoquitter;
 
 import java.util.Iterator;
 
@@ -14,13 +14,17 @@ import android.widget.TextView;
 
 import static com.mru.mrnicoquitter.Global.*;
 
-import com.mru.mrnicoquitter.QActivity;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.beans.AnswerItem;
+import com.mru.mrnicoquitter.beans.Encuesta;
+import com.mru.mrnicoquitter.beans.EncuestaItem;
+import com.mru.mrnicoquitter.beans.ui.EncuestaRadioButton;
+import com.mru.mrnicoquitter.utils.UIUtils;
+import com.mru.mrnicoquitter.xml.EncuestaXMLParser;
 
 public class EncuestaActivity extends QActivity {
 
-	private XMLParser parser;
+	private EncuestaXMLParser parser;
 	Encuesta e; 
 	Iterator<EncuestaItem> it;	
 	EncuestaItem item;
@@ -36,7 +40,7 @@ public class EncuestaActivity extends QActivity {
 		String _encuesta = getIntent().getStringExtra(STR_EXTRA_ENCUESTA_NAME);
 
 		//parser 	= new XMLParser("t_glover_nilsson",getApplicationContext()); 
-		parser 	= new XMLParser(_encuesta,getApplicationContext());		
+		parser 	= new EncuestaXMLParser(_encuesta,getApplicationContext());		
 		e 		= parser.parse();
         it 		= e.iterator();
 
@@ -53,7 +57,7 @@ public class EncuestaActivity extends QActivity {
 
 				int id = rg.getCheckedRadioButtonId();
 				if (id == -1){
-					AppUtils.showToastShort(getApplicationContext(), "U need to choose 1!!");
+					UIUtils.showToastShort(getApplicationContext(), "U need to choose 1!!");
 				}else{
 					EncuestaRadioButton r = (EncuestaRadioButton)findViewById(id);
 					e.sumaResultado(r.getValue());
@@ -92,7 +96,7 @@ public class EncuestaActivity extends QActivity {
         	answersTL.addView(new TextView(this));
         	answersTL.addView(goButton);
         }else {
-        	AppUtils.showToastLong(getApplicationContext(), "El resultado es :" + e.getResult() );
+        	UIUtils.showToastLong(getApplicationContext(), "El resultado es :" + e.getResult() );
         	finish();
         }
 		return;

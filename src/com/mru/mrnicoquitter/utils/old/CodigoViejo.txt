@@ -117,4 +117,74 @@ if (htmName.equals("test")){
 	}
 	
 	----------------------------------------------------------------------------------
+	
+	
+SPLASH
+
+
+	
+	private void insertFlows() {
+		InputStream fis 		= null;
+		BufferedInputStream bis = null;
+		DataInputStream dis 	= null;
+		List<String> inserts 	= new ArrayList<String>();		
+		try {
+			Resources res = getApplicationContext().getResources();
+			fis = res.openRawResource(R.raw.flow_inserts);
+			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
+			dis = new DataInputStream(bis);
+
+			System.out.println("!!! FLOW INSERTS DETECTED !!!");			
+			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
+				String line = dis.readLine();
+				inserts.add(line);
+			}
+
+			fis.close();
+			bis.close();
+			dis.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(getApplicationContext());
+		flowDB.cleanDB();
+		flowDB.bulkInsert(inserts);
+		flowDB.close();
+		
+	}	
+	private void insertDays() {
+		InputStream fis 		= null;
+		BufferedInputStream bis = null;
+		DataInputStream dis 	= null;
+		List<String> inserts 	= new ArrayList<String>();		
+		try {
+			Resources res = getApplicationContext().getResources();
+			fis = res.openRawResource(R.raw.day_inserts);
+			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
+			dis = new DataInputStream(bis);
+
+			System.out.println("!!! FLOW INSERTS DETECTED !!!");			
+			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
+				String line = dis.readLine();
+				inserts.add(line);
+			}
+
+			fis.close();
+			bis.close();
+			dis.close();
+
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		CigarHistoricDBAdapter daysDB = CigarHistoricDBAdapter.getInstance(getApplicationContext());
+		daysDB.cleanDB();
+		daysDB.bulkInsert(inserts);
+		daysDB.close();
+		
+	}			
 		

@@ -1,11 +1,10 @@
-package com.mru.mrnicoquitter.stage;
+package com.mru.mrnicoquitter.phases;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.PhaseState;
 
 import android.content.Context;
-import android.content.res.Resources;
 
 public class P1_Phase extends Phase {
 	

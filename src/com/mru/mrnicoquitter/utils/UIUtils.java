@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.ui;
+package com.mru.mrnicoquitter.utils;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -14,7 +14,7 @@ import static com.mru.mrnicoquitter.Global.*;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
-public class AppUtils {
+public class UIUtils {
 	
 	
 	public final static  void showToastShort(String message){

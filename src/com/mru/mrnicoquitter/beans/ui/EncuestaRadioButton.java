@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.encuestas;
+package com.mru.mrnicoquitter.beans.ui;
 
 import android.content.Context;
 import android.widget.RadioButton;

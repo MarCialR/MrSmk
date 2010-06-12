@@ -1,25 +1,22 @@
 package inserts;
+
 import org.codehaus.jackson.JsonGenerationException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
 import java.io.BufferedReader;
-import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Writer;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.StringTokenizer;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.google.gson.Gson;
 import com.mru.mrnicoquitter.beans.Cita;
 import com.mru.mrnicoquitter.beans.Stage;
-import com.mru.mrnicoquitter.db.flow.generator.FlowXMLParser;
 import com.mru.mrnicoquitter.utils.file.windows.FileUtils;
+import com.mru.mrnicoquitter.xml.FlowXMLParser;
 
 public class Puente {
 
@@ -46,6 +43,7 @@ public class Puente {
 		gson 								= new Gson();
 		FlowXMLParser parser 				= new FlowXMLParser("");
 		mapper 								= new ObjectMapper(); // can reuse, share globally
+		
 		citasObjectsList					= parseCitasInputFile(f_INPUT_FILE_CITAS);
 		flowObjectsList 					= parser.parse(f_INPUT_FLOW_OBJECTS_FILE);
 		asJsonListita 						= getGson(flowObjectsList);
@@ -89,12 +87,10 @@ public class Puente {
 		
 		citasObjectsList 	= new ArrayList<Cita>();
 		Cita cita 			= null;
-		//StringTokenizer st = new StringTokenizer( "hello,this.is:a;test", ",.:;");
 		String[] arr		= null;
-		// ...checks on aFile are elided
+
 		try {
-			// use buffering, reading one line at a time
-			// FileReader always assumes default encoding is OK!
+
 			BufferedReader input = new BufferedReader(new FileReader(f_INPUT_FILE_CITAS));
 			try {
 				String line = null; // not declared within while loop
@@ -104,22 +100,31 @@ public class Puente {
 				 * stream. it returns an empty String if two newlines appear in
 				 * a row.
 				 */
-				int couter = 0;
+				int counter = 0;
 				while ((line = input.readLine()) != null) {
 					
 					try{
 					if ( !line.trim().equals("")){
 						cita = new Cita();
 						arr = line.split("\t");
-						cita.setText(arr[1].trim());
-						cita.setAuthor(arr[2].trim());
-						
+						switch (arr.length){
+							case 6:
+								cita.setAuthor_es(arr[5].trim());
+							case 5:
+								cita.setText_es(arr[4].trim());								
+							case 4:
+								cita.setAuthor_en(arr[3].trim());								
+							case 3:
+								cita.setText_en(arr[2].trim());								
+						}
+						cita.setId(counter);
+						cita.setType(Integer.parseInt(arr[0].trim()));
 						citasObjectsList.add(cita);
 					}
 					}catch (java.lang.ArrayIndexOutOfBoundsException ex){
-						System.out.println(couter);
+						System.out.println(ex.getStackTrace());
 					}
-					couter++;
+					counter++;
 					
 				}
 			} finally {
@@ -138,14 +143,32 @@ public class Puente {
 		sb = new StringBuilder();
 		int counter = 0;
 		for (Cita it : citasObjectsList2){
-			sb.append("INSERT INTO " + DB_FLOW_TABLE + " (" + FLOW_KEY_ID + "," + FLOW_KEY_OBJECT + ") " +
-					 "VALUES (" + it.getAuthor()+ ", '" + it.getText()).append("');\n");
+			sb.append("INSERT INTO " + DB_CITAS_TABLE + " (" 	+ CITAS_KEY_ID + "," 
+																+ CITAS_KEY_USED + ","
+																+ CITAS_KEY_TYPE + ","
+																+ CITAS_KEY_TEXT_EN + ","
+																+ CITAS_KEY_AUT_EN + ","
+																+ CITAS_KEY_TEXT_ES + ","
+																+ CITAS_KEY_AUT_ES + ") " +
+					 "VALUES ( " 
+							+ it.getId()+ "," 
+							+ "0" + ","
+							+ it.getType() + ","					
+					 		+ " " + XX(it.getText_en()) + ","
+					 		+ " " + XX(it.getAuthor_en()) + ","
+					 		+ " " + XX(it.getText_es()) + ","
+					 		+ " " + XX(it.getAuthor_es())
+					 		+");\n");
 			counter++;
 		}
 		return sb.toString();
 	}
 
-
+	private static String XX(String st){
+		if (st == null || st.equalsIgnoreCase(""))
+			return "null";
+		else return "'" + st.replaceAll("'", "''") + "'";
+	}
 
 	private static String generateGlobalArrays(FlowXMLParser parser) {
 		String OneCodes = "";
@@ -204,13 +227,10 @@ public class Puente {
 				asJsonListita.add(mapper.writeValueAsString(it));
 			}
 		} catch (JsonGenerationException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (JsonMappingException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		return asJsonListita;

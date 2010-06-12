@@ -12,9 +12,10 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import static com.mru.mrnicoquitter.Global.*;
+
+import com.mru.mrnicoquitter.EncuestaActivity;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.encuestas.EncuestaActivity;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class EncuestaListActivity extends ListActivity {
 
@@ -23,7 +24,7 @@ public class EncuestaListActivity extends ListActivity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		AppUtils.showDebug(getApplicationContext(),
+		UIUtils.showDebug(getApplicationContext(),
 				"FilesListActivity - onCreate!!");
 
 		filesEntries.add("t_fagerstrom");

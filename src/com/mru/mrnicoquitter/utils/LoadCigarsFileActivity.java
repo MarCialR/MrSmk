@@ -18,7 +18,6 @@ import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
-import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.viewers.TextViewer;
 
 public class LoadCigarsFileActivity extends ListActivity {
@@ -34,7 +33,7 @@ public class LoadCigarsFileActivity extends ListActivity {
 		directoryEntries.add("cigars.json");
 		directoryEntries.add("test.json");
         
-		AppUtils.showDebug(getApplicationContext(), "LoadCigarsFileActivity - onCreate!!");
+		UIUtils.showDebug(getApplicationContext(), "LoadCigarsFileActivity - onCreate!!");
 
 //		int currentPathStringLenght = cigarFilesDirectory.getAbsolutePath().length();
 //
@@ -71,7 +70,7 @@ public class LoadCigarsFileActivity extends ListActivity {
 
 		List<Cigar> test = Utils.getAssetsCigarContents(clickedFileLocation, assets);
 		CigarDBAdapter.getInstance().bulkInsert(test);
-		AppUtils.showToastShort(this, "Done Loading Cigars");
+		UIUtils.showToastShort(this, "Done Loading Cigars");
 	}
 	
 	

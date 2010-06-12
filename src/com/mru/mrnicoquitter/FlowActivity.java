@@ -2,7 +2,6 @@ package com.mru.mrnicoquitter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -11,15 +10,10 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 
-import com.mru.mrnicoquitter.beans.Stage;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-
-import com.mru.mrnicoquitter.stage.Phase;
-
 
 public class FlowActivity extends Activity {
 
-	private Phase phase;
 	private OnClickListener prevListener, goListener, nextListener;
 	private TextView info;
 	/** Called when the activity is first created. */
@@ -27,7 +21,6 @@ public class FlowActivity extends Activity {
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		phase = FlowManagerSGTon.getPhase();
 		setContentView(buildView());
 		info = (TextView) this.findViewById(R.id.FlowText);
 		
@@ -48,8 +41,7 @@ public class FlowActivity extends Activity {
 		goListener = new OnClickListener() {
 			public void onClick(View v) {
 				System.out.println();
-				Stage stage = FlowManagerSGTon.getActualStage();
-				FlowActivity.this.startActivity(FlowManagerSGTon.getIntent(FlowActivity.this));//new Intent(v.getContext(),FlowManagerSGTon.class));//getActiveClassToLaunch()));
+				FlowActivity.this.startActivity(FlowManagerSGTon.getIntent(FlowActivity.this));
 				FlowActivity.this.finish();
 			}
 		};

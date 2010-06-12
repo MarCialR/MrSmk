@@ -13,7 +13,7 @@ import android.widget.ListView;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.UIUtils;
 import com.mru.mrnicoquitter.viewers.TextViewer;
 
 public class PrefsListActivity extends ListActivity {
@@ -24,7 +24,7 @@ public class PrefsListActivity extends ListActivity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 
-		AppUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
+		UIUtils.showDebug(getApplicationContext(), "PrefsList - onCreate!!");
 
 		prefsDirectory = new File(PREFERENCES_DIR);
 

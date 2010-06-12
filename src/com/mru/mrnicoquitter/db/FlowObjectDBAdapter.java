@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.db.flow;
+package com.mru.mrnicoquitter.db;
 
 import java.util.List;
 
@@ -6,12 +6,9 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.*;
 import android.database.sqlite.*;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
 import android.util.Log;
 
 import com.mru.mrnicoquitter.beans.Stage;
-import com.mru.mrnicoquitter.db.NewDataBaseHelper;
-
 import static com.mru.mrnicoquitter.Global.*;
 
 public class FlowObjectDBAdapter {

@@ -6,29 +6,44 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.*;
 import android.database.sqlite.*;
-
 import android.util.Log;
 
 
 import static com.mru.mrnicoquitter.Global.*;
 
-public class CigarHistoricDBAdapter {
+public class CitasDBAdapter {
 
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
 	private NewDataBaseHelper dbHelper;				// Database open/upgrade helper	
 	
-	private static CigarHistoricDBAdapter INSTANCE;
+	private static CitasDBAdapter INSTANCE;
 
-	public static CigarHistoricDBAdapter getInstance(Context c) {
+	
+	public String getEntry(int _rowIndex) {
+		String objectInstance = null;
+        String sqlQuery = "SELECT " + CITAS_KEY_TEXT_EN +
+        " FROM " + DB_CITAS_TABLE
+        + " WHERE " + CITAS_KEY_ID + " = " + _rowIndex;
+		Log.w("FlowObjectDBAdapter",sqlQuery);
+		
+        Cursor c = db.rawQueryWithFactory(null, sqlQuery, null, null);
+		if (c.moveToFirst()) {
+			objectInstance = c.getString(0);
+		}
+		c.close();
+		return objectInstance;
+	}	
+	
+	public static CitasDBAdapter getInstance(Context c) {
 		if (INSTANCE == null) {
-			INSTANCE = new CigarHistoricDBAdapter(c);
+			INSTANCE = new CitasDBAdapter(c);
 			return INSTANCE;
 		} else
 			return INSTANCE;
 	}
 
-	private CigarHistoricDBAdapter(Context _context) {
+	private CitasDBAdapter(Context _context) {
 		context 	= _context;
 		dbHelper 	= new NewDataBaseHelper(context);
 		try {
@@ -39,7 +54,7 @@ public class CigarHistoricDBAdapter {
 		}
 	}
 
-	public CigarHistoricDBAdapter open() throws SQLException {
+	public CitasDBAdapter open() throws SQLException {
 		db = dbHelper.getWritableDatabase();
 		return this;
 	}

@@ -1,30 +1,23 @@
 package com.mru.mrnicoquitter;
 
-import static com.mru.mrnicoquitter.Global.*;
+import static com.mru.mrnicoquitter.Global.DEBUG;
+import static com.mru.mrnicoquitter.Global.PREFS_GLOBAL;
+import static com.mru.mrnicoquitter.Global.PREF_CREATED;
+import static com.mru.mrnicoquitter.Global.SPLASH_DISPLAY_LENGHT;
 
-import java.io.BufferedInputStream;
-import java.io.DataInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
-import java.io.InputStream;
-import java.util.ArrayList;
-import java.util.List;
-
-import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
-import com.mru.mrnicoquitter.db.NewDataBaseHelper;
-import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
-import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.stage.Phase;
-import com.mru.mrnicoquitter.ui.AppUtils;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.os.Bundle;
 import android.os.Handler;
+
+import com.mru.mrnicoquitter.db.CitasDBAdapter;
+import com.mru.mrnicoquitter.db.NewDataBaseHelper;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
+import com.mru.mrnicoquitter.utils.UIUtils;
+import com.mru.mrnicoquitter.utils.Utils;
 
 public class Splash extends Activity {
 
@@ -32,7 +25,6 @@ public class Splash extends Activity {
 	// Fields
 	// ===========================================================
 
-	private Phase phase;
 	private Context context;
 
 	// ===========================================================
@@ -50,8 +42,12 @@ public class Splash extends Activity {
 //			initMrQuitter(globalPreferences);
 //		}	
 		initMrQuitter(globalPreferences);
-		phase = FlowManagerSGTon.initManager(context);
+		FlowManagerSGTon.initManager(context);				///OJO el metodo devuelve perono louso
 
+		
+		CitasDBAdapter ad = CitasDBAdapter.getInstance(context);
+		UIUtils.showToastLong(context, ad.getEntry(Utils.getRandom()));
+		
 		/*
 		 * New Handler to start the Menu-Activity and close this Splash-Screen after some seconds.
 		 */
@@ -69,8 +65,6 @@ public class Splash extends Activity {
 	}
 
 	private void initMrQuitter(SharedPreferences globalPreferences) {
-		//insertFlows();
-		//insertDays();	
 		NewDataBaseHelper dbH = new NewDataBaseHelper(context);
 		try {
 			dbH.createDataBase();
@@ -78,75 +72,11 @@ public class Splash extends Activity {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		AppUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
+		UIUtils.showToastShort(context, "creating " + PREFS_GLOBAL);
 		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
 //		forzarDEBUG();
 	}
-	
-	private void insertFlows() {
-		InputStream fis 		= null;
-		BufferedInputStream bis = null;
-		DataInputStream dis 	= null;
-		List<String> inserts 	= new ArrayList<String>();		
-		try {
-			Resources res = getApplicationContext().getResources();
-			fis = res.openRawResource(R.raw.flow_inserts);
-			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
-			dis = new DataInputStream(bis);
 
-			System.out.println("!!! FLOW INSERTS DETECTED !!!");			
-			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
-				String line = dis.readLine();
-				inserts.add(line);
-			}
-
-			fis.close();
-			bis.close();
-			dis.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(getApplicationContext());
-		flowDB.cleanDB();
-		flowDB.bulkInsert(inserts);
-		flowDB.close();
-		
-	}	
-	private void insertDays() {
-		InputStream fis 		= null;
-		BufferedInputStream bis = null;
-		DataInputStream dis 	= null;
-		List<String> inserts 	= new ArrayList<String>();		
-		try {
-			Resources res = getApplicationContext().getResources();
-			fis = res.openRawResource(R.raw.day_inserts);
-			bis = new BufferedInputStream(fis);	// Here BufferedInputStream is added for fast reading.
-			dis = new DataInputStream(bis);
-
-			System.out.println("!!! FLOW INSERTS DETECTED !!!");			
-			while (dis.available() != 0) {	// dis.available() returns 0 if the file does not have more lines.
-				String line = dis.readLine();
-				inserts.add(line);
-			}
-
-			fis.close();
-			bis.close();
-			dis.close();
-
-		} catch (FileNotFoundException e) {
-			e.printStackTrace();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		CigarHistoricDBAdapter daysDB = CigarHistoricDBAdapter.getInstance(getApplicationContext());
-		daysDB.cleanDB();
-		daysDB.bulkInsert(inserts);
-		daysDB.close();
-		
-	}		
 	
 //	private void forzarDEBUG() {
 //    Editor editor 		= globalPreferences.edit();

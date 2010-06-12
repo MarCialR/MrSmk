@@ -1,11 +1,21 @@
 package com.mru.mrnicoquitter;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.OutputStream;
+
 import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.content.ServiceConnection;
 import android.graphics.Color;
+import android.net.Uri;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.IBinder;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -26,8 +36,9 @@ import com.mru.mrnicoquitter.lists.EncuestaListActivity;
 import com.mru.mrnicoquitter.lists.HTMLListActivity;
 import com.mru.mrnicoquitter.lists.PrefsListActivity;
 import com.mru.mrnicoquitter.timer.NotificationService;
-import com.mru.mrnicoquitter.ui.AppUtils;
 import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
+import com.mru.mrnicoquitter.utils.UIUtils;
+import com.mru.mrnicoquitter.utils.Utils;
 
 public class DevelopingActivity extends QActivity{
 
@@ -131,7 +142,7 @@ public class DevelopingActivity extends QActivity{
 					appService.setNotification("ALE! Ya puedes DAL-LE!",segundosAEsperar);
 				}
 				catch (final Throwable t) {
-					AppUtils.showToastShort(getApplicationContext(), "Exception en setNotif!");
+					UIUtils.showToastShort(getApplicationContext(), "Exception en setNotif!");
 				}
 			}
 		};
@@ -209,14 +220,14 @@ public class DevelopingActivity extends QActivity{
 			public void onClick(View v) {
 				final Intent emailIntent = new Intent(
 						android.content.Intent.ACTION_SEND);
+						exportDB();
 				emailIntent.setType("plain/text");
-				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcialemilio@gmail.com" });
+				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcial5@hotmail.com" });
 				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
-				//String dbToSave = CigarDBAdapter.getInstance(getApplicationContext()).getAllEntriesToSend();
-				String dbToSave = CigarDBAdapter.getInstance().getAllEntriesToSendAsJSON();
-				Log.d("DevelopingActivity", dbToSave);
-//				emailIntent.putExtra(android.content.Intent.EXTRA_TEXT,dbToSave);
-//				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+				emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(Environment.getExternalStorageDirectory() + "/q.png"));
+//				String dbToSave = CigarDBAdapter.getInstance().getAllEntriesToSendAsJSON();
+//				Log.d("DevelopingActivity", dbToSave);
+				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
 			}
 		};
 		sendButton.setOnClickListener(sendListener);
@@ -253,7 +264,40 @@ public class DevelopingActivity extends QActivity{
 			
 
 	}
+	private void exportDB(){
 
+	    InputStream myInput		= null;
+    	OutputStream myOutput 	= null;
+	    try {
+			String outFileName 	=  Environment.getExternalStorageDirectory() + "/q.png";   				// Path to the just created empty db
+			myInput 			= new FileInputStream(new File("data/data/com.mru.mrnicoquitter/databases/mrQuitter.db"));
+			myOutput 			= new FileOutputStream(new File( outFileName ));
+	    	byte[] buffer 		= new byte[1024];   							//transfer bytes from the inputfile to the outputfile
+	    	int length;
+
+			while ((length = myInput.read(buffer))>0){
+				myOutput.write(buffer, 0, length);
+			}
+			myOutput.flush();
+
+
+		} catch (FileNotFoundException e2) {
+			// TODO Auto-generated catch block
+			e2.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+	    	try {
+				myOutput.close();
+		    	myInput.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+
+	}
 	@Override
 	protected String[] getMandatoryFields() {
 		// TODO Auto-generated method stub

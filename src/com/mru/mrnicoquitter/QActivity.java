@@ -1,9 +1,9 @@
 package com.mru.mrnicoquitter;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.stage.Phase;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.phases.Phase;
 import com.mru.mrnicoquitter.ui.MrMenu;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 import android.app.Activity;
 import android.content.Context;
@@ -26,13 +26,13 @@ public abstract class QActivity extends Activity {
 		//OJITO CON ESTO!!! hay que asegurarse que ese Stage es singleton tb (o algo asi)
 		if (phase==null)
 			phase = FlowManagerSGTon.getPhase();
-		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onCreate!!");
+		UIUtils.showDebug(getApplicationContext(), getActivityName() +" - onCreate!!");
 	}
 	@Override
 	protected void onDestroy() {
 		// TODO Auto-generated method stub
 		super.onDestroy();
-		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onDestroy!!");
+		UIUtils.showDebug(getApplicationContext(), getActivityName() +" - onDestroy!!");
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
 	}
@@ -41,7 +41,7 @@ public abstract class QActivity extends Activity {
 	protected void onPause() {
 		// TODO Auto-generated method stub
 		super.onPause();
-		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onPause!!");
+		UIUtils.showDebug(getApplicationContext(), getActivityName() +" - onPause!!");
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
 	}
@@ -50,7 +50,7 @@ public abstract class QActivity extends Activity {
 	protected void onRestart() {
 		// TODO Auto-generated method stub
 		super.onRestart();
-		AppUtils.showDebug(getApplicationContext(), getActivityName() +" - onRestart!!");
+		UIUtils.showDebug(getApplicationContext(), getActivityName() +" - onRestart!!");
 //		Intent svc = new Intent(this, NotificationService.class);
 //	    stopService(svc);
 	}
@@ -59,7 +59,7 @@ public abstract class QActivity extends Activity {
 	protected void onStop() {
 		// TODO Auto-generated method stub
 		super.onStop();
-		AppUtils.showDebug(getApplicationContext(), getActivityName() +"- onStop!!");
+		UIUtils.showDebug(getApplicationContext(), getActivityName() +"- onStop!!");
 
 	}
 	

@@ -3,7 +3,6 @@ package com.mru.mrnicoquitter.lists;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
 import java.util.List;
 
@@ -27,7 +26,6 @@ import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
-import com.mru.mrnicoquitter.utils.DateUtils;
 
 public class CigarListActivity extends ListActivity {
 

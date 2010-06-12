@@ -10,6 +10,7 @@ import java.io.InputStreamReader;
 import java.lang.reflect.Type;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 import com.google.gson.Gson;
 import com.google.gson.reflect.TypeToken;
@@ -127,6 +128,11 @@ public class Utils {
 		}
 		return cigars;
 	}	
+	
+	public static int getRandom(){
+		Random generator = new Random();
+		return generator.nextInt(167);
+	}
 //	public static String getRawResourceContentById(int id, Context ctx) {
 	//
 //			StringBuffer sb 	= new StringBuffer();

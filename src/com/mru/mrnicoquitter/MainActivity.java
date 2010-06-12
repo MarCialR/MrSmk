@@ -25,7 +25,7 @@ import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class MainActivity extends QActivity {
 

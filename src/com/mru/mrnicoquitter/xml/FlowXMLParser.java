@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.db.flow.generator;
+package com.mru.mrnicoquitter.xml;
 
 
 import java.io.BufferedInputStream;

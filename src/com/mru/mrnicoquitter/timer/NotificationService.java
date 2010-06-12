@@ -16,7 +16,7 @@ import android.util.Log;
 
 import com.mru.mrnicoquitter.MainActivity;
 import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class NotificationService extends Service {
 	private NotificationManager notificationManager;	
@@ -73,7 +73,7 @@ public class NotificationService extends Service {
 		    }
 		 
 		  public void run() { //implement run using value1 and value2
-				AppUtils.showToastShort(getApplicationContext(), this.value2);
+				UIUtils.showToastShort(getApplicationContext(), this.value2);
 				String svcName = Context.NOTIFICATION_SERVICE;
 
 				notificationManager = (NotificationManager)getSystemService(svcName);	

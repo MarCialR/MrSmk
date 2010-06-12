@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.encuestas;
+package com.mru.mrnicoquitter.xml;
 
 import java.io.IOException;
 import java.io.InputStream;
@@ -13,15 +13,16 @@ import org.xml.sax.XMLReader;
 
 import android.content.Context;
 
+import com.mru.mrnicoquitter.beans.Encuesta;
 import com.mru.mrnicoquitter.utils.Utils;
 
-public class XMLParser {
+public class EncuestaXMLParser {
 	private SAXParser mParser;
 	private XMLReader mReader;
 	private Encuesta encuesta;
 	private Context ctx;
 
-	public XMLParser(String string, Context _ctx) {
+	public EncuestaXMLParser(String string, Context _ctx) {
 
 		ctx = _ctx;
 		SAXParserFactory f = SAXParserFactory.newInstance();

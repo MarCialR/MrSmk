@@ -15,19 +15,15 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.content.res.Resources;
 import android.util.Log;
 
-import com.mru.mrnicoquitter.R;
-import com.mru.mrnicoquitter.Splash;
 import com.mru.mrnicoquitter.beans.IntentExtra;
 import com.mru.mrnicoquitter.beans.PhaseState;
 import com.mru.mrnicoquitter.beans.Stage;
-import com.mru.mrnicoquitter.db.flow.FlowObjectDBAdapter;
-import com.mru.mrnicoquitter.stage.P2_Phase;
-import com.mru.mrnicoquitter.stage.Phase;
-import com.mru.mrnicoquitter.stage.P1_Phase;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.db.FlowObjectDBAdapter;
+import com.mru.mrnicoquitter.phases.P1_Phase;
+import com.mru.mrnicoquitter.phases.P2_Phase;
+import com.mru.mrnicoquitter.phases.Phase;
 
 public class FlowManagerSGTon {
 

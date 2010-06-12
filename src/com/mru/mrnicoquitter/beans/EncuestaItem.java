@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.encuestas;
+package com.mru.mrnicoquitter.beans;
 
 import java.util.ArrayList;
 

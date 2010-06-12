@@ -6,8 +6,8 @@ import android.content.Intent;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.mru.mrnicoquitter.DevelopingActivity;
 import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class MrMenu {
 
@@ -53,7 +53,7 @@ public class MrMenu {
 			}			
 			return true;
 		case Menu4:
-			AppUtils.showToastShort(actv, "MenuOption4 is selected");
+			UIUtils.showToastShort(actv, "MenuOption4 is selected");
 			return true;
 		}
 		return false;
@@ -76,25 +76,25 @@ public class MrMenu {
 	  MenuItem item1 = menu.add(0, Menu.NONE, Menu1, "Flow Control");
 	  {
 	    item1.setAlphabeticShortcut('a');
-	    item1.setIcon(AppUtils.resizeImage(actv, R.drawable.ty0, 32, 32));
+	    item1.setIcon(UIUtils.resizeImage(actv, R.drawable.ty0, 32, 32));
 	  }
 
 	  MenuItem item2 = menu.add(0,Menu.NONE, Menu2, "Developer Options");
 	  {
 	    item2.setAlphabeticShortcut('b');
-	    item2.setIcon(AppUtils.resizeImage(actv, R.drawable.ty1, 32, 32));
+	    item2.setIcon(UIUtils.resizeImage(actv, R.drawable.ty1, 32, 32));
 	  }
 
 	  MenuItem item3 = menu.add(0, Menu.NONE,Menu3, "Preferences");
 	  {
 	    item3.setNumericShortcut('1');
-	    item3.setIcon(AppUtils.resizeImage(actv, R.drawable.ty2, 32, 32));
+	    item3.setIcon(UIUtils.resizeImage(actv, R.drawable.ty2, 32, 32));
 	  }
 
 	  MenuItem item4 = menu.add(0,Menu.NONE, Menu4, "MenuOption4");
 	  {
 	    item4.setNumericShortcut('2');
-	    item4.setIcon(AppUtils.resizeImage(actv, R.drawable.ty3, 32, 32));
+	    item4.setIcon(UIUtils.resizeImage(actv, R.drawable.ty3, 32, 32));
 	  }
 
 	}

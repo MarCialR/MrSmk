@@ -7,14 +7,12 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.database.*;
 import android.database.sqlite.*;
-import android.database.sqlite.SQLiteDatabase.CursorFactory;
-import android.util.Log;
 
 import com.google.gson.Gson;
 import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.Cigar;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.ui.AppUtils;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 import static com.mru.mrnicoquitter.Global.*;
 
@@ -145,6 +143,6 @@ public class CigarDBAdapter {
 	public static void inserttt(Cigar cigar) {
 		CigarDBAdapter dba = CigarDBAdapter.getInstance();
 		dba.insertEntry(cigar);
-		AppUtils.showToastShort(FlowManagerSGTon.getAppContext().getString(R.string.T_CIGARRO_GUARDADO));
+		UIUtils.showToastShort(FlowManagerSGTon.getAppContext().getString(R.string.T_CIGARRO_GUARDADO));
 	}
 }

@@ -33,7 +33,7 @@
 	    <activity android:name=".viewers.TextViewer" android:theme="@android:style/Theme.NoTitleBar"/>	    
 	    <activity android:name=".viewers.HTMLViewer" android:theme="@android:style/Theme.NoTitleBar"/>
 	    	    
-	    <activity android:name=".encuestas.EncuestaActivity" android:theme="@android:style/Theme.NoTitleBar"/>
+	    <activity android:name=".EncuestaActivity" android:theme="@android:style/Theme.NoTitleBar"/>
 		
 		<service android:name=".timer.NotificationService"/>
     </application>

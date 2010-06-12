@@ -1,4 +1,4 @@
-package com.mru.mrnicoquitter.stage;
+package com.mru.mrnicoquitter.phases;
 
 import static com.mru.mrnicoquitter.Global.*;
 
