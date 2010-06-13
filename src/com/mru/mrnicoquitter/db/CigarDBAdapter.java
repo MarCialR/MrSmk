@@ -120,6 +120,7 @@ public class CigarDBAdapter {
         		sb.append(cigar.toSave()).append(NEWLINE);
         	}while (c.moveToNext());
         }
+        c.close();
         close();
         return sb.toString();
 	}
@@ -136,6 +137,7 @@ public class CigarDBAdapter {
         		cigars.add(cigar);
         	}while (c.moveToNext());
         }
+        c.close();
         close();
         return gson.toJson(cigars);
 	}

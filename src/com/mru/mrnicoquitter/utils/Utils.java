@@ -133,6 +133,10 @@ public class Utils {
 		Random generator = new Random();
 		return generator.nextInt(167);
 	}
+	public static int getRandom(int size) {
+		Random generator = new Random();
+		return generator.nextInt(size);
+	}	
 //	public static String getRawResourceContentById(int id, Context ctx) {
 	//
 //			StringBuffer sb 	= new StringBuffer();
@@ -184,4 +188,6 @@ public class Utils {
 //			}
 //			return sb.toString();
 //		}
+
+
 }

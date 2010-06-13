@@ -6,8 +6,8 @@ public  class Global {
 
 	public static int[] oneCodes = {1001,1002,1003,1004,1005,1006,1007,1008,1009};
 	public static int[] twoCodes = {2001,2003};
-	public static String[] oneDescriptions = {"a1_bienvenida","NOT_YET_presentacion","NOT_YET_info_tabaquismo","NOT_YET_t_historia_clinica","NOT_YET_razones_para_dejar_de_fumar","t_fagerstrom","t_glover_nilsson","t_motivacion","MAIN"};
-	public static String[] twoDescriptions = {"diez_mandamientos","MAIN"};
+	public static String[] oneDescriptions = {"BienVenida","Presentacion","Info Tabaquismo","NOT_YET_t_historia_clinica","Razones para dejar de fumar","TEST valoracion de Dependencia","TEST valoracion del Habito","TEST valoracion de la Motivacion","MAIN"};
+	public static String[] twoDescriptions = {"Los 10 Mandamientos","MAIN"};
 	public static final String DEF_TYPE_RAW						= "raw";
 	public static final String DEBUG							= "DEBUG";	
 	public static final String EMPTY							= "";

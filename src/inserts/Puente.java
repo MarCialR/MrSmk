@@ -13,7 +13,7 @@ import java.util.List;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.google.gson.Gson;
-import com.mru.mrnicoquitter.beans.Cita;
+
 import com.mru.mrnicoquitter.beans.Stage;
 import com.mru.mrnicoquitter.utils.file.windows.FileUtils;
 import com.mru.mrnicoquitter.xml.FlowXMLParser;
@@ -21,25 +21,27 @@ import com.mru.mrnicoquitter.xml.FlowXMLParser;
 public class Puente {
 
 	private static final String INPUT_FLOW_OBJECTS_FILE 	= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\FlowObjects.xml";
-	private static final String OUTPUT_FLOW_OBJECTS_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\res\\raw\\flow_inserts";
-	private static final String OUTPUT_FILE_GSON 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\globals.txt";
 	private static final String INPUT_FILE_CITAS 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\citas_plain.txt";
+	private static final String OUTPUT_FLOW_OBJECTS_INSERTS = "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\flow_inserts";
+	private static final String OUTPUT_DAY_INSERTS 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\day_inserts";	
+	//private static final String OUTPUT_FILE_GSON 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\globals.txt";
 	private static final String OUTPUT_FILE_CITAS 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\citas_inserts.txt";	
-	private static final String OUTPUT_DAY_INSERTS 			= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\res\\raw\\day_inserts";	
+	private static final String OUTPUT_FILE_GLOBAL_ARRAYS	= "C:\\Users\\BEEP\\Desktop\\ANDROIDING\\eclipse\\workspace\\MrSmkQuitter\\assets\\HELPER_THINGS\\global_arrays.txt";	
 	private static StringBuilder sb;
 	private static Gson gson;
 	private static ObjectMapper mapper;
 	private static boolean json_not_jackson 				= false;
 	private static List<Stage> flowObjectsList;
-	private static List<Cita> citasObjectsList;
+	private static List<CitaInsert> citasObjectsList;
 	private static List<String> asJsonListita;
 	public static void main() {
 		File f_INPUT_FLOW_OBJECTS_FILE 		= new File(INPUT_FLOW_OBJECTS_FILE);
-		File f_OUTPUT_FILE_GSON 			= new File(OUTPUT_FILE_GSON);
+		//File f_OUTPUT_FILE_GSON 			= new File(OUTPUT_FILE_GSON);
 		File f_OUTPUT_FLOW_OBJECTS_INSERTS	= new File(OUTPUT_FLOW_OBJECTS_INSERTS);
 		File f_OUTPUT_DAY_INSERTS			= new File(OUTPUT_DAY_INSERTS);
 		File f_INPUT_FILE_CITAS				= new File(INPUT_FILE_CITAS);
-		File f_OUTPUT_FILE_CITAS			= new File(OUTPUT_FILE_CITAS);		
+		File f_OUTPUT_FILE_CITAS			= new File(OUTPUT_FILE_CITAS);
+		File f_OUTPUT_FILE_GLOBAL_ARRAYS	= new File(OUTPUT_FILE_GLOBAL_ARRAYS);				
 		gson 								= new Gson();
 		FlowXMLParser parser 				= new FlowXMLParser("");
 		mapper 								= new ObjectMapper(); // can reuse, share globally
@@ -62,8 +64,8 @@ public class Puente {
 //			setContents(outputPlain, gORj);
 			globalArrays = generateGlobalArrays(parser);
 			
-//			setContents(gsonPlain, globalArrays);
-//			System.out.println("NEW FILE CONTENTS: \n" + getContents(gsonPlain));
+			FileUtils.setContents(f_OUTPUT_FILE_GLOBAL_ARRAYS, globalArrays);
+			System.out.println("f_OUTPUT_FILE_GLOBAL_ARRAYS CONTENTS: \n" + FileUtils.getContents(f_OUTPUT_FILE_GLOBAL_ARRAYS));
 			
 			FileUtils.setContents(f_OUTPUT_FLOW_OBJECTS_INSERTS, generateFlowInserts(flowObjectsList,asJsonListita));
 			System.out.println("f_OUTPUT_FLOW_OBJECTS_INSERTS CONTENTS: \n" + FileUtils.getContents(f_OUTPUT_FLOW_OBJECTS_INSERTS));		
@@ -83,10 +85,10 @@ public class Puente {
 
 
 
-	private static List<Cita> parseCitasInputFile(File f_INPUT_FILE_CITAS) {
+	private static List<CitaInsert> parseCitasInputFile(File f_INPUT_FILE_CITAS) {
 		
-		citasObjectsList 	= new ArrayList<Cita>();
-		Cita cita 			= null;
+		citasObjectsList 	= new ArrayList<CitaInsert>();
+		CitaInsert cita 	= null;
 		String[] arr		= null;
 
 		try {
@@ -105,7 +107,7 @@ public class Puente {
 					
 					try{
 					if ( !line.trim().equals("")){
-						cita = new Cita();
+						cita = new CitaInsert();
 						arr = line.split("\t");
 						switch (arr.length){
 							case 6:
@@ -139,10 +141,10 @@ public class Puente {
 
 
 
-	private static String generateCitasInserts(List<Cita> citasObjectsList2) {
+	private static String generateCitasInserts(List<CitaInsert> citasObjectsList2) {
 		sb = new StringBuilder();
 		int counter = 0;
-		for (Cita it : citasObjectsList2){
+		for (CitaInsert it : citasObjectsList2){
 			sb.append("INSERT INTO " + DB_CITAS_TABLE + " (" 	+ CITAS_KEY_ID + "," 
 																+ CITAS_KEY_USED + ","
 																+ CITAS_KEY_TYPE + ","
@@ -191,10 +193,10 @@ public class Puente {
 			counter++;
 		}
 		
-		sb.append("public static int[] oneCodes = {").append(OneCodes.substring(0, OneCodes.length()-2)).append("};\n");
-		sb.append("public static int[] twoCodes = {").append(TwoCodes.substring(0, TwoCodes.length()-2)).append("};\n");
-		sb.append("public static String[] oneDescriptions = {").append(OneDescriptions.substring(0, OneDescriptions.length()-1)).append("\"};\n");
-		sb.append("public static String[] twoDescriptions = {").append(TwoDescriptions.substring(0, TwoDescriptions.length()-1)).append("\"};\n");			
+		sb.append("public static int[] oneCodes = {").append(OneCodes.substring(0, OneCodes.length()-1)).append("};\n");
+		sb.append("public static int[] twoCodes = {").append(TwoCodes.substring(0, TwoCodes.length()-1)).append("};\n");
+		sb.append("public static String[] oneDescriptions = {").append(OneDescriptions.substring(0, OneDescriptions.length()-1)).append("};\n");
+		sb.append("public static String[] twoDescriptions = {").append(TwoDescriptions.substring(0, TwoDescriptions.length()-1)).append("};\n");			
 	
 
 		return sb.toString();

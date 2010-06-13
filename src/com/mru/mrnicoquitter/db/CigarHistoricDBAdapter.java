@@ -47,24 +47,14 @@ public class CigarHistoricDBAdapter {
 	public void close() {
 		db.close();
 	}
-	public void bulkInsert(List<String> list){
-		Log.d("CigarHistoricDBAdapter","EXECUTING CIGARS HISTORIC DB BULK INSERTS:");
-		for (String flowItemInsert : list){
-			Log.d("CigarHistoricDBAdapter",flowItemInsert);
-			db.execSQL(flowItemInsert);
-		}
-		return;	
-	}
 	
 	public long insertEntry(Integer day, Integer count) {
-		// Create a new row of values to insert.
 		ContentValues newValues = new ContentValues();
-		//newValues.
-		// Assign values for each row.
 		newValues.put(CIGARS_H_KEY_DAY, day);
 		newValues.put(CIGARS_H_KEY_COUNT, count);
-		// Insert the row into your table
-		return db.insert(DB_CIGARS_H_TABLE, null, newValues);		
+		long returnValue = db.insert(DB_CIGARS_H_TABLE, null, newValues);
+		Log.d("CigarHistoricDBAdapter", "Inserted Cigar with day = " + day + " & count = " + count);
+		return returnValue;
 	}
 
 	public Cursor getAllHistoricEntries () {
@@ -102,11 +92,5 @@ public class CigarHistoricDBAdapter {
 //        return gson.toJson(cigars);
 //	}
 
-	public void cleanDB() {
-		db.execSQL("DELETE FROM " + DB_CIGARS_H_TABLE);
-		Log.d("CigarHistoricDBAdapter","CIGARS HISTORIC DB: DELETING ALL ROWS...");
-		
-	}	
-	
 
 }

@@ -30,23 +30,20 @@ import android.widget.ToggleButton;
 
 import static com.mru.mrnicoquitter.Global.*;
 
-import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.lists.EncuestaListActivity;
-import com.mru.mrnicoquitter.lists.HTMLListActivity;
 import com.mru.mrnicoquitter.lists.PrefsListActivity;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
 import com.mru.mrnicoquitter.utils.UIUtils;
-import com.mru.mrnicoquitter.utils.Utils;
+
 
 public class DevelopingActivity extends QActivity{
 
 
-	private static OnClickListener  prefsListListener, encuestasListListener, htmlListListener, canvasButtonListener, timelineButtonListener, sendListener,
+	private static OnClickListener  prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
 
-	private static Button prefsListButton, encuestasListButton, htmlListButton, canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
+	private static Button prefsListButton, canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 	
@@ -166,32 +163,8 @@ public class DevelopingActivity extends QActivity{
 		};
 		loadCigarFileButton.setOnClickListener(loadCigarFileListener);		
 
-		
-		encuestasListButton = (Button) findViewById(R.id.EncuestasListButton);
-		encuestasListListener = new OnClickListener() {
- 			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),EncuestaListActivity.class);
-
- 				startActivityForResult(myIntent, 0);
- 			}
- 		};
-		encuestasListButton.setOnClickListener(encuestasListListener);
-		
-
-		
-
-		htmlListButton = (Button) findViewById(R.id.HTMLListButton);
-		htmlListListener = new OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),HTMLListActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		};
-		htmlListButton.setOnClickListener(htmlListListener);		
-		
-		
-		
-		
+	
+	
 		canvasButton = (Button) findViewById(R.id.CanvasButton);
 		canvasButtonListener= new OnClickListener() {
 			public void onClick(View v) {

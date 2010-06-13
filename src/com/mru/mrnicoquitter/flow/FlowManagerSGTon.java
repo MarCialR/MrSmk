@@ -101,33 +101,33 @@ public class FlowManagerSGTon {
 		phaseStagesNames = phase.getNames();
 	}
 
-	
-	public static Phase setPhase(int phaseID){
+	public static Phase setPhase(int phaseID) {
 		clearPreferences();
-		switch (phaseID){
-			case PHASE_1_CODE:
-				phase = new P1_Phase(myContext);
-				break;
-			case PHASE_2_CODE:
-				phase = new P2_Phase(myContext);
-				break;
-			case PHASE_3_CODE:
-				phase = new P2_Phase(myContext);
-				break;
-			case PHASE_4_CODE:
-				phase = new P2_Phase(myContext);
-				break;				
-			default:
-				throw new RuntimeException();
+		switch (phaseID) {
+		case PHASE_1_CODE:
+			phase = new P1_Phase(myContext);
+			break;
+		case PHASE_2_CODE:
+			phase = new P2_Phase(myContext);
+			break;
+		case PHASE_3_CODE:
+			phase = new P2_Phase(myContext);
+			break;
+		case PHASE_4_CODE:
+			phase = new P2_Phase(myContext);
+			break;
+		default:
+			throw new RuntimeException();
 		}
 		phaseStagesCodes = phase.getCodes();
 		phaseStagesNames = phase.getNames();
-		activeStageIndex = 0;		
-		Log.d("FlowManagerSGTon", "Cambiada FASE a: "+ phase.getPhaseName());	
+		activeStageIndex = 0;
+		Log.d("FlowManagerSGTon", "Cambiada FASE a: " + phase.getPhaseName());
 
 		String deHidratedPhaseState = null;
 		try {
-			deHidratedPhaseState = mapper.writeValueAsString(phase.getPhaseState(phaseStagesCodes[activeStageIndex]));
+			deHidratedPhaseState = mapper.writeValueAsString(phase
+					.getPhaseState(phaseStagesCodes[activeStageIndex]));
 		} catch (JsonGenerationException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -138,9 +138,11 @@ public class FlowManagerSGTon {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		globalPreferences.edit().putString (PREF_ACTUAL_PHASE_DEHIDRATED,deHidratedPhaseState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID).commit();
-return phase;
-		
+		globalPreferences.edit().putString(PREF_ACTUAL_PHASE_DEHIDRATED,
+				deHidratedPhaseState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID)
+				.commit();
+		return phase;
+
 	}
 
 private static void setStage(){

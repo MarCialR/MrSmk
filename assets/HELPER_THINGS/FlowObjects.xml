@@ -8,23 +8,23 @@
 -->
 	<STAGE>
 		<ID>1001</ID>
-		<NAME>a1_bienvenida</NAME>
+		<NAME>BienVenida</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
-		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >a1_bienvenida</EXTRA>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >p1_s1_bienvenida</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1002</ID>
-		<NAME>NOT_YET_presentacion</NAME>
+		<NAME>Presentacion</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
-		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_presentacion</EXTRA>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >p1_s2_presentacion</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1003</ID>
-		<NAME>NOT_YET_info_tabaquismo</NAME>
+		<NAME>Info Tabaquismo</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
-		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_info_tabaquismo</EXTRA>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >p1_s3_info_tabaquismo</EXTRA>
 	</STAGE>   
 
 	<STAGE>
@@ -36,30 +36,30 @@
 
 	<STAGE>
 		<ID>1005</ID>
-		<NAME>NOT_YET_razones_para_dejar_de_fumar</NAME>
+		<NAME>Razones para dejar de fumar</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
-		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >NOT_YET_razones_para_dejar_de_fumar</EXTRA>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >p1_s5_razones_para_dejar_de_fumar</EXTRA>
 	</STAGE>   
 
 
 	<STAGE>
 		<ID>1006</ID>
-		<NAME>t_fagerstrom</NAME>
+		<NAME>TEST valoracion de Dependencia</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
-		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_fagerstrom</EXTRA>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s6_t_fagerstrom</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1007</ID>
-		<NAME>t_glover_nilsson</NAME>
+		<NAME>TEST valoracion del Habito</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
-		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_glover_nilsson</EXTRA>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s7_t_glover_nilsson</EXTRA>
 	</STAGE>   
 	<STAGE>
 		<ID>1008</ID>
-		<NAME>t_motivacion</NAME>
+		<NAME>TEST valoracion de la Motivacion</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
-		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_motivacion</EXTRA>
+		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s8_t_motivacion</EXTRA>
 	</STAGE>   
 
 	<STAGE>
@@ -76,9 +76,9 @@
 
 	<STAGE>
 		<ID>2001</ID>
-		<NAME>diez_mandamientos</NAME>
+		<NAME>Los 10 Mandamientos</NAME>
 		<ACTIVITY>com.mru.mrnicoquitter.viewers.HTMLViewer</ACTIVITY>
-		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >diez_mandamientos</EXTRA>
+		<EXTRA name="STR_EXTRA_R_RAW_FILENAME" >p2_s1_diez_mandamientos</EXTRA>
 	</STAGE>   
 
 	<STAGE>

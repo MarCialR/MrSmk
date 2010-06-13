@@ -1,0 +1,4 @@
+public static int[] oneCodes = {1001,1002,1003,1004,1005,1006,1007,1008,1009};
+public static int[] twoCodes = {2001,2003};
+public static String[] oneDescriptions = {"BienVenida","Presentacion","Info Tabaquismo","NOT_YET_t_historia_clinica","Razones para dejar de fumar","TEST valoracion de Dependencia","TEST valoracion del Habito","TEST valoracion de la Motivacion","MAIN"};
+public static String[] twoDescriptions = {"Los 10 Mandamientos","MAIN"};
