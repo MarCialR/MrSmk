@@ -20,7 +20,8 @@ public class MrMenu {
 			try {
 				goTo = Class.forName(ACVTY_FLOW_CLASS);
 				Intent mainIntent = new Intent(actv,goTo); 
-				actv.startActivity(mainIntent); 
+				actv.startActivity(mainIntent);
+				actv.finish();
 
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
@@ -34,7 +35,7 @@ public class MrMenu {
 				goTo = Class.forName(ACVTY_DEVELOPING_CLASS);
 				Intent mainIntent = new Intent(actv,goTo); 
 				actv.startActivity(mainIntent); 
-				//actv.finish();
+				actv.finish();
 			} catch (ClassNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

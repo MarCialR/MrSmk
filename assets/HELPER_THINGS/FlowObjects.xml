@@ -30,7 +30,7 @@
 	<STAGE>
 		<ID>1004</ID>
 		<NAME>NOT_YET_t_historia_clinica</NAME>
-		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<ACTIVITY>com.mru.mrnicoquitter.EncuestaActivity</ACTIVITY>
 		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >t_historia_clinica</EXTRA>
 	</STAGE>   
 
@@ -45,20 +45,20 @@
 	<STAGE>
 		<ID>1006</ID>
 		<NAME>TEST valoracion de Dependencia</NAME>
-		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<ACTIVITY>com.mru.mrnicoquitter.EncuestaActivity</ACTIVITY>
 		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s6_t_fagerstrom</EXTRA>
 	</STAGE>   
 
 	<STAGE>
 		<ID>1007</ID>
 		<NAME>TEST valoracion del Habito</NAME>
-		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<ACTIVITY>com.mru.mrnicoquitter.EncuestaActivity</ACTIVITY>
 		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s7_t_glover_nilsson</EXTRA>
 	</STAGE>   
 	<STAGE>
 		<ID>1008</ID>
 		<NAME>TEST valoracion de la Motivacion</NAME>
-		<ACTIVITY>com.mru.mrnicoquitter.encuestas.EncuestaActivity</ACTIVITY>
+		<ACTIVITY>com.mru.mrnicoquitter.EncuestaActivity</ACTIVITY>
 		<EXTRA name="STR_EXTRA_ENCUESTA_NAME" >p1_s8_t_motivacion</EXTRA>
 	</STAGE>   
 

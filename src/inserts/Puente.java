@@ -55,7 +55,7 @@ public class Puente {
 		// System.out.println(entry.getKey() + ": "+ entry.getValue());
 		// }
 
-		System.out.println("f_INPUT_FLOW_OBJECTS_FILE CONTENTS: \n"+ FileUtils.getContents(f_INPUT_FLOW_OBJECTS_FILE));
+		//System.out.println("f_INPUT_FLOW_OBJECTS_FILE CONTENTS: \n"+ FileUtils.getContents(f_INPUT_FLOW_OBJECTS_FILE));
 
 		String gORj ;
 		String globalArrays;

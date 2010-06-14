@@ -40,10 +40,10 @@ import com.mru.mrnicoquitter.utils.UIUtils;
 public class DevelopingActivity extends QActivity{
 
 
-	private static OnClickListener  prefsListListener, canvasButtonListener, timelineButtonListener, sendListener,
+	private static OnClickListener   canvasButtonListener, timelineButtonListener, sendListener,
 			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
 
-	private static Button prefsListButton, canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
+	private static Button  canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
 	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 	
@@ -145,14 +145,7 @@ public class DevelopingActivity extends QActivity{
 		};
 		notifButton.setOnClickListener(notificarListener);		
 		
-		prefsListButton = (Button) findViewById(R.id.PrefsListButton);
-		prefsListListener = new OnClickListener() {
-			public void onClick(View v) {
-				Intent myIntent = new Intent(v.getContext(),PrefsListActivity.class);
-				startActivityForResult(myIntent, 0);
-			}
-		};
-		prefsListButton.setOnClickListener(prefsListListener);
+
 		
 		loadCigarFileButton= (Button) findViewById(R.id.loadCigarFileButton);
 		loadCigarFileListener = new OnClickListener() {
@@ -239,11 +232,13 @@ public class DevelopingActivity extends QActivity{
 	}
 	private void exportDB(){
 
-	    InputStream myInput		= null;
+		String inputFileName 	= "data/data/com.mru.mrnicoquitter/databases/mrQuitter.db";
+		String outFileName 		=  Environment.getExternalStorageDirectory() + "/q.png";   				// Path to the just created empty db
+		InputStream myInput		= null;
     	OutputStream myOutput 	= null;
-	    try {
-			String outFileName 	=  Environment.getExternalStorageDirectory() + "/q.png";   				// Path to the just created empty db
-			myInput 			= new FileInputStream(new File("data/data/com.mru.mrnicoquitter/databases/mrQuitter.db"));
+
+    	try {
+			myInput 			= new FileInputStream(new File(inputFileName));
 			myOutput 			= new FileOutputStream(new File( outFileName ));
 	    	byte[] buffer 		= new byte[1024];   							//transfer bytes from the inputfile to the outputfile
 	    	int length;
@@ -269,6 +264,7 @@ public class DevelopingActivity extends QActivity{
 				e.printStackTrace();
 			}
 		}
+		Log.d("DevelopingActivity", "Finished Exporting db to : " + outFileName);
 
 	}
 	@Override

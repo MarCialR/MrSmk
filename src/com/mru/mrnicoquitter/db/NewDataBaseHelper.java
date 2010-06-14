@@ -10,6 +10,7 @@ import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import static com.mru.mrnicoquitter.Global.*;
 
@@ -58,8 +59,8 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
  
     	SQLiteDatabase checkDB = null;
     	try{
-    		String myPath = DATABASE_PATH + DATABASE_NAME;
-    		checkDB = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
+    		String myPath	= DATABASE_PATH + DATABASE_NAME;
+    		checkDB 		= SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READONLY);
     	}catch(SQLiteException e){
     		//database does't exist yet.
     	}
@@ -87,6 +88,7 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
     	myOutput.flush();    	//Close the streams
     	myOutput.close();
     	myInput.close();
+    	Log.d("NewDataBaseHelper","DATABASE COPIED and Streams closed");
     }
  
     public SQLiteDatabase openDataBase() throws SQLException{

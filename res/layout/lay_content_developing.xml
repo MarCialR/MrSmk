@@ -24,12 +24,6 @@
 			<Button android:id="@+id/SetStateButton" android:text="Set State"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 				
-
-				
-			<Button android:id="@+id/PrefsListButton" android:text="View Preferences"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-
-
 			<Button android:id="@+id/CanvasButton" android:text="Canvas"
 				android:layout_width="wrap_content" android:layout_height="wrap_content" />
 

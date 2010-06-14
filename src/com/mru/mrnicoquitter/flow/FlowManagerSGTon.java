@@ -49,10 +49,10 @@ public class FlowManagerSGTon {
 	// 		Constructors & Initialization
 	// ===========================================================	
 	
-	public static Phase initManager(Context applicationContext) {
+	public static void initManager(Context applicationContext) {
 		myContext 	= applicationContext;
 		INSTANCE 	= new FlowManagerSGTon();
-		return phase;
+		return;
 	}
 	
 	private FlowManagerSGTon() {

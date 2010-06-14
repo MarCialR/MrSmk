@@ -1,36 +1,31 @@
 package com.mru.mrnicoquitter.db;
 
-import java.util.List;
-
 import com.mru.mrnicoquitter.beans.Cita;
 import com.mru.mrnicoquitter.utils.Utils;
 
-import android.content.ContentValues;
+import static com.mru.mrnicoquitter.Global.*;
 import android.content.Context;
 import android.database.*;
 import android.database.sqlite.*;
 import android.util.Log;
 
-
-import static com.mru.mrnicoquitter.Global.*;
-
 public class CitasDBAdapter {
 
 	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
-	private NewDataBaseHelper dbHelper;				// Database open/upgrade helper	
+	private NewDataBaseHelper dbHelper;			// Database open/upgrade helper	
 	
 	private static CitasDBAdapter INSTANCE;
 
 	
-	public Cita getCitaById(int _rowIndex) {
+	private Cita getCitaById(int _rowIndex) {
 
 		Cita cita 		= new Cita();
         String sqlQuery = 	  "SELECT " + CITAS_KEY_TEXT_EN + ", " + CITAS_KEY_AUT_EN 
         					+ " FROM " + DB_CITAS_TABLE
         					+ " WHERE " + CITAS_KEY_ID + " = " + _rowIndex;
 		
-        Log.w("FlowObjectDBAdapter",sqlQuery);
+        Log.d("FlowObjectDBAdapter",sqlQuery);
 		
         Cursor c = db.rawQueryWithFactory(null, sqlQuery, null, null);
 		if (c.moveToFirst()) {
