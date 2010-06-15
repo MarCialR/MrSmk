@@ -67,13 +67,15 @@ public class MainActivity extends QActivity {
 
 		</LinearLayout>
 */		
+		View v = (View) findViewById(R.id.Common);
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout commonLyt 	= (LinearLayout)inflater.inflate(R.layout.lay_common, null);
-		ImageView logo			= (ImageView) commonLyt.findViewById(R.id.Logo);
-		TextView text			= (TextView) commonLyt.findViewById(R.id.StageInfo);
+		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
+	
+		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
+		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
 		logo.setBackgroundResource(phase.getLogo());
 		text.setText(FlowManagerSGTon.getHeaderText());	
-		setContentView(commonLyt);
+		v= commonLyt;
 	}
 
 	/** Called when the activity is first created. */
