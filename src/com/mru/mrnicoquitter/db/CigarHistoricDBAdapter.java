@@ -1,7 +1,5 @@
 package com.mru.mrnicoquitter.db;
 
-import java.util.List;
-
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.*;
@@ -61,36 +59,5 @@ public class CigarHistoricDBAdapter {
 		return db.query(DB_CIGARS_H_TABLE, new String[] {CIGARS_H_KEY_ID,CIGARS_H_KEY_DAY, CIGARS_H_KEY_COUNT},
 				null, null, null, null, CIGARS_H_KEY_DAY + " DESC");
 	}
-
-//	public String getAllEntriesToSend(){
-//    	Cursor c = getAllEntries();
-//    	StringBuffer sb = new StringBuffer(); 
-//        if (c.moveToFirst()){
-//        	do {
-//        		Cigar cigar = new Cigar();
-//        		cigar.setDateStr(c.getString(CIGARS_H_COL_DATE));
-//        		cigar.setTipo(c.getInt(CIGARS_H_COL_TYPE));
-//        		
-//        		sb.append(cigar.toSave()).append(NEWLINE);
-//        	}while (c.moveToNext());
-//        }
-//        return sb.toString();
-//	}
-//	public String getAllEntriesToSendAsJSON(){
-//		Gson gson = new Gson();
-//		List<Cigar> cigars = new ArrayList<Cigar>();
-//    	Cursor c = getAllEntries();
-//        if (c.moveToFirst()){
-//        	do {
-//        		Cigar cigar = new Cigar();
-//        		cigar.setDateStr(c.getString(CIGARS_H_COL_DATE));
-//        		cigar.setTipo(c.getInt(CIGARS_H_COL_TYPE));
-//        		
-//        		cigars.add(cigar);
-//        	}while (c.moveToNext());
-//        }
-//        return gson.toJson(cigars);
-//	}
-
 
 }

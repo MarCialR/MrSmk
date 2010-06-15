@@ -8,15 +8,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-import android.content.ComponentName;
+
 import android.content.Context;
 import android.content.Intent;
-import android.content.ServiceConnection;
-import android.graphics.Color;
+
 import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
-import android.os.IBinder;
+
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -24,14 +23,11 @@ import android.view.View.OnClickListener;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.RadioGroup;
-import android.widget.ScrollView;
 import android.widget.TimePicker;
-import android.widget.ToggleButton;
 
 import static com.mru.mrnicoquitter.Global.*;
 
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
-import com.mru.mrnicoquitter.lists.PrefsListActivity;
 import com.mru.mrnicoquitter.timer.NotificationService;
 import com.mru.mrnicoquitter.utils.LoadCigarsFileActivity;
 import com.mru.mrnicoquitter.utils.UIUtils;
@@ -48,15 +44,15 @@ public class DevelopingActivity extends QActivity{
 	
 	private NotificationService appService	=	null;
 	
-	private ServiceConnection onService	= new ServiceConnection() {
-		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
-			appService	=	((NotificationService.LocalBinder)rawBinder).getService();
-		}
- 
-		public void onServiceDisconnected(ComponentName className) {
-			appService	=	null;
-		}
-	};	
+//	private ServiceConnection onService	= new ServiceConnection() {
+//		public void onServiceConnected(ComponentName className, IBinder rawBinder) {
+//			appService	=	((NotificationService.LocalBinder)rawBinder).getService();
+//		}
+// 
+//		public void onServiceDisconnected(ComponentName className) {
+//			appService	=	null;
+//		}
+//	};	
 	
 	/** Called when the activity is first created. */
 	@Override

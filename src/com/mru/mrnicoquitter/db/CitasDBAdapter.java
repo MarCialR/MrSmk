@@ -1,6 +1,7 @@
 package com.mru.mrnicoquitter.db;
 
 import com.mru.mrnicoquitter.beans.Cita;
+import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.utils.Utils;
 
 import static com.mru.mrnicoquitter.Global.*;
@@ -11,22 +12,20 @@ import android.util.Log;
 
 public class CitasDBAdapter {
 
-	private SQLiteDatabase db;					// Variable to hold the database instance
 	private final Context context;				// Context of the application using the database.
 	private NewDataBaseHelper dbHelper;			// Database open/upgrade helper	
 	
 	private static CitasDBAdapter INSTANCE;
 
 	
-	private Cita getCitaById(int _rowIndex) {
+	private Cita getCitaById(int _rowIndex, SQLiteDatabase db) {
 
 		Cita cita 		= new Cita();
         String sqlQuery = 	  "SELECT " + CITAS_KEY_TEXT_EN + ", " + CITAS_KEY_AUT_EN 
         					+ " FROM " + DB_CITAS_TABLE
         					+ " WHERE " + CITAS_KEY_ID + " = " + _rowIndex;
-		
         Log.d("FlowObjectDBAdapter",sqlQuery);
-		
+
         Cursor c = db.rawQueryWithFactory(null, sqlQuery, null, null);
 		if (c.moveToFirst()) {
 			
@@ -35,7 +34,9 @@ public class CitasDBAdapter {
 		}
 		c.close();
         Log.d("FlowObjectDBAdapter","Found Cita = " + cita.getText());
-		setUsed(_rowIndex);
+		setUsed(db, _rowIndex);			
+		db.close();
+
 		return cita;
 	}	
 	public Cita getRandomEntry() {
@@ -46,44 +47,31 @@ public class CitasDBAdapter {
 		
         Log.d("FlowObjectDBAdapter",sqlQuery);
 		
-        Cursor c 		= db.rawQueryWithFactory(null, sqlQuery, null, null);
-        int idChoosed 	= Utils.getRandom(c.getCount());
+        SQLiteDatabase db 	= dbHelper.getWritableDatabase();
+        Cursor c 			= db.rawQueryWithFactory(null, sqlQuery, null, null);
+        int idChoosed 		= Utils.getRandom(c.getCount());
         c.close();
         Log.d("FlowObjectDBAdapter","Choosed random CitaId = " + idChoosed);
-		
-		return getCitaById(idChoosed);
+        Cita cita 			= getCitaById(idChoosed, db); 
+		db.close();
+		return cita;
 	}		
 	
-	private void setUsed(int id){
+	private void setUsed(SQLiteDatabase db, int id){
 		db.execSQL("UPDATE CITAS_TABLE set used= 1 where id = " + id);
         Log.d("FlowObjectDBAdapter","UPDATE CITAS_TABLE set used= 1 where id = " + id);
 	}
 	
-	public static CitasDBAdapter getInstance(Context c) {
+	public static CitasDBAdapter getInstance() {
 		if (INSTANCE == null) {
-			INSTANCE = new CitasDBAdapter(c);
-			return INSTANCE;
-		} else
-			return INSTANCE;
+			INSTANCE = new CitasDBAdapter(FlowManagerSGTon.getAppContext());
+		}
+		return INSTANCE;
 	}
 
 	private CitasDBAdapter(Context _context) {
 		context 	= _context;
 		dbHelper 	= new NewDataBaseHelper(context);
-		try {
-			db = dbHelper.getWritableDatabase();
-		}
-		catch (SQLiteException ex){
-			db = dbHelper.getReadableDatabase();	
-		}
 	}
 
-	public CitasDBAdapter open() throws SQLException {
-		db = dbHelper.getWritableDatabase();
-		return this;
-	}
-	
-	public void close() {
-		db.close();
-	}
 }

@@ -6,7 +6,6 @@ import java.io.InputStream;
 import java.io.OutputStream;
 
 import android.content.Context;
-import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteException;
 import android.database.sqlite.SQLiteOpenHelper;
@@ -19,11 +18,6 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
     private SQLiteDatabase myDataBase; 
     private final Context myContext;
  
-    /**
-     * Constructor
-     * Takes and keeps a reference of the passed context in order to access to the application assets and resources.
-     * @param context
-     */
     public NewDataBaseHelper(Context context) {
  
     	super(context, DATABASE_NAME, null, 1);
@@ -77,10 +71,10 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
      * */
     private void copyDataBase() throws IOException{
  
-    	InputStream myInput		= myContext.getAssets().open(DATABASE_NAME);  //Open your local db as the input stream
-    	String outFileName 		= DATABASE_PATH + DATABASE_NAME;   					// Path to the just created empty db
-    	OutputStream myOutput 	= new FileOutputStream(outFileName);    //Open the empty db as the output stream
-    	byte[] buffer 			= new byte[1024];   					//transfer bytes from the inputfile to the outputfile
+    	InputStream myInput		= myContext.getAssets().open(DATABASE_NAME);  	//Open your local db as the input stream
+    	String outFileName 		= DATABASE_PATH + DATABASE_NAME;   				// Path to the just created empty db
+    	OutputStream myOutput 	= new FileOutputStream(outFileName);    		//Open the empty db as the output stream
+    	byte[] buffer 			= new byte[1024];   							//transfer bytes from the inputfile to the outputfile
     	int length;
     	while ((length = myInput.read(buffer))>0){
     		myOutput.write(buffer, 0, length);
@@ -91,12 +85,12 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
     	Log.d("NewDataBaseHelper","DATABASE COPIED and Streams closed");
     }
  
-    private SQLiteDatabase openDataBase() throws SQLException{
- 
-        String myPath = DATABASE_PATH + DATABASE_NAME;
-    	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
-    	return myDataBase;
-    }
+//    private SQLiteDatabase openDataBase() throws SQLException{
+// 
+//        String myPath = DATABASE_PATH + DATABASE_NAME;
+//    	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);
+//    	return myDataBase;
+//    }
  
     @Override
 	public synchronized void close() {

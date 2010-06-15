@@ -33,9 +33,7 @@ public class Splash extends Activity {
 //		initMrQuitter(globalPreferences);
 		FlowManagerSGTon.initManager(context);
 
-		CitasDBAdapter ad 	= CitasDBAdapter.getInstance(context);
-		Cita cita 			= ad.getRandomEntry();
-		ad.close();
+		Cita cita	= CitasDBAdapter.getInstance().getRandomEntry();
 		
 		CharSequence text 	= Html.fromHtml(cita.getText() + "<br/><br/> <b>" + cita.getAuthor() + "</b>");
 		Toast toast 		= Toast.makeText(context, text, Toast.LENGTH_LONG);

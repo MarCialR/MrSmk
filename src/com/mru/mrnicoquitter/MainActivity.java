@@ -1,6 +1,5 @@
 package com.mru.mrnicoquitter;
 
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.content.Context;
@@ -25,7 +24,6 @@ import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
-import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class MainActivity extends QActivity {
 
@@ -69,15 +67,13 @@ public class MainActivity extends QActivity {
 
 		</LinearLayout>
 */		
-		View v = (View) findViewById(R.id.Common);
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
-	
-		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
-		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
+		LinearLayout commonLyt 	= (LinearLayout)inflater.inflate(R.layout.lay_common, null);
+		ImageView logo			= (ImageView) commonLyt.findViewById(R.id.Logo);
+		TextView text			= (TextView) commonLyt.findViewById(R.id.StageInfo);
 		logo.setBackgroundResource(phase.getLogo());
 		text.setText(FlowManagerSGTon.getHeaderText());	
-		v= commonLyt;
+		setContentView(commonLyt);
 	}
 
 	/** Called when the activity is first created. */
@@ -131,7 +127,7 @@ public class MainActivity extends QActivity {
 				cigar.setDateStr(SDF.format(c.getTime()));
 				cigar.setId((int) tipo.getSelectedItemId());
 				
-				CigarDBAdapter.inserttt(cigar);
+				CigarDBAdapter.getInstance().inserttt(cigar);
 				
 
 			}

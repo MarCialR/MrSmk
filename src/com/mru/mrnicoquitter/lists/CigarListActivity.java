@@ -1,7 +1,5 @@
 package com.mru.mrnicoquitter.lists;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -45,28 +43,7 @@ public class CigarListActivity extends ListActivity {
 		this.setListAdapter(IAA);
 	}
 	private void loadToday() {
-		CigarDBAdapter dba = CigarDBAdapter.getInstance();
-		Cursor c = dba.getAllEntries();
-
-		
-		SimpleDateFormat sdf = new SimpleDateFormat(
-				"yyyy-MM-dd'T'HH:mm:ss.SSS");
-
-		if (c.moveToFirst()) {
-			do {
-				Cigar cigar = new Cigar();
-				cigar.setDateStr(c.getString(CIGARS_COL_DATE));
-				cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
-				try {
-					cigar.setDate(sdf.parse(c.getString(CIGARS_COL_DATE)));
-				} catch (ParseException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				cigarEntries.add(cigar);
-			} while (c.moveToNext());
-		}
-		c.close();// TODO revisar cursores
+		cigarEntries = CigarDBAdapter.getInstance().getAllEntries();
 		Collections.sort(cigarEntries);
 		Collections.reverse(cigarEntries);		
 	}
