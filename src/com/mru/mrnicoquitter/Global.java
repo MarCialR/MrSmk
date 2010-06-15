@@ -19,6 +19,7 @@ public  class Global {
     // ===========================================================	
 	public static final String PREFERENCES_DIR					= "/data/data/com.mru.mrnicoquitter/shared_prefs/";
 	public static final String PREFS_GLOBAL 					= "PREFS_GLOBAL";
+	public static final String PREFS_DAY_MANAGER				= "PREFS_DAY_MANAGER";	
 	public static final String PREFS_PHASE_1 					= "PREFS_PHASE_1";
 	public static final String PREFS_PHASE_2 					= "PREFS_PHASE_2";	
 

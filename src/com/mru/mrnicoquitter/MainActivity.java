@@ -19,6 +19,7 @@ import android.widget.TimePicker;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.beans.Cigar;
+import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
 import com.mru.mrnicoquitter.db.CausesAdapter;
 import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
@@ -118,13 +119,14 @@ public class MainActivity extends QActivity {
 		saveListener = new OnClickListener() {
 			public void onClick(View v) {
 				olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
-				Calendar c = Calendar.getInstance();
+				Calendar c = null;
 				if (olvidoCheckBox.isChecked()) {
+					c = Calendar.getInstance();
 					TimePicker picker = (TimePicker) findViewById(R.id.CuandoFumadoPicker);
 					c.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
 					c.set(Calendar.MINUTE, picker.getCurrentMinute());
 				}
-				CigarDBAdapter.getInstance().inserEntry(tipo.getSelectedItemId(), c);
+				DayManagerSGTon.getInstance().insert(tipo.getSelectedItemId(), c);
 			}
 		};
 

@@ -21,7 +21,7 @@ import static com.mru.mrnicoquitter.Global.*;
 
 public class CigarHistoricDBAdapter {
 
-	private final Context context;				// Context of the application using the database.
+	private static Context context;				// Context of the application using the database.
 	private NewDataBaseHelper dbHelper;				// Database open/upgrade helper	
 	
 	private static CigarHistoricDBAdapter INSTANCE;
@@ -29,7 +29,6 @@ public class CigarHistoricDBAdapter {
 	public static CigarHistoricDBAdapter getInstance() {
 		if (INSTANCE == null) {
 			INSTANCE = new CigarHistoricDBAdapter(FlowManagerSGTon.getAppContext());
-
 		}
 		return INSTANCE;
 	}
@@ -37,14 +36,13 @@ public class CigarHistoricDBAdapter {
 	private CigarHistoricDBAdapter(Context _context) {
 		context 	= _context;
 		dbHelper 	= new NewDataBaseHelper(context);
-
 	}
 	
 	public void insertEntry(Integer day, Integer count) {
 
 		SQLiteDatabase db 			= dbHelper.getWritableDatabase();		
 		try {		
-			ContentValues newValues 	= new ContentValues();
+			ContentValues newValues	= new ContentValues();
 			newValues.put(CIGARS_H_KEY_DAY, day);
 			newValues.put(CIGARS_H_KEY_COUNT, count);
 			db.insert(DB_CIGARS_H_TABLE, null, newValues);

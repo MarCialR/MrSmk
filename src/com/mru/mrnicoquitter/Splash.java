@@ -14,6 +14,7 @@ import android.widget.Toast;
 
 import static com.mru.mrnicoquitter.Global.*;
 import com.mru.mrnicoquitter.beans.Cita;
+import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
 import com.mru.mrnicoquitter.db.CitasDBAdapter;
 import com.mru.mrnicoquitter.db.NewDataBaseHelper;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
@@ -25,13 +26,14 @@ public class Splash extends Activity {
 	public void onCreate(Bundle icicle) {
 		super.onCreate(icicle);
 		context = getApplicationContext();
+		FlowManagerSGTon.initManager(context);
 		
 		SharedPreferences globalPreferences 	= context.getSharedPreferences(PREFS_GLOBAL, Context.MODE_PRIVATE);
 		if (!globalPreferences.getBoolean(PREF_CREATED,false)){
 			initMrQuitter(globalPreferences);
 		}	
 //		initMrQuitter(globalPreferences);
-		FlowManagerSGTon.initManager(context);
+	
 
 		Cita cita	= CitasDBAdapter.getInstance().getRandomEntry();
 		
@@ -63,7 +65,9 @@ public class Splash extends Activity {
 			e.printStackTrace();
 		}
 		Log.d("Splash","creating " + PREFS_GLOBAL);
-		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!		
+		globalPreferences.edit().putBoolean(PREF_CREATED, true).putBoolean(DEBUG, false).commit(); // Don't forget to commit your edits!!!
+		
+		DayManagerSGTon.createPreferences();
 	}
 
 }

@@ -64,6 +64,23 @@ public class CigarDBAdapter {
 		return;	
 	}
 	
+	public int changeDay(){
+		SQLiteDatabase db 	= dbHelper.getWritableDatabase();
+		int count = getCount(db);
+		db.delete(DB_CIGARS_TABLE, null, null);
+		dbHelper.close();
+		return count;
+	}
+	public int getCount(SQLiteDatabase db){
+
+		Cursor c = db.rawQuery("select count(date) from cigars_table", null);
+		int count = 0;
+		if (c.moveToFirst()) {
+			count = c.getInt(0);
+		}
+		c.close();
+		return count;
+	}
 	public void inserEntry(long selectedItemId, Calendar c) {
 
 		SQLiteDatabase db 	= dbHelper.getWritableDatabase();
