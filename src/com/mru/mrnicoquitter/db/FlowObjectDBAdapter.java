@@ -71,7 +71,7 @@ public class FlowObjectDBAdapter {
         String sqlQuery = "SELECT " + FLOW_KEY_OBJECT +
         " FROM " + DB_FLOW_TABLE
         + " WHERE " + FLOW_KEY_ID + " = " + _rowIndex;
-		Log.w("FlowObjectDBAdapter",sqlQuery);
+		Log.d("FlowObjectDBAdapter",sqlQuery);
 		
         Cursor c = db.rawQueryWithFactory(null, sqlQuery, null, null);
 		if (c.moveToFirst()) {

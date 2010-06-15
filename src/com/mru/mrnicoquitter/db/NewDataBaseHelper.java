@@ -91,7 +91,7 @@ public class NewDataBaseHelper extends SQLiteOpenHelper{
     	Log.d("NewDataBaseHelper","DATABASE COPIED and Streams closed");
     }
  
-    public SQLiteDatabase openDataBase() throws SQLException{
+    private SQLiteDatabase openDataBase() throws SQLException{
  
         String myPath = DATABASE_PATH + DATABASE_NAME;
     	myDataBase = SQLiteDatabase.openDatabase(myPath, null, SQLiteDatabase.OPEN_READWRITE);

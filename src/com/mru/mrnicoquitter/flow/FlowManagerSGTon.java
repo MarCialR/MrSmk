@@ -95,10 +95,10 @@ public class FlowManagerSGTon {
 
 	private static void hidrataPhase(String dehidratedPhase){
 		
-		PhaseState stageState = ((PhaseState)gson.fromJson(dehidratedPhase, PhaseState.class));
-		phase = Phase.initPhase(myContext, stageState);
-		phaseStagesCodes = phase.getCodes();
-		phaseStagesNames = phase.getNames();
+		PhaseState stageState 	= ((PhaseState)gson.fromJson(dehidratedPhase, PhaseState.class));
+		phase 					= Phase.initPhase(myContext, stageState);
+		phaseStagesCodes 		= phase.getCodes();
+		phaseStagesNames 		= phase.getNames();
 	}
 
 	public static Phase setPhase(int phaseID) {
@@ -145,27 +145,28 @@ public class FlowManagerSGTon {
 
 	}
 
-private static void setStage(){
-	FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(myContext).open();
-	String deH = flowDB.getEntry(getActiveStageCode());
-	flowDB.close();		
-	try {
-		actualStage = mapper.readValue(deH, Stage.class);
-	} catch (JsonParseException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (JsonMappingException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
-	} catch (IOException e) {
-		// TODO Auto-generated catch block
-		e.printStackTrace();
+	private static void setStage() {
+		FlowObjectDBAdapter flowDB = FlowObjectDBAdapter.getInstance(myContext)
+				.open();
+		String deH = flowDB.getEntry(getActiveStageCode());
+		flowDB.close();
+		try {
+			actualStage = mapper.readValue(deH, Stage.class);
+		} catch (JsonParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (JsonMappingException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 	}
-}
 
 	public static Stage getActualStage() {
-	return actualStage;
-}
+		return actualStage;
+	}
 
 	// ===========================================================
 	// 		UTILITIES

@@ -41,10 +41,9 @@ public class DevelopingActivity extends QActivity{
 
 
 	private static OnClickListener   canvasButtonListener, timelineButtonListener, sendListener,
-			 notificarOnOffListener, notificarListener, runListener, loadCigarFileListener;
+			 notificarOnOffListener, notificarListener, loadCigarFileListener;
 
 	private static Button  canvasButton, timelineButton, sendButton, notifButton, loadCigarFileButton;
-	private static ToggleButton runButton;
 	private static CheckBox notificarCheckBox;
 	
 	private NotificationService appService	=	null;
@@ -198,34 +197,19 @@ public class DevelopingActivity extends QActivity{
 		};
 		sendButton.setOnClickListener(sendListener);
 
-		runButton = (ToggleButton)findViewById(R.id.run); 
-		runListener = new OnClickListener() { 
-			public void onClick(View v) {
-				try {
-					if (runButton.isChecked())
-						((ScrollView)v.getParent().getParent().getParent()).setBackgroundColor(Color.RED);
-					else 
-						((ScrollView)v.getParent().getParent().getParent()).setBackgroundColor(Color.TRANSPARENT);
-//					{
-//						NotificationService nS = new NotificationService();
-//						nS.setMainActivity(MainActivity.this);
-//						Intent svc = new Intent(MainActivity.this.getApplicationContext(), NotificationService.class);
-//						startService(svc);
-//					}
 
-				}
-				catch (Exception e) {
-					Log.e("TAG", "ui creation problem", e);
-				}
-//				Timer t = new Timer(true);
-//				t.schedule(new TimerTask() {
-//					public void run() {
-////						AppUtils.showToastShort(MainActivity.this, "300 waited!");
-//						runButton.setChecked(false);
-//					}
-//				}, 3000);
-			} };
-			runButton.setOnClickListener(runListener);
+//		NotificationService nS = new NotificationService();
+//		nS.setMainActivity(MainActivity.this);
+//		Intent svc = new Intent(MainActivity.this.getApplicationContext(), NotificationService.class);
+//		startService(svc);		
+//		Timer t = new Timer(true);
+//		t.schedule(new TimerTask() {
+//			public void run() {
+////				AppUtils.showToastShort(MainActivity.this, "300 waited!");
+//				runButton.setChecked(false);
+//			}
+//		}, 3000);		
+
 			
 			
 

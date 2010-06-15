@@ -37,8 +37,8 @@ public class Splash extends Activity {
 		Cita cita 			= ad.getRandomEntry();
 		ad.close();
 		
-		CharSequence text = Html.fromHtml(cita.getText() + "<br/><br/> <b>" + cita.getAuthor() + "</b>");
-		Toast toast = Toast.makeText(context, text, Toast.LENGTH_LONG);
+		CharSequence text 	= Html.fromHtml(cita.getText() + "<br/><br/> <b>" + cita.getAuthor() + "</b>");
+		Toast toast 		= Toast.makeText(context, text, Toast.LENGTH_LONG);
 		toast.setGravity(Gravity.CENTER_VERTICAL, 0, 0);
 		toast.show();
 		
@@ -59,6 +59,7 @@ public class Splash extends Activity {
 		NewDataBaseHelper dbH = new NewDataBaseHelper(context);
 		try {
 			dbH.createDataBase();
+			dbH.close();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

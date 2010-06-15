@@ -43,7 +43,7 @@ public class CigarDBAdapter {
 		context 	= _context;
 		dbHelper 	= new NewDataBaseHelper(context);
 		try {
-			db = dbHelper.openDataBase();
+			db = dbHelper.getWritableDatabase();
 		}
 		catch (SQLiteException ex){
 			db = dbHelper.getReadableDatabase();	
