@@ -3,6 +3,7 @@ package com.mru.mrnicoquitter.db;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 
 import android.content.ContentValues;
@@ -63,29 +64,27 @@ public class CigarDBAdapter {
 		return;	
 	}
 	
-	public long inserttt(Cigar _myObject) {
+	public void inserEntry(long selectedItemId, Calendar c) {
 
-		SQLiteDatabase db 			= dbHelper.getWritableDatabase();
-		long que = 0L;
+		SQLiteDatabase db 	= dbHelper.getWritableDatabase();
 		try {
 			ContentValues newValues = new ContentValues();
-			newValues.put(CIGARS_KEY_DATE, _myObject.getDateStr());
-			newValues.put(CIGARS_KEY_TYPE, _myObject.getId());
-			que = db.insert(DB_CIGARS_TABLE, null, newValues);
+			newValues.put(CIGARS_KEY_DATE, SDF.format(c.getTime()));
+			newValues.put(CIGARS_KEY_TYPE, (int) selectedItemId);
+			db.insert(DB_CIGARS_TABLE, null, newValues);
 		}finally{
 			db.close();
 			UIUtils.showToastShort(FlowManagerSGTon.getAppContext().getString(R.string.T_CIGARRO_GUARDADO));			
 		}		
-		return que;
+		return;
 	}
 
 
 	public List<Cigar> getAllEntries () {
-		List<Cigar> cigarEntries = new ArrayList<Cigar>() ;
-		SimpleDateFormat sdf = new SimpleDateFormat(
-		"yyyy-MM-dd'T'HH:mm:ss.SSS");
+		List<Cigar> cigarEntries 	= new ArrayList<Cigar>() ;
+		SimpleDateFormat sdf 		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 		SQLiteDatabase db 			= dbHelper.getWritableDatabase();
-    	Cursor c = getAllCursor(db);
+    	Cursor c 					= getAllCursor(db);
 		if (c.moveToFirst()) {
 			do {
 				Cigar cigar = new Cigar();
@@ -105,28 +104,12 @@ public class CigarDBAdapter {
         return cigarEntries;
 	}
 	
-	public String getAllEntriesToSend(){
-		SQLiteDatabase db 			= dbHelper.getWritableDatabase();
-    	Cursor c = getAllCursor(db);
-    	StringBuffer sb = new StringBuffer(); 
-        if (c.moveToFirst()){
-        	do {
-        		Cigar cigar = new Cigar();
-        		cigar.setDateStr(c.getString(CIGARS_COL_DATE));
-        		cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
-        		
-        		sb.append(cigar.toSave()).append(NEWLINE);
-        	}while (c.moveToNext());
-        }
-        c.close();
-        dbHelper.close();
-        return sb.toString();
-	}
-	
 	private Cursor getAllCursor(SQLiteDatabase db){
 		return db.query(DB_CIGARS_TABLE, new String[] {CIGARS_KEY_ID, CIGARS_KEY_DATE, CIGARS_KEY_TYPE},
 				null, null, null, null, null);
 		
 	}
+
+
 
 }

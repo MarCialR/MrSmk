@@ -117,21 +117,14 @@ public class MainActivity extends QActivity {
 		saveButton = (Button) findViewById(R.id.SaveButton);
 		saveListener = new OnClickListener() {
 			public void onClick(View v) {
-				Cigar cigar = new Cigar();
 				olvidoCheckBox = (CheckBox) findViewById(R.id.olvidado);
 				Calendar c = Calendar.getInstance();
-
 				if (olvidoCheckBox.isChecked()) {
 					TimePicker picker = (TimePicker) findViewById(R.id.CuandoFumadoPicker);
 					c.set(Calendar.HOUR_OF_DAY, picker.getCurrentHour());
 					c.set(Calendar.MINUTE, picker.getCurrentMinute());
 				}
-				cigar.setDateStr(SDF.format(c.getTime()));
-				cigar.setId((int) tipo.getSelectedItemId());
-				
-				CigarDBAdapter.getInstance().inserttt(cigar);
-				
-
+				CigarDBAdapter.getInstance().inserEntry(tipo.getSelectedItemId(), c);
 			}
 		};
 
