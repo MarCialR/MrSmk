@@ -12,7 +12,9 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.beans.PhaseState;
+import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
 public abstract class Phase {
@@ -71,17 +73,23 @@ public abstract class Phase {
 	
 	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
 
+		Day today = DayManagerSGTon.getInstance().getToday(); 
 		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
 		inflater.inflate(contentLayout, commonLyt,true);
 		
-		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
-		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
-		logo.setBackgroundResource(logoId);
-		text.setText(FlowManagerSGTon.getHeaderText());
+		((ImageView) commonLyt.findViewById(R.id.Logo)).setBackgroundResource(logoId);
+		
+		String aaa = Integer.toString(today.getDayNumber());
+		
+		((TextView) commonLyt.findViewById(R.id.StageInfo)).setText(FlowManagerSGTon.getHeaderText());
+		
+		TextView day 		= (TextView) commonLyt.findViewById(R.id.DayInfo);
+		TextView savedInfo 	= (TextView) commonLyt.findViewById(R.id.SavedInfo);
+		day.setText(aaa);
+		savedInfo.setText(Double.toString(today.getPreviousDaySaved()));
+
 		return commonLyt;
 	}
-	
-
 
 	public String getPhaseName() {
 		return phaseName;

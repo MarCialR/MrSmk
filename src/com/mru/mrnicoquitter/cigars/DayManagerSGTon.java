@@ -4,6 +4,7 @@ import static com.mru.mrnicoquitter.Global.*;
 
 import java.util.Calendar;
 
+import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.db.CigarHistoricDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
@@ -22,11 +23,13 @@ public class DayManagerSGTon {
 	private static DayManagerSGTon INSTANCE;
 	private static Context myContext;
 	private static SharedPreferences dayManagerPreferences;	
+	private static Day today;
 
 	
 	private DayManagerSGTon() {
 		myContext				= FlowManagerSGTon.getAppContext();
 		dayManagerPreferences 	= myContext.getSharedPreferences(PREFS_DAY_MANAGER, Context.MODE_WORLD_READABLE);
+		privGetToday();
 	}
 
 	// ===========================================================
@@ -59,7 +62,12 @@ public class DayManagerSGTon {
 			dayManagerPreferences.edit().putInt("DAY", day.intValue()-1).commit();
 		}
 		
-		CigarDBAdapter.getInstance().inserEntry(selectedItemId, _c);		
+		CigarDBAdapter.getInstance().inserEntry(selectedItemId, _c);
+		privGetToday();
+	}
+	
+	public Day getToday(){
+		return today;
 	}
 
 	public static void createPreferences() {
@@ -73,5 +81,12 @@ public class DayManagerSGTon {
 		Log.d("DayManagerSGTon", "CREATED DAY PREFERENCES");
 	}
 	
-
+	private void privGetToday(){
+		today = new Day();
+		today.setCigarCount(CigarDBAdapter.getInstance().pubGetCount());
+		today.setDayNumber(dayManagerPreferences.getInt("DAY", 0));
+		today.setMaxCigarsToday(10);
+		today.setPreviousDaySaved(0.68);		
+		
+	}
 }

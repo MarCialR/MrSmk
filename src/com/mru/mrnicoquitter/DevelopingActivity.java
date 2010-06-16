@@ -212,8 +212,8 @@ public class DevelopingActivity extends QActivity{
 	}
 	private void exportDB(){
 
-		String inputFileName 	= "data/data/com.mru.mrnicoquitter/databases/mrQuitter.db";
-		String outFileName 		=  Environment.getExternalStorageDirectory() + "/q.png";   				// Path to the just created empty db
+		String inputFileName 	= DATABASE_PATH + DATABASE_NAME;//"data/data/com.mru.mrnicoquitter/databases/mrQuitter.db";
+		String outFileName 		=  Environment.getExternalStorageDirectory() + "/f.db";   				// Path to the just created empty db
 		InputStream myInput		= null;
     	OutputStream myOutput 	= null;
 
