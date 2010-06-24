@@ -6,72 +6,73 @@
 		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
 			android:orientation="horizontal" android:layout_width="fill_parent"
 			android:layout_height="fill_parent" android:gravity="center_horizontal">
-	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_height="fill_parent" android:layout_width="fill_parent"
-		android:gravity="center_horizontal">
-
-
-		<TableRow android:gravity="center_horizontal">
-			<RadioGroup android:id="@+id/RadioGroup01"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
+			<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+				android:layout_height="fill_parent" android:layout_width="fill_parent"
 				android:gravity="center_horizontal">
-				<RadioButton android:text="PHASE_1" android:id="@+id/S1_Stage"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-				<RadioButton android:text="PHASE_2" android:id="@+id/S2_Stage"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-				<RadioButton android:text="PHASE_3" android:id="@+id/S3_Stage"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-				<RadioButton android:text="PHASE_4" android:id="@+id/S4_Stage"
-					android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
-			</RadioGroup>
-		</TableRow>
-
-		<TableRow android:gravity="center_horizontal">
-			<Button android:id="@+id/SetStateButton" android:text="Set State"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" 
-				/>
-		</TableRow>
-
-		<TableRow android:gravity="center_horizontal">
-			<Button android:id="@+id/SendButton" android:text="Save to SDcard"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-		</TableRow>
-
-		<TableRow android:gravity="center_horizontal">
-			<CheckBox android:id="@+id/notificarCheck" android:text="Me muero"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:clickable="true" />
-
-			<Button android:id="@+id/NotifButton" android:text="Notificar"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-		</TableRow>
-
-		<TableRow android:gravity="center_horizontal" >
-			<TimePicker android:id="@+id/EsperarPicker"
-				android:visibility="gone" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:layout_span="3" />
-		</TableRow>
-
-		<TableRow android:gravity="center_horizontal">
-			<Button android:id="@+id/loadCigarFileButton" android:text="@string/Btn_load_cigars_file"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-
-			<Button android:id="@+id/CanvasButton" android:text="Canvas"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-
-			<Button android:id="@+id/TimelineButton" android:text="Timeline"
-				android:layout_width="wrap_content" android:layout_height="wrap_content" />
-		</TableRow>
 
 
+				<TableRow android:gravity="center_horizontal">
+					<RadioGroup android:id="@+id/RadioGroup01"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:gravity="center_horizontal">
+						<RadioButton android:text="PHASE_1" android:id="@+id/S1_Stage"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+						<RadioButton android:text="PHASE_2" android:id="@+id/S2_Stage"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+						<RadioButton android:text="PHASE_3" android:id="@+id/S3_Stage"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+						<RadioButton android:text="PHASE_4" android:id="@+id/S4_Stage"
+							android:layout_width="wrap_content" android:layout_height="wrap_content"></RadioButton>
+					</RadioGroup>
+				</TableRow>
 
-	</TableLayout>				
-								
-<!-- 
-			<Button android:id="@+id/EncuestaButton" android:text="Encuesta"
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:textColor="@color/green_dark" android:shadowColor="@color/white_translucent" />
- -->
+				<TableRow android:gravity="center_horizontal">
+					<Button android:id="@+id/SetStateButton" android:text="Set State"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				</TableRow>
+
+				<TableRow android:gravity="center_horizontal">
+					<Button android:id="@+id/SendButton" android:text="Save to SDcard"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				</TableRow>
+
+				<TableRow android:gravity="center_horizontal">
+					<CheckBox android:id="@+id/notificarCheck" android:text="Me muero"
+						android:layout_width="wrap_content" android:layout_height="wrap_content"
+						android:clickable="true" />
+
+					<Button android:id="@+id/NotifButton" android:text="Notificar"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				</TableRow>
+
+				<TableRow android:gravity="center_horizontal">
+					<TimePicker android:id="@+id/EsperarPicker"
+						android:visibility="gone" android:layout_width="wrap_content"
+						android:layout_height="wrap_content" android:layout_span="3" />
+				</TableRow>
+
+				<TableRow android:gravity="center_horizontal">
+					<Button android:id="@+id/loadCigarFileButton" android:text="@string/Btn_load_cigars_file"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+					<Button android:id="@+id/CanvasButton" android:text="Canvas"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+
+					<Button android:id="@+id/TimelineButton" android:text="Timeline"
+						android:layout_width="wrap_content" android:layout_height="wrap_content" />
+				</TableRow>
+
+
+
+			</TableLayout>
+
+			<!--
+				<Button android:id="@+id/EncuestaButton" android:text="Encuesta"
+				android:layout_width="wrap_content"
+				android:layout_height="wrap_content"
+				android:textColor="@color/green_dark"
+				android:shadowColor="@color/white_translucent" />
+			-->
 		</LinearLayout>
 	</ScrollView>
 

@@ -54,12 +54,19 @@ public class DayManagerSGTon {
 		
 		if (_c == null)
 			_c = Calendar.getInstance();
-		
-		if (selectedItemId == 0){		// CAMBIO DE DIA !!!!!!!!!
-			int count = CigarDBAdapter.getInstance().changeDay();
-			Integer day = dayManagerPreferences.getInt("DAY", 0);
+		// el canBeNewDay es necesario porque selectedItemId puede ser cero aunque no este el mañanero
+		if (canBeNewDay() && selectedItemId == 0){		// CAMBIO DE DIA !!!!!!!!!
+			
+			//TODO VALIDACION REPETIDA DIA NUEVO 
+			int count 	= CigarDBAdapter.getInstance().changeDay();
+			Integer day = dayManagerPreferences.getInt(PREF_DAY_TODAY, 0);
 			CigarHistoricDBAdapter.getInstance().insertEntry(day, count);
-			dayManagerPreferences.edit().putInt("DAY", day.intValue()-1).commit();
+			
+			Editor e 		= dayManagerPreferences.edit();
+			Calendar iniDay = Calendar.getInstance(); 
+			e.putInt(PREF_DAY_TODAY, iniDay.get(Calendar.DAY_OF_YEAR));
+			e.commit();			
+
 		}
 		
 		CigarDBAdapter.getInstance().inserEntry(selectedItemId, _c);
@@ -74,9 +81,10 @@ public class DayManagerSGTon {
 		myContext				= FlowManagerSGTon.getAppContext();
 		dayManagerPreferences 	= myContext.getSharedPreferences(PREFS_DAY_MANAGER, Context.MODE_WORLD_READABLE);
 
-		Editor e = dayManagerPreferences.edit();
-		e.putLong("FIRST_DAY", Calendar.getInstance().getTimeInMillis());
-		e.putInt("DAY", 0);
+		Editor e 				= dayManagerPreferences.edit();
+		Calendar iniDay 		= Calendar.getInstance(); 
+		e.putInt(PREF_DAY_FIRST_DAY, iniDay.get(Calendar.DAY_OF_YEAR));
+		e.putInt(PREF_DAY_TODAY, iniDay.get(Calendar.DAY_OF_YEAR));
 		e.commit();
 		Log.d("DayManagerSGTon", "CREATED DAY PREFERENCES");
 	}
@@ -84,9 +92,16 @@ public class DayManagerSGTon {
 	private void privGetToday(){
 		today = new Day();
 		today.setCigarCount(CigarDBAdapter.getInstance().pubGetCount());
-		today.setDayNumber(dayManagerPreferences.getInt("DAY", 0));
+		today.setDayNumber(dayManagerPreferences.getInt(PREF_DAY_TODAY, 0));
 		today.setMaxCigarsToday(10);
 		today.setPreviousDaySaved(0.68);		
 		
+	}
+
+	public boolean canBeNewDay() {
+		Calendar today = Calendar.getInstance();
+		if (dayManagerPreferences.getInt(PREF_DAY_TODAY, 0)<today.get(Calendar.DAY_OF_YEAR))
+			return true;
+		return false;
 	}
 }

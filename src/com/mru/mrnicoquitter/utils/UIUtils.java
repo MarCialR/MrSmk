@@ -25,6 +25,9 @@ public class UIUtils {
 		showToast(ctx, message, Toast.LENGTH_SHORT);
 	}
 
+	public final static  void showToastLong(String message){
+		showToast(FlowManagerSGTon.getAppContext(), message, Toast.LENGTH_LONG);
+	}	
 	public final static  void showToastLong(Context ctx, String message){
 		showToast(ctx, message, Toast.LENGTH_LONG);
 	}

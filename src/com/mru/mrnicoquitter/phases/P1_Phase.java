@@ -10,7 +10,7 @@ public class P1_Phase extends Phase {
 	
 	public P1_Phase(Context _context){
 		super();
-		id						= PHASE_1_CODE;
+		phaseId						= PHASE_1_CODE;
 		myContext				= _context;
 		logoId 					= R.drawable.etapa0;
 		phasePreferencesName 	= PREFS_PHASE_1;

@@ -29,6 +29,13 @@ public  class Global {
 	public static final String PREF_CREATED						= "PREF_CREATED";
 
     // =========================================================== 
+    // 						PREFERENCES
+    // =========================================================== 
+
+	public static final String PREF_DAY_FIRST_DAY				= "FIRST_DAY";	
+	public static final String PREF_DAY_TODAY					= "TODAY";	
+	
+    // =========================================================== 
     // 						STAGES
     // ===========================================================
 	public static final int NO_DEF								= -999;	
@@ -65,7 +72,7 @@ public  class Global {
 	public static final String ACVTY_CIGARLIST_CLASS			= "com.mru.mrnicoquitter.lists.CigarListActivity";
 	public static final String ACVTY_PREFSLIST_CLASS			= "com.mru.mrnicoquitter.lists.PrefsListActivity";
 	//public static final String 
-    public static final int SPLASH_DISPLAY_LENGHT 				= 100;
+    public static final int SPLASH_DISPLAY_LENGHT 				= 500;
 
     // =========================================================== 
     // 						INTENTS
@@ -135,6 +142,9 @@ public  class Global {
     // 						UTILS
     // =========================================================== 
 	
-	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");	
+	public static final SimpleDateFormat SDF = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
+
+
+	
 	
 }

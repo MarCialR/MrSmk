@@ -15,13 +15,14 @@ import com.mru.mrnicoquitter.R;
 import com.mru.mrnicoquitter.beans.Day;
 import com.mru.mrnicoquitter.beans.PhaseState;
 import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
+import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 
 public abstract class Phase {
 	// ===========================================================
 	// Fields
 	// ===========================================================	
-	protected int id;
+	protected int phaseId;
 	protected int logoId;
 	protected String phaseName;
 
@@ -66,27 +67,22 @@ public abstract class Phase {
 	protected void initCommons(Context _context, PhaseState _phaseState) {
 		myContext				= _context;
 		logoId					= _phaseState.getLogoId();
-		id						= _phaseState.getId();
+		phaseId						= _phaseState.getId();
 		phasePreferencesName	= _phaseState.getPhasePreferencesName();
 		phasePreferences 		= myContext.getSharedPreferences(phasePreferencesName, Context.MODE_PRIVATE);		
 	}
 	
 	public View getCommonLayout(LayoutInflater inflater, int contentLayout){
 
-		Day today = DayManagerSGTon.getInstance().getToday(); 
-		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
+		Day today 			= DayManagerSGTon.getInstance().getToday();
+		LinearLayout commonLyt 	= (LinearLayout)inflater.inflate(R.layout.lay_common, null);
 		inflater.inflate(contentLayout, commonLyt,true);
 		
-		((ImageView) commonLyt.findViewById(R.id.Logo)).setBackgroundResource(logoId);
-		
-		String aaa = Integer.toString(today.getDayNumber());
-		
-		((TextView) commonLyt.findViewById(R.id.StageInfo)).setText(FlowManagerSGTon.getHeaderText());
-		
-		TextView day 		= (TextView) commonLyt.findViewById(R.id.DayInfo);
-		TextView savedInfo 	= (TextView) commonLyt.findViewById(R.id.SavedInfo);
-		day.setText(aaa);
-		savedInfo.setText(Double.toString(today.getPreviousDaySaved()));
+		((ImageView)	commonLyt.findViewById(R.id.Logo))		.setBackgroundResource(logoId);
+		((TextView) 	commonLyt.findViewById(R.id.StageInfo))	.setText(FlowManagerSGTon.getHeaderText());
+		((TextView) 	commonLyt.findViewById(R.id.DayInfo))	.setText(Integer.toString(today.getDayNumber()));
+		((TextView) 	commonLyt.findViewById(R.id.SavedInfo))	.setText(Double.toString(today.getPreviousDaySaved()));
+		((TextView) 	commonLyt.findViewById(R.id.CigarCount)).setText(Integer.toString(today.getCigarCount()));
 
 		return commonLyt;
 	}
@@ -106,16 +102,13 @@ public abstract class Phase {
 	}
 
 
-	public int getStageID() {
-		return id;
-	}
 
-	public void setStageID(int stageID) {
-		this.id = stageID;
+	public int getPhaseId() {
+		return phaseId;
 	}
 
 	public PhaseState getPhaseState(int activeStageCode) {
-		return new PhaseState(logoId, id, phasePreferencesName, activeStageCode);
+		return new PhaseState(logoId, phaseId, phasePreferencesName, activeStageCode);
 	}
 
 	abstract public int[] getCodes();

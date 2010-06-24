@@ -1,5 +1,8 @@
 package com.mru.mrnicoquitter.db;
 
+import com.mru.mrnicoquitter.R;
+import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
+
 import android.content.Context;
 import android.graphics.Color;
 import android.view.View;
@@ -13,10 +16,18 @@ public class CausesAdapter extends BaseAdapter {
     private String[] arrayCauses;
     private Context mContext;
     
-    public CausesAdapter(Context context, String[] content) { 
+	public CausesAdapter(Context context) { 
          this.mContext = context; 
-         this.arrayCauses = content;
-    } 
+         String[] tmpArray = context.getResources().getStringArray(R.array.cigars);
+         if (!DayManagerSGTon.getInstance().canBeNewDay()){
+        	 this.arrayCauses = new String[tmpArray.length-1];
+        	 System.arraycopy(tmpArray, 1, this.arrayCauses, 0, tmpArray.length-1);
+         }
+         else{
+        	 this.arrayCauses = new String[tmpArray.length];
+        	 System.arraycopy(tmpArray, 0, this.arrayCauses, 0, tmpArray.length);
+         }
+    }
     public int getCount() { 
          return arrayCauses.length; 
     } 

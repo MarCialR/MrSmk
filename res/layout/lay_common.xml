@@ -10,28 +10,39 @@
 		android:layout_marginBottom="10px" />
 
 	<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
-		android:layout_height="wrap_content" android:layout_width="wrap_content"
-		android:gravity="center_horizontal" android:layout_marginBottom="10px">
+		android:layout_height="wrap_content" android:layout_width="fill_parent"
+		android:gravity="center_horizontal" android:layout_marginBottom="10px"
+		android:stretchColumns="*" >
 
 
 		<TableRow android:gravity="center_horizontal"
 			android:layout_width="fill_parent">
 			<TextView android:text="Stage" android:id="@+id/XX1"
-				android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_gravity="center_horizontal"
+				        android:layout_alignParentLeft="true"/>
 			<TextView android:text="Dia" android:id="@+id/XX2"
-				android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_gravity="center_horizontal"/>
+			<TextView android:text="Cigars" android:id="@+id/XX4"
+				android:layout_width="fill_parent" android:layout_gravity="center_horizontal"/>
 			<TextView android:text="Ahorrado" android:id="@+id/XX3"
-				android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_gravity="center_horizontal"/>
 		</TableRow>
+		
 		<TableRow android:gravity="center_horizontal"
 			android:layout_width="fill_parent">
-
 			<TextView android:text="mock" android:id="@+id/StageInfo"
-				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_height="wrap_content" 
+				android:layout_gravity="center_horizontal"/>
 			<TextView android:text="modk" android:id="@+id/DayInfo"
-				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_height="wrap_content" 
+				android:layout_gravity="center_horizontal"/>
+			<TextView android:text="modk" android:id="@+id/CigarCount"
+				android:layout_width="fill_parent" android:layout_height="wrap_content" 
+				android:layout_gravity="center_horizontal"/>
 			<TextView android:text="lll" android:id="@+id/SavedInfo"
-				android:layout_width="fill_parent" android:layout_height="wrap_content" />
+				android:layout_width="fill_parent" android:layout_height="wrap_content" 
+				android:layout_gravity="center_horizontal"/>
 		</TableRow>
+
 	</TableLayout>
 </LinearLayout>

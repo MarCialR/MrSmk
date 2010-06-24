@@ -179,16 +179,17 @@ public class DevelopingActivity extends QActivity{
 		sendButton = (Button) findViewById(R.id.SendButton);
 		sendListener = new OnClickListener() {
 			public void onClick(View v) {
-				final Intent emailIntent = new Intent(
-						android.content.Intent.ACTION_SEND);
+//				final Intent emailIntent = new Intent(
+//						android.content.Intent.ACTION_SEND);
 						exportDB();
-				emailIntent.setType("plain/text");
-				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcial5@hotmail.com" });
-				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
-				emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(Environment.getExternalStorageDirectory() + "/q.png"));
+//				emailIntent.setType("plain/text");
+//				emailIntent.putExtra(android.content.Intent.EXTRA_EMAIL, new String[] { "marcial5@hotmail.com" });
+//				emailIntent.putExtra(android.content.Intent.EXTRA_SUBJECT,"myCigarsList");
+//				emailIntent.putExtra(Intent.EXTRA_STREAM, Uri.parse(Environment.getExternalStorageDirectory() + "/q.png"));
 //				String dbToSave = CigarDBAdapter.getInstance().getAllEntriesToSendAsJSON();
 //				Log.d("DevelopingActivity", dbToSave);
-				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+//				startActivity(Intent.createChooser(emailIntent, "Send mail..."));
+						UIUtils.showToastShort("BD Exported as f.db");
 			}
 		};
 		sendButton.setOnClickListener(sendListener);

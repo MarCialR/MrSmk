@@ -25,6 +25,7 @@ import com.mru.mrnicoquitter.db.CausesAdapterSGTon;
 import com.mru.mrnicoquitter.db.CigarDBAdapter;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
 import com.mru.mrnicoquitter.lists.CigarListActivity;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class MainActivity extends QActivity {
 
@@ -34,6 +35,7 @@ public class MainActivity extends QActivity {
 	private static CheckBox olvidoCheckBox;
 
 	private static Spinner tipo;
+	private static LinearLayout commonLyt;
 	
 //	private NotificationService appService=null;
 //	
@@ -45,46 +47,14 @@ public class MainActivity extends QActivity {
 //		public void onServiceDisconnected(ComponentName className) {
 //			appService=null;
 //		}
-//	};	
-	@Override
-	protected void onResume() {
-
-		super.onResume();
-		/*
-		<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-			android:id="@+id/Common" 
-			android:orientation="vertical" android:layout_width="fill_parent"
-			android:layout_height="fill_parent" android:gravity="center"
-			android:background="@drawable/smoke40">
-
-			<ImageView android:id="@+id/Logo" android:layout_width="wrap_content"
-				android:layout_height="wrap_content" android:layout_marginTop="10px"
-				android:layout_marginBottom="10px" />
-				
-			<TextView android:text="@+id/StageInfo" android:id="@+id/StageInfo" 
-				android:layout_width="wrap_content" android:layout_height="wrap_content"
-				android:layout_marginBottom="10px"/>
-				
-
-		</LinearLayout>
-*/		
-		View v = (View) findViewById(R.id.Common);
-		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		LinearLayout commonLyt = (LinearLayout)inflater.inflate(R.layout.lay_common, null);
+//	};
 	
-		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
-		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
-		logo.setBackgroundResource(phase.getLogo());
-		text.setText(FlowManagerSGTon.getHeaderText());	
-		v= commonLyt;
-	}
-
 	/** Called when the activity is first created. */
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		
 		super.onCreate(savedInstanceState);
-		
+		UIUtils .showToastShort("OnCreate");
 
 		//bindService(new Intent(this, NotificationService.class),onService, BIND_AUTO_CREATE);
 		//setContentView(R.layout.main_scrollview_tablelayout);
@@ -93,7 +63,8 @@ public class MainActivity extends QActivity {
 		
 									//OJO con este this
 		LayoutInflater inflater = (LayoutInflater)this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-		setContentView(phase.getCommonLayout(inflater,R.layout.lay_content_main));
+		commonLyt =  (LinearLayout)phase.getCommonLayout(inflater,R.layout.lay_content_main);
+		setContentView(commonLyt);
 		
 		tipo = (Spinner) this.findViewById(R.id.TypeSpinner);
 
@@ -127,6 +98,7 @@ public class MainActivity extends QActivity {
 					c.set(Calendar.MINUTE, picker.getCurrentMinute());
 				}
 				DayManagerSGTon.getInstance().insert(tipo.getSelectedItemId(), c);
+				refresh();
 			}
 		};
 
@@ -141,7 +113,24 @@ public class MainActivity extends QActivity {
 		};
 		listButton.setOnClickListener(listListener);
 
+	}	
+	@Override
+	protected void onResume() {
+
+		super.onResume();
+
+		UIUtils .showToastShort("OnResume");
+		View v = (View) findViewById(R.id.Common);
+	
+		ImageView logo	= (ImageView) commonLyt.findViewById(R.id.Logo);
+		TextView text	= (TextView) commonLyt.findViewById(R.id.StageInfo);
+		logo.setBackgroundResource(phase.getLogo());
+		text.setText(FlowManagerSGTon.getHeaderText());	
+		v= commonLyt;
+		//refresh();
 	}
+
+	
 
 
 
@@ -155,6 +144,10 @@ public class MainActivity extends QActivity {
 	protected boolean isOKToLaunch() {
 		// TODO Auto-generated method stub
 		return false;
+	}
+	private void refresh(){
+		((TextView) 	commonLyt.findViewById(R.id.CigarCount)).setText(Integer.toString(CigarDBAdapter.getInstance().pubGetCount()));
+		
 	}
 
 

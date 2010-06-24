@@ -47,7 +47,7 @@ public class CigarDBAdapter {
 
 	public void bulkInsert(List<Cigar> list){
 		
-		SQLiteDatabase db 			= dbHelper.getWritableDatabase();
+		SQLiteDatabase db 				= dbHelper.getWritableDatabase();
 		try{
 
 			ContentValues 	newValues 	= new ContentValues();
@@ -66,7 +66,7 @@ public class CigarDBAdapter {
 	
 	public int changeDay(){
 		SQLiteDatabase db 	= dbHelper.getWritableDatabase();
-		int count = getCount(db);
+		int count 			= getCount(db);
 		db.delete(DB_CIGARS_TABLE, null, null);
 		dbHelper.close();
 		return count;
@@ -112,7 +112,6 @@ public class CigarDBAdapter {
 
 	public List<Cigar> getAllEntries () {
 		List<Cigar> cigarEntries 	= new ArrayList<Cigar>() ;
-		SimpleDateFormat sdf 		= new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");
 		SQLiteDatabase db 			= dbHelper.getWritableDatabase();
     	Cursor c 					= getAllCursor(db);
 		if (c.moveToFirst()) {
@@ -121,7 +120,7 @@ public class CigarDBAdapter {
 				cigar.setDateStr(c.getString(CIGARS_COL_DATE));
 				cigar.setTipo(c.getInt(CIGARS_COL_TYPE));
 				try {
-					cigar.setDate(sdf.parse(c.getString(CIGARS_COL_DATE)));
+					cigar.setDate(SDF.parse(c.getString(CIGARS_COL_DATE)));
 				} catch (ParseException e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();

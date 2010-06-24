@@ -18,6 +18,7 @@ import com.mru.mrnicoquitter.cigars.DayManagerSGTon;
 import com.mru.mrnicoquitter.db.CitasDBAdapter;
 import com.mru.mrnicoquitter.db.NewDataBaseHelper;
 import com.mru.mrnicoquitter.flow.FlowManagerSGTon;
+import com.mru.mrnicoquitter.utils.UIUtils;
 
 public class Splash extends Activity {
 
@@ -60,6 +61,7 @@ public class Splash extends Activity {
 		try {
 			dbH.createDataBase();
 			dbH.close();
+			UIUtils.showToastLong("DATABASE CREATED");
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

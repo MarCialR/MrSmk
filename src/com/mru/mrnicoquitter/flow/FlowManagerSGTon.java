@@ -124,6 +124,11 @@ public class FlowManagerSGTon {
 		activeStageIndex = 0;
 		Log.d("FlowManagerSGTon", "Cambiada FASE a: " + phase.getPhaseName());
 
+		savePreferences();
+		return phase;
+
+	}
+	private static void savePreferences(){
 		String deHidratedPhaseState = null;
 		try {
 			deHidratedPhaseState = mapper.writeValueAsString(phase
@@ -139,10 +144,9 @@ public class FlowManagerSGTon {
 			e.printStackTrace();
 		}
 		globalPreferences.edit().putString(PREF_ACTUAL_PHASE_DEHIDRATED,
-				deHidratedPhaseState).putInt(PREF_ACTUAL_PHASE_CODE, phaseID)
+				deHidratedPhaseState).putInt(PREF_ACTUAL_PHASE_CODE, phase.getPhaseId())
 				.commit();
-		return phase;
-
+		
 	}
 
 	private static void setStage() {
@@ -173,12 +177,6 @@ public class FlowManagerSGTon {
 	// ===========================================================
 	private static void clearPreferences() {
 		// TODO Auto-generated method stub
-		
-	}
-	public static void forceNext(){
-		if (actualStage!= null)
-			next();
-		setStage();
 		
 	}
 
@@ -228,7 +226,7 @@ public class FlowManagerSGTon {
 		Intent i = new Intent(splash, goTo);
 		for (IntentExtra ie: actualStage.getExtras())
 			i.putExtra(ie.getName(), ie.getContents());
-		
+		savePreferences();
 		return i; 
 	}
 
