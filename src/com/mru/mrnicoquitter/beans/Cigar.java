@@ -5,8 +5,12 @@ import java.util.Date;
 
 import android.content.Context;
 
+<<<<<<< HEAD:src/com/mru/mrnicoquitter/beans/Cigar.java
 @SuppressWarnings("serial")
 public class Cigar implements Comparable<Cigar>, Serializable{
+=======
+public class Cigar {
+>>>>>>> origin/dev:src/com/mru/mrnicoquitter/beans/Cigar.java
 	private int id;
 	private String dateStr;
 	private int tipo;

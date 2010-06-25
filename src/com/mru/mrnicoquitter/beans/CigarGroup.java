@@ -33,10 +33,13 @@ public class CigarGroup {
 	public void setDate(Date date) {
 		this.date = date;
 	}
+<<<<<<< HEAD:src/com/mru/mrnicoquitter/beans/CigarGroup.java
 	public Date getDate() {
 		return date;
 	}
 	
+=======
+>>>>>>> origin/dev:src/com/mru/mrnicoquitter/beans/CigarGroup.java
 	
 	
 }
