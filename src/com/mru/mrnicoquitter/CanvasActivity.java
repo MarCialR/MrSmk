@@ -13,7 +13,7 @@ public class CanvasActivity extends QActivity {
 	protected void onCreate(Bundle savedInstanceState) {
 	    super.onCreate(savedInstanceState);
 	    mCustomDrawableView = new CustomDrawableView(this);
-	  //setContentView(R.layout.canvas);	
+	    
 	    setContentView(mCustomDrawableView);
 	}
 

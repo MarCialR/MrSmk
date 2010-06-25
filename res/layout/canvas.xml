@@ -4,11 +4,8 @@ android:layout_width="fill_parent" android:layout_height="fill_parent"
 android:scrollbars="vertical">
 
 <HorizontalScrollView xmlns:android="http://schemas.android.com/apk/res/android"
-<<<<<<< HEAD:res/layout/canvas.xml
-        android:layout_width="wrap_content" android:layout_height="fill_parent">
-=======
-        android:layout_width="320px" android:layout_height="fill_parent">
->>>>>>> origin/dev:res/layout/canvas.xml
+android:layout_width="wrap_content" android:layout_height="fill_parent">
+
 
 
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
